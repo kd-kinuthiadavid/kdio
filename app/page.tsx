@@ -21,7 +21,7 @@ export default function Home() {
             delivering exceptional experiences from backend to interface.
           </p>
           <div className="flex gap-x-5">
-            <Button className="w-full text-white text-base font-medium capitalize py-6">
+            <Button className="w-full text-base font-medium capitalize py-6">
               Let&apos;s build together
             </Button>
             <Button
@@ -57,6 +57,12 @@ export default function Home() {
             className="capitalize font-medium hover:underline hover:underline-offset-4 hover:font-semibold active:underline active:underline-offset-4 active:font-semibold"
           >
             work
+          </a>
+          <a
+            href="#"
+            className="capitalize font-medium hover:underline hover:underline-offset-4 hover:font-semibold active:underline active:underline-offset-4 active:font-semibold"
+          >
+            experience
           </a>
           <a
             href="#"
