@@ -10,7 +10,7 @@ export default function Home() {
         <Separator className="my-2 w-[5%] !h-[2px]" />
       </div>
       <div className="flex items-end justify-between">
-        <div className="flex flex-col gap-y-6 max-w-[40%]">
+        <div className="flex flex-col gap-y-6  max-w-[60%] 2xl:max-w-[40%]">
           <h1 className="font-semibold text-5xl capitalize">
             Crafting Scalable Solutions Where Engineering Meets Empathy.
           </h1>
