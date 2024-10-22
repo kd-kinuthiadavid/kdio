@@ -32,14 +32,14 @@ export default function Navigation() {
       </Link>
       <Link
         prefetch={true}
-        href="/manifesto"
+        href="/method"
         className={`capitalize font-medium hover:underline hover:underline-offset-4 hover:font-semibold active:underline active:underline-offset-4 active:font-semibold ${
-          pathname === "/manifesto"
+          pathname === "/method"
             ? "font-semibold underline underline-offset-4 text-accent-foreground decoration-accent-foreground"
             : ""
         }`}
       >
-        manifesto
+        method
       </Link>
       <Link
         prefetch={true}

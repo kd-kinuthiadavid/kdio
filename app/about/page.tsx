@@ -37,7 +37,7 @@ export default function About() {
           variant={"outline"}
           className="w-full text-base font-medium capitalize py-6"
         >
-          Explore manifesto
+          Explore my method
         </Button>
       </div>
     </div>
