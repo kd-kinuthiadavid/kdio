@@ -28,7 +28,7 @@ export default function RootLayout({
             <h2 className="text-2xl font-semibold">Kinuthia.</h2>
             <Separator className="my-2 w-[5%] !h-[2px]" />
           </div>
-          <div className="flex items-end justify-between">
+          <div className="flex items-center justify-between">
             {children}
 
             <Navigation />

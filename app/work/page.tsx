@@ -1,3 +1,4 @@
+import { Badge } from "@/components/ui/badge";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 
@@ -7,22 +8,42 @@ export default function Work() {
       name: "Invoicething",
       description:
         "Intuitive invoicing for freelancers, solopreneurs & small businesses",
-      techStack:
-        "Nextjs, tailwindcss, shadcn/ui, NestJs, supabase, stripe, vercel",
+      techStack: [
+        "Nextjs",
+        "Tailwindcss",
+        "Shadcn/ui",
+        "NestJs",
+        "Supabase",
+        "Stripe",
+        "Vercel",
+        "Docker",
+        "Sentry",
+        "React Email",
+        "React PDF",
+        "Trigger.dev",
+        "Zustand",
+      ],
       url: "https://invoicething.vercel.app/",
       year: "2024",
     },
     {
       name: "Sndscape",
       description: "On-demand spotify highlights",
-      techStack: "nextjs, tailwindcss, shadcn/ui, Spotify API, vercel",
+      techStack: [
+        "Nextjs",
+        "Tailwindcss",
+        "Shadcn/ui",
+        "Spotify API",
+        "Vercel",
+        "Framer Motion",
+      ],
       url: "https://sndscp.vercel.app/",
       year: "2024",
     },
     {
       name: "Waitlist.io",
       description: "Manage your waitlists with ease",
-      techStack: "Nextjs, tailwindcss, shadcn/ui, Supabase, Vercel",
+      techStack: ["Nextjs", "Tailwindcss", "Shadcn/ui", "Supabase", "Vercel"],
       url: "https://waitlist.thing",
       year: "2024",
     },
@@ -71,7 +92,7 @@ export default function Work() {
                 key={idx}
               >
                 <p className="text-gray-500 font-medium">{project.year}</p>
-                <div className="flex flex-col">
+                <div className="flex flex-col gap-1">
                   <Link
                     target="_blank"
                     href={project.url}
@@ -83,6 +104,17 @@ export default function Work() {
                   <p className="font-medium text-gray-500 w-fit">
                     {project.description}
                   </p>
+                  <div className="flex flex-wrap gap-1">
+                    {project.techStack.map((tech, idx) => (
+                      <Badge
+                        variant={"outline"}
+                        key={idx}
+                        className="rounded-xl font-medium"
+                      >
+                        {tech}
+                      </Badge>
+                    ))}
+                  </div>
                 </div>
               </div>
             ))}
