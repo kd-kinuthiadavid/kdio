@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { raleway } from "./fonts";
 import { Separator } from "@/components/ui/separator";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "David Kinuthia",
@@ -26,42 +27,42 @@ export default function RootLayout({
             {children}
 
             <div className="flex flex-col gap-y-2">
-              <a
-                href="#"
+              <Link
+                href="/"
                 className="capitalize font-medium hover:underline hover:underline-offset-4 hover:font-semibold active:underline active:underline-offset-4 active:font-semibold"
               >
                 intro
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                href="/about"
                 className="capitalize font-medium hover:underline hover:underline-offset-4 hover:font-semibold active:underline active:underline-offset-4 active:font-semibold"
               >
                 about
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                href="/manifesto"
                 className="capitalize font-medium hover:underline hover:underline-offset-4 hover:font-semibold active:underline active:underline-offset-4 active:font-semibold"
               >
                 manifesto
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                href="/work"
                 className="capitalize font-medium hover:underline hover:underline-offset-4 hover:font-semibold active:underline active:underline-offset-4 active:font-semibold"
               >
                 work
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                href="/experience"
                 className="capitalize font-medium hover:underline hover:underline-offset-4 hover:font-semibold active:underline active:underline-offset-4 active:font-semibold"
               >
                 experience
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                href="/contact"
                 className="capitalize font-medium hover:underline hover:underline-offset-4 hover:font-semibold active:underline active:underline-offset-4 active:font-semibold"
               >
                 contact
-              </a>
+              </Link>
             </div>
           </div>
         </div>
