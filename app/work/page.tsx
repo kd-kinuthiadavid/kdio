@@ -7,7 +7,7 @@ export default function Work() {
     {
       name: "Invoicething",
       description:
-        "Intuitive invoicing for freelancers, solopreneurs & small businesses",
+        "Intuitive invoicing for freelancers, solopreneurs & small businesses.",
       techStack: [
         "Nextjs",
         "Tailwindcss",
@@ -28,7 +28,7 @@ export default function Work() {
     },
     {
       name: "Sndscape",
-      description: "On-demand spotify highlights",
+      description: "On-demand Spotify highlights. Discover how you listen.",
       techStack: [
         "Nextjs",
         "Tailwindcss",
@@ -42,7 +42,7 @@ export default function Work() {
     },
     {
       name: "Waitlist.io",
-      description: "Manage your waitlists with ease",
+      description: "Manage your waitlists with ease.",
       techStack: ["Nextjs", "Tailwindcss", "Shadcn/ui", "Supabase", "Vercel"],
       url: "https://waitlist.thing",
       year: "2024",
