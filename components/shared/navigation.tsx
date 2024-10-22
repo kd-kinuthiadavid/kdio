@@ -54,17 +54,6 @@ export default function Navigation() {
       </Link>
       <Link
         prefetch={true}
-        href="/experience"
-        className={`capitalize font-medium hover:underline hover:underline-offset-4 hover:font-semibold active:underline active:underline-offset-4 active:font-semibold ${
-          pathname === "/experience"
-            ? "font-semibold underline underline-offset-4 text-accent-foreground decoration-accent-foreground"
-            : ""
-        }`}
-      >
-        experience
-      </Link>
-      <Link
-        prefetch={true}
         href="/contact"
         className={`capitalize font-medium hover:underline hover:underline-offset-4 hover:font-semibold active:underline active:underline-offset-4 active:font-semibold ${
           pathname === "/contact"
