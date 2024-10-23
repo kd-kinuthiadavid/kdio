@@ -3,7 +3,7 @@ import Link from "next/link";
 const methodContent = [
   {
     title: "user-centric",
-    subTitile: "Design for the user, build for the impact.",
+    subTitle: "Design for the user, build for the impact.",
     description:
       "I believe that truly impactful products solve real-world issues in ways that feel intuitive and natural. By embedding myself in the user’s journey, I ensure that my technical solutions translate into meaningful experiences. I seek to work with teams that prioritize empathy and care deeply about the people using their product.",
   },
@@ -54,12 +54,12 @@ export default function Method() {
         </p>
       </div>
       <div className="grid gap-6 grid-cols-3 grid-rows-2">
-        {methodContent.map((method, idx) => (
+        {methodContent.map((content, idx) => (
           <div className="flex flex-col gap-2" key={idx}>
-            <p className="text-xl font-semibold capitalize">{method.title}</p>
+            <p className="text-xl font-semibold capitalize">{content.title}</p>
             <p className="text-base">
-              <span className="font-semibold">{method.subTitile}</span>{" "}
-              {method.description}
+              <span className="font-semibold">{content.subTitle}</span>{" "}
+              {content.description}
             </p>
           </div>
         ))}
