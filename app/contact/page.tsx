@@ -2,7 +2,7 @@ import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 
 export default function Contact() {
-  const projects = [
+  const contacts = [
     {
       name: "Cal",
       description: "Book a 15-minute intro call",
@@ -33,19 +33,19 @@ export default function Contact() {
     <div className="flex flex-col gap-y-12 w-full max-w-[70%]">
       <h1 className="font-semibold text-5xl capitalize">Contact</h1>
       <div className="flex flex-col">
-        <div className="flex flex-col gap-y-3 w-full">
-          {projects.map((project, idx) => (
+        <div className="grid grid-cols-2 gap-y-3 w-full">
+          {contacts.map((contact, idx) => (
             <div className="flex flex-col gap-1" key={idx}>
               <Link
                 target="_blank"
-                href={project.url}
+                href={contact.url}
                 className="flex items-start gap-x-1"
               >
-                <p className="font-semibold">{project.name}</p>
+                <p className="font-semibold">{contact.name}</p>
                 <ArrowUpRight size={20} className="text-gray-600" />
               </Link>
               <p className="font-medium text-gray-500 w-fit">
-                {project.description}
+                {contact.description}
               </p>
             </div>
           ))}
