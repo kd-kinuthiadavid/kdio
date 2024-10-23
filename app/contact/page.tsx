@@ -5,8 +5,8 @@ export default function Contact() {
   const projects = [
     {
       name: "Cal",
-      description: "Book a 30-minute chat with me",
-      url: "https://cal.com/kinuthiadavid/30min",
+      description: "Book a 15-minute intro call",
+      url: "https://cal.com/kinuthiadavid/15min",
       year: "2024",
     },
     {
@@ -22,9 +22,9 @@ export default function Contact() {
       year: "2024",
     },
     {
-      name: "IG",
-      description: "Let's be friends?",
-      url: "mailto:david.kinuthia@gmail.com",
+      name: "LinkedIn",
+      description: "Let's connect on LinkedIn",
+      url: "https://www.linkedin.com/in/david-kinuthia/",
       year: "2024",
     },
   ];
