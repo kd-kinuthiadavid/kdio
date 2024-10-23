@@ -24,8 +24,7 @@ export default function RootLayout({
       <body className={`${raleway.className} antialiased`}>
         <div className="flex flex-col justify-between h-screen px-14 py-16">
           <div className={`flex flex-col`}>
-            <h2 className="text-2xl font-semibold">David.</h2>
-            <h2 className="text-2xl font-semibold">Kinuthia.</h2>
+            <h2 className="text-2xl font-semibold">David Kinuthia.</h2>
             <Separator className="my-2 w-[5%] !h-[2px]" />
           </div>
           <div className="flex items-center justify-between">
