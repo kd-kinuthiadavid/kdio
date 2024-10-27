@@ -40,7 +40,7 @@ export default function Contact() {
       initial="hidden"
       animate="visible"
       variants={containerVariants}
-      className="flex flex-col gap-y-12 w-full max-w-[70%]"
+      className="flex flex-col gap-y-12 w-full md:max-w-[70%]"
     >
       <motion.h1
         variants={itemVariants}
