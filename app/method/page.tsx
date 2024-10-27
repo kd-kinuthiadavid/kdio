@@ -1,6 +1,7 @@
 import * as motion from "framer-motion/client";
 import Link from "next/link";
 import { containerVariants, itemVariants } from "../motionVariants";
+import MethodItem from "./_components/MethodItem";
 
 const methodContent = [
   {
@@ -72,13 +73,7 @@ export default function Method() {
       </motion.div>
       <div className="grid gap-6 grid-cols-3 grid-rows-2">
         {methodContent.map((content, idx) => (
-          <div className="flex flex-col gap-2" key={idx}>
-            <p className="text-xl font-semibold capitalize">{content.title}</p>
-            <p className="text-base">
-              <span className="font-semibold">{content.subTitle}</span>{" "}
-              {content.description}
-            </p>
-          </div>
+          <MethodItem content={content} key={idx} />
         ))}
       </div>
 
