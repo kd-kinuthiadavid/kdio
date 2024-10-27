@@ -21,14 +21,6 @@ export default function MobileNav() {
   const pathname = usePathname();
 
   const MotionLink = motion(Link);
-  const MotionDrawerContent = motion(DrawerContent);
-  const MotionDrawerTrigger = motion(DrawerTrigger);
-  const MotionMenu = motion(Menu);
-  const MotionDrawerHeader = motion(DrawerHeader);
-  const MotionDrawerFooter = motion(DrawerFooter);
-  const MotionDrawerTitle = motion(DrawerTitle);
-  const MotionDrawerDescription = motion(DrawerDescription);
-  const MOtionDrawer = motion(Drawer);
 
   return (
     <Drawer>
