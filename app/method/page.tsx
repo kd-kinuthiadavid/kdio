@@ -49,7 +49,7 @@ export default function Method() {
       initial="hidden"
       animate="visible"
       variants={containerVariants}
-      className="flex flex-col gap-y-12 w-full max-w-[80%]"
+      className="flex flex-col gap-y-12 w-full md:max-w-[80%]"
     >
       <motion.div
         initial="hidden"
@@ -59,11 +59,14 @@ export default function Method() {
       >
         <motion.h1
           variants={itemVariants}
-          className="font-semibold text-5xl capitalize"
+          className="font-semibold text-4xl md:text-5xl capitalize"
         >
           Method
         </motion.h1>
-        <motion.p variants={itemVariants} className="font-normal text-lg">
+        <motion.p
+          variants={itemVariants}
+          className="font-normal text-base md:text-lg"
+        >
           I believe that software can still, and perhaps should, feel magical.
           Therefore, in an attempt to achieve this, my approach to product
           development is guided by a set of foundational principles rooted in
@@ -74,7 +77,7 @@ export default function Method() {
 
       <motion.p
         variants={itemVariants}
-        className="font-normal text-lg lg:max-w-[70%]"
+        className="font-normal text-base md:text-lg lg:max-w-[70%]"
       >
         If you share these values, then we're already on the same page. Let's
         create something beautifull and impactful together.{" "}

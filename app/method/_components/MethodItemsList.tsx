@@ -17,7 +17,7 @@ export default function MethodItemsList({
       variants={containerVariants}
       type="single"
       collapsible
-      className="grid gap-6 grid-cols-2"
+      className="grid gap-6 md:grid-cols-2"
     >
       {methodContent.map((content, idx) => (
         <MethodItem content={content} key={idx} />

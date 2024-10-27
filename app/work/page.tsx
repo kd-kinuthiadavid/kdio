@@ -95,11 +95,11 @@ export default function Work() {
       initial="hidden"
       animate="visible"
       variants={containerVariants}
-      className="flex flex-col gap-y-12 w-full max-w-[70%]"
+      className="flex flex-col gap-y-12 w-full md:max-w-[70%]"
     >
       <motion.h1
         variants={itemVariants}
-        className="font-semibold text-5xl capitalize"
+        className="font-semibold text-4xl md:text-5xl capitalize"
       >
         Work
       </motion.h1>
@@ -107,7 +107,7 @@ export default function Work() {
         initial="hidden"
         animate="visible"
         variants={containerVariants}
-        className="flex justify-between gap-x-32 w-full"
+        className="flex flex-wrap justify-between gap-x-32 gap-y-16 w-full"
       >
         <motion.div
           initial="hidden"
@@ -132,7 +132,7 @@ export default function Work() {
                 initial="hidden"
                 animate="visible"
                 variants={containerVariants}
-                className="flex gap-x-6 items-start text-base w-full"
+                className="flex flex-wrap gap-x-6 items-start text-base w-full"
                 key={idx}
               >
                 <motion.p
@@ -205,7 +205,7 @@ export default function Work() {
                 initial="hidden"
                 animate="visible"
                 variants={containerVariants}
-                className="flex gap-x-6 items-start text-base"
+                className="flex flex-wrap gap-x-6 items-start text-base"
                 key={idx}
               >
                 <motion.p

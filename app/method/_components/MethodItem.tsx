@@ -50,7 +50,7 @@ export default function MethodItem({
         >
           <motion.p
             variants={itemVariants}
-            className="text-xl text-left font-semibold capitalize"
+            className="text-base md:text-xl text-left font-semibold capitalize"
           >
             {title}
           </motion.p>
