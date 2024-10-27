@@ -1,6 +1,13 @@
-import { Badge } from "@/components/ui/badge";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
+import * as motion from "framer-motion/client";
+
+import { Badge } from "@/components/ui/badge";
+import {
+  containerVariants,
+  itemVariants,
+  navItemVariants,
+} from "../motionVariants";
 
 export default function Work() {
   const projects = [
@@ -80,19 +87,60 @@ export default function Work() {
     },
   ];
   return (
-    <div className="flex flex-col gap-y-12 w-full max-w-[70%]">
-      <h1 className="font-semibold text-5xl capitalize">Work</h1>
-      <div className="flex justify-between gap-x-32 w-full">
-        <div className="flex flex-col gap-y-3 w-full">
-          <h2 className="font-semibold text-2xl capitalize">projects</h2>
-          <div className="flex flex-col gap-y-3 w-full">
+    <motion.div
+      initial="hidden"
+      animate="visible"
+      variants={containerVariants}
+      className="flex flex-col gap-y-12 w-full max-w-[70%]"
+    >
+      <motion.h1
+        variants={itemVariants}
+        className="font-semibold text-5xl capitalize"
+      >
+        Work
+      </motion.h1>
+      <motion.div
+        initial="hidden"
+        animate="visible"
+        variants={containerVariants}
+        className="flex justify-between gap-x-32 w-full"
+      >
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          variants={containerVariants}
+          className="flex flex-col gap-y-3 w-full"
+        >
+          <motion.h2
+            animate={itemVariants}
+            className="font-semibold text-2xl capitalize"
+          >
+            projects
+          </motion.h2>
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={containerVariants}
+            className="flex flex-col gap-y-3 w-full"
+          >
             {projects.map((project, idx) => (
-              <div
+              <motion.div
+                initial="hidden"
+                animate="visible"
+                variants={containerVariants}
                 className="flex gap-x-6 items-start text-base w-full"
                 key={idx}
               >
-                <p className="text-gray-500 font-medium">{project.year}</p>
-                <div className="flex flex-col gap-1">
+                <motion.p
+                  variants={itemVariants}
+                  className="text-gray-500 font-medium"
+                >
+                  {project.year}
+                </motion.p>
+                <motion.div
+                  variants={itemVariants}
+                  className="flex flex-col gap-1"
+                >
                   <Link
                     target="_blank"
                     href={project.url}
@@ -115,20 +163,44 @@ export default function Work() {
                       </Badge>
                     ))}
                   </div>
-                </div>
-              </div>
+                </motion.div>
+              </motion.div>
             ))}
-          </div>
-        </div>
-        <div className="flex flex-col gap-y-6 w-full">
-          <h2 className="font-semibold text-2xl capitalize">experience</h2>
-          <div className="flex flex-col gap-y-3">
+          </motion.div>
+        </motion.div>
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          variants={containerVariants}
+          className="flex flex-col gap-y-6 w-full"
+        >
+          <motion.h2
+            variants={itemVariants}
+            className="font-semibold text-2xl capitalize"
+          >
+            experience
+          </motion.h2>
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={containerVariants}
+            className="flex flex-col gap-y-3"
+          >
             {experience.map((exp, idx) => (
-              <div className="flex gap-x-6 items-start text-base" key={idx}>
-                <p className="text-gray-500 font-medium min-w-[110px]">
+              <motion.div
+                initial="hidden"
+                animate="visible"
+                variants={containerVariants}
+                className="flex gap-x-6 items-start text-base"
+                key={idx}
+              >
+                <motion.p
+                  variants={itemVariants}
+                  className="text-gray-500 font-medium min-w-[110px]"
+                >
                   {exp.timeStamp}
-                </p>
-                <div className="flex flex-col">
+                </motion.p>
+                <motion.div variants={itemVariants} className="flex flex-col">
                   <Link
                     target="_blank"
                     href={exp.url}
@@ -140,12 +212,12 @@ export default function Work() {
                   <p className="font-medium text-gray-500">
                     {`${exp.company} . ${exp.capacity}`}
                   </p>
-                </div>
-              </div>
+                </motion.div>
+              </motion.div>
             ))}
-          </div>
-        </div>
-      </div>
-    </div>
+          </motion.div>
+        </motion.div>
+      </motion.div>
+    </motion.div>
   );
 }
