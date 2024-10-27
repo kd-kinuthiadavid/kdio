@@ -2,6 +2,7 @@ import * as motion from "framer-motion/client";
 import Link from "next/link";
 import { containerVariants, itemVariants } from "../motionVariants";
 import MethodItem from "./_components/MethodItem";
+import { Accordion } from "@/components/ui/accordion";
 
 const methodContent = [
   {
@@ -35,9 +36,8 @@ const methodContent = [
       "In both software architecture and user experience, simplicity is key. I believe that the most elegant solutions are often the simplest, and that complexity should only be introduced where it provides genuine value. I’m looking for teams that appreciate the value of simplicity and strive for clarity in both code and design.",
   },
   {
-    title: "Human-Centered Intelligent Systems",
-    subTitle:
-      "Design intelligent systems that enhance the human experience - not exploit it.",
+    title: "Human-Centered AI",
+    subTitle: "Design intelligent systems that enhance the human experience.",
     description:
       "I believe that the role of AI should be to optimize the world for humans. I'm inspired by ethical leaders in technology like Tristan Harris and Aza Raskin. I’m looking for teams that prioritize human-centered design and development, and that are committed to using AI to enhance the user experience.",
   },
@@ -71,17 +71,18 @@ export default function Method() {
           craftsmanship, quality and design-thinking:
         </motion.p>
       </motion.div>
-      <div className="grid gap-6 grid-cols-3 grid-rows-2">
+      <Accordion type="single" collapsible className="grid gap-6 grid-cols-2">
         {methodContent.map((content, idx) => (
           <MethodItem content={content} key={idx} />
         ))}
-      </div>
+      </Accordion>
 
-      <motion.p variants={itemVariants} className="font-normal text-lg">
-        If you share these values, then we're already on the same page.{" "}
-        <span className="font-medium">
-          Let's create something beautifull and impactful together.
-        </span>{" "}
+      <motion.p
+        variants={itemVariants}
+        className="font-normal text-lg lg:max-w-[70%]"
+      >
+        If you share these values, then we're already on the same page. Let's
+        create something beautifull and impactful together.{" "}
         <Link
           href="/contact"
           className="underline underline-offset-4 cursor:pointer hover:font-semibold"
