@@ -35,7 +35,7 @@ export default function RootLayout({
               >
                 David Kinuthia.
               </motion.h2>
-              <Separator className="my-2 w-[15%] md:w-[3%] !h-[1.5px]" />
+              <Separator className="my-2 w-[15%] md:w-[20%] !h-[1.5px]" />
             </motion.div>
             <MobileNav />
           </div>

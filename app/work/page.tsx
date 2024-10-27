@@ -107,7 +107,7 @@ export default function Work() {
         initial="hidden"
         animate="visible"
         variants={containerVariants}
-        className="flex flex-wrap justify-between gap-x-32 gap-y-16 w-full"
+        className="flex flex-wrap md:flex-nowrap justify-between gap-x-32 gap-y-16 w-full"
       >
         <motion.div
           initial="hidden"
@@ -132,7 +132,7 @@ export default function Work() {
                 initial="hidden"
                 animate="visible"
                 variants={containerVariants}
-                className="flex flex-wrap gap-x-6 items-start text-base w-full"
+                className="flex flex-wrap md:flex-nowrap gap-x-6 items-start text-base w-full"
                 key={idx}
               >
                 <motion.p
@@ -205,7 +205,7 @@ export default function Work() {
                 initial="hidden"
                 animate="visible"
                 variants={containerVariants}
-                className="flex flex-wrap gap-x-6 items-start text-base"
+                className="flex flex-wrap md:flex-nowrap gap-x-6 items-start text-base"
                 key={idx}
               >
                 <motion.p
