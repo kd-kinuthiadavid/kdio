@@ -1,8 +1,6 @@
 import * as motion from "framer-motion/client";
 import Link from "next/link";
 import { containerVariants, itemVariants } from "../motionVariants";
-import MethodItem from "./_components/MethodItem";
-import { Accordion } from "@/components/ui/accordion";
 import MethodItemsList from "./_components/MethodItemsList";
 
 const methodContent = [

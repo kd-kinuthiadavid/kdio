@@ -2,11 +2,23 @@
 
 import * as React from "react";
 import * as AccordionPrimitive from "@radix-ui/react-accordion";
+import { motion, MotionProps } from "framer-motion";
 import { ChevronDownIcon } from "@radix-ui/react-icons";
 
 import { cn } from "@/lib/utils";
 
-const Accordion = AccordionPrimitive.Root;
+type AccordionProps = React.ComponentPropsWithoutRef<
+  typeof AccordionPrimitive.Root
+> &
+  MotionProps;
+
+const MotionAccordion = motion(
+  AccordionPrimitive.Root
+) as React.FC<AccordionProps>;
+
+const Accordion = ({ children, ...props }: AccordionProps) => (
+  <MotionAccordion {...props}>{children}</MotionAccordion>
+);
 
 const AccordionItem = React.forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Item>,

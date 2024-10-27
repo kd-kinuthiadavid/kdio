@@ -1,7 +1,4 @@
 "use client";
-
-import { motion } from "framer-motion";
-
 import { Accordion } from "@/components/ui/accordion";
 import MethodItem, { type Content } from "./MethodItem";
 import { containerVariants } from "@/app/motionVariants";
@@ -13,9 +10,8 @@ interface MethodItemsListProps {
 export default function MethodItemsList({
   methodContent,
 }: MethodItemsListProps) {
-  const MotionAccordion = motion(Accordion);
   return (
-    <MotionAccordion
+    <Accordion
       initial="hidden"
       animate="visible"
       variants={containerVariants}
@@ -26,6 +22,6 @@ export default function MethodItemsList({
       {methodContent.map((content, idx) => (
         <MethodItem content={content} key={idx} />
       ))}
-    </MotionAccordion>
+    </Accordion>
   );
 }
