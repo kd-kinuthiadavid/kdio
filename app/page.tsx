@@ -1,7 +1,11 @@
 import * as motion from "framer-motion/client";
 
 import AnimatedButton from "@/components/shared/AnimatedButton";
-import { containerVariants, itemVariants } from "./motionVariants";
+import {
+  containerVariants,
+  itemVariants,
+  navItemVariants,
+} from "./motionVariants";
 
 export default function Home() {
   return (
@@ -18,7 +22,7 @@ export default function Home() {
         Crafting Scalable Solutions Where Engineering Meets Empathy.
       </motion.h1>
       <motion.p
-        variants={itemVariants}
+        variants={navItemVariants}
         className={`font-normal text-xl max-w-[95%]`}
       >
         Hello, my name is David Kinuthia. I am a product software engineer based
@@ -26,16 +30,21 @@ export default function Home() {
         products that are reliable, intuitive, and meaningful— delivering
         exceptional experiences from backend to interface.
       </motion.p>
-      <motion.div variants={containerVariants} className="flex gap-x-5">
+      <motion.div
+        initial="hidden"
+        animate="visible"
+        variants={containerVariants}
+        className="flex gap-x-5"
+      >
         <AnimatedButton
-          motionVariants={itemVariants}
+          motionVariants={navItemVariants}
           variant={"default"}
           className="w-full text-base font-medium capitalize py-6"
         >
           Let&apos;s build together
         </AnimatedButton>
         <AnimatedButton
-          motionVariants={itemVariants}
+          motionVariants={navItemVariants}
           variant={"outline"}
           className="w-full text-base font-medium capitalize py-6"
         >
