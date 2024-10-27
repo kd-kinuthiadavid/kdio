@@ -58,7 +58,7 @@ export default function Contact() {
           initial="hidden"
           animate="visible"
           variants={containerVariants}
-          className="grid grid-cols-2 gap-y-3 w-full"
+          className="grid md:grid-cols-2 gap-y-3 w-full"
         >
           {contacts.map((contact, idx) => (
             <motion.div
