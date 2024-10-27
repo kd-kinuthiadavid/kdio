@@ -1,6 +1,8 @@
+"use client";
+
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
-import * as motion from "framer-motion/client";
+import { motion } from "framer-motion";
 
 import { Badge } from "@/components/ui/badge";
 import {
@@ -10,6 +12,8 @@ import {
 } from "../motionVariants";
 
 export default function Work() {
+  const MotionLink = motion(Link);
+  const MotionBadge = motion(Badge);
   const projects = [
     {
       name: "Invoicething",
@@ -112,7 +116,7 @@ export default function Work() {
           className="flex flex-col gap-y-3 w-full"
         >
           <motion.h2
-            animate={itemVariants}
+            animate={navItemVariants}
             className="font-semibold text-2xl capitalize"
           >
             projects
@@ -132,37 +136,47 @@ export default function Work() {
                 key={idx}
               >
                 <motion.p
-                  variants={itemVariants}
+                  variants={navItemVariants}
                   className="text-gray-500 font-medium"
                 >
                   {project.year}
                 </motion.p>
                 <motion.div
-                  variants={itemVariants}
+                  initial="hidden"
+                  animate="visible"
+                  variants={containerVariants}
                   className="flex flex-col gap-1"
                 >
-                  <Link
+                  <MotionLink
+                    variants={navItemVariants}
                     target="_blank"
                     href={project.url}
                     className="flex items-start gap-x-1"
                   >
                     <p className="font-semibold">{project.name}</p>
                     <ArrowUpRight size={20} className="text-gray-600" />
-                  </Link>
-                  <p className="font-medium text-gray-500 w-fit">
+                  </MotionLink>
+                  <motion.p
+                    variants={navItemVariants}
+                    className="font-medium text-gray-500 w-fit"
+                  >
                     {project.description}
-                  </p>
-                  <div className="flex flex-wrap gap-1">
+                  </motion.p>
+                  <motion.div
+                    animate={navItemVariants}
+                    className="flex flex-wrap gap-1"
+                  >
                     {project.techStack.map((tech, idx) => (
-                      <Badge
+                      <MotionBadge
+                        variants={navItemVariants}
                         variant={"outline"}
                         key={idx}
                         className="rounded-xl font-medium"
                       >
                         {tech}
-                      </Badge>
+                      </MotionBadge>
                     ))}
-                  </div>
+                  </motion.div>
                 </motion.div>
               </motion.div>
             ))}
@@ -175,7 +189,7 @@ export default function Work() {
           className="flex flex-col gap-y-6 w-full"
         >
           <motion.h2
-            variants={itemVariants}
+            variants={navItemVariants}
             className="font-semibold text-2xl capitalize"
           >
             experience
@@ -195,23 +209,32 @@ export default function Work() {
                 key={idx}
               >
                 <motion.p
-                  variants={itemVariants}
+                  variants={navItemVariants}
                   className="text-gray-500 font-medium min-w-[110px]"
                 >
                   {exp.timeStamp}
                 </motion.p>
-                <motion.div variants={itemVariants} className="flex flex-col">
-                  <Link
+                <motion.div
+                  initial="hidden"
+                  animate="visible"
+                  variants={containerVariants}
+                  className="flex flex-col"
+                >
+                  <MotionLink
+                    variants={navItemVariants}
                     target="_blank"
                     href={exp.url}
                     className="flex items-start gap-x-1"
                   >
                     <p className="font-semibold">{exp.position}</p>
                     <ArrowUpRight size={20} className="text-gray-600" />
-                  </Link>
-                  <p className="font-medium text-gray-500">
+                  </MotionLink>
+                  <motion.p
+                    variants={navItemVariants}
+                    className="font-medium text-gray-500"
+                  >
                     {`${exp.company} . ${exp.capacity}`}
-                  </p>
+                  </motion.p>
                 </motion.div>
               </motion.div>
             ))}
