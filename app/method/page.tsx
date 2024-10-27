@@ -1,4 +1,6 @@
+import * as motion from "framer-motion/client";
 import Link from "next/link";
+import { containerVariants, itemVariants } from "../motionVariants";
 
 const methodContent = [
   {
@@ -43,16 +45,31 @@ const methodContent = [
 /* eslint-disable react/no-unescaped-entities */
 export default function Method() {
   return (
-    <div className="flex flex-col gap-y-12 w-full max-w-[80%]">
-      <div className="flex flex-col gap-y-6">
-        <h1 className="font-semibold text-5xl capitalize">Method</h1>
-        <p className="font-normal text-lg">
+    <motion.div
+      initial="hidden"
+      animate="visible"
+      variants={containerVariants}
+      className="flex flex-col gap-y-12 w-full max-w-[80%]"
+    >
+      <motion.div
+        initial="hidden"
+        animate="visible"
+        variants={containerVariants}
+        className="flex flex-col gap-y-6"
+      >
+        <motion.h1
+          variants={itemVariants}
+          className="font-semibold text-5xl capitalize"
+        >
+          Method
+        </motion.h1>
+        <motion.p variants={itemVariants} className="font-normal text-lg">
           I believe that software can still, and perhaps should, feel magical.
           Therefore, in an attempt to achieve this, my approach to product
           development is guided by a set of foundational principles rooted in
           craftsmanship, quality and design-thinking:
-        </p>
-      </div>
+        </motion.p>
+      </motion.div>
       <div className="grid gap-6 grid-cols-3 grid-rows-2">
         {methodContent.map((content, idx) => (
           <div className="flex flex-col gap-2" key={idx}>
@@ -65,7 +82,7 @@ export default function Method() {
         ))}
       </div>
 
-      <p className="font-normal text-lg">
+      <motion.p variants={itemVariants} className="font-normal text-lg">
         If you share these values, then we're already on the same page.{" "}
         <span className="font-medium">
           Let's create something beautifull and impactful together.
@@ -76,7 +93,7 @@ export default function Method() {
         >
           Let's connect.
         </Link>
-      </p>
-    </div>
+      </motion.p>
+    </motion.div>
   );
 }
