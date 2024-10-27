@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/drawer";
 import { Button } from "../ui/button";
 import { containerVariants, navItemVariants } from "@/app/motionVariants";
+import AnimatedButton from "./AnimatedButton";
 
 export default function MobileNav() {
   const pathname = usePathname();
@@ -101,6 +102,13 @@ export default function MobileNav() {
             </MotionLink>
           </motion.nav>
           <DrawerFooter>
+            <AnimatedButton
+              motionVariants={navItemVariants}
+              variant={"default"}
+              className="w-full text-base font-medium capitalize py-6"
+            >
+              Let&apos;s build together
+            </AnimatedButton>
             <DrawerClose asChild>
               <Button variant="outline">Cancel</Button>
             </DrawerClose>
