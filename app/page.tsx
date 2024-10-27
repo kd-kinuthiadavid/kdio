@@ -23,7 +23,7 @@ export default function Home() {
       </motion.h1>
       <motion.p
         variants={navItemVariants}
-        className={`font-normal text-xl md:max-w-[95%]`}
+        className={`font-normal text-lg md:text-xl md:max-w-[95%]`}
       >
         Hello, my name is David Kinuthia. I am a product software engineer based
         in Nairobi. I blend technical expertise and user empathy to build
