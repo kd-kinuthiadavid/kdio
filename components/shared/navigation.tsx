@@ -2,13 +2,43 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { motion } from "framer-motion";
 
 export default function Navigation() {
   const pathname = usePathname();
-  console.log("------------", pathname);
+
+  const MotionLink = motion(Link);
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const navItemVariants = {
+    hidden: { opacity: 0, x: 20 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+      },
+    },
+  };
   return (
-    <div className="flex flex-col gap-y-2">
-      <Link
+    <motion.nav
+      initial="hidden"
+      animate="visible"
+      variants={containerVariants}
+      className="flex flex-col gap-y-2"
+    >
+      <MotionLink
+        variants={navItemVariants}
         prefetch={true}
         href="/"
         className={`capitalize font-medium hover:underline hover:underline-offset-4 hover:font-semibold active:underline active:underline-offset-4 active:font-semibold ${
@@ -18,8 +48,9 @@ export default function Navigation() {
         }`}
       >
         intro
-      </Link>
-      <Link
+      </MotionLink>
+      <MotionLink
+        variants={navItemVariants}
         prefetch={true}
         href="/about"
         className={`capitalize font-medium hover:underline hover:underline-offset-4 hover:font-semibold active:underline active:underline-offset-4 active:font-semibold ${
@@ -29,8 +60,9 @@ export default function Navigation() {
         }`}
       >
         about
-      </Link>
-      <Link
+      </MotionLink>
+      <MotionLink
+        variants={navItemVariants}
         prefetch={true}
         href="/method"
         className={`capitalize font-medium hover:underline hover:underline-offset-4 hover:font-semibold active:underline active:underline-offset-4 active:font-semibold ${
@@ -40,8 +72,9 @@ export default function Navigation() {
         }`}
       >
         method
-      </Link>
-      <Link
+      </MotionLink>
+      <MotionLink
+        variants={navItemVariants}
         prefetch={true}
         href="/work"
         className={`capitalize font-medium hover:underline hover:underline-offset-4 hover:font-semibold active:underline active:underline-offset-4 active:font-semibold ${
@@ -51,8 +84,9 @@ export default function Navigation() {
         }`}
       >
         work
-      </Link>
-      <Link
+      </MotionLink>
+      <MotionLink
+        variants={navItemVariants}
         prefetch={true}
         href="/contact"
         className={`capitalize font-medium hover:underline hover:underline-offset-4 hover:font-semibold active:underline active:underline-offset-4 active:font-semibold ${
@@ -62,7 +96,7 @@ export default function Navigation() {
         }`}
       >
         contact
-      </Link>
-    </div>
+      </MotionLink>
+    </motion.nav>
   );
 }
