@@ -15,7 +15,7 @@ export default function Navigation() {
       initial="hidden"
       animate="visible"
       variants={containerVariants}
-      className="flex flex-col gap-y-2"
+      className="hidden md:flex flex-col gap-y-2"
     >
       <MotionLink
         variants={navItemVariants}

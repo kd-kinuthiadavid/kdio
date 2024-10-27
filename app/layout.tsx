@@ -6,6 +6,7 @@ import { raleway } from "./fonts";
 import { Separator } from "@/components/ui/separator";
 import Navigation from "@/components/shared/navigation";
 import { containerVariants, itemVariants } from "./motionVariants";
+import MobileNav from "@/components/shared/MobileNav";
 
 export const metadata: Metadata = {
   title: "David Kinuthia",
@@ -20,22 +21,25 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${raleway.className} antialiased`}>
-        <div className="flex flex-col justify-between h-screen px-14 py-16">
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={containerVariants}
-            className={`flex flex-col`}
-          >
-            <motion.h2
-              variants={itemVariants}
-              className="text-2xl font-semibold"
+        <div className="flex flex-col justify-between h-screen">
+          <div className="flex items-center justify-between p-5 md:px-14 md:py-16">
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={containerVariants}
+              className={`flex flex-col`}
             >
-              David Kinuthia.
-            </motion.h2>
-            <Separator className="my-2 w-[3%] !h-[1.5px]" />
-          </motion.div>
-          <div className="flex items-center justify-between">
+              <motion.h2
+                variants={itemVariants}
+                className="text-xl md:text-2xl font-semibold"
+              >
+                David Kinuthia.
+              </motion.h2>
+              <Separator className="my-2 w-[15%] md:w-[3%] !h-[1.5px]" />
+            </motion.div>
+            <MobileNav />
+          </div>
+          <div className="flex items-center justify-between p-5 md:px-14 md:py-16">
             {children}
 
             <Navigation />
