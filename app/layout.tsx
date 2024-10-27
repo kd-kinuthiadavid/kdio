@@ -5,6 +5,7 @@ import "./globals.css";
 import { raleway } from "./fonts";
 import { Separator } from "@/components/ui/separator";
 import Navigation from "@/components/shared/navigation";
+import { containerVariants, itemVariants } from "./motionVariants";
 
 export const metadata: Metadata = {
   title: "David Kinuthia",
@@ -16,28 +17,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        type: "spring",
-        stiffness: 100,
-      },
-    },
-  };
-
   return (
     <html lang="en">
       <body className={`${raleway.className} antialiased`}>

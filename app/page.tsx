@@ -1,30 +1,9 @@
 import * as motion from "framer-motion/client";
 
 import AnimatedButton from "@/components/shared/AnimatedButton";
+import { containerVariants, itemVariants } from "./motionVariants";
 
 export default function Home() {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        type: "spring",
-        stiffness: 100,
-      },
-    },
-  };
-
   return (
     <motion.div
       initial="hidden"
