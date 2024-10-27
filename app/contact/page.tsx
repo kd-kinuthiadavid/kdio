@@ -1,5 +1,11 @@
+import * as motion from "framer-motion/client";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
+import {
+  containerVariants,
+  itemVariants,
+  navItemVariants,
+} from "../motionVariants";
 
 export default function Contact() {
   const contacts = [
@@ -30,12 +36,36 @@ export default function Contact() {
   ];
 
   return (
-    <div className="flex flex-col gap-y-12 w-full max-w-[70%]">
-      <h1 className="font-semibold text-5xl capitalize">Contact</h1>
-      <div className="flex flex-col">
-        <div className="grid grid-cols-2 gap-y-3 w-full">
+    <motion.div
+      initial="hidden"
+      animate="visible"
+      variants={containerVariants}
+      className="flex flex-col gap-y-12 w-full max-w-[70%]"
+    >
+      <motion.h1
+        variants={itemVariants}
+        className="font-semibold text-5xl capitalize"
+      >
+        Contact
+      </motion.h1>
+      <motion.div
+        initial="hidden"
+        animate="visible"
+        variants={containerVariants}
+        className="flex flex-col"
+      >
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          variants={containerVariants}
+          className="grid grid-cols-2 gap-y-3 w-full"
+        >
           {contacts.map((contact, idx) => (
-            <div className="flex flex-col gap-1" key={idx}>
+            <motion.div
+              variants={navItemVariants}
+              className="flex flex-col gap-1"
+              key={idx}
+            >
               <Link
                 target="_blank"
                 href={contact.url}
@@ -47,10 +77,10 @@ export default function Contact() {
               <p className="font-medium text-gray-500 w-fit">
                 {contact.description}
               </p>
-            </div>
+            </motion.div>
           ))}
-        </div>
-      </div>
-    </div>
+        </motion.div>
+      </motion.div>
+    </motion.div>
   );
 }
