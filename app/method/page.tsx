@@ -3,6 +3,7 @@ import Link from "next/link";
 import { containerVariants, itemVariants } from "../motionVariants";
 import MethodItem from "./_components/MethodItem";
 import { Accordion } from "@/components/ui/accordion";
+import MethodItemsList from "./_components/MethodItemsList";
 
 const methodContent = [
   {
@@ -71,11 +72,7 @@ export default function Method() {
           craftsmanship, quality and design-thinking:
         </motion.p>
       </motion.div>
-      <Accordion type="single" collapsible className="grid gap-6 grid-cols-2">
-        {methodContent.map((content, idx) => (
-          <MethodItem content={content} key={idx} />
-        ))}
-      </Accordion>
+      <MethodItemsList methodContent={methodContent} />
 
       <motion.p
         variants={itemVariants}
