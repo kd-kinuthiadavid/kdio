@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import * as motion from "framer-motion/client";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/react";
 
 import "./globals.css";
 import { raleway } from "./fonts";
@@ -50,6 +51,7 @@ export default function RootLayout({
           <div className="flex items-center justify-between p-5 md:px-14 md:py-16">
             {children}
             <SpeedInsights />
+            <Analytics />
             <Navigation />
           </div>
         </div>
