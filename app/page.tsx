@@ -34,7 +34,7 @@ export default function Home() {
         initial="hidden"
         animate="visible"
         variants={containerVariants}
-        className="flex flex-wrap gap-x-5 gap-y-2.5"
+        className="flex flex-wrap md:flex-nowrap gap-x-5 gap-y-2.5"
       >
         <AnimatedButton
           motionVariants={navItemVariants}
