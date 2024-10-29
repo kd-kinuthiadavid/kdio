@@ -37,7 +37,14 @@ export default function RootLayout({
               </motion.h2>
               <Separator className="my-2 w-[15%] md:w-[20%] !h-[1.5px]" />
             </motion.div>
-            <MobileNav />
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={containerVariants}
+              className="md:hidden"
+            >
+              <MobileNav />
+            </motion.div>
           </div>
           <div className="flex items-center justify-between p-5 md:px-14 md:py-16">
             {children}
