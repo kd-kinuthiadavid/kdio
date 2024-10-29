@@ -1,9 +1,12 @@
-import * as motion from "framer-motion/client";
+"use client";
+import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 import { containerVariants, itemVariants } from "../motionVariants";
 import AnimatedButton from "@/components/shared/AnimatedButton";
 
 export default function About() {
+  const router = useRouter();
   return (
     <motion.div
       initial="hidden"
@@ -62,6 +65,9 @@ export default function About() {
           motionVariants={itemVariants}
           variant={"default"}
           className="w-full text-base font-medium capitalize py-6"
+          onClick={() =>
+            window.open("https://cal.com/kinuthiadavid/15min", "_blank")
+          }
         >
           Let&apos;s build together
         </AnimatedButton>
@@ -69,6 +75,7 @@ export default function About() {
           motionVariants={itemVariants}
           variant={"outline"}
           className="w-full text-base font-medium capitalize py-6"
+          onClick={() => router.push("/method")}
         >
           Explore my method
         </AnimatedButton>

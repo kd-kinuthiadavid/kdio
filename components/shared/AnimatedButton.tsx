@@ -19,6 +19,7 @@ interface AnimatedButtonProps {
     | "ghost"
     | null
     | undefined;
+  onClick?: () => void;
 }
 
 export default function AnimatedButton({
@@ -26,12 +27,14 @@ export default function AnimatedButton({
   children,
   motionVariants,
   variant,
+  onClick,
 }: AnimatedButtonProps) {
   return (
     <MotionButton
       variant={variant}
       className={className}
       variants={motionVariants}
+      onClick={onClick}
     >
       {children}
     </MotionButton>

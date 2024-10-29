@@ -1,4 +1,5 @@
-import * as motion from "framer-motion/client";
+"use client";
+import { motion } from "framer-motion";
 
 import AnimatedButton from "@/components/shared/AnimatedButton";
 import {
@@ -6,8 +7,10 @@ import {
   itemVariants,
   navItemVariants,
 } from "./motionVariants";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+  const router = useRouter();
   return (
     <motion.div
       initial="hidden"
@@ -40,6 +43,9 @@ export default function Home() {
           motionVariants={navItemVariants}
           variant={"default"}
           className="w-full text-base font-medium capitalize py-6"
+          onClick={() =>
+            window.open("https://cal.com/kinuthiadavid/15min", "_blank")
+          }
         >
           Let&apos;s build together
         </AnimatedButton>
@@ -47,6 +53,7 @@ export default function Home() {
           motionVariants={navItemVariants}
           variant={"outline"}
           className="w-full text-base font-medium capitalize py-6"
+          onClick={() => router.push("/work")}
         >
           Explore my work
         </AnimatedButton>

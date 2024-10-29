@@ -106,6 +106,9 @@ export default function MobileNav() {
               motionVariants={navItemVariants}
               variant={"default"}
               className="w-full text-base font-medium capitalize py-6"
+              onClick={() =>
+                window.open("https://cal.com/kinuthiadavid/15min", "_blank")
+              }
             >
               Let&apos;s build together
             </AnimatedButton>
