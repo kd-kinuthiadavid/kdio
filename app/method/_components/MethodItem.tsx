@@ -26,9 +26,9 @@ interface MethodItemProps {
 export default function MethodItem({
   content: { title, subTitle, description },
 }: MethodItemProps) {
-  const MotionAccordionItem = motion(AccordionItem);
-  const MotionAccordionTrigger = motion(AccordionTrigger);
-  const MotionAccordionContent = motion(AccordionContent);
+  const MotionAccordionItem = motion.create(AccordionItem);
+  const MotionAccordionTrigger = motion.create(AccordionTrigger);
+  const MotionAccordionContent = motion.create(AccordionContent);
   return (
     <MotionAccordionItem
       variants={navItemVariants}

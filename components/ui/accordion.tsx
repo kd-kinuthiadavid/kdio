@@ -12,7 +12,7 @@ type AccordionProps = React.ComponentPropsWithoutRef<
 > &
   MotionProps;
 
-const MotionAccordion = motion(
+const MotionAccordion = motion.create(
   AccordionPrimitive.Root
 ) as React.FC<AccordionProps>;
 

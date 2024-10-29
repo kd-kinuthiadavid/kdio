@@ -12,8 +12,8 @@ import {
 } from "../motionVariants";
 
 export default function Work() {
-  const MotionLink = motion(Link);
-  const MotionBadge = motion(Badge);
+  const MotionLink = motion.create(Link);
+  const MotionBadge = motion.create(Badge);
   const projects = [
     {
       name: "Invoicething",

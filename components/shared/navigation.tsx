@@ -8,7 +8,7 @@ import { containerVariants, navItemVariants } from "@/app/motionVariants";
 export default function Navigation() {
   const pathname = usePathname();
 
-  const MotionLink = motion(Link);
+  const MotionLink = motion.create(Link);
 
   return (
     <motion.nav

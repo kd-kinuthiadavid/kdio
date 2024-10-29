@@ -3,7 +3,7 @@
 import { motion, type Variants } from "framer-motion";
 import { Button } from "../ui/button";
 
-const MotionButton = motion(Button);
+const MotionButton = motion.create(Button);
 
 interface AnimatedButtonProps {
   className?: string;

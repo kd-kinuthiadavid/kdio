@@ -21,7 +21,7 @@ import AnimatedButton from "./AnimatedButton";
 export default function MobileNav() {
   const pathname = usePathname();
 
-  const MotionLink = motion(Link);
+  const MotionLink = motion.create(Link);
 
   return (
     <Drawer>
