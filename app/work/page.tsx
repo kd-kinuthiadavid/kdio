@@ -18,7 +18,7 @@ export default function Work() {
     {
       name: "Invoicething",
       description:
-        "Intuitive invoicing for freelancers, solopreneurs & small businesses.",
+        "Invoicing built for service professionals & businesses. Designed for simplicity.",
       techStack: [
         "Nextjs",
         "Tailwindcss",
