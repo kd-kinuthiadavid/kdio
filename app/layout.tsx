@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import * as motion from "framer-motion/client";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
@@ -22,6 +23,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <Script
+          src="https://cdn.seline.so/seline.js"
+          data-token="27716046b4c7ce3"
+          strategy="beforeInteractive"
+        />
+      </head>
       <body className={`${raleway.className} antialiased`}>
         <div className="flex flex-col justify-between h-screen">
           <div className="flex items-center justify-between p-5 md:px-14 md:py-16">
