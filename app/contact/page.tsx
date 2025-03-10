@@ -21,12 +21,12 @@ export default function Contact() {
       url: "mailto:david.kinuthia@gmail.com",
       year: "2024",
     },
-    {
-      name: "X",
-      description: "Let's connect on X",
-      url: "mailto:david.kinuthia@gmail.com",
-      year: "2024",
-    },
+    // {
+    //   name: "X",
+    //   description: "Let's connect on X",
+    //   url: "mailto:david.kinuthia@gmail.com",
+    //   year: "2024",
+    // },
     {
       name: "LinkedIn",
       description: "Let's connect on LinkedIn",
