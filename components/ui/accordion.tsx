@@ -52,7 +52,7 @@ const AccordionTrigger = React.forwardRef<
     >
       {children}
       {showIcon && (
-        <ChevronDownIcon className="h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-200" />
+        <ChevronDownIcon className="h-5 w-5 shrink-0 text-black transition-transform duration-200" />
       )}
     </AccordionPrimitive.Trigger>
   </AccordionPrimitive.Header>

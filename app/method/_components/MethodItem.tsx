@@ -33,13 +33,12 @@ export default function MethodItem({
     <MotionAccordionItem
       variants={navItemVariants}
       value={`${title}-${subTitle}`}
-      className="border border-black/40 px-4 rounded-md hover:bg-foreground/5"
+      className="border border-black/40 px-4 rounded-md"
     >
       <MotionAccordionTrigger
         initial="hidden"
         animate="visible"
         variants={containerVariants}
-        showIcon={false}
         className="flex items-start group data-[state=open]:visible"
       >
         <motion.div
