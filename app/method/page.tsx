@@ -1,7 +1,6 @@
 "use client";
 
 import * as motion from "framer-motion/client";
-import Link from "next/link";
 import {
   containerVariants,
   itemVariants,
@@ -95,12 +94,6 @@ export default function Method() {
         If you share these values, then we're already on the same page and we
         should definitely connect and discuss how we can create something
         beautiful and impactful together.{" "}
-        {/* <Link
-          href="/contact"
-          className="underline underline-offset-4 cursor:pointer hover:font-semibold"
-        >
-          Let's connect.
-        </Link> */}
       </motion.p>
       <AnimatedButton
         motionVariants={navItemVariants}
