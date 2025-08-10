@@ -77,7 +77,7 @@ export default function About() {
           className="w-full text-base font-medium capitalize py-6"
           onClick={() => router.push("/method")}
         >
-          Explore my method
+          See my approach
         </AnimatedButton>
       </motion.div>
     </motion.div>

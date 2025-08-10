@@ -55,7 +55,7 @@ export default function Home() {
           className="w-full text-base font-medium capitalize py-6"
           onClick={() => router.push("/work")}
         >
-          Explore my work
+          View my work
         </AnimatedButton>
       </motion.div>
     </motion.div>
