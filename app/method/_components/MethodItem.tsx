@@ -17,6 +17,7 @@ export interface Content {
   title: string;
   subTitle: string;
   description: string;
+  idx: number;
 }
 
 interface MethodItemProps {
@@ -24,7 +25,7 @@ interface MethodItemProps {
 }
 
 export default function MethodItem({
-  content: { title, subTitle, description },
+  content: { title, subTitle, description, idx },
 }: MethodItemProps) {
   const MotionAccordionItem = motion.create(AccordionItem);
   const MotionAccordionTrigger = motion.create(AccordionTrigger);
@@ -33,7 +34,7 @@ export default function MethodItem({
     <MotionAccordionItem
       variants={navItemVariants}
       value={`${title}-${subTitle}`}
-      className="border border-black/40 px-4 rounded-md"
+      className={`px-4 ${idx === 5 ? "border-none" : "border-b border-black/40"}`}
     >
       <MotionAccordionTrigger
         initial="hidden"
@@ -47,18 +48,35 @@ export default function MethodItem({
           variants={containerVariants}
           className="flex items-start flex-col"
         >
-          <motion.p
-            variants={itemVariants}
-            className="text-base md:text-xl text-left font-semibold capitalize"
+          <motion.div
+            variants={containerVariants}
+            className="flex items-end gap-x-5"
           >
-            {title}
-          </motion.p>
-          <motion.p
-            variants={itemVariants}
-            className="text-base text-left font-normal capitalize group-data-[state=open]:hidden"
-          >
-            {subTitle}
-          </motion.p>
+            <motion.p
+              variants={itemVariants}
+              className="text-base md:text-xl text-left font-normal capitalize text-accent-foreground"
+            >
+              0{idx + 1}
+            </motion.p>
+            {/* title and subtitle */}
+            <motion.div
+              variants={containerVariants}
+              className="flex flex-col items-start"
+            >
+              <motion.p
+                variants={itemVariants}
+                className="text-base md:text-lg text-left font-semibold capitalize"
+              >
+                {title}
+              </motion.p>
+              <motion.p
+                variants={itemVariants}
+                className="text-base text-left font-normal capitalize group-data-[state=open]:hidden"
+              >
+                {subTitle}
+              </motion.p>
+            </motion.div>
+          </motion.div>
         </motion.div>
       </MotionAccordionTrigger>
       <MotionAccordionContent
@@ -66,7 +84,7 @@ export default function MethodItem({
         animate="visible"
         variants={containerVariants}
       >
-        <motion.p variants={itemVariants} className="text-base">
+        <motion.p variants={itemVariants} className="text-base mb-2">
           <motion.span variants={navItemVariants} className="font-semibold">
             {subTitle}
           </motion.span>{" "}
