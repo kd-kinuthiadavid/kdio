@@ -110,7 +110,7 @@ export default function MobileNav() {
                 window.open("https://cal.com/kinuthiadavid/15min", "_blank")
               }
             >
-              Let&apos;s build together
+              Book a 15-min Intro
             </AnimatedButton>
             <DrawerClose asChild>
               <Button variant="outline">Cancel</Button>

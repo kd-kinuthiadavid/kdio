@@ -69,7 +69,7 @@ export default function About() {
             window.open("https://cal.com/kinuthiadavid/15min", "_blank")
           }
         >
-          Let&apos;s build together
+          Book a 15-min Intro
         </AnimatedButton>
         <AnimatedButton
           motionVariants={itemVariants}

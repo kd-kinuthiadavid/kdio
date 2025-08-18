@@ -47,7 +47,7 @@ export default function Home() {
             window.open("https://cal.com/kinuthiadavid/15min", "_blank")
           }
         >
-          Let&apos;s build together
+          Book a 15-min Intro
         </AnimatedButton>
         <AnimatedButton
           motionVariants={navItemVariants}
@@ -55,7 +55,7 @@ export default function Home() {
           className="w-full text-base font-medium capitalize py-6"
           onClick={() => router.push("/work")}
         >
-          View my work
+          see selected work
         </AnimatedButton>
       </motion.div>
     </motion.div>
