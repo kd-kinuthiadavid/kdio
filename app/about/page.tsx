@@ -107,7 +107,7 @@ export default function About() {
         <MotionAccordionItem
           variants={navItemVariants}
           value={`about-david-kinuthia:what-i-do`}
-          className={`px-4 border-b border-black/40`}
+          className={`px-4 border-none`}
         >
           <MotionAccordionTrigger
             initial="hidden"
