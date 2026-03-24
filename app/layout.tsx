@@ -3,6 +3,7 @@ import Script from "next/script";
 import * as motion from "framer-motion/client";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
+import { LayoutDashboard, Shapes } from "lucide-react";
 
 import "./globals.css";
 import { raleway } from "./fonts";
@@ -37,15 +38,15 @@ export default function RootLayout({
               initial="hidden"
               animate="visible"
               variants={containerVariants}
-              className={`flex flex-col`}
+              className={`flex flex-row items-end gap-x-1`}
             >
-              <motion.h2
+              <Shapes size={32} className="fill-primary/80 text-primary/70" />
+              <motion.p
                 variants={itemVariants}
-                className="text-xl md:text-2xl font-semibold"
+                className="text-xl md:text-xl font-medium"
               >
-                David Kinuthia.
-              </motion.h2>
-              <Separator className="my-2 w-[15%] md:w-[20%] !h-[1.5px]" />
+                David Kinuthia
+              </motion.p>
             </motion.div>
             <motion.div
               initial="hidden"
