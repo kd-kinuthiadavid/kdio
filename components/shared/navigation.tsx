@@ -5,27 +5,34 @@ import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import { containerVariants, navItemVariants } from "@/app/motionVariants";
 
+const linkBase =
+  "rounded-md px-5 py-2 text-sm font-medium capitalize transition-colors outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background";
+
+const linkInactive =
+  "text-accent-foreground hover:bg-foreground/5 hover:text-accent-foreground";
+
+const linkActive = "bg-primary/90 text-background shadow-sm hover:bg-primary";
+
 export default function Navigation() {
   const pathname = usePathname();
 
   const MotionLink = motion.create(Link);
+
+  const itemClass = (href: string) =>
+    `${linkBase} ${pathname === href ? linkActive : linkInactive}`;
 
   return (
     <motion.nav
       initial="hidden"
       animate="visible"
       variants={containerVariants}
-      className="hidden md:flex flex-row gap-x-4"
+      className="hidden md:flex md:self-center flex-row items-center gap-1 rounded-md border border-primary bg-background p-2 shadow-sm"
     >
       <MotionLink
         variants={navItemVariants}
         prefetch={true}
         href="/about"
-        className={`capitalize font-medium hover:underline hover:underline-offset-4 hover:font-semibold active:font-semibold ${
-          pathname === "/about"
-            ? "font-semibold text-accent-foreground decoration-accent-foreground"
-            : ""
-        }`}
+        className={itemClass("/about")}
       >
         about
       </MotionLink>
@@ -33,11 +40,7 @@ export default function Navigation() {
         variants={navItemVariants}
         prefetch={true}
         href="/method"
-        className={`capitalize font-medium hover:underline hover:underline-offset-4 hover:font-semibold active:font-semibold ${
-          pathname === "/method"
-            ? "font-semibold text-accent-foreground decoration-accent-foreground"
-            : ""
-        }`}
+        className={itemClass("/method")}
       >
         method
       </MotionLink>
@@ -45,11 +48,7 @@ export default function Navigation() {
         variants={navItemVariants}
         prefetch={true}
         href="/work"
-        className={`capitalize font-medium hover:underline hover:underline-offset-4 hover:font-semibold active:font-semibold ${
-          pathname === "/work"
-            ? "font-semibold text-accent-foreground decoration-accent-foreground"
-            : ""
-        }`}
+        className={itemClass("/work")}
       >
         work
       </MotionLink>
@@ -57,11 +56,7 @@ export default function Navigation() {
         variants={navItemVariants}
         prefetch={true}
         href="/contact"
-        className={`capitalize font-medium hover:underline hover:underline-offset-4 hover:font-semibold active:font-semibold ${
-          pathname === "/contact"
-            ? "font-semibold text-accent-foreground decoration-accent-foreground"
-            : ""
-        }`}
+        className={itemClass("/contact")}
       >
         contact
       </MotionLink>

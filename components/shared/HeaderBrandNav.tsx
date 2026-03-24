@@ -19,7 +19,7 @@ export default function HeaderBrandNav() {
         initial="hidden"
         animate="visible"
         variants={containerVariants}
-        className="flex flex-row items-end gap-x-1"
+        className="flex flex-row items-center gap-x-1"
       >
         <MotionLink
           variants={navItemVariants}
