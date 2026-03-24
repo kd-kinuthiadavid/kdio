@@ -15,27 +15,15 @@ export default function Navigation() {
       initial="hidden"
       animate="visible"
       variants={containerVariants}
-      className="hidden md:flex flex-col gap-y-2"
+      className="hidden md:flex flex-row gap-x-4"
     >
       <MotionLink
         variants={navItemVariants}
         prefetch={true}
-        href="/"
-        className={`capitalize font-medium hover:underline hover:underline-offset-4 hover:font-semibold active:underline active:underline-offset-4 active:font-semibold ${
-          pathname === "/"
-            ? "font-semibold underline underline-offset-4 text-accent-foreground decoration-accent-foreground"
-            : ""
-        }`}
-      >
-        intro
-      </MotionLink>
-      <MotionLink
-        variants={navItemVariants}
-        prefetch={true}
         href="/about"
-        className={`capitalize font-medium hover:underline hover:underline-offset-4 hover:font-semibold active:underline active:underline-offset-4 active:font-semibold ${
+        className={`capitalize font-medium hover:underline hover:underline-offset-4 hover:font-semibold active:font-semibold ${
           pathname === "/about"
-            ? "font-semibold underline underline-offset-4 text-accent-foreground decoration-accent-foreground"
+            ? "font-semibold text-accent-foreground decoration-accent-foreground"
             : ""
         }`}
       >
@@ -45,9 +33,9 @@ export default function Navigation() {
         variants={navItemVariants}
         prefetch={true}
         href="/method"
-        className={`capitalize font-medium hover:underline hover:underline-offset-4 hover:font-semibold active:underline active:underline-offset-4 active:font-semibold ${
+        className={`capitalize font-medium hover:underline hover:underline-offset-4 hover:font-semibold active:font-semibold ${
           pathname === "/method"
-            ? "font-semibold underline underline-offset-4 text-accent-foreground decoration-accent-foreground"
+            ? "font-semibold text-accent-foreground decoration-accent-foreground"
             : ""
         }`}
       >
@@ -57,9 +45,9 @@ export default function Navigation() {
         variants={navItemVariants}
         prefetch={true}
         href="/work"
-        className={`capitalize font-medium hover:underline hover:underline-offset-4 hover:font-semibold active:underline active:underline-offset-4 active:font-semibold ${
+        className={`capitalize font-medium hover:underline hover:underline-offset-4 hover:font-semibold active:font-semibold ${
           pathname === "/work"
-            ? "font-semibold underline underline-offset-4 text-accent-foreground decoration-accent-foreground"
+            ? "font-semibold text-accent-foreground decoration-accent-foreground"
             : ""
         }`}
       >
@@ -69,9 +57,9 @@ export default function Navigation() {
         variants={navItemVariants}
         prefetch={true}
         href="/contact"
-        className={`capitalize font-medium hover:underline hover:underline-offset-4 hover:font-semibold active:underline active:underline-offset-4 active:font-semibold ${
+        className={`capitalize font-medium hover:underline hover:underline-offset-4 hover:font-semibold active:font-semibold ${
           pathname === "/contact"
-            ? "font-semibold underline underline-offset-4 text-accent-foreground decoration-accent-foreground"
+            ? "font-semibold text-accent-foreground decoration-accent-foreground"
             : ""
         }`}
       >

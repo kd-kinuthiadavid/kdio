@@ -3,13 +3,11 @@ import Script from "next/script";
 import * as motion from "framer-motion/client";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
-import { LayoutDashboard, Shapes } from "lucide-react";
 
 import "./globals.css";
 import { raleway } from "./fonts";
-import { Separator } from "@/components/ui/separator";
-import Navigation from "@/components/shared/navigation";
-import { containerVariants, itemVariants } from "./motionVariants";
+import { containerVariants } from "./motionVariants";
+import HeaderBrandNav from "@/components/shared/HeaderBrandNav";
 import MobileNav from "@/components/shared/MobileNav";
 
 export const metadata: Metadata = {
@@ -34,20 +32,7 @@ export default function RootLayout({
       <body className={`${raleway.className} antialiased`}>
         <div className="flex flex-col justify-between h-screen">
           <div className="flex items-center justify-between p-5 md:px-14 md:py-16">
-            <motion.div
-              initial="hidden"
-              animate="visible"
-              variants={containerVariants}
-              className={`flex flex-row items-end gap-x-1`}
-            >
-              <Shapes size={32} className="fill-primary/80 text-primary/70" />
-              <motion.p
-                variants={itemVariants}
-                className="text-xl md:text-xl font-medium"
-              >
-                David Kinuthia
-              </motion.p>
-            </motion.div>
+            <HeaderBrandNav />
             <motion.div
               initial="hidden"
               animate="visible"
@@ -61,7 +46,6 @@ export default function RootLayout({
             {children}
             <SpeedInsights />
             <Analytics />
-            <Navigation />
           </div>
         </div>
       </body>
