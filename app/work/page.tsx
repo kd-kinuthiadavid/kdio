@@ -71,16 +71,16 @@ export default function Work() {
     },
   ];
   return (
-    <ContentSurface className="w-full md:max-w-[70%]">
+    <ContentSurface className="w-full min-w-0 max-w-[min(100%,clamp(22rem,92vw,72rem))]">
       <motion.div
         initial="hidden"
         animate="visible"
         variants={containerVariants}
-        className="flex flex-col gap-y-12 w-full"
+        className="flex w-full flex-col gap-y-8 sm:gap-y-10 md:gap-y-12"
       >
       <motion.h1
         variants={itemVariants}
-        className="font-semibold text-4xl md:text-5xl capitalize"
+        className="text-balance font-semibold text-3xl capitalize leading-tight sm:text-4xl md:text-5xl"
       >
         Work
       </motion.h1>
@@ -88,7 +88,7 @@ export default function Work() {
         initial="hidden"
         animate="visible"
         variants={containerVariants}
-        className="flex flex-wrap md:flex-nowrap justify-between gap-x-32 gap-y-16 w-full"
+        className="flex w-full flex-col flex-wrap gap-x-4 gap-y-12 sm:gap-x-6 sm:gap-y-14 md:flex-nowrap md:justify-between md:gap-x-8 lg:gap-x-16 xl:gap-x-24 2xl:gap-x-32"
       >
         <motion.div
           initial="hidden"
@@ -98,7 +98,7 @@ export default function Work() {
         >
           <motion.h2
             animate={navItemVariants}
-            className="font-semibold text-2xl capitalize"
+            className="font-semibold text-xl capitalize sm:text-2xl"
           >
             projects
           </motion.h2>
@@ -113,7 +113,7 @@ export default function Work() {
                 initial="hidden"
                 animate="visible"
                 variants={containerVariants}
-                className="flex flex-wrap md:flex-nowrap gap-x-6 items-start text-base w-full"
+                className="flex min-w-0 flex-wrap md:flex-nowrap gap-x-4 gap-y-2 text-base sm:gap-x-6 md:items-start w-full"
                 key={idx}
               >
                 <motion.p
@@ -132,7 +132,7 @@ export default function Work() {
                     variants={navItemVariants}
                     target="_blank"
                     href={project.url}
-                    className="flex items-start gap-x-1"
+                    className="flex min-w-0 items-start gap-x-1"
                   >
                     <p className="font-semibold">{project.name}</p>
                     <ArrowUpRight size={20} className="text-gray-600" />
@@ -171,7 +171,7 @@ export default function Work() {
         >
           <motion.h2
             variants={navItemVariants}
-            className="font-semibold text-2xl capitalize"
+            className="font-semibold text-xl capitalize sm:text-2xl"
           >
             experience
           </motion.h2>
@@ -186,12 +186,12 @@ export default function Work() {
                 initial="hidden"
                 animate="visible"
                 variants={containerVariants}
-                className="flex flex-wrap md:flex-nowrap gap-x-6 items-start text-base"
+                className="flex min-w-0 flex-wrap md:flex-nowrap gap-x-4 gap-y-2 text-base sm:gap-x-6 md:items-start"
                 key={idx}
               >
                 <motion.p
                   variants={navItemVariants}
-                  className="text-gray-500 font-medium min-w-[110px]"
+                  className="w-full shrink-0 text-gray-500 font-medium sm:w-auto sm:min-w-[7.5rem] md:min-w-[110px]"
                 >
                   {exp.timeStamp}
                 </motion.p>
@@ -205,7 +205,7 @@ export default function Work() {
                     variants={navItemVariants}
                     target="_blank"
                     href={exp.url}
-                    className="flex items-start gap-x-1"
+                    className="flex min-w-0 items-start gap-x-1"
                   >
                     <p className="font-semibold">{exp.position}</p>
                     <ArrowUpRight size={20} className="text-gray-600" />

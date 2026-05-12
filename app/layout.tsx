@@ -15,6 +15,9 @@ export const metadata: Metadata = {
   description: "Design-led and user-centered product engineer",
 };
 
+const gutterX = "px-[clamp(1rem,0.55rem+3.2vw,3.5rem)]";
+const gutterY = "py-[clamp(1rem,0.65rem+2.2vh,4rem)]";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -30,23 +33,29 @@ export default function RootLayout({
         />
       </head>
       <body className={`${raleway.className} antialiased`}>
-        <div className="flex flex-col justify-between h-screen">
-          <div className="flex items-center justify-between p-5 md:px-14 md:py-16">
+        <div className="flex min-h-screen flex-col">
+          <header
+            className={`flex shrink-0 items-center justify-between gap-3 ${gutterX} ${gutterY}`}
+          >
             <HeaderBrandNav />
             <motion.div
               initial="hidden"
               animate="visible"
               variants={containerVariants}
-              className="md:hidden"
+              className="shrink-0 md:hidden"
             >
               <MobileNav />
             </motion.div>
-          </div>
-          <div className="w-full p-5 md:px-14 md:py-16">
-            <div className="flex w-full justify-center">{children}</div>
+          </header>
+          <main
+            className={`flex flex-1 flex-col justify-end overflow-x-hidden overflow-y-auto ${gutterX} pb-[clamp(1.25rem,1rem+3vh,4rem)] pt-2 sm:pt-4 min-h-0`}
+          >
+            <div className="flex w-full min-w-0 justify-center">
+              {children}
+            </div>
             <SpeedInsights />
             <Analytics />
-          </div>
+          </main>
         </div>
       </body>
     </html>

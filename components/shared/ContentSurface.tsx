@@ -22,7 +22,9 @@ export default function ContentSurface({
           "[-webkit-mask-image:radial-gradient(ellipse_78%_82%_at_50%_50%,#000_38%,#000000b3_58%,transparent_88%)]"
         )}
       />
-      <div className="relative z-10 p-6 md:p-8">{children}</div>
+      <div className="relative z-10 px-[clamp(1rem,0.65rem+2.5vw,2rem)] py-[clamp(1.25rem,0.9rem+1.8vw,2.5rem)]">
+        {children}
+      </div>
     </div>
   );
 }

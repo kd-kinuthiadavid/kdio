@@ -22,12 +22,6 @@ export default function Contact() {
       url: "mailto:david.kinuthia@gmail.com",
       year: "2024",
     },
-    // {
-    //   name: "X",
-    //   description: "Let's connect on X",
-    //   url: "mailto:david.kinuthia@gmail.com",
-    //   year: "2024",
-    // },
     {
       name: "LinkedIn",
       description: "Let's connect on LinkedIn",
@@ -37,53 +31,57 @@ export default function Contact() {
   ];
 
   return (
-    <ContentSurface className="w-full md:max-w-[70%]">
+    <ContentSurface className="w-full min-w-0 max-w-[min(100%,clamp(22rem,90vw,48rem))]">
       <motion.div
         initial="hidden"
         animate="visible"
         variants={containerVariants}
-        className="flex flex-col gap-y-12 w-full"
+        className="flex w-full flex-col gap-y-8 sm:gap-y-10 md:gap-y-12"
       >
-      <motion.h1
-        variants={itemVariants}
-        className="font-semibold text-5xl capitalize"
-      >
-        Contact
-      </motion.h1>
-      <motion.div
-        initial="hidden"
-        animate="visible"
-        variants={containerVariants}
-        className="flex flex-col"
-      >
+        <motion.h1
+          variants={itemVariants}
+          className="text-balance font-semibold text-4xl capitalize leading-tight sm:text-5xl"
+        >
+          Contact
+        </motion.h1>
         <motion.div
           initial="hidden"
           animate="visible"
           variants={containerVariants}
-          className="grid md:grid-cols-2 gap-y-3 w-full"
+          className="flex flex-col"
         >
-          {contacts.map((contact, idx) => (
-            <motion.div
-              variants={navItemVariants}
-              className="flex flex-col gap-1"
-              key={idx}
-            >
-              <Link
-                target="_blank"
-                href={contact.url}
-                className="flex items-start gap-x-1"
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={containerVariants}
+            className="grid w-full grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-2 sm:gap-y-5"
+          >
+            {contacts.map((contact, idx) => (
+              <motion.div
+                variants={navItemVariants}
+                className="flex min-w-0 flex-col gap-1"
+                key={idx}
               >
-                <p className="font-semibold">{contact.name}</p>
-                <ArrowUpRight size={20} className="text-gray-600" />
-              </Link>
-              <p className="font-medium text-gray-500 w-fit">
-                {contact.description}
-              </p>
-            </motion.div>
-          ))}
+                <Link
+                  target="_blank"
+                  href={contact.url}
+                  className="flex min-w-0 items-start gap-x-1"
+                >
+                  <p className="font-semibold">{contact.name}</p>
+                  <ArrowUpRight
+                    size={20}
+                    className="shrink-0 text-gray-600"
+                    aria-hidden
+                  />
+                </Link>
+                <p className="w-fit max-w-full font-medium text-gray-500">
+                  {contact.description}
+                </p>
+              </motion.div>
+            ))}
+          </motion.div>
         </motion.div>
       </motion.div>
-    </motion.div>
     </ContentSurface>
   );
 }

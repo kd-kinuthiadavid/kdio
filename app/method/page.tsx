@@ -58,55 +58,55 @@ const methodContent = [
 /* eslint-disable react/no-unescaped-entities */
 export default function Method() {
   return (
-    <ContentSurface className="w-full md:max-w-[60%]">
+    <ContentSurface className="w-full min-w-0 max-w-[min(100%,clamp(22rem,90vw,48rem))]">
       <motion.div
         initial="hidden"
         animate="visible"
         variants={containerVariants}
-        className="flex flex-col gap-y-12 w-full"
+        className="flex w-full flex-col gap-y-8 md:gap-y-12"
       >
-      <motion.div
-        initial="hidden"
-        animate="visible"
-        variants={containerVariants}
-        className="flex flex-col gap-y-6"
-      >
-        <motion.h1
-          variants={itemVariants}
-          className="font-semibold text-4xl md:text-5xl capitalize"
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          variants={containerVariants}
+          className="flex flex-col gap-y-4 sm:gap-y-6"
         >
-          Method
-        </motion.h1>
+          <motion.h1
+            variants={itemVariants}
+            className="text-balance font-semibold text-3xl capitalize leading-tight sm:text-4xl md:text-5xl"
+          >
+            Method
+          </motion.h1>
+          <motion.p
+            variants={itemVariants}
+            className="font-normal text-base leading-relaxed sm:text-lg"
+          >
+            I believe that software can still, and perhaps should still, feel
+            magical. Therefore, my approach to product development is guided by a
+            set of foundational principles rooted in craftsmanship, quality and
+            design-thinking. These principles are:
+          </motion.p>
+        </motion.div>
+        <MethodItemsList methodContent={methodContent} />
+
         <motion.p
           variants={itemVariants}
-          className="font-normal text-base md:text-lg"
+          className="font-normal text-base leading-relaxed sm:text-lg lg:max-w-[min(100%,42rem)]"
         >
-          I believe that software can still, and perhaps should still, feel
-          magical. Therefore, my approach to product development is guided by a
-          set of foundational principles rooted in craftsmanship, quality and
-          design-thinking. These principles are:
+          If you share these values, then we're already on the same page and we
+          should definitely connect and discuss how we can create something
+          beautiful and impactful together.{" "}
         </motion.p>
-      </motion.div>
-      <MethodItemsList methodContent={methodContent} />
-
-      <motion.p
-        variants={itemVariants}
-        className="font-normal text-base md:text-lg lg:max-w-[70%]"
-      >
-        If you share these values, then we're already on the same page and we
-        should definitely connect and discuss how we can create something
-        beautiful and impactful together.{" "}
-      </motion.p>
-      <AnimatedButton
-        motionVariants={navItemVariants}
-        variant={"default"}
-        className="w-full text-base font-medium capitalize py-6"
-        onClick={() =>
-          window.open("https://cal.com/kinuthiadavid/15min", "_blank")
-        }
-      >
-        Book a 15-min Intro
-      </AnimatedButton>
+        <AnimatedButton
+          motionVariants={navItemVariants}
+          variant={"default"}
+          className="w-full text-base font-medium capitalize py-5 md:py-6"
+          onClick={() =>
+            window.open("https://cal.com/kinuthiadavid/15min", "_blank")
+          }
+        >
+          Book a 15-min Intro
+        </AnimatedButton>
       </motion.div>
     </ContentSurface>
   );

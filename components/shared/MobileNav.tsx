@@ -36,7 +36,13 @@ export default function MobileNav() {
   return (
     <Drawer>
       <DrawerTrigger asChild>
-        <Menu className="md:hidden" />
+        <button
+          type="button"
+          className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-md text-foreground outline-none ring-offset-background hover:bg-accent/15 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 md:hidden"
+          aria-label="Open menu"
+        >
+          <Menu className="size-6" strokeWidth={2} aria-hidden />
+        </button>
       </DrawerTrigger>
       <DrawerContent>
         <div className="mx-auto w-full max-w-sm">
@@ -48,7 +54,7 @@ export default function MobileNav() {
             initial="hidden"
             animate="visible"
             variants={containerVariants}
-            className="grid grid-cols-3 gap-2 p-4"
+            className="grid grid-cols-2 gap-2 p-3 sm:grid-cols-4 sm:gap-3 sm:p-4"
           >
             {NAV_LINKS.map(({ href, label }) => (
               <MotionLink
