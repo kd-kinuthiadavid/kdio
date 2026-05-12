@@ -6,7 +6,7 @@
   "nav": {
     "home": "inicio",
     "about": "sobre mí",
-    "method": "Trabajar conmigo",
+    "services": "servicios",
     "work": "trabajo",
     "contact": "contacto"
   },
@@ -77,6 +77,106 @@
     "calDescription": "Reserva una llamada introductoria de 15 minutos",
     "emailDescription": "Envíame un correo",
     "linkedinDescription": "Conectemos en LinkedIn"
+  },
+  "services": {
+    "title": "Asociaciones de ingeniería para equipos que llevan IA a entornos donde los errores cuestan caro.",
+    "subtitle": "Seis maneras en que me integro en un equipo — desde un rescate arquitectónico puntual hasta una construcción 0-a-1 completa — con un solo ingeniero responsable desde el primer pizarrón hasta el último despliegue.",
+    "stats": {
+      "tenureValue": "8+ años",
+      "tenureLabel": "Entregando software en producción",
+      "engagementValue": "3 niveles",
+      "engagementLabel": "Micro · MVP · Enterprise",
+      "sectorsValue": "FinTech · SaaS · LegalTech · PropTech",
+      "sectorsLabel": "Sectores con los que trabajo"
+    },
+    "tiers": {
+      "micro": "Micro",
+      "mvp": "MVP",
+      "enterprise": "Enterprise"
+    },
+    "servicesHeading": "De qué me hago cargo",
+    "includedLabel": "Incluye",
+    "items": {
+      "aiIntegration": {
+        "name": "Integración y arquitectura de IA",
+        "persona": "Para equipos FinTech y B2B con sistemas legacy críticos",
+        "summary": "Integrar capacidades de IA en sistemas de producción sin poner en riesgo transacciones, disponibilidad ni cumplimiento. Diseño infraestructura paralela que habla con tu motor central en vez de reemplazarlo.",
+        "included": "Revisión arquitectónica, modelo de amenazas, servicio de IA aislado, marco de evaluación de fallos y plan de rollout con compuertas de reversión.",
+        "upsells": "Suele acompañarse de: MLOps e infraestructura (Enterprise) para observabilidad y control de costos."
+      },
+      "secureAi": {
+        "name": "Despliegue de IA seguro y conforme",
+        "persona": "Para LegalTech, compliance e industrias reguladas",
+        "summary": "Sistemas de IA on-premise o en nube privada para equipos cuyos datos no pueden salir de casa. Indexación, búsqueda y resúmenes de documentos con precisión de citas total y rastro de auditoría.",
+        "included": "Arquitectura RAG privada, dimensionado de vector store, evaluaciones de cita y grounding, logging compatible con SOC2 y guía de despliegue para tu equipo de infra.",
+        "upsells": "Suele acompañarse de: retainer de CTO fraccional para revisión continua de seguridad y triaje de pen-tests."
+      },
+      "aiNative": {
+        "name": "Ingeniería de producto AI-nativo",
+        "persona": "Para fundadores en 0→1 o evolucionando un SaaS legacy",
+        "summary": "Entregar el UX mágico que has prometido al consejo. Construyo workflows agénticos y funciones de IA en la superficie del producto — no como un chatbot pegado al lado, sino como la forma en que el producto realmente funciona.",
+        "included": "Ingeniería de producto de punta a punta: modelo de datos, diseño de agentes, flujos UI, instrumentación y los estados de error poco glamorosos que hacen que la IA se sienta confiable.",
+        "upsells": "Suele acompañarse de: automatización de workflows agénticos cuando la ganancia está en el back office, no en el front."
+      },
+      "agenticOps": {
+        "name": "Automatización de workflows agénticos",
+        "persona": "Para equipos pesados en operaciones: PropTech, servicios y back-office",
+        "summary": "Reemplazar al ejército de analistas que leen PDFs, persiguen renovaciones y concilian hojas de cálculo. Agentes que extraen, alertan y redactan — encima de las herramientas que ya usas, no otro dashboard al que entrar.",
+        "included": "Auditoría de procesos, orquestación de agentes, integración con CRM/ERP existente, puntos de control human-in-the-loop y medición de ROI.",
+        "upsells": "Suele acompañarse de: despliegue de IA seguro y conforme cuando los documentos no pueden salir de tu entorno."
+      },
+      "mlopsRescue": {
+        "name": "Rescate de MLOps e infraestructura",
+        "persona": "Para equipos Series A/B con funciones de IA en llamas",
+        "summary": "¿Factura de nube descontrolada? ¿Latencia inaceptable? ¿No existe CI/CD para modelos? Entro, freno el sangrado y te dejo una plataforma que tu equipo realmente pueda operar.",
+        "included": "Auditoría de costos de inferencia, configuración de model serving (vLLM/equivalente), observabilidad para LLMs, pipelines de despliegue y un runbook escrito para el equipo que lo herede.",
+        "upsells": "Suele acompañarse de: integración y arquitectura de IA si el diseño subyacente es lo que lo encarece."
+      },
+      "fractionalCto": {
+        "name": "CTO fraccional y asesoría técnica",
+        "persona": "Para fundadores sin un cofundador profundamente técnico",
+        "summary": "Un ingeniero senior de tu lado para contratación, decisiones de arquitectura, selección de proveedores y las conversaciones de directorio donde las palabras de moda salen caras. Por retainer, con cadencia mensual fija.",
+        "included": "Sesiones de trabajo semanales, apoyo en decisiones ad-hoc, revisión técnica del trabajo de contratistas, loops de contratación y un documento escrito de estrategia técnica para inversores.",
+        "upsells": "Se combina habitualmente con uno de los engagements de construcción cuando hay una entrega concreta en juego."
+      }
+    },
+    "fit": {
+      "forTitle": "Esto es para ti si",
+      "for": {
+        "funded": "Estás más allá de pre-seed — hay ingresos, financiación o un contrato enterprise que hace que la calidad de ingeniería sea tema de directorio.",
+        "regulated": "Operas en entornos regulados, de alta confianza o de alto riesgo donde 'moverse rápido y romper cosas' no es opción.",
+        "legacy": "Tienes sistemas que funcionan y son importantes, y necesitas integrar IA al lado — no una reescritura desde cero.",
+        "scale": "Ya te quemaste con un wrapper genérico de IA y ahora necesitas a alguien que te muestre la arquitectura, no solo la demo."
+      },
+      "notForTitle": "Probablemente no encajamos si",
+      "notFor": {
+        "ideaGuy": "Buscas a alguien que construya tu idea por equity, o esperas un MVP de 50K por 3K.",
+        "agencyMiddleman": "Eres un dueño de agencia no técnico que quiere revender ingeniería senior con margen junior.",
+        "noTechBudget": "Quieres IA porque leíste sobre ella, pero tu negocio aún no tiene la madurez operativa (ni el presupuesto) para mantener software que no construyó internamente."
+      }
+    },
+    "process": {
+      "title": "Cómo se desarrolla un engagement",
+      "discovery": {
+        "title": "1. Discovery",
+        "body": "Una llamada gratis de 30 minutos para entender qué intentas entregar, qué te frena y si soy la persona adecuada. Sin pitch — si no encaja, te lo digo y te apunto a alguien mejor."
+      },
+      "scope": {
+        "title": "2. Scope y forma",
+        "body": "Si encajamos, scope el trabajo por escrito: el problema, el enfoque, los entregables y el precio. Ves la arquitectura antes de ver una factura."
+      },
+      "build": {
+        "title": "3. Construir y entregar",
+        "body": "Trabajo como uno más de tus ingenieros — en tus repos, tus standups, tus hilos de decisión — hasta que la cosa está viva, instrumentada y en manos de tu equipo."
+      }
+    },
+    "cta": {
+      "title": "¿Listo para definir tu engagement?",
+      "body": "Dos formas de empezar. Elige la que mejor refleje dónde estás.",
+      "strategyButton": "Agendar llamada de estrategia",
+      "discoveryButton": "Llamada de discovery gratis de 30 min",
+      "principlesLink": "Cómo pienso el trabajo"
+    }
   },
   "method": {
     "title": "Cómo trabajar conmigo",

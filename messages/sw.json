@@ -6,7 +6,7 @@
   "nav": {
     "home": "nyumbani",
     "about": "kuhusu",
-    "method": "Pamoja nami",
+    "services": "huduma",
     "work": "kazi",
     "contact": "mawasiliano"
   },
@@ -77,6 +77,106 @@
     "calDescription": "Weka simu ya utangulizi ya dakika 15",
     "emailDescription": "Nitumie barua pepe",
     "linkedinDescription": "Tuunganishane kwenye LinkedIn"
+  },
+  "services": {
+    "title": "Ushirikiano wa uhandisi kwa timu zinazoleta AI mahali ambapo makosa ni gharama kubwa.",
+    "subtitle": "Njia sita ninazoweza kuingia kwenye timu — kutoka uokoaji wa usanifu wa haraka hadi ujenzi kamili wa 0-hadi-1 — na mhandisi mmoja anayebeba dhamana tangu ubao wa kwanza hadi deploy ya mwisho.",
+    "stats": {
+      "tenureValue": "Miaka 8+",
+      "tenureLabel": "Kutoa programu inayoendesha biashara",
+      "engagementValue": "Ngazi 3",
+      "engagementLabel": "Micro · MVP · Enterprise",
+      "sectorsValue": "FinTech · SaaS · LegalTech · PropTech",
+      "sectorsLabel": "Sekta ninazofanya nazo kazi"
+    },
+    "tiers": {
+      "micro": "Micro",
+      "mvp": "MVP",
+      "enterprise": "Enterprise"
+    },
+    "servicesHeading": "Ninachochukua jukumu",
+    "includedLabel": "Imejumuishwa",
+    "items": {
+      "aiIntegration": {
+        "name": "Muunganisho na usanifu wa AI",
+        "persona": "Kwa timu za FinTech na B2B zenye mifumo ya zamani muhimu",
+        "summary": "Kuunganisha uwezo wa AI kwenye mifumo ya uzalishaji bila kuhatarisha miamala, upatikanaji au kufuata kanuni. Ninaunda miundombinu inayofanya kazi sambamba inayozungumza na injini yenu kuu badala ya kuibadilisha.",
+        "included": "Mapitio ya usanifu, mtindo wa vitisho, huduma ya AI iliyotengwa, mfumo wa evals kwa hali za kushindwa na mpango wa rollout wenye milango ya kurudi nyuma.",
+        "upsells": "Mara nyingi huenda na: MLOps na miundombinu (Enterprise) kwa observability na udhibiti wa gharama."
+      },
+      "secureAi": {
+        "name": "Uwekaji wa AI salama na unaofuata kanuni",
+        "persona": "Kwa LegalTech, compliance na sekta zilizodhibitiwa",
+        "summary": "Mifumo ya AI ya on-premise au cloud binafsi kwa timu ambazo data zao haziwezi kutoka nje. Index, utafutaji na ufupisho wa hati zenye usahihi kamili wa nukuu na rekodi ya ukaguzi.",
+        "included": "Usanifu wa RAG binafsi, ukubwa wa vector store, evals za nukuu na grounding, ukatishaji unaofaa SOC2 na mwongozo wa uwekaji kwa timu yako ya infra.",
+        "upsells": "Mara nyingi huenda na: retainer ya CTO ya muda kwa mapitio endelevu ya usalama na pen-test triage."
+      },
+      "aiNative": {
+        "name": "Uhandisi wa bidhaa wa asili-AI",
+        "persona": "Kwa waanzilishi katika 0→1 au wanaobadilisha SaaS ya zamani",
+        "summary": "Toa UX ya kichawi uliyoiwasilisha kwa bodi. Ninajenga workflows za agentic na vipengele vya AI kwenye uso wa bidhaa — siyo chatbot iliyobandikwa pembeni, bali jinsi bidhaa yenu inavyofanya kazi kweli.",
+        "included": "Uhandisi wa bidhaa kutoka mwanzo hadi mwisho: mfano wa data, design ya agent, mtiririko wa UI, instrumentation na hali za makosa zisizovutia zinazofanya AI ihisi kuaminika.",
+        "upsells": "Mara nyingi huenda na: automation ya workflows za agentic wakati faida iko nyuma badala ya mbele."
+      },
+      "agenticOps": {
+        "name": "Automation ya workflows za agentic",
+        "persona": "Kwa timu zenye operesheni nyingi: PropTech, huduma na back-office",
+        "summary": "Badilisha jeshi la wachambuzi wanaosoma PDF, wanaofuatilia upyaji na wanaolinganisha spreadsheets. Agenti zinazotoa, zinazoonya na zinazoandika — juu ya zana mlizonazo, siyo dashboard nyingine.",
+        "included": "Ukaguzi wa michakato, orchestration ya agenti, muunganisho na CRM/ERP iliyopo, vituo vya human-in-the-loop na upimaji wa ROI.",
+        "upsells": "Mara nyingi huenda na: uwekaji wa AI salama wakati hati haziwezi kuondoka kwenye tenancy yenu."
+      },
+      "mlopsRescue": {
+        "name": "Uokoaji wa MLOps na miundombinu",
+        "persona": "Kwa timu za Series A/B ambazo vipengele vya AI vinawaka",
+        "summary": "Bili ya cloud nje ya udhibiti? Inference latency haikubaliki? CI/CD ya models haipo? Naingia, nakomesha damu na kuwaacha na jukwaa ambalo timu yenu inaweza kuliendesha kweli.",
+        "included": "Ukaguzi wa gharama za inference, setup ya model serving (vLLM/sawa), observability kwa LLMs, deployment pipelines na runbook iliyoandikwa kwa wanaorithi.",
+        "upsells": "Mara nyingi huenda na: muunganisho na usanifu wa AI ikiwa design ya msingi ndio inayofanya iwe ghali."
+      },
+      "fractionalCto": {
+        "name": "CTO ya muda na ushauri wa kiufundi",
+        "persona": "Kwa waanzilishi wasio na mwenza mwenye uzoefu wa kina wa kiufundi",
+        "summary": "Mhandisi mkuu upande wako kwa uajiri, maamuzi ya usanifu, kuchagua wachuuzi na mazungumzo ya bodi ambapo maneno ya mtindo huwa ghali. Kwa msingi wa retainer wenye mzunguko wa kila mwezi.",
+        "included": "Vikao vya kazi vya kila wiki, msaada wa maamuzi ya ad-hoc, mapitio ya kiufundi ya kazi ya wakandarasi, loops za uajiri na hati iliyoandikwa ya mkakati wa kiufundi kwa wawekezaji.",
+        "upsells": "Mara nyingi huchanganywa na engagement moja ya ujenzi hapo juu wakati kuna uwasilishaji maalum kazini."
+      }
+    },
+    "fit": {
+      "forTitle": "Hii ni yako kama",
+      "for": {
+        "funded": "Umepita pre-seed — kuna mapato, ufadhili au mkataba wa enterprise unaofanya ubora wa uhandisi kuwa suala la bodi.",
+        "regulated": "Unafanya kazi katika mazingira yaliyodhibitiwa, ya imani kubwa au ya hatari kubwa ambapo 'kwenda haraka na kuvunja vitu' haitoshi.",
+        "legacy": "Una mifumo inayofanya kazi na muhimu, na unahitaji AI iunganishwe pamoja nayo — siyo kuandika upya kutoka mwanzo.",
+        "scale": "Tayari umechomwa na wrapper ya jumla ya AI na sasa unahitaji mtu wa kukuonyesha usanifu, siyo demo tu."
+      },
+      "notForTitle": "Pengine si fit kama",
+      "notFor": {
+        "ideaGuy": "Unatafuta mtu wa kujenga wazo lako kwa equity, au unatarajia MVP ya $50K kwa $3K.",
+        "agencyMiddleman": "Wewe ni mmiliki wa agency asiye na kiufundi anayetaka kuuza tena kazi ya uhandisi wa juu kwa faida ya chini.",
+        "noTechBudget": "Unataka AI kwa sababu umesikia juu yake, lakini biashara yako bado haijawa na ukomavu wa kiutendaji (au bajeti) wa kuendesha programu ambayo haijaijenga yenyewe."
+      }
+    },
+    "process": {
+      "title": "Jinsi engagement inavyokwenda",
+      "discovery": {
+        "title": "1. Discovery",
+        "body": "Simu ya bure ya dakika 30 ili kuelewa unachotaka kuwasilisha, kinachokuzuia na kama mimi ndiye mtu sahihi. Hakuna pitch — kama haifai, nitakuambia na kukuelekeza mahali pengine."
+      },
+      "scope": {
+        "title": "2. Scope na umbo",
+        "body": "Kama tunafaana, naandika scope ya kazi: tatizo, mbinu, vitu vya kutoa na bei. Unaona usanifu kabla ya kuona ankara."
+      },
+      "build": {
+        "title": "3. Jenga na toa",
+        "body": "Nafanya kazi kama mmoja wa wahandisi wenu — kwenye repos zenu, standups zenu, decision threads — hadi kitu kiwe hewani, instrumented na timu yenu imekimiliki."
+      }
+    },
+    "cta": {
+      "title": "Tayari kupanga engagement yako?",
+      "body": "Njia mbili za kuanza. Chagua inayolingana na ulipo.",
+      "strategyButton": "Weka miadi ya strategy call",
+      "discoveryButton": "Discovery call ya bure ya dakika 30",
+      "principlesLink": "Jinsi ninavyofikiria kazi"
+    }
   },
   "method": {
     "title": "Jinsi ya kufanya kazi nami",

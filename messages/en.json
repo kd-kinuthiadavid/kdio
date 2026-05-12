@@ -6,7 +6,7 @@
   "nav": {
     "home": "home",
     "about": "about",
-    "method": "Work with me",
+    "services": "services",
     "work": "work",
     "contact": "contact"
   },
@@ -77,6 +77,106 @@
     "calDescription": "Book a 15-minute intro call",
     "emailDescription": "Send me an email",
     "linkedinDescription": "Connect on LinkedIn"
+  },
+  "services": {
+    "title": "Engineering partnerships for teams shipping AI where mistakes are expensive.",
+    "subtitle": "Six ways I plug into a team — from a tight architectural rescue to a full 0-to-1 build — with one engineer accountable from the first whiteboard to the last deploy.",
+    "stats": {
+      "tenureValue": "8+ yrs",
+      "tenureLabel": "Shipping production software",
+      "engagementValue": "3 tiers",
+      "engagementLabel": "Micro · MVP · Enterprise",
+      "sectorsValue": "FinTech · SaaS · LegalTech · PropTech",
+      "sectorsLabel": "Sectors I work with"
+    },
+    "tiers": {
+      "micro": "Micro",
+      "mvp": "MVP",
+      "enterprise": "Enterprise"
+    },
+    "servicesHeading": "What I take on",
+    "includedLabel": "Included",
+    "items": {
+      "aiIntegration": {
+        "name": "AI integration & architecture",
+        "persona": "For FinTech & B2B teams with critical legacy systems",
+        "summary": "Plug AI capabilities into existing production systems without putting transactions, uptime, or compliance at risk. I design parallel infrastructure that talks to your core engine instead of replacing it.",
+        "included": "Architecture review, threat model, isolated AI service design, eval harness for failure modes, rollout plan with rollback gates.",
+        "upsells": "Normally goes with: MLOps & infrastructure (Enterprise) for observability and cost controls."
+      },
+      "secureAi": {
+        "name": "Secure & compliant AI deployment",
+        "persona": "For LegalTech, compliance, and regulated industries",
+        "summary": "On-prem or private-cloud AI systems for teams who can't let data phone home. Document indexing, retrieval, and summarization with full citation accuracy and an audit trail.",
+        "included": "Private RAG architecture, vector store sizing, citation/grounding evals, SOC2-friendly logging, deployment guide for your infra team.",
+        "upsells": "Normally goes with: Fractional CTO retainer for ongoing security review and pen-test triage."
+      },
+      "aiNative": {
+        "name": "AI-native product engineering",
+        "persona": "For founders building 0→1 or evolving a legacy SaaS",
+        "summary": "Ship the magical UX you've been pitching the board. I build agentic workflows and AI features into the product surface — not as a chatbot bolted on the side, but as the way your product actually works.",
+        "included": "Product engineering end-to-end: data model, agent design, UI flows, instrumentation, and the unglamorous error states that make AI features feel reliable.",
+        "upsells": "Normally goes with: Agentic workflow automation when the win is on the back office, not the front-end."
+      },
+      "agenticOps": {
+        "name": "Agentic workflow automation",
+        "persona": "For ops-heavy teams in PropTech, services, and back-office",
+        "summary": "Replace the army of analysts reading PDFs, chasing renewals, and reconciling spreadsheets. Agents that extract, flag, and draft — layered over the tools you already use, not another dashboard to log into.",
+        "included": "Process audit, agent orchestration, integration with existing CRM/ERP, human-in-the-loop checkpoints, and ROI measurement.",
+        "upsells": "Normally goes with: Secure & compliant AI deployment when the documents can't leave your tenancy."
+      },
+      "mlopsRescue": {
+        "name": "MLOps & infrastructure rescue",
+        "persona": "For Series A/B teams whose AI features are on fire",
+        "summary": "Cloud bill out of control? Inference latency unacceptable? CI/CD for models doesn't exist? I come in, stop the bleeding, and leave you with a platform your team can actually operate.",
+        "included": "Inference cost audit, model serving setup (vLLM/equivalent), observability for LLMs, deployment pipelines, and a written runbook for the team taking it over.",
+        "upsells": "Normally goes with: AI integration & architecture if the underlying design is what's making it expensive."
+      },
+      "fractionalCto": {
+        "name": "Fractional CTO & technical advisory",
+        "persona": "For founders without a deeply technical co-founder",
+        "summary": "A senior engineer in your corner for hiring, architecture decisions, vendor selection, and the board conversations where buzzwords get expensive. Retainer-based, with a fixed monthly cadence.",
+        "included": "Weekly working sessions, ad-hoc decision support, technical review of contractor work, hiring loops, and a written technical strategy document you can hand to investors.",
+        "upsells": "Normally combined with one of the build engagements above when there's a specific delivery on the line."
+      }
+    },
+    "fit": {
+      "forTitle": "This is for you if",
+      "for": {
+        "funded": "You're past pre-seed — there's revenue, funding, or an enterprise contract that makes engineering quality a board-level concern.",
+        "regulated": "You operate in regulated, high-trust, or high-stakes environments where 'move fast and break things' isn't an option.",
+        "legacy": "You have systems that work and matter, and you need AI integrated alongside them — not a green-field rebuild.",
+        "scale": "You've been burned by a generic AI wrapper before and now you need someone who can show you the architecture, not just the demo."
+      },
+      "notForTitle": "This probably isn't a fit if",
+      "notFor": {
+        "ideaGuy": "You're looking for someone to build your idea for equity, or you expect a $50K MVP for $3K.",
+        "agencyMiddleman": "You're a non-technical agency owner who wants to white-label senior engineering work at a junior margin.",
+        "noTechBudget": "You want AI because you read about it, but your business doesn't yet have the operational maturity (or budget) to maintain software you didn't build yourself."
+      }
+    },
+    "process": {
+      "title": "How engagements run",
+      "discovery": {
+        "title": "1. Discovery",
+        "body": "A free 30-minute call to understand what you're trying to ship, what's in your way, and whether I'm the right person for it. No pitch — if it's not a fit, I'll say so and point you somewhere better."
+      },
+      "scope": {
+        "title": "2. Scope & shape",
+        "body": "If there's a fit, I scope the work in writing: the problem, the approach, the deliverables, and the price. You see the architecture before you see an invoice."
+      },
+      "build": {
+        "title": "3. Build & ship",
+        "body": "I work as one of your engineers — in your repos, your standups, your decision threads — until the thing is live, instrumented, and your team owns it."
+      }
+    },
+    "cta": {
+      "title": "Ready to scope your engagement?",
+      "body": "Two ways to start. Pick whichever matches where you are.",
+      "strategyButton": "Book a strategy call",
+      "discoveryButton": "Free 30-min discovery call",
+      "principlesLink": "How I think about the work"
+    }
   },
   "method": {
     "title": "How to work with me",

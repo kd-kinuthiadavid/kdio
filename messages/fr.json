@@ -6,7 +6,7 @@
   "nav": {
     "home": "accueil",
     "about": "à propos",
-    "method": "Travailler avec moi",
+    "services": "services",
     "work": "travaux",
     "contact": "contact"
   },
@@ -77,6 +77,106 @@
     "calDescription": "Réserver un appel d’introduction de 15 minutes",
     "emailDescription": "Envoyez-moi un e-mail",
     "linkedinDescription": "Connectons-nous sur LinkedIn"
+  },
+  "services": {
+    "title": "Partenariats d’ingénierie pour les équipes qui livrent de l’IA là où les erreurs coûtent cher.",
+    "subtitle": "Six manières de m’intégrer à une équipe — d’un sauvetage architectural ciblé à une construction 0-à-1 complète — avec un seul ingénieur responsable du premier tableau blanc au dernier déploiement.",
+    "stats": {
+      "tenureValue": "8+ ans",
+      "tenureLabel": "Livraison de logiciels en production",
+      "engagementValue": "3 paliers",
+      "engagementLabel": "Micro · MVP · Enterprise",
+      "sectorsValue": "FinTech · SaaS · LegalTech · PropTech",
+      "sectorsLabel": "Secteurs avec lesquels je travaille"
+    },
+    "tiers": {
+      "micro": "Micro",
+      "mvp": "MVP",
+      "enterprise": "Enterprise"
+    },
+    "servicesHeading": "Ce dont je me charge",
+    "includedLabel": "Inclus",
+    "items": {
+      "aiIntegration": {
+        "name": "Intégration et architecture IA",
+        "persona": "Pour les équipes FinTech et B2B avec des systèmes legacy critiques",
+        "summary": "Brancher des capacités IA sur des systèmes en production sans mettre en jeu les transactions, la disponibilité ou la conformité. Je conçois une infrastructure parallèle qui dialogue avec votre moteur principal au lieu de le remplacer.",
+        "included": "Revue d’architecture, modèle de menaces, service IA isolé, harnais d’évaluation des modes de défaillance, plan de déploiement avec garde-fous de retour arrière.",
+        "upsells": "S’accompagne souvent de : MLOps & infrastructure (Enterprise) pour l’observabilité et le contrôle des coûts."
+      },
+      "secureAi": {
+        "name": "Déploiement IA sécurisé et conforme",
+        "persona": "Pour LegalTech, conformité et secteurs régulés",
+        "summary": "Systèmes IA on-premise ou en cloud privé pour les équipes dont les données ne doivent pas sortir. Indexation, recherche et résumé de documents avec précision totale des citations et piste d’audit.",
+        "included": "Architecture RAG privée, dimensionnement de la base vectorielle, évaluations de citation et grounding, journalisation compatible SOC2 et guide de déploiement pour votre équipe infra.",
+        "upsells": "S’accompagne souvent de : retainer CTO fractionnel pour revue de sécurité continue et triage de pen-tests."
+      },
+      "aiNative": {
+        "name": "Ingénierie produit AI-native",
+        "persona": "Pour les fondateurs en 0→1 ou faisant évoluer un SaaS legacy",
+        "summary": "Livrer l’UX magique que vous avez vendu au board. Je construis des workflows agentiques et des fonctions IA au cœur de l’interface — pas comme un chatbot collé sur le côté, mais comme la manière dont le produit fonctionne vraiment.",
+        "included": "Ingénierie produit de bout en bout : modèle de données, design d’agents, flux UI, instrumentation et les états d’erreur peu glamour qui rendent l’IA fiable.",
+        "upsells": "S’accompagne souvent de : automatisation de workflows agentiques quand le gain est sur le back-office plutôt que le front."
+      },
+      "agenticOps": {
+        "name": "Automatisation de workflows agentiques",
+        "persona": "Pour les équipes ops-lourdes en PropTech, services et back-office",
+        "summary": "Remplacer l’armée d’analystes qui lisent des PDF, courent après les renouvellements et réconcilient des tableurs. Des agents qui extraient, alertent et rédigent — par-dessus vos outils existants, pas un dashboard de plus.",
+        "included": "Audit des processus, orchestration d’agents, intégration au CRM/ERP existant, points de contrôle human-in-the-loop et mesure du ROI.",
+        "upsells": "S’accompagne souvent de : déploiement IA sécurisé et conforme quand les documents ne peuvent pas quitter votre périmètre."
+      },
+      "mlopsRescue": {
+        "name": "Sauvetage MLOps et infrastructure",
+        "persona": "Pour les équipes Series A/B dont les fonctions IA partent en fumée",
+        "summary": "Facture cloud incontrôlée ? Latence d’inférence inacceptable ? CI/CD pour les modèles inexistant ? J’entre, arrête l’hémorragie et vous laisse une plateforme que votre équipe peut vraiment exploiter.",
+        "included": "Audit des coûts d’inférence, mise en place du model serving (vLLM/équivalent), observabilité pour LLM, pipelines de déploiement et runbook écrit pour la reprise.",
+        "upsells": "S’accompagne souvent de : intégration et architecture IA si la conception sous-jacente est ce qui coûte cher."
+      },
+      "fractionalCto": {
+        "name": "CTO fractionnel et conseil technique",
+        "persona": "Pour les fondateurs sans cofondateur profondément technique",
+        "summary": "Un ingénieur senior à vos côtés pour le recrutement, les décisions d’architecture, le choix des prestataires et les réunions board où les buzzwords coûtent cher. En retainer, avec une cadence mensuelle fixe.",
+        "included": "Sessions de travail hebdomadaires, support sur décisions ad hoc, revue technique du travail des prestataires, boucles de recrutement et un document écrit de stratégie technique pour les investisseurs.",
+        "upsells": "Se combine fréquemment avec l’un des engagements de construction ci-dessus quand il y a une livraison concrète en jeu."
+      }
+    },
+    "fit": {
+      "forTitle": "C’est pour vous si",
+      "for": {
+        "funded": "Vous êtes au-delà du pre-seed — il y a des revenus, du financement ou un contrat entreprise qui fait de la qualité d’ingénierie un sujet board.",
+        "regulated": "Vous opérez dans des environnements régulés, à forte confiance ou à enjeux élevés où « aller vite et casser des choses » n’est pas une option.",
+        "legacy": "Vous avez des systèmes qui fonctionnent et qui comptent, et vous avez besoin d’intégrer l’IA à côté — pas d’une refonte greenfield.",
+        "scale": "Vous vous êtes déjà fait avoir par un wrapper IA générique et vous voulez maintenant quelqu’un qui vous montre l’architecture, pas seulement la démo."
+      },
+      "notForTitle": "Probablement pas un fit si",
+      "notFor": {
+        "ideaGuy": "Vous cherchez quelqu’un pour construire votre idée contre des parts, ou attendez un MVP à 50 K pour 3 K.",
+        "agencyMiddleman": "Vous êtes un propriétaire d’agence non technique qui veut revendre de l’ingénierie senior à une marge junior.",
+        "noTechBudget": "Vous voulez de l’IA parce que vous en avez lu, mais votre activité n’a pas encore la maturité opérationnelle (ni le budget) pour exploiter un logiciel qu’elle n’a pas construit."
+      }
+    },
+    "process": {
+      "title": "Comment se déroule une mission",
+      "discovery": {
+        "title": "1. Découverte",
+        "body": "Un appel gratuit de 30 minutes pour comprendre ce que vous voulez livrer, ce qui vous bloque et si je suis la bonne personne. Pas de pitch — si ce n’est pas un fit, je vous le dis et vous oriente."
+      },
+      "scope": {
+        "title": "2. Cadrage et forme",
+        "body": "Si on s’accorde, je cadre le travail par écrit : le problème, l’approche, les livrables et le prix. Vous voyez l’architecture avant de voir une facture."
+      },
+      "build": {
+        "title": "3. Construire et livrer",
+        "body": "Je travaille comme un de vos ingénieurs — dans vos repos, vos standups, vos fils de décision — jusqu’à ce que la chose soit en ligne, instrumentée et entre les mains de votre équipe."
+      }
+    },
+    "cta": {
+      "title": "Prêt à cadrer votre mission ?",
+      "body": "Deux façons de démarrer. Choisissez celle qui correspond à votre situation.",
+      "strategyButton": "Réserver un appel stratégie",
+      "discoveryButton": "Appel découverte gratuit de 30 min",
+      "principlesLink": "Ma manière d’envisager le travail"
+    }
   },
   "method": {
     "title": "Comment travailler avec moi",

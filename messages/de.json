@@ -6,7 +6,7 @@
   "nav": {
     "home": "start",
     "about": "über mich",
-    "method": "Mit mir arbeiten",
+    "services": "leistungen",
     "work": "arbeit",
     "contact": "kontakt"
   },
@@ -77,6 +77,106 @@
     "calDescription": "15-minütiges Intro-Gespräch buchen",
     "emailDescription": "Schreib mir eine E-Mail",
     "linkedinDescription": "Lass uns auf LinkedIn vernetzen"
+  },
+  "services": {
+    "title": "Engineering-Partnerschaften für Teams, die KI dorthin liefern, wo Fehler teuer sind.",
+    "subtitle": "Sechs Wege, wie ich in ein Team einsteige – von einer gezielten Architektur-Rettung bis zum kompletten 0-zu-1-Aufbau – mit einem Ingenieur, der vom ersten Whiteboard bis zum letzten Deploy verantwortlich ist.",
+    "stats": {
+      "tenureValue": "8+ Jahre",
+      "tenureLabel": "Produktionssoftware ausgeliefert",
+      "engagementValue": "3 Stufen",
+      "engagementLabel": "Micro · MVP · Enterprise",
+      "sectorsValue": "FinTech · SaaS · LegalTech · PropTech",
+      "sectorsLabel": "Branchen, mit denen ich arbeite"
+    },
+    "tiers": {
+      "micro": "Micro",
+      "mvp": "MVP",
+      "enterprise": "Enterprise"
+    },
+    "servicesHeading": "Wofür ich Verantwortung übernehme",
+    "includedLabel": "Inklusive",
+    "items": {
+      "aiIntegration": {
+        "name": "KI-Integration & Architektur",
+        "persona": "Für FinTech- und B2B-Teams mit kritischen Legacy-Systemen",
+        "summary": "KI-Fähigkeiten in bestehende Produktionssysteme einbinden, ohne Transaktionen, Verfügbarkeit oder Compliance zu gefährden. Ich entwerfe parallele Infrastruktur, die mit eurer Kern-Engine spricht, statt sie zu ersetzen.",
+        "included": "Architekturreview, Threat Model, isolierter KI-Service, Eval-Harness für Fehlermodi, Rollout-Plan mit Rollback-Gates.",
+        "upsells": "Geht meist einher mit: MLOps & Infrastruktur (Enterprise) für Observability und Kostenkontrolle."
+      },
+      "secureAi": {
+        "name": "Sichere & konforme KI-Implementierung",
+        "persona": "Für LegalTech, Compliance und regulierte Branchen",
+        "summary": "On-Premise- oder Private-Cloud-KI-Systeme für Teams, deren Daten nicht nach Hause telefonieren dürfen. Dokumentenindexierung, Retrieval und Zusammenfassung mit voller Quellengenauigkeit und Audit-Trail.",
+        "included": "Private RAG-Architektur, Vector-Store-Dimensionierung, Citation- und Grounding-Evals, SOC2-freundliches Logging, Deployment-Guide für euer Infra-Team.",
+        "upsells": "Geht meist einher mit: Fractional-CTO-Retainer für laufende Security-Reviews und Pen-Test-Triage."
+      },
+      "aiNative": {
+        "name": "KI-natives Produkt-Engineering",
+        "persona": "Für Gründer im 0→1 oder bei Legacy-SaaS-Evolutionen",
+        "summary": "Liefert das magische UX, das ihr dem Board versprochen habt. Ich baue agentische Workflows und KI-Features in die Produktoberfläche – nicht als angeklebten Chatbot, sondern als die Art, wie euer Produkt tatsächlich funktioniert.",
+        "included": "Produkt-Engineering durchgängig: Datenmodell, Agent-Design, UI-Flows, Instrumentierung und die unspektakulären Fehlerzustände, die KI-Features verlässlich wirken lassen.",
+        "upsells": "Geht meist einher mit: agentischer Workflow-Automatisierung, wenn der Gewinn im Backoffice statt im Frontend liegt."
+      },
+      "agenticOps": {
+        "name": "Agentische Workflow-Automatisierung",
+        "persona": "Für ops-lastige Teams in PropTech, Services und Backoffice",
+        "summary": "Ersetzt die Heerschar an Analysten, die PDFs lesen, Verlängerungen verfolgen und Tabellen abgleichen. Agenten, die extrahieren, melden und entwerfen – als Schicht über euren bestehenden Tools, nicht als noch ein Dashboard.",
+        "included": "Prozessaudit, Agent-Orchestrierung, Integration in vorhandene CRM/ERP, Human-in-the-Loop-Checkpoints und ROI-Messung.",
+        "upsells": "Geht meist einher mit: sicherer & konformer KI-Implementierung, wenn die Dokumente eure Tenancy nicht verlassen dürfen."
+      },
+      "mlopsRescue": {
+        "name": "MLOps- & Infrastruktur-Rettung",
+        "persona": "Für Series-A/B-Teams, deren KI-Features brennen",
+        "summary": "Cloud-Rechnung außer Kontrolle? Inferenz-Latenz inakzeptabel? CI/CD für Modelle existiert nicht? Ich komme rein, stoppe die Blutung und hinterlasse euch eine Plattform, die euer Team tatsächlich betreiben kann.",
+        "included": "Inferenzkosten-Audit, Modell-Serving-Setup (vLLM/Äquivalent), Observability für LLMs, Deployment-Pipelines und ein schriftliches Runbook für die Übernahme.",
+        "upsells": "Geht meist einher mit: KI-Integration & Architektur, wenn der zugrunde liegende Entwurf das Teure verursacht."
+      },
+      "fractionalCto": {
+        "name": "Fractional CTO & technische Beratung",
+        "persona": "Für Gründer ohne tief technischen Mitgründer",
+        "summary": "Ein Senior-Ingenieur an eurer Seite für Hiring, Architekturentscheidungen, Anbieterauswahl und die Board-Gespräche, in denen Buzzwords teuer werden. Auf Retainer-Basis mit fester monatlicher Kadenz.",
+        "included": "Wöchentliche Working Sessions, Ad-hoc-Entscheidungssupport, technische Reviews externer Arbeit, Hiring-Loops und ein schriftliches Technologie-Strategiepapier für Investoren.",
+        "upsells": "Wird häufig mit einem der Build-Engagements oben kombiniert, wenn eine konkrete Lieferung ansteht."
+      }
+    },
+    "fit": {
+      "forTitle": "Das passt zu dir, wenn",
+      "for": {
+        "funded": "Ihr seid über Pre-Seed hinaus – es gibt Umsatz, Finanzierung oder einen Enterprise-Vertrag, der Engineering-Qualität zur Board-Frage macht.",
+        "regulated": "Ihr operiert in regulierten, vertrauensintensiven oder risikoreichen Umgebungen, in denen „schnell handeln und Dinge brechen“ keine Option ist.",
+        "legacy": "Ihr habt Systeme, die funktionieren und zählen, und braucht KI daneben integriert – keinen Greenfield-Rebuild.",
+        "scale": "Ihr seid schon einmal von einem generischen KI-Wrapper enttäuscht worden und braucht jetzt jemanden, der die Architektur zeigt, nicht nur die Demo."
+      },
+      "notForTitle": "Wahrscheinlich kein Fit, wenn",
+      "notFor": {
+        "ideaGuy": "Ihr sucht jemanden, der eure Idee gegen Anteile baut, oder erwartet ein 50K-MVP für 3K.",
+        "agencyMiddleman": "Ihr seid ein nicht-technischer Agenturinhaber, der Senior-Engineering zur Junior-Marge weiterverkaufen möchte.",
+        "noTechBudget": "Ihr wollt KI, weil ihr davon gelesen habt, aber euer Unternehmen hat noch nicht die operative Reife (oder das Budget), Software zu betreiben, die ihr nicht selbst gebaut habt."
+      }
+    },
+    "process": {
+      "title": "So laufen Engagements ab",
+      "discovery": {
+        "title": "1. Discovery",
+        "body": "Ein kostenloser 30-Minuten-Call, um zu verstehen, was ihr liefern wollt, was im Weg steht und ob ich der richtige Partner bin. Kein Pitch – wenn es nicht passt, sage ich es und verweise euch weiter."
+      },
+      "scope": {
+        "title": "2. Scope & Form",
+        "body": "Wenn es passt, scope ich die Arbeit schriftlich: das Problem, der Ansatz, die Deliverables und der Preis. Ihr seht die Architektur, bevor ihr eine Rechnung seht."
+      },
+      "build": {
+        "title": "3. Build & Ship",
+        "body": "Ich arbeite als einer eurer Ingenieure – in euren Repos, Standups und Entscheidungsthreads – bis die Sache live, instrumentiert und in der Hand eures Teams ist."
+      }
+    },
+    "cta": {
+      "title": "Bereit, euer Engagement zu scopen?",
+      "body": "Zwei Wege zu starten. Wählt, was zu eurem Stand passt.",
+      "strategyButton": "Strategie-Call buchen",
+      "discoveryButton": "Kostenloser 30-Min-Discovery-Call",
+      "principlesLink": "Wie ich die Arbeit denke"
+    }
   },
   "method": {
     "title": "So arbeitest du mit mir",
