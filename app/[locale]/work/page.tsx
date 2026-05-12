@@ -49,10 +49,33 @@ export default function Work() {
 
   const MotionA = motion.create("a");
 
-  const experience = [
+  type Role = { position: string; dates: string };
+  type ExperienceItem = {
+    company: string;
+    capacity: string;
+    timeStamp: string;
+    url: string;
+    position?: string;
+    roles?: Role[];
+  };
+
+  const experience: ExperienceItem[] = [
     {
       company: "Churpy Inc",
-      position: t("expChurpyPosition"),
+      roles: [
+        {
+          position: t("expChurpyRoleHeadPosition"),
+          dates: t("expChurpyRoleHeadDates"),
+        },
+        {
+          position: t("expChurpyRoleLeadPosition"),
+          dates: t("expChurpyRoleLeadDates"),
+        },
+        {
+          position: t("expChurpyRoleFullstackPosition"),
+          dates: t("expChurpyRoleFullstackDates"),
+        },
+      ],
       capacity: t("capacityFullTime"),
       timeStamp: t("expChurpyDates"),
       url: "https://www.churpy.co/",
@@ -253,7 +276,7 @@ export default function Work() {
                   >
                     <motion.p
                       variants={navItemVariants}
-                      className="w-full shrink-0 font-medium text-muted-foreground sm:w-auto sm:min-w-[7.5rem] md:min-w-[110px]"
+                      className="w-full shrink-0 font-medium text-muted-foreground tabular-nums sm:w-auto sm:min-w-[11rem] md:min-w-[12rem]"
                     >
                       {exp.timeStamp}
                     </motion.p>
@@ -261,7 +284,7 @@ export default function Work() {
                       initial="hidden"
                       animate="visible"
                       variants={containerVariants}
-                      className="flex flex-col"
+                      className="flex min-w-0 flex-col"
                     >
                       <MotionA
                         variants={navItemVariants}
@@ -270,15 +293,38 @@ export default function Work() {
                         href={exp.url}
                         className="flex min-w-0 items-start gap-x-1"
                       >
-                        <p className="font-semibold">{exp.position}</p>
+                        <p className="font-semibold">
+                          {exp.roles ? exp.company : exp.position}
+                        </p>
                         <ArrowUpRight size={20} className="text-muted-foreground" />
                       </MotionA>
                       <motion.p
                         variants={navItemVariants}
                         className="font-medium text-muted-foreground"
                       >
-                        {`${exp.company} . ${exp.capacity}`}
+                        {exp.roles
+                          ? exp.capacity
+                          : `${exp.company} . ${exp.capacity}`}
                       </motion.p>
+                      {exp.roles && (
+                        <motion.ul
+                          variants={containerVariants}
+                          className="mt-3 flex flex-col gap-y-1.5 border-l border-border pl-4"
+                        >
+                          {exp.roles.map((role) => (
+                            <motion.li
+                              key={role.position}
+                              variants={navItemVariants}
+                              className="flex min-w-0 flex-wrap items-baseline gap-x-4 text-sm sm:text-base"
+                            >
+                              <span className="shrink-0 font-medium text-muted-foreground tabular-nums sm:min-w-[11rem]">
+                                {role.dates}
+                              </span>
+                              <span className="font-medium">{role.position}</span>
+                            </motion.li>
+                          ))}
+                        </motion.ul>
+                      )}
                     </motion.div>
                   </motion.div>
                 ))}
