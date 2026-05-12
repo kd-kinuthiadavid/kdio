@@ -1,23 +1,25 @@
 {
   "metadata": {
     "title": "David Kinuthia",
-    "description": "Ingénieur produit guidé par le design et centré sur l’humain"
+    "description": "Ingénieur produit senior — web full-stack, fonctions prêtes pour l’IA et livraison avec sens du produit"
   },
   "nav": {
     "home": "accueil",
-    "method": "méthode",
+    "about": "à propos",
+    "method": "Travailler avec moi",
     "work": "travaux",
     "contact": "contact"
   },
   "brand": {
     "name": "David Kinuthia",
-    "role": "Ingénieur logiciel produit"
+    "role": "Ingénieur produit senior"
   },
   "common": {
-    "bookIntro": "Réserver un intro de 15 min",
+    "bookIntro": "Discutons",
+    "scheduleIntro": "Réserver un intro de 15 min",
     "cancel": "Annuler",
     "openMenu": "Ouvrir le menu",
-    "seeSelectedWork": "voir des réalisations",
+    "seeSelectedWork": "Voir des réalisations",
     "refresh": "Actualiser"
   },
   "language": {
@@ -30,14 +32,31 @@
     "sw": "Kiswahili"
   },
   "home": {
-    "heroTitle": "Concevoir des solutions évolutives où l’ingénierie rencontre l’empathie.",
-    "heroBody": "Bonjour, je m’appelle David Kinuthia. Je suis ingénieur logiciel produit à Nairobi. Je combine expertise technique et empathie utilisateur pour créer des produits fiables, intuitifs et porteurs de sens—des expériences exceptionnelles du backend à l’interface."
+    "heroTitle": "Ingénieur produit senior qui réduit l’écart entre une bonne idée et un logiciel mis en production.",
+    "heroBody": "Je construis des produits web full-stack, des flux avec IA et l’infrastructure autour pour des équipes et fondateurs qui veulent un propriétaire de bout en bout, de l’architecture au dernier pixel. Je suis basé à Nairobi et je travaille avec des personnes partout dans le monde.",
+    "heroAvailability": "Je suis ouvert aux postes senior en CDI, aux missions d’au moins trois mois et au conseil pour des startups en amorçage."
+  },
+  "about": {
+    "title": "À propos",
+    "identity": "Je suis un ingénieur full-stack qui raisonne en produit. Après des années à livrer sur le front, le back, les intégrations et la mise en production, j’ai appris que le meilleur travail commence par de meilleures questions—pas par une backlog plus longue.",
+    "edge": "Je m’épanouis là où la profondeur technique rencontre l’intuition produit : cadrer du travail ambigu, construire des MVP dont on peut apprendre et durcir les systèmes quand ils commencent à compter. Les fondateurs et leads m’invitent souvent quand ils ont besoin de quelqu’un qui peut porter un problème de bout en bout sans micro-management.",
+    "personal": "Hors du code, je recharge en courant, en lisant sur la façon dont les équipes construisent, et autour d’un bon café entre amis.",
+    "ctaContact": "Me contacter"
   },
   "work": {
-    "title": "Travaux",
-    "projects": "projets",
+    "title": "Réalisations",
+    "projects": {
+      "title": "Projets",
+      "invoicething": {
+        "name": "Invoicething",
+        "context": "Produit indépendant",
+        "problem": "Les entreprises de services ont besoin d’une facturation et de paiements qui rassurent, pas d’un second métier.",
+        "solution": "J’ai conçu et livré un produit full-stack avec abonnements, documents hébergés, flux e-mail et rails de paiement prêts pour l’argent réel.",
+        "result": "C’est en ligne aujourd’hui comme un outil ciblé que les opérateurs peuvent adopter sans manuel de formation.",
+        "techLine": "Next.js · NestJS · Supabase · Stripe · Polar · Vercel · Docker · Sentry"
+      }
+    },
     "experience": "expérience",
-    "invoicethingDescription": "La facturation pour les professionnels de services et les entreprises. Pensée pour la simplicité.",
     "capacityFullTime": "Temps plein",
     "capacityContract": "Contrat",
     "capacityPartTime": "Temps partiel",
@@ -52,14 +71,18 @@
   },
   "contact": {
     "title": "Contact",
+    "intro": "Si vous construisez quelque chose d’ambitieux et avez besoin d’un ingénieur pour le mener de la décision à la livraison, j’aimerais avoir de vos nouvelles. Choisissez le canal le plus simple pour vous.",
     "calDescription": "Réserver un appel d’introduction de 15 minutes",
     "emailDescription": "Envoyez-moi un e-mail",
     "linkedinDescription": "Connectons-nous sur LinkedIn"
   },
   "method": {
-    "title": "Méthode",
-    "intro": "Je crois que le logiciel peut, et peut-être devrait encore, sembler magique. Mon approche du développement produit s’appuie sur des principes d’artisanat, de qualité et de design thinking. Voici ces principes :",
-    "outro": "Si vous partagez ces valeurs, nous sommes déjà sur la même longueur d’onde : parlons de ce que nous pouvons créer ensemble, avec impact et beauté.",
+    "title": "Comment travailler avec moi",
+    "principlesHeading": "Principes directeurs",
+    "howToWorkParagraph1": "Je suis disponible pour des postes senior en CDI, des missions d’au moins trois mois et du conseil pour des startups en amorçage.",
+    "howToWorkParagraph2": "Je donne le meilleur de moi-même avec des équipes qui construisent des produits ambitieux et ont besoin de quelqu’un pour porter les problèmes de bout en bout—de l’architecture et des arbitrages aux détails d’interface que les utilisateurs vivent au quotidien.",
+    "howToWorkParagraph3": "Si cela correspond à votre équipe, visitez la page contact ou planifiez une courte intro—j’aimerais voir si nous sommes alignés.",
+    "outro": "Si cela vous parle, j’aimerais savoir ce que vous construisez. Écrivez-moi et voyons si je suis le bon ingénieur pour aider.",
     "userCentric": {
       "title": "centré utilisateur",
       "subTitle": "Concevoir pour l’utilisateur, construire pour l’impact.",

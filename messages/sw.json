@@ -1,23 +1,25 @@
 {
   "metadata": {
     "title": "David Kinuthia",
-    "description": "Mhandisi wa bidhaa anayeongozwa na muundo na kuangalia watumiaji"
+    "description": "Mhandisi mkuu wa bidhaa — wavuti full-stack, vipengele vilivyotayari kwa AI na utoaji wenye busara ya bidhaa"
   },
   "nav": {
     "home": "nyumbani",
-    "method": "njia",
+    "about": "kuhusu",
+    "method": "Pamoja nami",
     "work": "kazi",
     "contact": "mawasiliano"
   },
   "brand": {
     "name": "David Kinuthia",
-    "role": "Mhandisi wa programu ya bidhaa"
+    "role": "Mhandisi mkuu wa bidhaa"
   },
   "common": {
-    "bookIntro": "Weka miadi ya utangulizi wa dakika 15",
+    "bookIntro": "Hebu tuzungumze",
+    "scheduleIntro": "Weka miadi ya utangulizi wa dakika 15",
     "cancel": "Ghairi",
     "openMenu": "Fungua menyu",
-    "seeSelectedWork": "ona kazi zilizochaguliwa",
+    "seeSelectedWork": "Ona kazi zilizochaguliwa",
     "refresh": "Onyesha upya"
   },
   "language": {
@@ -30,14 +32,31 @@
     "sw": "Kiswahili"
   },
   "home": {
-    "heroTitle": "Kuunda suluhisho zinazoweza kupanuka ambapo uhandisi ukikutana na uelewa wa hisia.",
-    "heroBody": "Habari, jina langu ni David Kinuthia. Mimi ni mhandisi wa programu ya bidhaa nikiwa Nairobi. Ninachanganya ujuzi wa kiufundi na uelewa wa mtumiaji ili kuunda bidhaa thabiti, rahisi kuelewa, na zenye maana—nikitoa matumizi bora kutoka backend hadi kiolesura."
+    "heroTitle": "Mhandisi mkuu wa bidhaa - anayepunguza pengo kati ya wazo lenye nguvu na programu inayotumika kweli.",
+    "heroBody": "Ninajenga bidhaa za wavuti full stack, mtiririko wenye AI na miundombinu nyuma yao kwa timu na waanzilishi wanaohitaji mmiliki mmoja tangu usanifu hadi pixel ya mwisho. Niko Nairobi na nafanya kazi na watu kote duniani.",
+    "heroAvailability": "Niko tayari kwa majukumu ya senior ya muda kamili, mikataba ya miezi mitatu au zaidi, na kazi ya ushauri na startups hatua ya mapema."
+  },
+  "about": {
+    "title": "Kuhusu",
+    "identity": "Mimi ni mhandisi wa full stack anayefikiria kwa mtazamo wa bidhaa. Baada ya miaka ya kutoa mbele ya mtumiaji, nyuma, muunganisho na uendeshaji, nimejifunza kuwa kazi bora huanza na maswali bora—sio orodha ndefu ya kazi.",
+    "edge": "Ninastawi ambapo undani wa kiufundi ukikutana na hisia ya bidhaa: kupunguza kazi isiyo wazi, kujenga MVP ambazo unaweza kujifunza nazo, na kuimarisha mifumo inapoanza kuwa muhimu. Waanzilishi na viongozi mara nyingi huniita wanapohitaji mtu anayeweza kubeba tatizo kutoka mwanzo hadi mwisho bila usimamizi wa kila wakati.",
+    "personal": "Nje ya msimbo, najiweka upya kwa kukimbia, kusoma jinsi timu zinavyojenga, na kahawa nzuri na marafiki.",
+    "ctaContact": "Wasiliana nami"
   },
   "work": {
-    "title": "Kazi",
-    "projects": "miradi",
+    "title": "Kazi zilizochaguliwa",
+    "projects": {
+      "title": "Miradi",
+      "invoicething": {
+        "name": "Invoicething",
+        "context": "Bidhaa huru",
+        "problem": "Biashara za huduma zinahitaji ankara na malipo yanayoonekana tulivu, sio kazi ya pili.",
+        "solution": "Niliunda na kutoa bidhaa ya full stack yenye usajili, hati zilizohifadhiwa, mtiririko wa barua pepe na njia za malipo zilizotayari kwa pesa halisi.",
+        "result": "Leo iko mtandaoni kama zana maalum wateja wanaweza kuitumia bila mwongozo wa mafunzo.",
+        "techLine": "Next.js · NestJS · Supabase · Stripe · Polar · Vercel · Docker · Sentry"
+      }
+    },
     "experience": "uzoefu",
-    "invoicethingDescription": "Utoaji wa ankara kwa wataalamu wa huduma na biashara. Umeundwa kwa urahisi.",
     "capacityFullTime": "Muda kamili",
     "capacityContract": "Mkataba",
     "capacityPartTime": "Muda wa nusu",
@@ -52,14 +71,18 @@
   },
   "contact": {
     "title": "Mawasiliano",
+    "intro": "Ukiunda kitu chenye malengo makubwa na unahitaji mhandisi anayeweza kubeba kutoka uamuzi hadi utoaji, ningependa kusikia kutoka kwako. Chagua njia unayoiona rahisi.",
     "calDescription": "Weka simu ya utangulizi ya dakika 15",
     "emailDescription": "Nitumie barua pepe",
     "linkedinDescription": "Tuunganishane kwenye LinkedIn"
   },
   "method": {
-    "title": "Njia",
-    "intro": "Naamini programu bado inaweza, na labda inapaswa, kuonekana kama maajabu. Kwa hiyo maendeleo ya bidhaa yangu yanatawaliwa na kanuni za msingi za ufanisi, ubora na mawazo ya muundo. Kanuni hizi ni:",
-    "outro": "Ikiwa unashiriki thamani hizi, tayari tuko kwenye ukurasa mmoja—hebu tuunganishe na tuzungumze jinsi ya kuunda kitu kizuri na chenye athari pamoja.",
+    "title": "Jinsi ya kufanya kazi nami",
+    "principlesHeading": "Kanuni kuu",
+    "howToWorkParagraph1": "Niko tayari kwa majukumu ya senior ya muda kamili, mikataba ya miezi mitatu au zaidi, na kazi ya ushauri na startups hatua ya mapema.",
+    "howToWorkParagraph2": "Ninafanya vizuri zaidi na timu zinazounda bidhaa zenye malengo makubwa zinazohitaji mtu kubeba matatizo kutoka mwanzo hadi mwisho—kuanzia usanifu na ubadilishaji hadi maelezo ya kiolesura ambayo watumiaji wanahisi kila siku.",
+    "howToWorkParagraph3": "Ikiwa hilo linafanana na timu yako, tembelea ukurasa wa mawasiliano au weka utangulizi mfupi—ningependa kuona kama tunafaa pamoja.",
+    "outro": "Ikiwa hii inagusa, ningependa kusikia unachokijenga. Wasiliana nami na tuone kama mimi ndiye mhandisi sahihi wa kusaidia.",
     "userCentric": {
       "title": "kuzingatia mtumiaji",
       "subTitle": "Tengeneza kwa mtumiaji, jenga kwa athari.",

@@ -5,43 +5,29 @@ import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 
 import ContentSurface from "@/components/shared/ContentSurface";
-import { Badge } from "@/components/ui/badge";
-import { Link } from "@/i18n/navigation";
 import {
   containerVariants,
   itemVariants,
   navItemVariants,
 } from "../../motionVariants";
 
+const PROJECT_IDS = ["invoicething"] as const;
+
+const PROJECT_META: Record<
+  (typeof PROJECT_IDS)[number],
+  { url: string; year: string }
+> = {
+  invoicething: {
+    url: "https://invoicething.co/",
+    year: "2024",
+  },
+};
+
 export default function Work() {
   const t = useTranslations("work");
+  const tp = useTranslations("work.projects");
 
-  const MotionLink = motion.create(Link);
-  const MotionBadge = motion.create(Badge);
-
-  const projects = [
-    {
-      name: "Invoicething",
-      description: t("invoicethingDescription"),
-      techStack: [
-        "Nextjs",
-        "Tailwindcss",
-        "Shadcn/ui",
-        "NestJs",
-        "Supabase",
-        "Stripe",
-        "Polar.sh",
-        "Vercel",
-        "Docker",
-        "Sentry",
-        "React Email",
-        "React PDF",
-        "Zustand",
-      ],
-      url: "https://invoicething.co/",
-      year: "2024",
-    },
-  ];
+  const MotionA = motion.create("a");
 
   const experience = [
     {
@@ -84,7 +70,7 @@ export default function Work() {
       >
         <motion.h1
           variants={itemVariants}
-          className="text-balance font-semibold text-3xl capitalize leading-tight sm:text-4xl md:text-5xl"
+          className="text-balance font-semibold text-3xl leading-tight sm:text-4xl md:text-5xl"
         >
           {t("title")}
         </motion.h1>
@@ -98,84 +84,92 @@ export default function Work() {
             initial="hidden"
             animate="visible"
             variants={containerVariants}
-            className="flex flex-col gap-y-3 w-full"
+            className="flex w-full flex-col gap-y-3"
           >
             <motion.h2
               animate={navItemVariants}
-              className="font-semibold text-xl capitalize sm:text-2xl"
+              className="font-semibold text-xl leading-tight sm:text-2xl"
             >
-              {t("projects")}
+              {tp("title")}
             </motion.h2>
             <motion.div
               initial="hidden"
               animate="visible"
               variants={containerVariants}
-              className="flex flex-col gap-y-3 w-full"
+              className="flex w-full flex-col gap-y-3"
             >
-              {projects.map((project, idx) => (
-                <motion.div
-                  initial="hidden"
-                  animate="visible"
-                  variants={containerVariants}
-                  className="flex min-w-0 flex-wrap md:flex-nowrap gap-x-4 gap-y-2 text-base sm:gap-x-6 md:items-start w-full"
-                  key={idx}
-                >
-                  <motion.p
-                    variants={navItemVariants}
-                    className="text-gray-500 font-medium"
-                  >
-                    {project.year}
-                  </motion.p>
+              {PROJECT_IDS.map((id) => {
+                const meta = PROJECT_META[id];
+                const story = [
+                  tp(`${id}.problem`),
+                  tp(`${id}.solution`),
+                  tp(`${id}.result`),
+                ].join(" ");
+
+                return (
                   <motion.div
                     initial="hidden"
                     animate="visible"
                     variants={containerVariants}
-                    className="flex flex-col gap-1"
+                    className="flex min-w-0 flex-wrap gap-x-4 gap-y-2 text-base sm:gap-x-6 md:flex-nowrap md:items-start w-full"
+                    key={id}
                   >
-                    <MotionLink
-                      variants={navItemVariants}
-                      target="_blank"
-                      href={project.url}
-                      className="flex min-w-0 items-start gap-x-1"
-                    >
-                      <p className="font-semibold">{project.name}</p>
-                      <ArrowUpRight size={20} className="text-gray-600" />
-                    </MotionLink>
                     <motion.p
                       variants={navItemVariants}
-                      className="font-medium text-gray-500 w-fit"
+                      className="font-medium text-muted-foreground"
                     >
-                      {project.description}
+                      {meta.year}
                     </motion.p>
                     <motion.div
-                      animate={navItemVariants}
-                      className="flex flex-wrap gap-1"
+                      initial="hidden"
+                      animate="visible"
+                      variants={containerVariants}
+                      className="flex min-w-0 flex-col gap-2"
                     >
-                      {project.techStack.map((tech, techIdx) => (
-                        <MotionBadge
-                          variants={navItemVariants}
-                          variant={"outline"}
-                          key={techIdx}
-                          className="rounded-xl font-medium"
-                        >
-                          {tech}
-                        </MotionBadge>
-                      ))}
+                      <MotionA
+                        variants={navItemVariants}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        href={meta.url}
+                        className="flex min-w-0 flex-wrap items-baseline gap-x-1 gap-y-0.5"
+                      >
+                        <span className="font-semibold">{tp(`${id}.name`)}</span>
+                        <span className="font-medium text-muted-foreground">
+                          — <span className="italic">{tp(`${id}.context`)}</span>
+                        </span>
+                        <ArrowUpRight
+                          size={20}
+                          className="shrink-0 text-muted-foreground"
+                          aria-hidden
+                        />
+                      </MotionA>
+                      <motion.p
+                        variants={navItemVariants}
+                        className="max-w-prose font-normal leading-relaxed text-foreground/85"
+                      >
+                        {story}
+                      </motion.p>
+                      <motion.p
+                        variants={navItemVariants}
+                        className="font-medium text-muted-foreground"
+                      >
+                        {tp(`${id}.techLine`)}
+                      </motion.p>
                     </motion.div>
                   </motion.div>
-                </motion.div>
-              ))}
+                );
+              })}
             </motion.div>
           </motion.div>
           <motion.div
             initial="hidden"
             animate="visible"
             variants={containerVariants}
-            className="flex flex-col gap-y-6 w-full"
+            className="flex w-full flex-col gap-y-6"
           >
             <motion.h2
               variants={navItemVariants}
-              className="font-semibold text-xl capitalize sm:text-2xl"
+              className="capitalize font-semibold text-xl leading-tight sm:text-2xl"
             >
               {t("experience")}
             </motion.h2>
@@ -190,12 +184,12 @@ export default function Work() {
                   initial="hidden"
                   animate="visible"
                   variants={containerVariants}
-                  className="flex min-w-0 flex-wrap md:flex-nowrap gap-x-4 gap-y-2 text-base sm:gap-x-6 md:items-start"
+                  className="flex min-w-0 flex-wrap gap-x-4 gap-y-2 text-base sm:gap-x-6 md:flex-nowrap md:items-start"
                   key={idx}
                 >
                   <motion.p
                     variants={navItemVariants}
-                    className="w-full shrink-0 text-gray-500 font-medium sm:w-auto sm:min-w-[7.5rem] md:min-w-[110px]"
+                    className="w-full shrink-0 font-medium text-muted-foreground sm:w-auto sm:min-w-[7.5rem] md:min-w-[110px]"
                   >
                     {exp.timeStamp}
                   </motion.p>
@@ -205,18 +199,19 @@ export default function Work() {
                     variants={containerVariants}
                     className="flex flex-col"
                   >
-                    <MotionLink
+                    <MotionA
                       variants={navItemVariants}
                       target="_blank"
+                      rel="noopener noreferrer"
                       href={exp.url}
                       className="flex min-w-0 items-start gap-x-1"
                     >
                       <p className="font-semibold">{exp.position}</p>
-                      <ArrowUpRight size={20} className="text-gray-600" />
-                    </MotionLink>
+                      <ArrowUpRight size={20} className="text-muted-foreground" />
+                    </MotionA>
                     <motion.p
                       variants={navItemVariants}
-                      className="font-medium text-gray-500"
+                      className="font-medium text-muted-foreground"
                     >
                       {`${exp.company} . ${exp.capacity}`}
                     </motion.p>

@@ -82,7 +82,7 @@ export default function MobileNav() {
                 window.open("https://cal.com/kinuthiadavid/15min", "_blank")
               }
             >
-              {tCommon("bookIntro")}
+              {tCommon("scheduleIntro")}
             </AnimatedButton>
             <DrawerClose asChild>
               <Button variant="outline">{tCommon("cancel")}</Button>

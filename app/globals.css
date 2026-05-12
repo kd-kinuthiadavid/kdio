@@ -56,8 +56,8 @@ body {
     --secondary: 60 22% 20%;
     --secondary-foreground: 60 16% 91%;
     --muted: 60 18% 16%;
-    /* Secondary lines & de-emphasized copy — readable on olive */
-    --muted-foreground: 60 11% 66%;
+    /* Secondary copy — high enough L for WCAG on ~9% L olive (avoid muddy grays) */
+    --muted-foreground: 60 14% 76%;
     --accent: 60 22% 22%;
     /* Nav active / links — mint so accent stays distinct from body cream */
     --accent-foreground: 181 62% 78%;

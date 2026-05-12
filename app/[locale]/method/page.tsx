@@ -44,11 +44,11 @@ export default function Method() {
           initial="hidden"
           animate="visible"
           variants={containerVariants}
-          className="flex flex-col gap-y-4 sm:gap-y-6"
+          className="flex flex-col gap-y-4 sm:gap-y-5"
         >
           <motion.h1
             variants={itemVariants}
-            className="text-balance font-semibold text-3xl capitalize leading-tight sm:text-4xl md:text-5xl"
+            className="text-balance font-semibold text-3xl leading-tight sm:text-4xl md:text-5xl"
           >
             {t("title")}
           </motion.h1>
@@ -56,9 +56,28 @@ export default function Method() {
             variants={itemVariants}
             className="font-normal text-base leading-relaxed sm:text-lg"
           >
-            {t("intro")}
+            {t("howToWorkParagraph1")}
+          </motion.p>
+          <motion.p
+            variants={itemVariants}
+            className="font-normal text-base leading-relaxed sm:text-lg"
+          >
+            {t("howToWorkParagraph2")}
+          </motion.p>
+          <motion.p
+            variants={itemVariants}
+            className="font-normal text-base leading-relaxed sm:text-lg"
+          >
+            {t("howToWorkParagraph3")}
           </motion.p>
         </motion.div>
+
+        <motion.h2
+          variants={itemVariants}
+          className="font-semibold text-xl leading-tight sm:text-2xl"
+        >
+          {t("principlesHeading")}
+        </motion.h2>
         <MethodItemsList methodContent={methodContent} />
 
         <motion.p
@@ -70,12 +89,12 @@ export default function Method() {
         <AnimatedButton
           motionVariants={navItemVariants}
           variant={"default"}
-          className="w-full text-base font-medium capitalize py-5 md:py-6"
+          className="w-full text-base font-medium py-5 md:py-6"
           onClick={() =>
             window.open("https://cal.com/kinuthiadavid/15min", "_blank")
           }
         >
-          {tCommon("bookIntro")}
+          {tCommon("scheduleIntro")}
         </AnimatedButton>
       </motion.div>
     </ContentSurface>

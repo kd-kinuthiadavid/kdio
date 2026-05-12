@@ -45,7 +45,7 @@ export default function HeaderBrandNav() {
             window.open("https://cal.com/kinuthiadavid/15min", "_blank")
           }
         >
-          {tCommon("bookIntro")}
+          {tCommon("scheduleIntro")}
         </AnimatedButton>
         <motion.div
           initial="hidden"

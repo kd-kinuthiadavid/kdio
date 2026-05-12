@@ -27,7 +27,7 @@ export default function Home() {
       >
         <motion.h1
           variants={itemVariants}
-          className="text-balance font-semibold text-3xl capitalize leading-tight sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl"
+          className="text-balance capitalize font-semibold text-3xl leading-tight sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl"
         >
           {t("heroTitle")}
         </motion.h1>
@@ -36,6 +36,12 @@ export default function Home() {
           className="max-w-prose font-normal text-base leading-relaxed sm:text-lg md:text-xl"
         >
           {t("heroBody")}
+        </motion.p>
+        <motion.p
+          variants={navItemVariants}
+          className="max-w-prose font-normal text-base leading-relaxed text-muted-foreground sm:text-lg md:text-xl"
+        >
+          {t("heroAvailability")}
         </motion.p>
         <motion.div
           initial="hidden"
@@ -46,17 +52,17 @@ export default function Home() {
           <AnimatedButton
             motionVariants={navItemVariants}
             variant={"default"}
-            className="w-full text-base font-medium capitalize py-5 sm:min-w-[12rem] sm:flex-1 md:py-6"
+            className="w-full text-base font-medium py-5 sm:min-w-[12rem] sm:flex-1 md:py-6"
             onClick={() =>
               window.open("https://cal.com/kinuthiadavid/15min", "_blank")
             }
           >
-            {tCommon("bookIntro")}
+            {tCommon("scheduleIntro")}
           </AnimatedButton>
           <AnimatedButton
             motionVariants={navItemVariants}
             variant={"outline"}
-            className="w-full text-base font-medium capitalize py-5 sm:min-w-[12rem] sm:flex-1 md:py-6"
+            className="w-full text-base font-medium py-5 sm:min-w-[12rem] sm:flex-1 md:py-6"
             onClick={() => router.push("/work")}
           >
             {tCommon("seeSelectedWork")}

@@ -44,10 +44,16 @@ export default async function Contact() {
       >
         <motion.h1
           variants={itemVariants}
-          className="text-balance font-semibold text-4xl capitalize leading-tight sm:text-5xl"
+          className="text-balance font-semibold text-4xl leading-tight sm:text-5xl"
         >
           {t("title")}
         </motion.h1>
+        <motion.p
+          variants={navItemVariants}
+          className="max-w-prose font-normal text-base leading-relaxed text-muted-foreground sm:text-lg"
+        >
+          {t("intro")}
+        </motion.p>
         <motion.div
           initial="hidden"
           animate="visible"
@@ -74,11 +80,11 @@ export default async function Contact() {
                   <p className="font-semibold">{contact.name}</p>
                   <ArrowUpRight
                     size={20}
-                    className="shrink-0 text-gray-600"
+                    className="shrink-0 text-muted-foreground"
                     aria-hidden
                   />
                 </Link>
-                <p className="w-fit max-w-full font-medium text-gray-500">
+                <p className="w-fit max-w-full font-medium text-muted-foreground">
                   {contact.description}
                 </p>
               </motion.div>

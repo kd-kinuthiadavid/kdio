@@ -1,23 +1,25 @@
 {
   "metadata": {
     "title": "David Kinuthia",
-    "description": "Design-getriebener, nutzerzentrierter Produktingenieur"
+    "description": "Senior-Produktingenieur — Full-Stack-Web, KI-taugliche Features und Lieferung mit Produktsinn"
   },
   "nav": {
     "home": "start",
-    "method": "methode",
+    "about": "über mich",
+    "method": "Mit mir arbeiten",
     "work": "arbeit",
     "contact": "kontakt"
   },
   "brand": {
     "name": "David Kinuthia",
-    "role": "Product-Softwareingenieur"
+    "role": "Senior-Produktingenieur"
   },
   "common": {
-    "bookIntro": "15-Min-Intro buchen",
+    "bookIntro": "Lass uns reden",
+    "scheduleIntro": "15-Min-Intro buchen",
     "cancel": "Abbrechen",
     "openMenu": "Menü öffnen",
-    "seeSelectedWork": "ausgewählte arbeiten ansehen",
+    "seeSelectedWork": "Ausgewählte Arbeiten ansehen",
     "refresh": "Aktualisieren"
   },
   "language": {
@@ -30,14 +32,31 @@
     "sw": "Kiswahili"
   },
   "home": {
-    "heroTitle": "Skalierbare Lösungen gestalten, wo Engineering auf Empathie trifft.",
-    "heroBody": "Hallo, ich heiße David Kinuthia. Ich bin Product-Softwareingenieur in Nairobi. Ich verbinde technische Tiefe mit Nutzerempathie, um Produkte zu bauen, die zuverlässig, intuitiv und bedeutsam sind—und außergewöhnliche Erlebnisse vom Backend bis zur Oberfläche liefern."
+    "heroTitle": "Senior-Produktingenieur, der die Lücke zwischen einer starken Idee und Software, die live geht, schließt.",
+    "heroBody": "Ich baue Full-Stack-Webprodukte, KI-gestützte Workflows und die Infrastruktur darunter für Teams und Gründer, die eine Person von Architektur bis zum letzten Pixel brauchen. Ich bin in Nairobi und arbeite mit Menschen weltweit.",
+    "heroAvailability": "Ich bin offen für Senior-Vollzeitrollen, Verträge ab drei Monaten und Beratung für frühe Startups."
+  },
+  "about": {
+    "title": "Über mich",
+    "identity": "Ich bin ein Full-Stack-Ingenieur, der in Produkten denkt. Nach Jahren Lieferung über Frontend, Backend, Integrationen und Betrieb habe ich gelernt: Die beste Arbeit beginnt mit besseren Fragen—nicht mit einem längeren Backlog.",
+    "edge": "Ich gedeihe dort, wo technische Tiefe auf Produktintuition trifft: unklare Arbeit eingrenzen, MVPs bauen, aus denen man lernt, und Systeme härten, wenn sie zählen. Gründer und Leads holen mich oft, wenn jemand ein Problem End-to-End tragen soll—ohne ständiges Händchenhalten.",
+    "personal": "Außerhalb von Code tanken Lauftraining, Lesen darüber, wie Teams bauen, und guter Kaffee mit Freunden.",
+    "ctaContact": "Kontakt aufnehmen"
   },
   "work": {
-    "title": "Arbeit",
-    "projects": "projekte",
+    "title": "Ausgewählte Arbeiten",
+    "projects": {
+      "title": "Projekte",
+      "invoicething": {
+        "name": "Invoicething",
+        "context": "Eigenständiges Produkt",
+        "problem": "Dienstleister brauchen Rechnungsstellung und Zahlungen, die ruhig wirken—nicht wie ein zweiter Job.",
+        "solution": "Ich habe ein Full-Stack-Produkt mit Abos, gehosteten Dokumenten, E-Mail-Flows und Zahlungsrails für echtes Geld entworfen und ausgeliefert.",
+        "result": "Es ist heute live als fokussiertes Tool, das Betreiber ohne Handbuch annehmen können.",
+        "techLine": "Next.js · NestJS · Supabase · Stripe · Polar · Vercel · Docker · Sentry"
+      }
+    },
     "experience": "erfahrung",
-    "invoicethingDescription": "Rechnungsstellung für Dienstleister und Unternehmen. Auf Einfachheit ausgelegt.",
     "capacityFullTime": "Vollzeit",
     "capacityContract": "Vertrag",
     "capacityPartTime": "Teilzeit",
@@ -52,14 +71,18 @@
   },
   "contact": {
     "title": "Kontakt",
+    "intro": "Wenn du etwas Ehrgeiziges baust und einen Ingenieur brauchst, der von der Entscheidung bis zur Lieferung trägt, freue ich mich auf deine Nachricht. Wähle einfach den Kanal, der dir am leichtesten fällt.",
     "calDescription": "15-minütiges Intro-Gespräch buchen",
     "emailDescription": "Schreib mir eine E-Mail",
     "linkedinDescription": "Lass uns auf LinkedIn vernetzen"
   },
   "method": {
-    "title": "Methode",
-    "intro": "Ich glaube, Software kann und sollte noch magisch wirken. Deshalb leitet mich eine Reihe grundlegender Prinzipien—Handwerk, Qualität und Design Thinking. Diese Prinzipien sind:",
-    "outro": "Wenn du diese Werte teilst, sind wir schon auf einer Wellenlänge—lass uns verbinden und darüber sprechen, wie wir gemeinsam etwas Schönes und Wirkungsvolles schaffen.",
+    "title": "So arbeitest du mit mir",
+    "principlesHeading": "Leitprinzipien",
+    "howToWorkParagraph1": "Ich bin verfügbar für Senior-Vollzeitrollen, Verträge ab drei Monaten und Beratung für frühe Startups.",
+    "howToWorkParagraph2": "Am besten arbeite ich mit Teams, die ambitionierte Produkte bauen und jemanden brauchen, der Probleme End-to-End trägt—von Architektur und Trade-offs bis zu Oberflächendetails, die Nutzer täglich spüren.",
+    "howToWorkParagraph3": "Wenn das zu eurem Team passt, besucht die Kontaktseite oder plant ein kurzes Intro—ich würde gern sehen, ob es passt.",
+    "outro": "Wenn das bei dir ankommt, höre ich gern, was du baust. Melde dich und ich kläre gern mit dir, ob ich der richtige Ingenieur bin.",
     "userCentric": {
       "title": "nutzerzentriert",
       "subTitle": "Für Nutzer gestalten, für Wirkung bauen.",

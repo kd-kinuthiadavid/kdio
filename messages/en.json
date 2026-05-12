@@ -1,23 +1,25 @@
 {
   "metadata": {
     "title": "David Kinuthia",
-    "description": "Design-led and user-centered product engineer"
+    "description": "Senior product engineer — full-stack web, AI-ready features, and shipping with product sense"
   },
   "nav": {
     "home": "home",
-    "method": "method",
+    "about": "about",
+    "method": "Work with me",
     "work": "work",
     "contact": "contact"
   },
   "brand": {
     "name": "David Kinuthia",
-    "role": "Product Software Engineer"
+    "role": "Senior product engineer"
   },
   "common": {
-    "bookIntro": "Book a 15-min Intro",
+    "bookIntro": "Let's talk",
+    "scheduleIntro": "Schedule a 15-min intro",
     "cancel": "Cancel",
     "openMenu": "Open menu",
-    "seeSelectedWork": "see selected work",
+    "seeSelectedWork": "See selected work",
     "refresh": "Refresh"
   },
   "language": {
@@ -30,14 +32,31 @@
     "sw": "Kiswahili"
   },
   "home": {
-    "heroTitle": "Crafting Scalable Solutions Where Engineering Meets Empathy.",
-    "heroBody": "Hello, my name is David Kinuthia. I am a product software engineer based in Nairobi. I blend technical expertise and user empathy to build products that are reliable, intuitive, and meaningful—delivering exceptional experiences from backend to interface."
+    "heroTitle": "Senior product engineer - closing the gap between a strong idea and software that ships.",
+    "heroBody": "I build full-stack web products, AI-powered workflows, and the infrastructure behind them for teams and founders who want one owner from architecture to the last pixel. I'm based in Nairobi and work with people around the world.",
+    "heroAvailability": "I'm open to senior full-time roles, contracts from three months, and advisory work with early-stage startups."
+  },
+  "about": {
+    "title": "About",
+    "identity": "I'm a full-stack engineer who thinks in products. After years shipping across frontend, backend, integrations, and delivery, I've learned that the best work starts with sharper questions—not a longer backlog.",
+    "edge": "I thrive where technical depth meets product intuition: scoping ambiguous work, building MVPs you can learn from, and hardening systems when they start to matter. Founders and leads tend to bring me in when they need someone who can own a problem end-to-end without constant hand-holding.",
+    "personal": "Outside of code, I recharge by running, reading about how teams build, and chasing good coffee with friends.",
+    "ctaContact": "Get in touch"
   },
   "work": {
-    "title": "Work",
-    "projects": "projects",
+    "title": "Selected work",
+    "projects": {
+      "title": "Projects",
+      "invoicething": {
+        "name": "Invoicething",
+        "context": "Independent product",
+        "problem": "Service businesses need invoicing and payments that feel calm, not like a second job.",
+        "solution": "I designed and shipped a full-stack product with subscriptions, hosted documents, email flows, and payment rails wired for real money movement.",
+        "result": "It's live today as a focused tool operators can adopt without a training manual.",
+        "techLine": "Next.js · NestJS · Supabase · Stripe · Polar · Vercel · Docker · Sentry"
+      }
+    },
     "experience": "experience",
-    "invoicethingDescription": "Invoicing built for service professionals & businesses. Designed for simplicity.",
     "capacityFullTime": "Full-Time",
     "capacityContract": "Contract",
     "capacityPartTime": "Part-Time",
@@ -52,14 +71,18 @@
   },
   "contact": {
     "title": "Contact",
+    "intro": "If you're building something ambitious and need an engineer who can carry it from decision to delivery, I'd love to hear from you. Pick whatever channel is easiest.",
     "calDescription": "Book a 15-minute intro call",
-    "emailDescription": "Shoot me an email",
-    "linkedinDescription": "Let's connect on LinkedIn"
+    "emailDescription": "Send me an email",
+    "linkedinDescription": "Connect on LinkedIn"
   },
   "method": {
-    "title": "Method",
-    "intro": "I believe that software can still, and perhaps should still, feel magical. Therefore, my approach to product development is guided by a set of foundational principles rooted in craftsmanship, quality and design-thinking. These principles are:",
-    "outro": "If you share these values, then we're already on the same page and we should definitely connect and discuss how we can create something beautiful and impactful together.",
+    "title": "How to work with me",
+    "principlesHeading": "Guiding principles",
+    "howToWorkParagraph1": "I'm available for senior full-time roles, contract engagements from three months, and advisory work with early-stage startups.",
+    "howToWorkParagraph2": "I work best with teams building ambitious products who need someone to own problems end-to-end—from architecture and tradeoffs to the interface details users feel every day.",
+    "howToWorkParagraph3": "If that sounds like your team, visit the contact page or schedule a short intro—I'd love to see if there's a fit.",
+    "outro": "If this resonates with you, I'd love to hear what you're building. Reach out and I'll gladly discuss whether I'm the right engineer to help.",
     "userCentric": {
       "title": "user-centric",
       "subTitle": "Design for the user, build for the impact.",
