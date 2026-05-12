@@ -19,6 +19,8 @@
     "scheduleIntro": "Schedule a 15-min intro",
     "cancel": "Cancel",
     "openMenu": "Open menu",
+    "mainNavigation": "Main navigation",
+    "closeMenu": "Close",
     "seeSelectedWork": "See selected work",
     "refresh": "Refresh"
   },

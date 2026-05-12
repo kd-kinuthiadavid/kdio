@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { Drawer as DrawerPrimitive } from "vaul";
+import { Drawer as DrawerPrimitive, Handle as DrawerHandlePrimitive } from "vaul";
 
 import { cn } from "@/lib/utils";
 
@@ -28,7 +28,10 @@ const DrawerOverlay = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <DrawerPrimitive.Overlay
     ref={ref}
-    className={cn("fixed inset-0 z-50 bg-black/80", className)}
+    className={cn(
+      "fixed inset-0 z-50 bg-black/70 supports-[backdrop-filter]:bg-black/55 supports-[backdrop-filter]:backdrop-blur-[2px]",
+      className
+    )}
     {...props}
   />
 ));
@@ -43,12 +46,18 @@ const DrawerContent = React.forwardRef<
     <DrawerPrimitive.Content
       ref={ref}
       className={cn(
-        "fixed inset-x-0 bottom-0 z-50 mt-24 flex h-auto flex-col rounded-t-[10px] border bg-background",
+        "fixed inset-x-0 bottom-0 z-50 mt-24 flex max-h-[min(92dvh,640px)] min-h-0 flex-col rounded-t-[10px] border bg-background shadow-[0_-10px_40px_rgba(0,0,0,0.12)] outline-none focus:outline-none dark:shadow-[0_-10px_40px_rgba(0,0,0,0.45)]",
         className
       )}
       {...props}
     >
-      <div className="mx-auto mt-4 h-2 w-[100px] rounded-full bg-primary/20" />
+      <DrawerHandlePrimitive
+        className={cn(
+          "mx-auto flex shrink-0 cursor-grab touch-none items-center justify-center px-6 pt-3 pb-2 active:cursor-grabbing"
+        )}
+      >
+        <span className="block h-1.5 w-12 rounded-full bg-muted-foreground/40" />
+      </DrawerHandlePrimitive>
       {children}
     </DrawerPrimitive.Content>
   </DrawerPortal>
@@ -60,7 +69,7 @@ const DrawerHeader = ({
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => (
   <div
-    className={cn("grid gap-1.5 p-4 text-center sm:text-left", className)}
+    className={cn("grid gap-1.5 px-4 pb-2 pt-1 text-center sm:text-left", className)}
     {...props}
   />
 );
@@ -71,7 +80,10 @@ const DrawerFooter = ({
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => (
   <div
-    className={cn("mt-auto flex flex-col gap-2 p-4", className)}
+    className={cn(
+      "mt-auto flex flex-col gap-2 border-t border-border/60 bg-background px-4 pb-[max(1rem,env(safe-area-inset-bottom))] pt-3",
+      className
+    )}
     {...props}
   />
 );
