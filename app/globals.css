@@ -74,18 +74,123 @@ body {
   }
   body {
     @apply text-foreground;
+    position: relative;
+    /* Solid page fill only — grid lives on ::before so it can be masked off at edges */
     background-color: hsl(var(--background));
+  }
+
+  /* Repeating grid, fixed to viewport; radial mask fades grid to nothing toward all edges */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
     background-image:
       linear-gradient(
         to right,
-        hsl(var(--foreground) / 0.028) 1px,
+        hsl(var(--foreground) / 0.03) 1px,
         transparent 1px
       ),
       linear-gradient(
         to bottom,
-        hsl(var(--foreground) / 0.028) 1px,
+        hsl(var(--foreground) / 0.03) 1px,
         transparent 1px
       );
     background-size: 2.875rem 2.875rem;
+    /* Mid field keeps full grid; outer band softens then fully releases (transparent) */
+    -webkit-mask-image: radial-gradient(
+      ellipse 110% 105% at 50% 50%,
+      #000 0%,
+      #000 12%,
+      rgba(0, 0, 0, 0.78) 45%,
+      rgba(0, 0, 0, 0.35) 52%,
+      rgba(0, 0, 0, 0.08) 88%,
+      transparent 100%
+    );
+    mask-image: radial-gradient(
+      ellipse 110% 105% at 50% 50%,
+      #000 0%,
+      #000 12%,
+      rgba(0, 0, 0, 0.78) 45%,
+      rgba(0, 0, 0, 0.35) 52%,
+      rgba(0, 0, 0, 0.08) 88%,
+      transparent 100%
+    );
+    mask-mode: alpha;
+  }
+
+  /* Frost + page tint at perimeter; masked so center stays clear; blurs grid in the rim */
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image:
+      linear-gradient(
+        to bottom,
+        hsl(var(--background)) 0%,
+        hsl(var(--background) / 0.72) 7%,
+        hsl(var(--background) / 0.28) 22%,
+        transparent 48%
+      ),
+      linear-gradient(
+        to top,
+        hsl(var(--background)) 0%,
+        hsl(var(--background) / 0.72) 7%,
+        hsl(var(--background) / 0.28) 22%,
+        transparent 48%
+      ),
+      linear-gradient(
+        to right,
+        hsl(var(--background)) 0%,
+        hsl(var(--background) / 0.68) 6%,
+        hsl(var(--background) / 0.26) 20%,
+        transparent 46%
+      ),
+      linear-gradient(
+        to left,
+        hsl(var(--background)) 0%,
+        hsl(var(--background) / 0.68) 6%,
+        hsl(var(--background) / 0.26) 20%,
+        transparent 46%
+      ),
+      radial-gradient(
+        ellipse 120% 115% at 50% 50%,
+        transparent 36%,
+        hsl(var(--background) / 0.22) 68%,
+        hsl(var(--background) / 0.88) 100%
+      );
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+    /* Donut: no overlay in the calm center; frost ramps up into corners & edges */
+    -webkit-mask-image: radial-gradient(
+      ellipse 102% 99% at 50% 50%,
+      transparent 0%,
+      transparent 26%,
+      rgba(0, 0, 0, 0.35) 52%,
+      rgba(0, 0, 0, 0.78) 78%,
+      #000 100%
+    );
+    mask-image: radial-gradient(
+      ellipse 102% 99% at 50% 50%,
+      transparent 0%,
+      transparent 26%,
+      rgba(0, 0, 0, 0.35) 52%,
+      rgba(0, 0, 0, 0.78) 78%,
+      #000 100%
+    );
+    mask-mode: alpha;
+  }
+
+  @media (prefers-reduced-transparency: reduce) {
+    body::after {
+      -webkit-backdrop-filter: none;
+      backdrop-filter: none;
+    }
   }
 }

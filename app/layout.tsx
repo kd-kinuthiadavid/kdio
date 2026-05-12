@@ -33,7 +33,7 @@ export default function RootLayout({
         />
       </head>
       <body className={`${raleway.className} antialiased`}>
-        <div className="flex min-h-screen flex-col">
+        <div className="relative z-10 flex min-h-screen flex-col">
           <header
             className={`flex shrink-0 items-center justify-between gap-3 ${gutterX} ${gutterY}`}
           >
