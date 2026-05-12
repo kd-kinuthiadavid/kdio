@@ -1,6 +1,6 @@
 "use client";
 
-import { Menu } from "lucide-react";
+import { Menu, Layers } from "lucide-react";
 import { usePathname } from "@/i18n/navigation";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
@@ -52,7 +52,14 @@ export default function MobileNav() {
       <DrawerContent>
         <div className="mx-auto w-full max-w-sm">
           <DrawerHeader>
-            <DrawerTitle>{tBrand("name")}</DrawerTitle>
+            <DrawerTitle className="flex items-center justify-center gap-2 text-left sm:justify-start">
+              <Layers
+                className="size-6 shrink-0 text-primary"
+                strokeWidth={2}
+                aria-hidden
+              />
+              <span>{tBrand("name")}</span>
+            </DrawerTitle>
             <DrawerDescription>{tBrand("role")}</DrawerDescription>
           </DrawerHeader>
           <motion.nav

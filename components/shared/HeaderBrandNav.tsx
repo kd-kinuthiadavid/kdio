@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Layers } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 import { containerVariants, navItemVariants } from "@/app/motionVariants";
@@ -28,9 +29,14 @@ export default function HeaderBrandNav() {
           variants={navItemVariants}
           prefetch={true}
           href="/"
-          className="block truncate text-lg font-semibold sm:text-xl"
+          className="flex min-w-0 max-w-full items-center gap-2 text-lg font-semibold sm:text-xl"
         >
-          {tBrand("name")}
+          <Layers
+            className="size-6 shrink-0 text-primary sm:size-7"
+            strokeWidth={2}
+            aria-hidden
+          />
+          <span className="truncate">{tBrand("name")}</span>
         </MotionLink>
       </motion.div>
       <Navigation />
