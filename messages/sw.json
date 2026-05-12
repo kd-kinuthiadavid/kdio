@@ -1,0 +1,102 @@
+{
+  "metadata": {
+    "title": "David Kinuthia",
+    "description": "Mhandisi wa bidhaa anayeongozwa na muundo na kuangalia watumiaji"
+  },
+  "nav": {
+    "home": "nyumbani",
+    "method": "njia",
+    "work": "kazi",
+    "contact": "mawasiliano"
+  },
+  "brand": {
+    "name": "David Kinuthia",
+    "role": "Mhandisi wa programu ya bidhaa"
+  },
+  "common": {
+    "bookIntro": "Weka miadi ya utangulizi wa dakika 15",
+    "cancel": "Ghairi",
+    "openMenu": "Fungua menyu",
+    "seeSelectedWork": "ona kazi zilizochaguliwa",
+    "refresh": "Onyesha upya"
+  },
+  "language": {
+    "label": "Lugha",
+    "en": "English",
+    "es": "Español",
+    "fr": "Français",
+    "de": "Deutsch",
+    "pt": "Português",
+    "sw": "Kiswahili"
+  },
+  "home": {
+    "heroTitle": "Kuunda suluhisho zinazoweza kupanuka ambapo uhandisi ukikutana na uelewa wa hisia.",
+    "heroBody": "Habari, jina langu ni David Kinuthia. Mimi ni mhandisi wa programu ya bidhaa nikiwa Nairobi. Ninachanganya ujuzi wa kiufundi na uelewa wa mtumiaji ili kuunda bidhaa thabiti, rahisi kuelewa, na zenye maana—nikitoa matumizi bora kutoka backend hadi kiolesura."
+  },
+  "work": {
+    "title": "Kazi",
+    "projects": "miradi",
+    "experience": "uzoefu",
+    "invoicethingDescription": "Utoaji wa ankara kwa wataalamu wa huduma na biashara. Umeundwa kwa urahisi.",
+    "capacityFullTime": "Muda kamili",
+    "capacityContract": "Mkataba",
+    "capacityPartTime": "Muda wa nusu",
+    "expChurpyDates": "Ago 2022 - sasa",
+    "expChurpyPosition": "Mhandisi mkuu wa bidhaa",
+    "expProductNotesDates": "Okt 2024 - Mac 2025",
+    "expProductNotesPosition": "Mhandisi mkuu wa full stack",
+    "expApolloDates": "Apr 2023 - Mac 2024",
+    "expApolloPosition": "Mhandisi mkuu wa full stack",
+    "expTwendeDates": "Okt 2018 - Jul 2022",
+    "expTwendePosition": "Mhandisi wa frontend"
+  },
+  "contact": {
+    "title": "Mawasiliano",
+    "calDescription": "Weka simu ya utangulizi ya dakika 15",
+    "emailDescription": "Nitumie barua pepe",
+    "linkedinDescription": "Tuunganishane kwenye LinkedIn"
+  },
+  "method": {
+    "title": "Njia",
+    "intro": "Naamini programu bado inaweza, na labda inapaswa, kuonekana kama maajabu. Kwa hiyo maendeleo ya bidhaa yangu yanatawaliwa na kanuni za msingi za ufanisi, ubora na mawazo ya muundo. Kanuni hizi ni:",
+    "outro": "Ikiwa unashiriki thamani hizi, tayari tuko kwenye ukurasa mmoja—hebu tuunganishe na tuzungumze jinsi ya kuunda kitu kizuri na chenye athari pamoja.",
+    "userCentric": {
+      "title": "kuzingatia mtumiaji",
+      "subTitle": "Tengeneza kwa mtumiaji, jenga kwa athari.",
+      "description": "Bidhaa zenye athari halisi hutatua masuala halisi kwa njia ya kueleweka na asili. Kwa kujihusisha na safari ya mtumiaji, nahakikisha suluhisho zangu za kiufundi zinabadilishwa kuwa matumizi yenye maana. Natafuta timu zinazopekeza uelewa na kujali watu wanaotumia bidhaa."
+    },
+    "quality": {
+      "title": "Ubora",
+      "subTitle": "Ndio, toa haraka—lakini usitoe takataka.",
+      "description": "Kasi ni muhimu, lakini ubora haupaswi kupotezwa kwa kasi. Ninalenga kiwango cha ufanisi kinachotoa suluhisho thabiti, zinazoweza kupanuka, na za kupendeza. Lengo langu ni bidhaa zinazodumu, si tu kukamilisha tarehe. Nataka kushirikiana na timu zinazopenda undani."
+    },
+    "collaboration": {
+      "title": "Ushirikiano",
+      "subTitle": "Bidhaa bora hutoka akili mbalimbali zinazofanya kazi pamoja.",
+      "description": "Ninastawi katika mazingira ya kazi pamoja ambapo wahandisi, wabunifu, na timu ya bidhaa wanajenga kitu kikubwa kuliko jumla ya sehemu. Natafuta fursa ambapo kutatua matatizo kwa pamoja na umiliki wa pamoja vinahimizwa."
+    },
+    "iteration": {
+      "title": "Rudia",
+      "subTitle": "Ukamilifu upatikana kwa kurudia, sio katika toleo moja.",
+      "description": "Bidhaa kuu huzaliwa kupitia mizunguko ya kujifunza, kurudia, na kuboresha. Ninaunga mkono MVP zinazoruhusu maoni ya haraka na uboreshaji endelevu. Natafuta washirika wanathamini maoni, wanaelewa umuhimu wa kurudia, na wanakubali kujifunza kuendelea."
+    },
+    "simplicity": {
+      "title": "Urahisi",
+      "subTitle": "Rahisi ni nguvu.",
+      "description": "Katika usanifu wa programu na matumizi, urahisi ni muhimu. Suluhisho za kupendeza mara nyingi ni rahisi; utata unapaswa kuja tu inapotoa thamani halisi. Natafuta timu zinazothamini uwazi katika nambari na muundo."
+    },
+    "humanCenteredAi": {
+      "title": "AI inayoelekezwa kwa binadamu",
+      "subTitle": "Tengeneza mifumo mahiri inayoboresha matumizi ya binadamu.",
+      "description": "Naamini jukumu la AI ni kuboresha ulimwengu kwa binadamu. Nainuliwa na viongozi wa maadili katika teknolojia kama Tristan Harris na Aza Raskin. Natafuta timu zinazopekeza muundo na maendeleo yanayoelekezwa kwa binadamu na zilizojitolea kutumia AI kuboresha matumizi ya mtumiaji."
+    }
+  },
+  "notFound": {
+    "title": "Ukurasa haupatikani!",
+    "body": "Ukurasa unaoutafuta haupo. Tafadhali rudi kwenye ukurasa wa nyumbani au ukurasa mwingine wa tovuti hii. Asante."
+  },
+  "error": {
+    "title": "Kitu kimeenda vibaya!",
+    "body": "Hitilafu imetokea wakati wa kupakia ukurasa huu. Tafadhali jaribu tena baadaye."
+  }
+}

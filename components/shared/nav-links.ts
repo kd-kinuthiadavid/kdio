@@ -1,11 +1,11 @@
-export type NavLinkItem = {
-  href: string;
-  label: string;
+export type NavItem = {
+  href: "/" | "/method" | "/work" | "/contact";
+  labelKey: "home" | "method" | "work" | "contact";
 };
 
-export const NAV_LINKS: NavLinkItem[] = [
-  { href: "/", label: "home" },
-  { href: "/method", label: "method" },
-  { href: "/work", label: "work" },
-  { href: "/contact", label: "contact" },
-];
+export const NAV_ITEMS: readonly NavItem[] = [
+  { href: "/", labelKey: "home" },
+  { href: "/method", labelKey: "method" },
+  { href: "/work", labelKey: "work" },
+  { href: "/contact", labelKey: "contact" },
+] as const;

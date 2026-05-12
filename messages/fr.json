@@ -1,0 +1,102 @@
+{
+  "metadata": {
+    "title": "David Kinuthia",
+    "description": "Ingénieur produit guidé par le design et centré sur l’humain"
+  },
+  "nav": {
+    "home": "accueil",
+    "method": "méthode",
+    "work": "travaux",
+    "contact": "contact"
+  },
+  "brand": {
+    "name": "David Kinuthia",
+    "role": "Ingénieur logiciel produit"
+  },
+  "common": {
+    "bookIntro": "Réserver un intro de 15 min",
+    "cancel": "Annuler",
+    "openMenu": "Ouvrir le menu",
+    "seeSelectedWork": "voir des réalisations",
+    "refresh": "Actualiser"
+  },
+  "language": {
+    "label": "Langue",
+    "en": "English",
+    "es": "Español",
+    "fr": "Français",
+    "de": "Deutsch",
+    "pt": "Português",
+    "sw": "Kiswahili"
+  },
+  "home": {
+    "heroTitle": "Concevoir des solutions évolutives où l’ingénierie rencontre l’empathie.",
+    "heroBody": "Bonjour, je m’appelle David Kinuthia. Je suis ingénieur logiciel produit à Nairobi. Je combine expertise technique et empathie utilisateur pour créer des produits fiables, intuitifs et porteurs de sens—des expériences exceptionnelles du backend à l’interface."
+  },
+  "work": {
+    "title": "Travaux",
+    "projects": "projets",
+    "experience": "expérience",
+    "invoicethingDescription": "La facturation pour les professionnels de services et les entreprises. Pensée pour la simplicité.",
+    "capacityFullTime": "Temps plein",
+    "capacityContract": "Contrat",
+    "capacityPartTime": "Temps partiel",
+    "expChurpyDates": "août 2022 - présent",
+    "expChurpyPosition": "Ingénieur produit lead",
+    "expProductNotesDates": "oct. 2024 - mars 2025",
+    "expProductNotesPosition": "Ingénieur full-stack senior",
+    "expApolloDates": "avr. 2023 - mars 2024",
+    "expApolloPosition": "Ingénieur full-stack senior",
+    "expTwendeDates": "oct. 2018 - juil. 2022",
+    "expTwendePosition": "Ingénieur front-end"
+  },
+  "contact": {
+    "title": "Contact",
+    "calDescription": "Réserver un appel d’introduction de 15 minutes",
+    "emailDescription": "Envoyez-moi un e-mail",
+    "linkedinDescription": "Connectons-nous sur LinkedIn"
+  },
+  "method": {
+    "title": "Méthode",
+    "intro": "Je crois que le logiciel peut, et peut-être devrait encore, sembler magique. Mon approche du développement produit s’appuie sur des principes d’artisanat, de qualité et de design thinking. Voici ces principes :",
+    "outro": "Si vous partagez ces valeurs, nous sommes déjà sur la même longueur d’onde : parlons de ce que nous pouvons créer ensemble, avec impact et beauté.",
+    "userCentric": {
+      "title": "centré utilisateur",
+      "subTitle": "Concevoir pour l’utilisateur, construire pour l’impact.",
+      "description": "Les produits vraiment impactants résolvent des problèmes réels de manière intuitive et naturelle. En m’immergeant dans le parcours utilisateur, je veille à ce que mes solutions techniques deviennent des expériences significatives. Je cherche des équipes qui placent l’empathie au centre et se soucient profondément des personnes qui utilisent le produit."
+    },
+    "quality": {
+      "title": "Qualité",
+      "subTitle": "Oui, livrer vite—mais ne livrez pas n’importe quoi.",
+      "description": "Aller vite compte, mais la qualité ne doit pas être sacrifiée sur l’autel de la vitesse. Je vise un niveau d’artisanat qui produit des solutions fiables, évolutives et élégantes. Mon objectif : des produits qui durent, pas seulement des deadlines tenues. Je veux collaborer avec des équipes passionnées par le détail."
+    },
+    "collaboration": {
+      "title": "Collaboration",
+      "subTitle": "Les meilleurs produits naissent d’esprits divers qui travaillent ensemble.",
+      "description": "Je m’épanouis dans des environnements interfonctionnels où ingénierie, design et produit construisent quelque chose de plus grand que la somme des parties. Je recherche des contextes où la résolution collaborative et la co-responsabilité sont encouragées."
+    },
+    "iteration": {
+      "title": "Itération",
+      "subTitle": "La perfection se trouve dans l’itération, pas en une seule release.",
+      "description": "Les grands produits naissent de cycles d’apprentissage, d’itération et d’affinage. Je défends des MVP qui permettent un feedback rapide et une amélioration continue. Je cherche des partenaires qui valorisent le feedback, comprennent l’itération et embrassent l’apprentissage continu."
+    },
+    "simplicity": {
+      "title": "Simplicité",
+      "subTitle": "La simplicité est puissante.",
+      "description": "En architecture comme en expérience utilisateur, la simplicité est essentielle. Les solutions les plus élégantes sont souvent les plus simples ; la complexité seulement lorsqu’elle apporte une valeur réelle. Je cherche des équipes qui valorisent la clarté du code comme du design."
+    },
+    "humanCenteredAi": {
+      "title": "IA centrée sur l’humain",
+      "subTitle": "Concevoir des systèmes intelligents qui améliorent l’expérience humaine.",
+      "description": "Je crois que le rôle de l’IA est d’optimiser le monde pour les humains. Je m’inspire de leaders éthiques comme Tristan Harris et Aza Raskin. Je cherche des équipes qui priorisent le design et le développement centrés sur l’humain et s’engagent à utiliser l’IA pour enrichir l’expérience utilisateur."
+    }
+  },
+  "notFound": {
+    "title": "Page introuvable !",
+    "body": "La page que vous cherchez n’existe pas. Revenez à l’accueil ou à une autre page du site. Merci."
+  },
+  "error": {
+    "title": "Une erreur s’est produite !",
+    "body": "Une erreur est survenue lors du chargement de cette page. Veuillez réessayer plus tard."
+  }
+}

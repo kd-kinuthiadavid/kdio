@@ -1,0 +1,102 @@
+{
+  "metadata": {
+    "title": "David Kinuthia",
+    "description": "Ingeniero de producto centrado en el diseño y en las personas"
+  },
+  "nav": {
+    "home": "inicio",
+    "method": "método",
+    "work": "trabajo",
+    "contact": "contacto"
+  },
+  "brand": {
+    "name": "David Kinuthia",
+    "role": "Ingeniero de software de producto"
+  },
+  "common": {
+    "bookIntro": "Reserva una intro de 15 min",
+    "cancel": "Cancelar",
+    "openMenu": "Abrir menú",
+    "seeSelectedWork": "ver trabajos seleccionados",
+    "refresh": "Actualizar"
+  },
+  "language": {
+    "label": "Idioma",
+    "en": "English",
+    "es": "Español",
+    "fr": "Français",
+    "de": "Deutsch",
+    "pt": "Português",
+    "sw": "Kiswahili"
+  },
+  "home": {
+    "heroTitle": "Creando soluciones escalables donde la ingeniería se encuentra con la empatía.",
+    "heroBody": "Hola, me llamo David Kinuthia. Soy ingeniero de software de producto en Nairobi. Combino rigor técnico y empatía con el usuario para construir productos fiables, intuitivos y con sentido—ofreciendo experiencias excepcionales del backend a la interfaz."
+  },
+  "work": {
+    "title": "Trabajo",
+    "projects": "proyectos",
+    "experience": "experiencia",
+    "invoicethingDescription": "Facturación pensada para profesionales de servicios y empresas. Diseñada para la sencillez.",
+    "capacityFullTime": "Tiempo completo",
+    "capacityContract": "Contrato",
+    "capacityPartTime": "Medio tiempo",
+    "expChurpyDates": "ago 2022 - actualidad",
+    "expChurpyPosition": "Ingeniero de producto líder",
+    "expProductNotesDates": "oct 2024 - mar 2025",
+    "expProductNotesPosition": "Ingeniero fullstack senior",
+    "expApolloDates": "abr 2023 - mar 2024",
+    "expApolloPosition": "Ingeniero fullstack senior",
+    "expTwendeDates": "oct 2018 - jul 2022",
+    "expTwendePosition": "Ingeniero frontend"
+  },
+  "contact": {
+    "title": "Contacto",
+    "calDescription": "Reserva una llamada introductoria de 15 minutos",
+    "emailDescription": "Escríbeme un correo",
+    "linkedinDescription": "Conectemos en LinkedIn"
+  },
+  "method": {
+    "title": "Método",
+    "intro": "Creo que el software todavía puede, y quizá debería, seguir pareciendo magia. Por eso mi enfoque al desarrollo de producto se guía por principios fundamentales de artesanía, calidad y pensamiento de diseño. Esos principios son:",
+    "outro": "Si compartes estos valores, ya estamos alineados: conectemos y veamos cómo crear algo hermoso e impactante juntos.",
+    "userCentric": {
+      "title": "centrado en el usuario",
+      "subTitle": "Diseña para el usuario, construye para el impacto.",
+      "description": "Los productos realmente impactantes resuelven problemas del mundo real de forma intuitiva y natural. Al integrarme en el recorrido del usuario, me aseguro de que mis soluciones técnicas se traduzcan en experiencias significativas. Busco equipos que prioricen la empatía y se preocupen profundamente por quienes usan el producto."
+    },
+    "quality": {
+      "title": "Calidad",
+      "subTitle": "Sí, entrega rápido—pero no entregues basura.",
+      "description": "Moverse rápido importa, pero la calidad no debería sacrificarse por velocidad. Busco un nivel de artesanía que dé soluciones fiables, escalables y elegantes. Mi objetivo es crear productos que duren, no solo cumplir fechas. Quiero colaborar con equipos apasionados por el detalle."
+    },
+    "collaboration": {
+      "title": "Colaboración",
+      "subTitle": "Los mejores productos nacen de mentes diversas trabajando juntas.",
+      "description": "Me desenvuelvo en entornos multifunción donde ingeniería, diseño y producto construyen algo mayor que la suma de sus partes. Busco oportunidades donde la resolución colaborativa de problemas y la responsabilidad compartida sean el estándar."
+    },
+    "iteration": {
+      "title": "Iteración",
+      "subTitle": "La perfección aparece iterando, no en un solo lanzamiento.",
+      "description": "Los grandes productos nacen de ciclos de aprendizaje, iteración y refinamiento. Defiendo MVPs que permiten feedback rápido y mejora continua. Busco socios que valoren el feedback, entiendan la iteración y abracen el aprendizaje constante."
+    },
+    "simplicity": {
+      "title": "Simplicidad",
+      "subTitle": "Lo simple es poderoso.",
+      "description": "En arquitectura y experiencia, la simplicidad es clave. Las soluciones más elegantes suelen ser las más simples; la complejidad solo cuando aporta valor real. Busco equipos que valoren la claridad en código y diseño."
+    },
+    "humanCenteredAi": {
+      "title": "IA centrada en las personas",
+      "subTitle": "Diseña sistemas inteligentes que mejoren la experiencia humana.",
+      "description": "Creo que el papel de la IA es optimizar el mundo para las personas. Me inspiran líderes éticos como Tristan Harris y Aza Raskin. Busco equipos que prioricen el diseño y desarrollo centrados en las personas y usen la IA para mejorar la experiencia de usuario."
+    }
+  },
+  "notFound": {
+    "title": "¡Página no encontrada!",
+    "body": "La página que buscas no existe. Vuelve al inicio u otra sección del sitio. Gracias."
+  },
+  "error": {
+    "title": "¡Algo salió mal!",
+    "body": "Ocurrió un error al cargar esta página. Inténtalo de nuevo más tarde."
+  }
+}

@@ -1,17 +1,20 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
 
-import {
-  containerVariants,
-  navItemVariants,
-} from "@/app/motionVariants";
+import { containerVariants, navItemVariants } from "@/app/motionVariants";
 import AnimatedButton from "@/components/shared/AnimatedButton";
+import LanguageSwitcher from "@/components/shared/LanguageSwitcher";
+import MobileNav from "@/components/shared/MobileNav";
 import Navigation from "@/components/shared/navigation";
 import ThemeToggle from "@/components/shared/ThemeToggle";
+import { Link } from "@/i18n/navigation";
 
 export default function HeaderBrandNav() {
+  const tBrand = useTranslations("brand");
+  const tCommon = useTranslations("common");
+
   const MotionLink = motion.create(Link);
   return (
     <div className="flex min-w-0 flex-1 flex-row items-center justify-start gap-3 sm:gap-4 md:justify-between md:gap-6 lg:gap-10">
@@ -27,27 +30,32 @@ export default function HeaderBrandNav() {
           href="/"
           className="block truncate text-lg font-semibold sm:text-xl"
         >
-          David Kinuthia
+          {tBrand("name")}
         </MotionLink>
       </motion.div>
       <Navigation />
-      <motion.div
-        initial="hidden"
-        animate="visible"
-        variants={navItemVariants}
-        className="ml-auto flex shrink-0 items-center gap-2 md:ml-0"
-      >
+      <div className="flex shrink-0 items-center gap-2">
+        <LanguageSwitcher />
         <ThemeToggle />
         <AnimatedButton
+          motionVariants={navItemVariants}
           variant="default"
           className="hidden shrink-0 text-sm font-medium capitalize sm:text-base md:inline-flex md:py-5 lg:py-6"
           onClick={() =>
             window.open("https://cal.com/kinuthiadavid/15min", "_blank")
           }
         >
-          Book a 15-min Intro
+          {tCommon("bookIntro")}
         </AnimatedButton>
-      </motion.div>
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          variants={containerVariants}
+          className="md:hidden"
+        >
+          <MobileNav />
+        </motion.div>
+      </div>
     </div>
   );
 }

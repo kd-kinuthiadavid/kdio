@@ -1,7 +1,10 @@
 "use client";
+
+import { useTranslations } from "next-intl";
+import { useEffect } from "react";
+
 import AnimatedButton from "@/components/shared/AnimatedButton";
-import React, { useEffect } from "react";
-import { navItemVariants } from "./motionVariants";
+import { navItemVariants } from "../motionVariants";
 
 const Error = ({
   error,
@@ -10,25 +13,24 @@ const Error = ({
   error: Error & { digest?: string };
   reset: () => void;
 }) => {
+  const t = useTranslations("error");
+  const tCommon = useTranslations("common");
+
   useEffect(() => {
-    // Log the error to an error reporting service
     console.error(error);
   }, [error]);
+
   return (
     <div className="flex flex-col gap-y-6 max-w-[70%] xl:max-w-[50%] w-full">
-      <h1 className="font-semibold text-5xl capitalize">
-        Something went wrong!
-      </h1>
-      <p className={`font-normal text-lg`}>
-        An error occurred while loading this page. Please try again later.
-      </p>
+      <h1 className="font-semibold text-5xl capitalize">{t("title")}</h1>
+      <p className="font-normal text-lg">{t("body")}</p>
       <AnimatedButton
         motionVariants={navItemVariants}
         variant={"default"}
         className="w-full text-base font-medium capitalize py-6"
         onClick={() => reset()}
       >
-        Refresh
+        {tCommon("refresh")}
       </AnimatedButton>
     </div>
   );

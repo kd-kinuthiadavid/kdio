@@ -1,30 +1,34 @@
 import * as motion from "framer-motion/client";
 import { ArrowUpRight } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 import Link from "next/link";
+
 import ContentSurface from "@/components/shared/ContentSurface";
 import {
   containerVariants,
   itemVariants,
   navItemVariants,
-} from "../motionVariants";
+} from "../../motionVariants";
 
-export default function Contact() {
+export default async function Contact() {
+  const t = await getTranslations("contact");
+
   const contacts = [
     {
       name: "Cal",
-      description: "Book a 15-minute intro call",
+      description: t("calDescription"),
       url: "https://cal.com/kinuthiadavid/15min",
       year: "2024",
     },
     {
       name: "Email",
-      description: "Shoot me an email",
+      description: t("emailDescription"),
       url: "mailto:david.kinuthia@gmail.com",
       year: "2024",
     },
     {
       name: "LinkedIn",
-      description: "Let's connect on LinkedIn",
+      description: t("linkedinDescription"),
       url: "https://www.linkedin.com/in/david-kinuthia/",
       year: "2024",
     },
@@ -42,7 +46,7 @@ export default function Contact() {
           variants={itemVariants}
           className="text-balance font-semibold text-4xl capitalize leading-tight sm:text-5xl"
         >
-          Contact
+          {t("title")}
         </motion.h1>
         <motion.div
           initial="hidden"
@@ -70,11 +74,11 @@ export default function Contact() {
                   <p className="font-semibold">{contact.name}</p>
                   <ArrowUpRight
                     size={20}
-                    className="shrink-0 text-muted-foreground"
+                    className="shrink-0 text-gray-600"
                     aria-hidden
                   />
                 </Link>
-                <p className="w-fit max-w-full font-medium text-muted-foreground">
+                <p className="w-fit max-w-full font-medium text-gray-500">
                   {contact.description}
                 </p>
               </motion.div>

@@ -1,17 +1,22 @@
 "use client";
+
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 import AnimatedButton from "@/components/shared/AnimatedButton";
 import ContentSurface from "@/components/shared/ContentSurface";
+import { useRouter } from "@/i18n/navigation";
 import {
   containerVariants,
   itemVariants,
   navItemVariants,
-} from "./motionVariants";
-import { useRouter } from "next/navigation";
+} from "../motionVariants";
 
 export default function Home() {
   const router = useRouter();
+  const t = useTranslations("home");
+  const tCommon = useTranslations("common");
+
   return (
     <ContentSurface className="w-full min-w-0 max-w-[min(100%,clamp(20rem,88vw,56rem))]">
       <motion.div
@@ -24,16 +29,13 @@ export default function Home() {
           variants={itemVariants}
           className="text-balance font-semibold text-3xl capitalize leading-tight sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl"
         >
-          Crafting Scalable Solutions Where Engineering Meets Empathy.
+          {t("heroTitle")}
         </motion.h1>
         <motion.p
           variants={navItemVariants}
           className="max-w-prose font-normal text-base leading-relaxed sm:text-lg md:text-xl"
         >
-          Hello, my name is David Kinuthia. I am a product software engineer
-          based in Nairobi. I blend technical expertise and user empathy to
-          build products that are reliable, intuitive, and meaningful—
-          delivering exceptional experiences from backend to interface.
+          {t("heroBody")}
         </motion.p>
         <motion.div
           initial="hidden"
@@ -49,7 +51,7 @@ export default function Home() {
               window.open("https://cal.com/kinuthiadavid/15min", "_blank")
             }
           >
-            Book a 15-min Intro
+            {tCommon("bookIntro")}
           </AnimatedButton>
           <AnimatedButton
             motionVariants={navItemVariants}
@@ -57,7 +59,7 @@ export default function Home() {
             className="w-full text-base font-medium capitalize py-5 sm:min-w-[12rem] sm:flex-1 md:py-6"
             onClick={() => router.push("/work")}
           >
-            see selected work
+            {tCommon("seeSelectedWork")}
           </AnimatedButton>
         </motion.div>
       </motion.div>

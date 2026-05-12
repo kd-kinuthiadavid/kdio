@@ -1,0 +1,102 @@
+{
+  "metadata": {
+    "title": "David Kinuthia",
+    "description": "Design-getriebener, nutzerzentrierter Produktingenieur"
+  },
+  "nav": {
+    "home": "start",
+    "method": "methode",
+    "work": "arbeit",
+    "contact": "kontakt"
+  },
+  "brand": {
+    "name": "David Kinuthia",
+    "role": "Product-Softwareingenieur"
+  },
+  "common": {
+    "bookIntro": "15-Min-Intro buchen",
+    "cancel": "Abbrechen",
+    "openMenu": "Menü öffnen",
+    "seeSelectedWork": "ausgewählte arbeiten ansehen",
+    "refresh": "Aktualisieren"
+  },
+  "language": {
+    "label": "Sprache",
+    "en": "English",
+    "es": "Español",
+    "fr": "Français",
+    "de": "Deutsch",
+    "pt": "Português",
+    "sw": "Kiswahili"
+  },
+  "home": {
+    "heroTitle": "Skalierbare Lösungen gestalten, wo Engineering auf Empathie trifft.",
+    "heroBody": "Hallo, ich heiße David Kinuthia. Ich bin Product-Softwareingenieur in Nairobi. Ich verbinde technische Tiefe mit Nutzerempathie, um Produkte zu bauen, die zuverlässig, intuitiv und bedeutsam sind—und außergewöhnliche Erlebnisse vom Backend bis zur Oberfläche liefern."
+  },
+  "work": {
+    "title": "Arbeit",
+    "projects": "projekte",
+    "experience": "erfahrung",
+    "invoicethingDescription": "Rechnungsstellung für Dienstleister und Unternehmen. Auf Einfachheit ausgelegt.",
+    "capacityFullTime": "Vollzeit",
+    "capacityContract": "Vertrag",
+    "capacityPartTime": "Teilzeit",
+    "expChurpyDates": "Aug. 2022 - heute",
+    "expChurpyPosition": "Lead Product Engineer",
+    "expProductNotesDates": "Okt. 2024 - März 2025",
+    "expProductNotesPosition": "Senior Fullstack Engineer",
+    "expApolloDates": "Apr. 2023 - März 2024",
+    "expApolloPosition": "Senior Fullstack Engineer",
+    "expTwendeDates": "Okt. 2018 - Juli 2022",
+    "expTwendePosition": "Frontend Engineer"
+  },
+  "contact": {
+    "title": "Kontakt",
+    "calDescription": "15-minütiges Intro-Gespräch buchen",
+    "emailDescription": "Schreib mir eine E-Mail",
+    "linkedinDescription": "Lass uns auf LinkedIn vernetzen"
+  },
+  "method": {
+    "title": "Methode",
+    "intro": "Ich glaube, Software kann und sollte noch magisch wirken. Deshalb leitet mich eine Reihe grundlegender Prinzipien—Handwerk, Qualität und Design Thinking. Diese Prinzipien sind:",
+    "outro": "Wenn du diese Werte teilst, sind wir schon auf einer Wellenlänge—lass uns verbinden und darüber sprechen, wie wir gemeinsam etwas Schönes und Wirkungsvolles schaffen.",
+    "userCentric": {
+      "title": "nutzerzentriert",
+      "subTitle": "Für Nutzer gestalten, für Wirkung bauen.",
+      "description": "Wirklich wirkungsvolle Produkte lösen echte Probleme intuitiv und natürlich. Indem ich mich in die Nutzerreise eindenke, stelle ich sicher, dass technische Lösungen zu bedeutsamen Erlebnissen werden. Ich suche Teams, die Empathie priorisieren und sich tief um die Menschen kümmern, die das Produkt nutzen."
+    },
+    "quality": {
+      "title": "Qualität",
+      "subTitle": "Ja, schnell liefern—aber keinen Schrott liefern.",
+      "description": "Geschwindigkeit zählt, aber Qualität darf nicht geopfert werden. Ich strebe Handwerkskunst an, die zuverlässige, skalierbare und elegante Lösungen ergibt. Mein Ziel: Produkte, die Bestand haben—not nur Deadlines. Ich möchte mit Teams arbeiten, denen Details wichtig sind."
+    },
+    "collaboration": {
+      "title": "Zusammenarbeit",
+      "subTitle": "Die besten Produkte entstehen, wenn vielfältige Köpfe zusammenarbeiten.",
+      "description": "Ich gedeihe in cross-funktionalen Umgebungen, in denen Engineering, Design und Produkt gemeinsam etwas Größeres als die Summe der Teile bauen. Ich suche Orte, an denen kollaboratives Problemlösen und geteilte Verantwortung gelebt werden."
+    },
+    "iteration": {
+      "title": "Iteration",
+      "subTitle": "Perfektion entsteht in Iteration, nicht in einem einzelnen Release.",
+      "description": "Große Produkte entstehen durch Lernen, Iterieren und Verfeinern. Ich setze auf MVPs mit schnellem Feedback und kontinuierlicher Verbesserung. Ich suche Partner, die Feedback schätzen, Iteration verstehen und kontinuierliches Lernen leben."
+    },
+    "simplicity": {
+      "title": "Einfachheit",
+      "subTitle": "Einfach ist mächtig.",
+      "description": "In Architektur und Nutzererlebnis ist Einfachheit entscheidend. Die elegantesten Lösungen sind oft die einfachsten; Komplexität nur, wenn sie echten Wert bringt. Ich suche Teams, die Klarheit in Code und Design schätzen."
+    },
+    "humanCenteredAi": {
+      "title": "Menschzentrierte KI",
+      "subTitle": "Intelligente Systeme gestalten, die das menschliche Erlebnis verbessern.",
+      "description": "Ich glaube, die Rolle von KI ist es, die Welt für Menschen zu optimieren. Ethik-Vorbilder wie Tristan Harris und Aza Raskin inspirieren mich. Ich suche Teams, die menschzentriertes Design und Development priorisieren und KI nutzen, um die Nutzererfahrung zu verbessern."
+    }
+  },
+  "notFound": {
+    "title": "Seite nicht gefunden!",
+    "body": "Die gesuchte Seite existiert nicht. Bitte kehre zur Startseite oder einer anderen Seite zurück. Danke."
+  },
+  "error": {
+    "title": "Etwas ist schiefgelaufen!",
+    "body": "Beim Laden dieser Seite ist ein Fehler aufgetreten. Bitte versuche es später erneut."
+  }
+}
