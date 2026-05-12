@@ -17,11 +17,21 @@ import {
 import { Button } from "../ui/button";
 import { containerVariants, navItemVariants } from "@/app/motionVariants";
 import AnimatedButton from "./AnimatedButton";
+import { NAV_LINKS } from "@/components/shared/nav-links";
+
+const mobileLinkBase =
+  "capitalize font-medium hover:underline hover:underline-offset-4 hover:font-semibold active:underline active:underline-offset-4 active:font-semibold";
+
+const mobileLinkActive =
+  "font-semibold underline underline-offset-4 text-accent-foreground decoration-accent-foreground";
 
 export default function MobileNav() {
   const pathname = usePathname();
 
   const MotionLink = motion.create(Link);
+
+  const mobileItemClass = (href: string) =>
+    `${mobileLinkBase} ${pathname === href ? mobileLinkActive : ""}`;
 
   return (
     <Drawer>
@@ -40,66 +50,20 @@ export default function MobileNav() {
             variants={containerVariants}
             className="grid grid-cols-3 gap-2 p-4"
           >
-            <MotionLink
-              variants={navItemVariants}
-              prefetch={true}
-              href="/"
-              className={`capitalize font-medium hover:underline hover:underline-offset-4 hover:font-semibold active:underline active:underline-offset-4 active:font-semibold ${
-                pathname === "/"
-                  ? "font-semibold underline underline-offset-4 text-accent-foreground decoration-accent-foreground"
-                  : ""
-              }`}
-            >
-              intro
-            </MotionLink>
-            <MotionLink
-              variants={navItemVariants}
-              prefetch={true}
-              href="/about"
-              className={`capitalize font-medium hover:underline hover:underline-offset-4 hover:font-semibold active:underline active:underline-offset-4 active:font-semibold ${
-                pathname === "/about"
-                  ? "font-semibold underline underline-offset-4 text-accent-foreground decoration-accent-foreground"
-                  : ""
-              }`}
-            >
-              about
-            </MotionLink>
-            <MotionLink
-              variants={navItemVariants}
-              prefetch={true}
-              href="/method"
-              className={`capitalize font-medium hover:underline hover:underline-offset-4 hover:font-semibold active:underline active:underline-offset-4 active:font-semibold ${
-                pathname === "/method"
-                  ? "font-semibold underline underline-offset-4 text-accent-foreground decoration-accent-foreground"
-                  : ""
-              }`}
-            >
-              method
-            </MotionLink>
-            <MotionLink
-              variants={navItemVariants}
-              prefetch={true}
-              href="/work"
-              className={`capitalize font-medium hover:underline hover:underline-offset-4 hover:font-semibold active:underline active:underline-offset-4 active:font-semibold ${
-                pathname === "/work"
-                  ? "font-semibold underline underline-offset-4 text-accent-foreground decoration-accent-foreground"
-                  : ""
-              }`}
-            >
-              work
-            </MotionLink>
-            <MotionLink
-              variants={navItemVariants}
-              prefetch={true}
-              href="/contact"
-              className={`capitalize font-medium hover:underline hover:underline-offset-4 hover:font-semibold active:underline active:underline-offset-4 active:font-semibold ${
-                pathname === "/contact"
-                  ? "font-semibold underline underline-offset-4 text-accent-foreground decoration-accent-foreground"
-                  : ""
-              }`}
-            >
-              contact
-            </MotionLink>
+            {NAV_LINKS.map(({ href, label, Icon }) => (
+              <MotionLink
+                key={href}
+                variants={navItemVariants}
+                prefetch={true}
+                href={href}
+                className={mobileItemClass(href)}
+              >
+                <span className="inline-flex items-center justify-center gap-2">
+                  <Icon className="size-4 shrink-0 opacity-90" aria-hidden />
+                  {label}
+                </span>
+              </MotionLink>
+            ))}
           </motion.nav>
           <DrawerFooter>
             <AnimatedButton

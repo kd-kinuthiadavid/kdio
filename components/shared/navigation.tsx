@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import { containerVariants, navItemVariants } from "@/app/motionVariants";
+import { NAV_LINKS } from "@/components/shared/nav-links";
 
 const linkBase =
   "rounded-md px-5 py-2 text-base font-medium capitalize transition-colors outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background";
@@ -28,38 +29,20 @@ export default function Navigation() {
       variants={containerVariants}
       className="hidden md:flex md:self-center flex-row items-center gap-1"
     >
-      <MotionLink
-        variants={navItemVariants}
-        prefetch={true}
-        href="/about"
-        className={itemClass("/about")}
-      >
-        about
-      </MotionLink>
-      <MotionLink
-        variants={navItemVariants}
-        prefetch={true}
-        href="/method"
-        className={itemClass("/method")}
-      >
-        method
-      </MotionLink>
-      <MotionLink
-        variants={navItemVariants}
-        prefetch={true}
-        href="/work"
-        className={itemClass("/work")}
-      >
-        work
-      </MotionLink>
-      <MotionLink
-        variants={navItemVariants}
-        prefetch={true}
-        href="/contact"
-        className={itemClass("/contact")}
-      >
-        contact
-      </MotionLink>
+      {NAV_LINKS.map(({ href, label, Icon }) => (
+        <MotionLink
+          key={href}
+          variants={navItemVariants}
+          prefetch={true}
+          href={href}
+          className={itemClass(href)}
+        >
+          <span className="inline-flex items-center gap-2">
+            <Icon className="size-4 shrink-0 opacity-90" aria-hidden />
+            {label}
+          </span>
+        </MotionLink>
+      ))}
     </motion.nav>
   );
 }
