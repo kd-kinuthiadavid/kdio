@@ -34,12 +34,7 @@ export default function RootLayout({
         />
       </head>
       <body className={`${raleway.className} antialiased`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
+        <ThemeProvider>
           <div className="relative z-10 flex min-h-screen flex-col">
             <header
               className={`flex shrink-0 items-center justify-between gap-3 ${gutterX} ${gutterY}`}
