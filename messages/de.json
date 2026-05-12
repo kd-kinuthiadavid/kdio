@@ -94,6 +94,33 @@
       "mvp": "MVP",
       "enterprise": "Enterprise"
     },
+    "tiersHeading": "Engagement-Stufen",
+    "tiersSubtitle": "Jede Leistung läuft in der Größenordnung, die zu eurem Problem passt. Wir grenzen sie gemeinsam im Discovery-Call ein.",
+    "tierFieldLabels": {
+      "scope": "Umfang",
+      "outcome": "Ergebnis",
+      "idealFor": "Ideal für"
+    },
+    "tiersDetail": {
+      "micro": {
+        "tagline": "Ein fokussierter, zeitlich begrenzter Sprint.",
+        "scope": "1–3 Wochen. Ein Deliverable.",
+        "outcome": "Architekturreview, funktionierender Spike, Audit oder eine schriftliche technische Strategie, mit der ihr handeln könnt.",
+        "idealFor": "Einen Ansatz validieren, bevor ihr euch festlegt, eine zweite Meinung einholen oder einen bestimmten Engpass auflösen."
+      },
+      "mvp": {
+        "tagline": "Die erste echte Version ausliefern.",
+        "scope": "1–3 Monate. Eine zusammenhängende Produktoberfläche, durchgängig.",
+        "outcome": "Ein funktionierendes Feature oder Produktausschnitt live in Produktion, instrumentiert und bereit für eure Iteration.",
+        "idealFor": "Ein neues KI-Feature launchen, einen Workflow neu aufsetzen oder ein fokussiertes 0→1-Produkt bauen."
+      },
+      "enterprise": {
+        "tagline": "Multi-Quartals-Build oder dauerhaftes Engagement.",
+        "scope": "3+ Monate. Mehrere Arbeitsstränge, oft mit begleitendem Advisory.",
+        "outcome": "Eine Plattform, die euer Team besitzt und betreibt — Härtung, Observability, Runbooks und Übergabe von Anfang an eingebaut.",
+        "idealFor": "Regulierte Rollouts, teamübergreifende Integrationen oder Arbeit, bei der Fehler wirklich teuer werden."
+      }
+    },
     "servicesHeading": "Wofür ich Verantwortung übernehme",
     "includedLabel": "Inklusive",
     "items": {

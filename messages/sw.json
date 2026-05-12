@@ -94,6 +94,33 @@
       "mvp": "MVP",
       "enterprise": "Enterprise"
     },
+    "tiersHeading": "Ngazi za engagement",
+    "tiersSubtitle": "Kila huduma huendeshwa kwa ukubwa unaolingana na tatizo lako. Tunaipima pamoja kwenye discovery call.",
+    "tierFieldLabels": {
+      "scope": "Wigo",
+      "outcome": "Matokeo",
+      "idealFor": "Bora kwa"
+    },
+    "tiersDetail": {
+      "micro": {
+        "tagline": "Sprint iliyolenga na yenye muda mahususi.",
+        "scope": "Wiki 1–3. Kazi moja ya kutoa.",
+        "outcome": "Mapitio ya usanifu, spike inayofanya kazi, ukaguzi au hati ya mkakati wa kiufundi unayoweza kuitumia.",
+        "idealFor": "Kuthibitisha mbinu kabla ya kujishughulisha, maoni ya pili au kuondoa kizuizi maalum."
+      },
+      "mvp": {
+        "tagline": "Toa toleo la kwanza halisi.",
+        "scope": "Miezi 1–3. Sehemu moja ya bidhaa iliyounganishwa, kutoka mwanzo hadi mwisho.",
+        "outcome": "Kipengele au sehemu ya bidhaa hai katika uzalishaji, ikiwa imepimwa na tayari kwa timu yako kuiendeleza.",
+        "idealFor": "Kuzindua kipengele kipya cha AI, kubadilisha jukwaa la workflow au kujenga bidhaa ya 0→1 iliyolenga."
+      },
+      "enterprise": {
+        "tagline": "Ujenzi wa robo nyingi au engagement endelevu.",
+        "scope": "Miezi 3+. Mistari mingi ya kazi, mara nyingi pamoja na ushauri unaoendelea.",
+        "outcome": "Jukwaa ambalo timu yako inalimiliki na kuliendesha — uimara, observability, runbooks na handover vimejengwa tangu siku ya kwanza.",
+        "idealFor": "Rollouts zilizodhibitiwa, muunganisho wa timu nyingi au kazi ambapo makosa ni gharama kubwa kweli."
+      }
+    },
     "servicesHeading": "Ninachochukua jukumu",
     "includedLabel": "Imejumuishwa",
     "items": {

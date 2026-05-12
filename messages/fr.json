@@ -94,6 +94,33 @@
       "mvp": "MVP",
       "enterprise": "Enterprise"
     },
+    "tiersHeading": "Paliers d’engagement",
+    "tiersSubtitle": "Chaque service se déploie à l’échelle qui correspond à votre problème. On l’affine ensemble pendant l’appel découverte.",
+    "tierFieldLabels": {
+      "scope": "Périmètre",
+      "outcome": "Résultat",
+      "idealFor": "Idéal pour"
+    },
+    "tiersDetail": {
+      "micro": {
+        "tagline": "Un sprint ciblé et borné dans le temps.",
+        "scope": "1–3 semaines. Un seul livrable.",
+        "outcome": "Revue d’architecture, spike fonctionnel, audit ou un document de stratégie technique sur lequel agir.",
+        "idealFor": "Valider une approche avant de s’engager, obtenir un deuxième avis ou débloquer un goulot précis."
+      },
+      "mvp": {
+        "tagline": "Livrer la première vraie version.",
+        "scope": "1–3 mois. Une surface produit cohérente, de bout en bout.",
+        "outcome": "Une fonctionnalité ou tranche de produit en production, instrumentée et prête pour votre équipe à itérer.",
+        "idealFor": "Lancer une nouvelle fonction IA, refondre un workflow ou construire un produit 0→1 ciblé."
+      },
+      "enterprise": {
+        "tagline": "Construction sur plusieurs trimestres ou engagement durable.",
+        "scope": "3+ mois. Plusieurs chantiers, souvent avec un conseil retenu en parallèle.",
+        "outcome": "Une plateforme que votre équipe possède et exploite — durcissement, observabilité, runbooks et transmission intégrés dès le départ.",
+        "idealFor": "Déploiements régulés, intégrations multi-équipes ou travail où les erreurs coûtent vraiment cher."
+      }
+    },
     "servicesHeading": "Ce dont je me charge",
     "includedLabel": "Inclus",
     "items": {

@@ -94,6 +94,33 @@
       "mvp": "MVP",
       "enterprise": "Enterprise"
     },
+    "tiersHeading": "Engagement tiers",
+    "tiersSubtitle": "Each service runs at the scale that matches your problem. We narrow it together on the discovery call.",
+    "tierFieldLabels": {
+      "scope": "Scope",
+      "outcome": "Outcome",
+      "idealFor": "Ideal for"
+    },
+    "tiersDetail": {
+      "micro": {
+        "tagline": "A focused, time-boxed sprint.",
+        "scope": "1–3 weeks. One deliverable.",
+        "outcome": "Architecture review, working spike, audit, or a written technical strategy you can act on.",
+        "idealFor": "Validating an approach before committing, second opinions, or unblocking one specific bottleneck."
+      },
+      "mvp": {
+        "tagline": "Ship the first real version.",
+        "scope": "1–3 months. One coherent product surface, end-to-end.",
+        "outcome": "A working feature or product slice live in production, instrumented, and ready for your team to iterate on.",
+        "idealFor": "Launching a new AI feature, replatforming a workflow, or building a focused 0→1 product."
+      },
+      "enterprise": {
+        "tagline": "Multi-quarter build or sustained engagement.",
+        "scope": "3+ months. Multiple workstreams, often with retained advisory alongside.",
+        "outcome": "A platform your team owns and operates — hardening, observability, runbooks, and handover baked in from day one.",
+        "idealFor": "Regulated rollouts, multi-team integrations, or work where mistakes are genuinely expensive."
+      }
+    },
     "servicesHeading": "What I take on",
     "includedLabel": "Included",
     "items": {

@@ -24,6 +24,8 @@ const SERVICE_IDS = [
   "fractionalCto",
 ] as const;
 
+const TIER_IDS = ["micro", "mvp", "enterprise"] as const;
+
 const FIT_FOR_KEYS = ["funded", "regulated", "legacy", "scale"] as const;
 const FIT_NOT_FOR_KEYS = [
   "ideaGuy",
@@ -107,6 +109,60 @@ export default function Services() {
             </motion.div>
           ))}
         </motion.dl>
+
+        {/* Tier explainer */}
+        <motion.div variants={containerVariants} className="flex flex-col gap-y-6">
+          <motion.div
+            variants={containerVariants}
+            className="flex flex-col gap-y-2"
+          >
+            <motion.h2
+              variants={itemVariants}
+              className="font-semibold text-xl leading-tight sm:text-2xl"
+            >
+              {t("tiersHeading")}
+            </motion.h2>
+            <motion.p
+              variants={itemVariants}
+              className="max-w-prose font-normal text-base leading-relaxed text-muted-foreground sm:text-lg"
+            >
+              {t("tiersSubtitle")}
+            </motion.p>
+          </motion.div>
+          <motion.div
+            variants={containerVariants}
+            className="grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-5"
+          >
+            {TIER_IDS.map((tier) => (
+              <motion.article
+                key={tier}
+                variants={itemVariants}
+                className="flex flex-col gap-y-3 rounded-lg border border-border bg-background/40 p-5 sm:p-6"
+              >
+                <div className="flex items-baseline justify-between gap-x-2">
+                  <h3 className="font-semibold text-lg sm:text-xl">
+                    {t(`tiers.${tier}`)}
+                  </h3>
+                </div>
+                <p className="font-medium text-base leading-snug text-accent-foreground">
+                  {t(`tiersDetail.${tier}.tagline`)}
+                </p>
+                <dl className="flex flex-col gap-y-2.5 pt-1">
+                  {(["scope", "outcome", "idealFor"] as const).map((field) => (
+                    <div key={field} className="flex flex-col gap-y-0.5">
+                      <dt className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                        {t(`tierFieldLabels.${field}`)}
+                      </dt>
+                      <dd className="text-sm leading-relaxed sm:text-base">
+                        {t(`tiersDetail.${tier}.${field}`)}
+                      </dd>
+                    </div>
+                  ))}
+                </dl>
+              </motion.article>
+            ))}
+          </motion.div>
+        </motion.div>
 
         {/* Services list */}
         <motion.div variants={containerVariants} className="flex flex-col gap-y-6">

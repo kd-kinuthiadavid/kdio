@@ -94,6 +94,33 @@
       "mvp": "MVP",
       "enterprise": "Enterprise"
     },
+    "tiersHeading": "Níveis de engagement",
+    "tiersSubtitle": "Cada serviço entra na escala que combina com o seu problema. Afinamos juntos na chamada de discovery.",
+    "tierFieldLabels": {
+      "scope": "Escopo",
+      "outcome": "Resultado",
+      "idealFor": "Ideal para"
+    },
+    "tiersDetail": {
+      "micro": {
+        "tagline": "Um sprint focado e com tempo definido.",
+        "scope": "1–3 semanas. Uma única entrega.",
+        "outcome": "Revisão arquitetural, spike funcional, auditoria ou um documento técnico de estratégia para você agir.",
+        "idealFor": "Validar uma abordagem antes de se comprometer, segundas opiniões ou desbloquear um gargalo específico."
+      },
+      "mvp": {
+        "tagline": "Entregar a primeira versão real.",
+        "scope": "1–3 meses. Uma superfície de produto coerente, de ponta a ponta.",
+        "outcome": "Um recurso ou fatia de produto no ar em produção, instrumentado e pronto para o seu time iterar.",
+        "idealFor": "Lançar um novo recurso de IA, replataformar um fluxo ou construir um produto 0→1 focado."
+      },
+      "enterprise": {
+        "tagline": "Construção de vários trimestres ou engagement sustentado.",
+        "scope": "3+ meses. Várias frentes, normalmente com consultoria retida em paralelo.",
+        "outcome": "Uma plataforma que o seu time possui e opera — hardening, observabilidade, runbooks e handover embutidos desde o primeiro dia.",
+        "idealFor": "Rollouts regulados, integrações multi-time ou trabalho onde erros saem caro de verdade."
+      }
+    },
     "servicesHeading": "Do que eu assumo a responsabilidade",
     "includedLabel": "Incluído",
     "items": {
