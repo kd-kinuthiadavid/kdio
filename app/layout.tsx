@@ -42,8 +42,8 @@ export default function RootLayout({
               <MobileNav />
             </motion.div>
           </div>
-          <div className="flex items-center justify-between p-5 md:px-14 md:py-16">
-            {children}
+          <div className="w-full p-5 md:px-14 md:py-16">
+            <div className="flex w-full justify-center">{children}</div>
             <SpeedInsights />
             <Analytics />
           </div>
