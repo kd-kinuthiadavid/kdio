@@ -118,7 +118,7 @@ export default function Work() {
               >
                 <motion.p
                   variants={navItemVariants}
-                  className="text-gray-500 font-medium"
+                  className="font-medium text-muted-foreground"
                 >
                   {project.year}
                 </motion.p>
@@ -135,11 +135,11 @@ export default function Work() {
                     className="flex min-w-0 items-start gap-x-1"
                   >
                     <p className="font-semibold">{project.name}</p>
-                    <ArrowUpRight size={20} className="text-gray-600" />
+                    <ArrowUpRight size={20} className="text-muted-foreground" />
                   </MotionLink>
                   <motion.p
                     variants={navItemVariants}
-                    className="font-medium text-gray-500 w-fit"
+                    className="w-fit font-medium text-muted-foreground"
                   >
                     {project.description}
                   </motion.p>
@@ -191,7 +191,7 @@ export default function Work() {
               >
                 <motion.p
                   variants={navItemVariants}
-                  className="w-full shrink-0 text-gray-500 font-medium sm:w-auto sm:min-w-[7.5rem] md:min-w-[110px]"
+                  className="w-full shrink-0 font-medium text-muted-foreground sm:w-auto sm:min-w-[7.5rem] md:min-w-[110px]"
                 >
                   {exp.timeStamp}
                 </motion.p>
@@ -208,11 +208,11 @@ export default function Work() {
                     className="flex min-w-0 items-start gap-x-1"
                   >
                     <p className="font-semibold">{exp.position}</p>
-                    <ArrowUpRight size={20} className="text-gray-600" />
+                    <ArrowUpRight size={20} className="text-muted-foreground" />
                   </MotionLink>
                   <motion.p
                     variants={navItemVariants}
-                    className="font-medium text-gray-500"
+                    className="font-medium text-muted-foreground"
                   >
                     {`${exp.company} . ${exp.capacity}`}
                   </motion.p>

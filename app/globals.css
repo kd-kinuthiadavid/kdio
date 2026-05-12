@@ -41,25 +41,31 @@ body {
     --radius: 0.5rem;
   }
   .dark {
+    /* Page shell — deep olive */
     --background: 60 57% 9%;
-    --foreground: 181 74% 83%;
+    /* Body & headings: warm cream in the same family as light-mode page background (60 …) */
+    --foreground: 60 16% 91%;
     --card: 60 57% 9%;
-    --card-foreground: 181 74% 83%;
-    --popover: 60 57% 9%;
-    --popover-foreground: 181 74% 83%;
-    --primary: 181 74% 83%;
-    --primary-foreground: 181 74% 17%;
-    --secondary: 65 92% 43%;
-    --secondary-foreground: 181 74% 83%;
-    --muted: 65 92% 43%;
-    --muted-foreground: 217.9 10.6% 64.9%;
-    --accent: 65 92% 43%;
-    --accent-foreground: 181 74% 83%;
+    --card-foreground: 60 16% 91%;
+    --popover: 60 52% 11%;
+    --popover-foreground: 60 16% 91%;
+    /* CTAs / key actions — mint teal */
+    --primary: 181 58% 72%;
+    --primary-foreground: 181 74% 12%;
+    /* Surfaces — muted olive, not saturated chartreuse */
+    --secondary: 60 22% 20%;
+    --secondary-foreground: 60 16% 91%;
+    --muted: 60 18% 16%;
+    /* Secondary lines & de-emphasized copy — readable on olive */
+    --muted-foreground: 60 11% 66%;
+    --accent: 60 22% 22%;
+    /* Nav active / links — mint so accent stays distinct from body cream */
+    --accent-foreground: 181 62% 78%;
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 181 74% 83%;
-    --border: 65 92% 43%;
-    --input: 65 92% 43%;
-    --ring: 216 12.2% 83.9%;
+    --destructive-foreground: 60 16% 91%;
+    --border: 60 14% 30%;
+    --input: 60 14% 28%;
+    --ring: 60 20% 78%;
     --chart-1: 220 70% 50%;
     --chart-2: 160 60% 45%;
     --chart-3: 30 80% 55%;
@@ -185,6 +191,60 @@ body {
       #000 100%
     );
     mask-mode: alpha;
+  }
+
+  /* Dark mode: stronger grid (foreground is cream; needs its own line weight) */
+  .dark body::before {
+    background-image:
+      linear-gradient(
+        to right,
+        hsl(var(--accent-foreground) / 0.11) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        to bottom,
+        hsl(var(--accent-foreground) / 0.11) 1px,
+        transparent 1px
+      );
+  }
+
+  /* Dark mode: soften edge frost so the grid reads in the mid-field */
+  .dark body::after {
+    background-image:
+      linear-gradient(
+        to bottom,
+        hsl(var(--background)) 0%,
+        hsl(var(--background) / 0.55) 8%,
+        hsl(var(--background) / 0.18) 24%,
+        transparent 50%
+      ),
+      linear-gradient(
+        to top,
+        hsl(var(--background)) 0%,
+        hsl(var(--background) / 0.55) 8%,
+        hsl(var(--background) / 0.18) 24%,
+        transparent 50%
+      ),
+      linear-gradient(
+        to right,
+        hsl(var(--background)) 0%,
+        hsl(var(--background) / 0.5) 7%,
+        hsl(var(--background) / 0.16) 22%,
+        transparent 48%
+      ),
+      linear-gradient(
+        to left,
+        hsl(var(--background)) 0%,
+        hsl(var(--background) / 0.5) 7%,
+        hsl(var(--background) / 0.16) 22%,
+        transparent 48%
+      ),
+      radial-gradient(
+        ellipse 120% 115% at 50% 50%,
+        transparent 38%,
+        hsl(var(--background) / 0.18) 70%,
+        hsl(var(--background) / 0.72) 100%
+      );
   }
 
   @media (prefers-reduced-transparency: reduce) {

@@ -9,6 +9,7 @@ import {
 } from "@/app/motionVariants";
 import AnimatedButton from "@/components/shared/AnimatedButton";
 import Navigation from "@/components/shared/navigation";
+import ThemeToggle from "@/components/shared/ThemeToggle";
 
 export default function HeaderBrandNav() {
   const MotionLink = motion.create(Link);
@@ -30,16 +31,23 @@ export default function HeaderBrandNav() {
         </MotionLink>
       </motion.div>
       <Navigation />
-      <AnimatedButton
-        motionVariants={navItemVariants}
-        variant="default"
-        className="hidden shrink-0 text-sm font-medium capitalize sm:text-base md:inline-flex md:py-5 lg:py-6"
-        onClick={() =>
-          window.open("https://cal.com/kinuthiadavid/15min", "_blank")
-        }
+      <motion.div
+        initial="hidden"
+        animate="visible"
+        variants={navItemVariants}
+        className="ml-auto flex shrink-0 items-center gap-2 md:ml-0"
       >
-        Book a 15-min Intro
-      </AnimatedButton>
+        <ThemeToggle />
+        <AnimatedButton
+          variant="default"
+          className="hidden shrink-0 text-sm font-medium capitalize sm:text-base md:inline-flex md:py-5 lg:py-6"
+          onClick={() =>
+            window.open("https://cal.com/kinuthiadavid/15min", "_blank")
+          }
+        >
+          Book a 15-min Intro
+        </AnimatedButton>
+      </motion.div>
     </div>
   );
 }

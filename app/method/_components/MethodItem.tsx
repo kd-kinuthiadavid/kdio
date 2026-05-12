@@ -34,7 +34,7 @@ export default function MethodItem({
     <MotionAccordionItem
       variants={navItemVariants}
       value={`${title}-${subTitle}`}
-      className={`px-3 sm:px-4 ${idx === 5 ? "border-none" : "border-b border-black/40"}`}
+      className={`px-3 sm:px-4 ${idx === 5 ? "border-none" : "border-b border-border"}`}
     >
       <MotionAccordionTrigger
         initial="hidden"

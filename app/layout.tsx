@@ -9,6 +9,7 @@ import { raleway } from "./fonts";
 import { containerVariants } from "./motionVariants";
 import HeaderBrandNav from "@/components/shared/HeaderBrandNav";
 import MobileNav from "@/components/shared/MobileNav";
+import { ThemeProvider } from "@/components/theme-provider";
 
 export const metadata: Metadata = {
   title: "David Kinuthia",
@@ -24,7 +25,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <Script
           src="https://cdn.seline.so/seline.js"
@@ -33,30 +34,37 @@ export default function RootLayout({
         />
       </head>
       <body className={`${raleway.className} antialiased`}>
-        <div className="relative z-10 flex min-h-screen flex-col">
-          <header
-            className={`flex shrink-0 items-center justify-between gap-3 ${gutterX} ${gutterY}`}
-          >
-            <HeaderBrandNav />
-            <motion.div
-              initial="hidden"
-              animate="visible"
-              variants={containerVariants}
-              className="shrink-0 md:hidden"
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <div className="relative z-10 flex min-h-screen flex-col">
+            <header
+              className={`flex shrink-0 items-center justify-between gap-3 ${gutterX} ${gutterY}`}
             >
-              <MobileNav />
-            </motion.div>
-          </header>
-          <main
-            className={`flex flex-1 flex-col justify-end overflow-x-hidden overflow-y-auto ${gutterX} pb-[clamp(1.25rem,1rem+3vh,4rem)] pt-2 sm:pt-4 min-h-0`}
-          >
-            <div className="flex w-full min-w-0 justify-center">
-              {children}
-            </div>
-            <SpeedInsights />
-            <Analytics />
-          </main>
-        </div>
+              <HeaderBrandNav />
+              <motion.div
+                initial="hidden"
+                animate="visible"
+                variants={containerVariants}
+                className="shrink-0 md:hidden"
+              >
+                <MobileNav />
+              </motion.div>
+            </header>
+            <main
+              className={`flex flex-1 flex-col justify-end overflow-x-hidden overflow-y-auto ${gutterX} pb-[clamp(1.25rem,1rem+3vh,4rem)] pt-2 sm:pt-4 min-h-0`}
+            >
+              <div className="flex w-full min-w-0 justify-center">
+                {children}
+              </div>
+              <SpeedInsights />
+              <Analytics />
+            </main>
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   );

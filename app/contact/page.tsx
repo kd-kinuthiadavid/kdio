@@ -70,11 +70,11 @@ export default function Contact() {
                   <p className="font-semibold">{contact.name}</p>
                   <ArrowUpRight
                     size={20}
-                    className="shrink-0 text-gray-600"
+                    className="shrink-0 text-muted-foreground"
                     aria-hidden
                   />
                 </Link>
-                <p className="w-fit max-w-full font-medium text-gray-500">
+                <p className="w-fit max-w-full font-medium text-muted-foreground">
                   {contact.description}
                 </p>
               </motion.div>

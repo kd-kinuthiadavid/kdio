@@ -8,7 +8,7 @@ const MotionButton = motion.create(Button);
 interface AnimatedButtonProps {
   className?: string;
   children: React.ReactNode;
-  motionVariants: Variants | undefined;
+  motionVariants?: Variants | undefined;
   variant?:
     | "link"
     | "default"
