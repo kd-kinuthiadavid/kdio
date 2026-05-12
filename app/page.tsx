@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 
 import AnimatedButton from "@/components/shared/AnimatedButton";
+import ContentSurface from "@/components/shared/ContentSurface";
 import {
   containerVariants,
   itemVariants,
@@ -12,12 +13,13 @@ import { useRouter } from "next/navigation";
 export default function Home() {
   const router = useRouter();
   return (
-    <motion.div
-      initial="hidden"
-      animate="visible"
-      variants={containerVariants}
-      className="flex flex-col gap-y-6 md:max-w-[60%] 2xl:max-w-[40%]"
-    >
+    <ContentSurface className="w-full md:max-w-[60%] 2xl:max-w-[40%]">
+      <motion.div
+        initial="hidden"
+        animate="visible"
+        variants={containerVariants}
+        className="flex flex-col gap-y-6"
+      >
       <motion.h1
         variants={itemVariants}
         className="font-semibold text-4xl md:text-5xl capitalize"
@@ -59,5 +61,6 @@ export default function Home() {
         </AnimatedButton>
       </motion.div>
     </motion.div>
+    </ContentSurface>
   );
 }

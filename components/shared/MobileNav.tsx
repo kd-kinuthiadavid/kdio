@@ -50,7 +50,7 @@ export default function MobileNav() {
             variants={containerVariants}
             className="grid grid-cols-3 gap-2 p-4"
           >
-            {NAV_LINKS.map(({ href, label, Icon }) => (
+            {NAV_LINKS.map(({ href, label }) => (
               <MotionLink
                 key={href}
                 variants={navItemVariants}
@@ -58,10 +58,7 @@ export default function MobileNav() {
                 href={href}
                 className={mobileItemClass(href)}
               >
-                <span className="inline-flex items-center justify-center gap-2">
-                  <Icon className="size-4 shrink-0 opacity-90" aria-hidden />
-                  {label}
-                </span>
+                {label}
               </MotionLink>
             ))}
           </motion.nav>

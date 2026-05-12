@@ -29,7 +29,7 @@ export default function Navigation() {
       variants={containerVariants}
       className="hidden md:flex md:self-center flex-row items-center gap-1"
     >
-      {NAV_LINKS.map(({ href, label, Icon }) => (
+      {NAV_LINKS.map(({ href, label }) => (
         <MotionLink
           key={href}
           variants={navItemVariants}
@@ -37,10 +37,7 @@ export default function Navigation() {
           href={href}
           className={itemClass(href)}
         >
-          <span className="inline-flex items-center gap-2">
-            <Icon className="size-4 shrink-0 opacity-90" aria-hidden />
-            {label}
-          </span>
+          {label}
         </MotionLink>
       ))}
     </motion.nav>

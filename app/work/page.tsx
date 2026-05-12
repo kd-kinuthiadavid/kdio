@@ -4,6 +4,7 @@ import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
+import ContentSurface from "@/components/shared/ContentSurface";
 import { Badge } from "@/components/ui/badge";
 import {
   containerVariants,
@@ -70,12 +71,13 @@ export default function Work() {
     },
   ];
   return (
-    <motion.div
-      initial="hidden"
-      animate="visible"
-      variants={containerVariants}
-      className="flex flex-col gap-y-12 w-full md:max-w-[70%]"
-    >
+    <ContentSurface className="w-full md:max-w-[70%]">
+      <motion.div
+        initial="hidden"
+        animate="visible"
+        variants={containerVariants}
+        className="flex flex-col gap-y-12 w-full"
+      >
       <motion.h1
         variants={itemVariants}
         className="font-semibold text-4xl md:text-5xl capitalize"
@@ -221,5 +223,6 @@ export default function Work() {
         </motion.div>
       </motion.div>
     </motion.div>
+    </ContentSurface>
   );
 }

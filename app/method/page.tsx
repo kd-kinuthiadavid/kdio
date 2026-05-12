@@ -8,6 +8,7 @@ import {
 } from "../motionVariants";
 import MethodItemsList from "./_components/MethodItemsList";
 import AnimatedButton from "@/components/shared/AnimatedButton";
+import ContentSurface from "@/components/shared/ContentSurface";
 
 const methodContent = [
   {
@@ -57,12 +58,13 @@ const methodContent = [
 /* eslint-disable react/no-unescaped-entities */
 export default function Method() {
   return (
-    <motion.div
-      initial="hidden"
-      animate="visible"
-      variants={containerVariants}
-      className="flex flex-col gap-y-12 w-full md:max-w-[60%]"
-    >
+    <ContentSurface className="w-full md:max-w-[60%]">
+      <motion.div
+        initial="hidden"
+        animate="visible"
+        variants={containerVariants}
+        className="flex flex-col gap-y-12 w-full"
+      >
       <motion.div
         initial="hidden"
         animate="visible"
@@ -105,6 +107,7 @@ export default function Method() {
       >
         Book a 15-min Intro
       </AnimatedButton>
-    </motion.div>
+      </motion.div>
+    </ContentSurface>
   );
 }

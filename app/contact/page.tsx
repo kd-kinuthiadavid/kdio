@@ -1,6 +1,7 @@
 import * as motion from "framer-motion/client";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
+import ContentSurface from "@/components/shared/ContentSurface";
 import {
   containerVariants,
   itemVariants,
@@ -36,12 +37,13 @@ export default function Contact() {
   ];
 
   return (
-    <motion.div
-      initial="hidden"
-      animate="visible"
-      variants={containerVariants}
-      className="flex flex-col gap-y-12 w-full md:max-w-[70%]"
-    >
+    <ContentSurface className="w-full md:max-w-[70%]">
+      <motion.div
+        initial="hidden"
+        animate="visible"
+        variants={containerVariants}
+        className="flex flex-col gap-y-12 w-full"
+      >
       <motion.h1
         variants={itemVariants}
         className="font-semibold text-5xl capitalize"
@@ -82,5 +84,6 @@ export default function Contact() {
         </motion.div>
       </motion.div>
     </motion.div>
+    </ContentSurface>
   );
 }

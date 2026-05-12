@@ -73,6 +73,19 @@ body {
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply text-foreground;
+    background-color: hsl(var(--background));
+    background-image:
+      linear-gradient(
+        to right,
+        hsl(var(--foreground) / 0.028) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        to bottom,
+        hsl(var(--foreground) / 0.028) 1px,
+        transparent 1px
+      );
+    background-size: 2.875rem 2.875rem;
   }
 }
