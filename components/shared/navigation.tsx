@@ -6,12 +6,12 @@ import { motion } from "framer-motion";
 import { containerVariants, navItemVariants } from "@/app/motionVariants";
 
 const linkBase =
-  "rounded-md px-5 py-2 text-sm font-medium capitalize transition-colors outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background";
+  "rounded-md px-5 py-2 text-base font-medium capitalize transition-colors outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background";
 
 const linkInactive =
-  "text-accent-foreground hover:bg-foreground/5 hover:text-accent-foreground";
+  "hover:text-accent-foreground hover:underline hover:underline-offset-4";
 
-const linkActive = "bg-primary/90 text-background shadow-sm hover:bg-primary";
+const linkActive = "text-accent-foreground underline underline-offset-4 font-bold";
 
 export default function Navigation() {
   const pathname = usePathname();
@@ -26,7 +26,7 @@ export default function Navigation() {
       initial="hidden"
       animate="visible"
       variants={containerVariants}
-      className="hidden md:flex md:self-center flex-row items-center gap-1 rounded-md border border-primary bg-background p-2 shadow-sm"
+      className="hidden md:flex md:self-center flex-row items-center gap-1"
     >
       <MotionLink
         variants={navItemVariants}
