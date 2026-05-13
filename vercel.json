@@ -2,7 +2,7 @@
   "crons": [
     {
       "path": "/api/cron/assessment-nudges",
-      "schedule": "0 * * * *"
+      "schedule": "0 14 * * *"
     }
   ]
 }
