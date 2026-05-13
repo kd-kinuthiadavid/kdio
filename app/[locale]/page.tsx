@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 
 import AnimatedButton from "@/components/shared/AnimatedButton";
 import ContentSurface from "@/components/shared/ContentSurface";
-import { useRouter } from "@/i18n/navigation";
+import { Link, useRouter } from "@/i18n/navigation";
 import {
   containerVariants,
   itemVariants,
@@ -42,6 +42,14 @@ export default function Home() {
           className="max-w-prose font-normal text-base leading-relaxed text-muted-foreground sm:text-lg md:text-xl"
         >
           {t("heroAvailability")}
+        </motion.p>
+        <motion.p variants={navItemVariants}>
+          <Link
+            href="/assessment"
+            className="text-base font-medium text-primary underline underline-offset-4 hover:text-accent-foreground md:text-lg"
+          >
+            {t("assessmentLink")}
+          </Link>
         </motion.p>
         <motion.div
           initial="hidden"

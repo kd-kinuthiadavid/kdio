@@ -7,6 +7,7 @@ import { useTranslations } from "next-intl";
 import AnimatedButton from "@/components/shared/AnimatedButton";
 import ContentSurface from "@/components/shared/ContentSurface";
 import { Link } from "@/i18n/navigation";
+import { getDiscoveryCallUrl, getStrategyCallUrl } from "@/lib/cal";
 import {
   containerVariants,
   itemVariants,
@@ -35,9 +36,9 @@ const FIT_NOT_FOR_KEYS = [
 
 const PROCESS_STEPS = ["discovery", "scope", "build"] as const;
 
-// TODO: replace STRATEGY_CALL_URL with the dedicated strategy-call cal.com URL once configured.
-const STRATEGY_CALL_URL = "https://cal.com/kinuthiadavid/15min";
-const DISCOVERY_CALL_URL = "https://cal.com/kinuthiadavid/15min";
+// Override with NEXT_PUBLIC_CAL_STRATEGY_URL / NEXT_PUBLIC_CAL_DISCOVERY_URL when you have two Cal event types.
+const STRATEGY_CALL_URL = getStrategyCallUrl();
+const DISCOVERY_CALL_URL = getDiscoveryCallUrl();
 
 export default function Services() {
   const t = useTranslations("services");
@@ -81,6 +82,14 @@ export default function Services() {
             className="max-w-prose font-normal text-base leading-relaxed text-muted-foreground sm:text-lg"
           >
             {t("subtitle")}
+          </motion.p>
+          <motion.p variants={itemVariants}>
+            <Link
+              href="/assessment"
+              className="text-base font-medium text-primary underline underline-offset-4 hover:text-accent-foreground sm:text-lg"
+            >
+              {t("assessmentLink")}
+            </Link>
           </motion.p>
         </motion.div>
 

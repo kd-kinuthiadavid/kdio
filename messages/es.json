@@ -8,7 +8,8 @@
     "about": "sobre mí",
     "services": "servicios",
     "work": "trabajo",
-    "contact": "contacto"
+    "contact": "contacto",
+    "assessment": "evaluación"
   },
   "brand": {
     "name": "David Kinuthia",
@@ -36,7 +37,8 @@
   "home": {
     "heroTitle": "Ingeniero de producto senior - acortando la distancia entre una buena idea y un software que llega a producción.",
     "heroBody": "Construyo productos web full stack, flujos con IA y la infraestructura detrás de ellos para equipos y fundadores que quieren un dueño de punta a punta, desde la arquitectura hasta el último píxel. Estoy en Nairobi y colaboro con personas en todo el mundo.",
-    "heroAvailability": "Estoy abierto a roles senior a tiempo completo, contratos desde tres meses y trabajo asesor con startups en etapa temprana."
+    "heroAvailability": "Estoy abierto a roles senior a tiempo completo, contratos desde tres meses y trabajo asesor con startups en etapa temprana.",
+    "assessmentLink": "Not sure where to start? Take the fit assessment"
   },
   "about": {
     "title": "Sobre mí",
@@ -208,7 +210,8 @@
       "strategyButton": "Agendar llamada de estrategia",
       "discoveryButton": "Llamada de discovery gratis de 30 min",
       "principlesLink": "Cómo pienso el trabajo"
-    }
+    },
+    "assessmentLink": "Take the 2-minute fit assessment"
   },
   "method": {
     "title": "Cómo trabajar conmigo",
@@ -255,5 +258,123 @@
   "error": {
     "title": "¡Algo salió mal!",
     "body": "Ocurrió un error al cargar esta página. Inténtalo de nuevo más tarde."
+  },
+  "assessment": {
+    "metaTitle": "Fit assessment",
+    "metaDescription": "A short assessment to see whether we are a fit — and which engagement matches your context.",
+    "title": "Fit assessment",
+    "subtitle": "A few sharp questions. Your answers shape a clear read on fit, the right service lane, and what to do next.",
+    "introLead": "This takes most people under three minutes. You can pause anytime — we will email you a link to pick up where you left off.",
+    "blockContext": "Your context",
+    "blockProblem": "Your problem",
+    "blockReadiness": "Your readiness",
+    "consentLabel": "I agree to be contacted about my results and understand how my data is used (see privacy note below).",
+    "emailLabel": "Work email",
+    "emailPlaceholder": "you@company.com",
+    "startCta": "Continue",
+    "nextCta": "Next",
+    "backCta": "Back",
+    "submitCta": "See my results",
+    "saving": "Saving…",
+    "resumeLoading": "Loading your session…",
+    "errorGeneric": "Something went wrong. Please try again.",
+    "privacyTitle": "Privacy & data",
+    "privacyBody": "We store your email and answers to score fit and follow up. Data is retained for up to 24 months unless you ask us to delete it sooner. You may request deletion anytime via the email on the contact page.",
+    "nurtureHint": "When you are ready for a deeper conversation, book a discovery call — there is no pressure on timing.",
+    "resultsTitle": "Your results",
+    "resultsScore": "Score: {score} / 100",
+    "resultsService": "Recommended focus",
+    "resultsTier": "Fit band",
+    "resultsCtaStrategy": "Book a strategy call",
+    "resultsCtaDiscovery": "Book a discovery call",
+    "resultsCtaGuide": "Get the guide & next steps",
+    "resultsCtaSite": "Back to the site",
+    "resultsNotFit": "Based on this pass, we are probably not the right engagement right now. You will still find useful material on the services page.",
+    "tiers": {
+      "strong": {
+        "label": "Strong fit",
+        "body": "You look like a strong match for a focused strategy conversation first."
+      },
+      "good": {
+        "label": "Good fit",
+        "body": "You are a good match for a discovery call so we can qualify scope and timing together."
+      },
+      "nurture": {
+        "label": "Early stage",
+        "body": "You are early in the journey — start with the guide, then book when you are ready."
+      },
+      "notFit": {
+        "label": "Not a fit (today)",
+        "body": "That is okay — better to know now than after a long sales cycle."
+      }
+    },
+    "questions": {
+      "sector": {
+        "title": "Which sector is closest?",
+        "options": {
+          "fintech": "FinTech",
+          "b2bSaas": "B2B SaaS",
+          "legaltech": "LegalTech",
+          "proptech": "PropTech",
+          "other": "Other / hybrid"
+        }
+      },
+      "role": {
+        "title": "Which best describes you?",
+        "options": {
+          "ctoEng": "CTO / VP Engineering / technical lead",
+          "vpOps": "VP Ops / COO",
+          "founder": "Founder / CEO",
+          "other": "Other"
+        }
+      },
+      "challenge": {
+        "title": "What is the primary challenge right now?",
+        "options": {
+          "integrationLegacy": "Integrate AI with legacy / high-stakes systems",
+          "secureRegulated": "Deploy AI in a regulated or confidential environment",
+          "productAiNative": "Ship AI-native product UX (not a bolt-on chatbot)",
+          "opsAutomation": "Automate ops-heavy workflows (documents, renewals, back office)",
+          "infraCost": "MLOps / infra rescue (cost, latency, reliability)",
+          "advisoryExec": "Fractional CTO / executive technical advisory"
+        }
+      },
+      "urgency": {
+        "title": "How urgent is delivery?",
+        "scaleLow": "Exploring",
+        "scaleHigh": "Board-level / revenue critical"
+      },
+      "budgetSignal": {
+        "title": "Budget signal for external expertise",
+        "scaleLow": "Tight",
+        "scaleHigh": "Premium flat-rate is comfortable"
+      },
+      "timeline": {
+        "title": "Desired timeline to first production milestone",
+        "scaleLow": "Flexible",
+        "scaleHigh": "Under 90 days"
+      },
+      "teamMaturity": {
+        "title": "Engineering + product maturity around AI",
+        "scaleLow": "Early / uneven",
+        "scaleHigh": "Strong owners, clear stakeholders"
+      },
+      "priorBurn": {
+        "title": "Have you been burned by an AI vendor or internal spike before?",
+        "scaleLow": "No / minor",
+        "scaleHigh": "Yes — materially"
+      },
+      "compliancePressure": {
+        "title": "Compliance / audit pressure",
+        "scaleLow": "Low",
+        "scaleHigh": "High (SOC2, legal, etc.)"
+      },
+      "decisionAuthority": {
+        "title": "Authority to move an engagement forward",
+        "scaleLow": "I influence",
+        "scaleHigh": "I decide budget"
+      }
+    },
+    "triagePlaybook": "Triage: strong → strategy call within one business day. good → discovery within two days. nurture → send guide + one polite follow-up after 7 days. not_fit → no outbound sales; optional pointer to content only."
   }
 }
