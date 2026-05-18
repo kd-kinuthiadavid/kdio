@@ -51,13 +51,13 @@
     "title": "Kazi zilizochaguliwa",
     "projects": {
       "title": "Miradi",
-      "invoicething": {
-        "name": "Invoicething",
+      "overture": {
+        "name": "Overture",
         "context": "Bidhaa huru",
-        "problem": "Biashara za huduma zinahitaji ankara na malipo yanayoonekana tulivu, sio kazi ya pili.",
-        "solution": "Niliunda na kutoa bidhaa ya full stack yenye usajili, hati zilizohifadhiwa, mtiririko wa barua pepe na njia za malipo zilizotayari kwa pesa halisi.",
-        "result": "Leo iko mtandaoni kama zana maalum wateja wanaweza kuitumia bila mwongozo wa mafunzo.",
-        "techLine": "Next.js · NestJS · Supabase · Stripe · Polar · Vercel · Docker · Sentry"
+        "problem": "Wafanyakazi huru, washauri na mashirika madogo wanahitaji mapendekezo na mikataba bila kuunganisha hati za jumla, mlango wa wateja na zana za saini.",
+        "solution": "Overture ni jukwaa la mapendekezo na mikataba linalofunika mtiririko mzima: kuchukua na kuandika kwa mwongozo wa AI, mlango wa wateja wenye chapa, idhini, PDF na saini za kielektroniki.",
+        "result": "Malipo ya workspace, mipaka ya matumizi na uchambuzi wa ushiriki vimejengwa ndani.",
+        "techLine": "Next.js · Supabase · Drizzle · Polar · PostHog · Fireworks AI"
       }
     },
     "experience": "uzoefu",

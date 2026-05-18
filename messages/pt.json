@@ -51,13 +51,13 @@
     "title": "Trabalhos selecionados",
     "projects": {
       "title": "Projetos",
-      "invoicething": {
-        "name": "Invoicething",
+      "overture": {
+        "name": "Overture",
         "context": "Produto independente",
-        "problem": "Negócios de serviços precisam de faturamento e pagamentos que pareçam calmos, não um segundo emprego.",
-        "solution": "Projetei e entreguei um produto full stack com assinaturas, documentos hospedados, fluxos de e-mail e trilhos de pagamento prontos para dinheiro real.",
-        "result": "Está no ar hoje como uma ferramenta focada que operadores podem adotar sem manual de treinamento.",
-        "techLine": "Next.js · NestJS · Supabase · Stripe · Polar · Vercel · Docker · Sentry"
+        "problem": "Freelancers, consultores e pequenas agências precisam de propostas e contratos sem juntar documentos genéricos, portais de cliente e ferramentas de assinatura.",
+        "solution": "Overture é uma plataforma de propostas e contratos que cobre o fluxo completo: intake e redação guiados por IA, portais de cliente com marca, aprovações, PDFs e assinaturas eletrônicas.",
+        "result": "Cobrança por workspace, limites de uso e analytics de engajamento integrados.",
+        "techLine": "Next.js · Supabase · Drizzle · Polar · PostHog · Fireworks AI"
       }
     },
     "experience": "experiência",

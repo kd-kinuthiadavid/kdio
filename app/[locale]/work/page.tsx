@@ -12,15 +12,15 @@ import {
   navItemVariants,
 } from "../../motionVariants";
 
-const PROJECT_IDS = ["invoicething"] as const;
+const PROJECT_IDS = ["overture"] as const;
 
 const PROJECT_META: Record<
   (typeof PROJECT_IDS)[number],
   { url: string; year: string }
 > = {
-  invoicething: {
-    url: "https://invoicething.co/",
-    year: "2024",
+  overture: {
+    url: "https://get-overture.davidkinuthia.com/auth/login",
+    year: "2026",
   },
 };
 
