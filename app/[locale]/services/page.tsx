@@ -288,6 +288,31 @@ export default function Services() {
           </motion.ol>
         </motion.div>
 
+        {/* Founding clients */}
+        <motion.aside
+          variants={containerVariants}
+          className="flex flex-col gap-y-3 rounded-lg border border-primary/60 bg-background/40 p-5 sm:p-6"
+        >
+          <motion.p
+            variants={itemVariants}
+            className="text-xs font-semibold uppercase tracking-wide text-accent-foreground"
+          >
+            {t("founding.label")}
+          </motion.p>
+          <motion.h2
+            variants={itemVariants}
+            className="font-semibold text-lg leading-tight sm:text-xl"
+          >
+            {t("founding.title")}
+          </motion.h2>
+          <motion.p
+            variants={itemVariants}
+            className="max-w-prose font-normal text-base leading-relaxed text-muted-foreground"
+          >
+            {t("founding.body")}
+          </motion.p>
+        </motion.aside>
+
         {/* CTAs */}
         <motion.div
           variants={containerVariants}

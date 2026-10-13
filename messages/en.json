@@ -1,19 +1,19 @@
 {
   "metadata": {
-    "title": "David Kinuthia",
-    "description": "Senior product engineer — full-stack web, AI-ready features, and shipping with product sense"
+    "title": "David Kinuthia — AI & product engineering consultant",
+    "description": "Consulting and contract engineering for teams shipping AI where mistakes are expensive: AI integration, private AI deployments, agentic automation, infrastructure rescue, and fractional CTO support."
   },
   "nav": {
     "home": "home",
     "about": "about",
     "services": "services",
-    "work": "work",
+    "work": "track record",
     "contact": "contact",
     "assessment": "assessment"
   },
   "brand": {
     "name": "David Kinuthia",
-    "role": "Senior product engineer"
+    "role": "AI & product engineering consultant"
   },
   "common": {
     "bookIntro": "Let's talk",
@@ -22,7 +22,7 @@
     "openMenu": "Open menu",
     "mainNavigation": "Main navigation",
     "closeMenu": "Close",
-    "seeSelectedWork": "See selected work",
+    "seeServices": "See services",
     "refresh": "Refresh"
   },
   "language": {
@@ -35,48 +35,167 @@
     "sw": "Kiswahili"
   },
   "home": {
-    "heroTitle": "Senior product engineer - closing the gap between a strong idea and software that ships.",
-    "heroBody": "I build full-stack web products, AI-powered workflows, and the infrastructure behind them for teams and founders who want one owner from architecture to the last pixel. I'm based in Nairobi and work with people around the world.",
-    "heroAvailability": "I'm open to senior full-time roles, contracts from three months, and advisory work with early-stage startups.",
-    "assessmentLink": "Not sure where to start? Take the fit assessment"
+    "heroTitle": "AI & product engineering consultant - closing the gap between a strong idea and software that ships.",
+    "heroBody": "I help founders and engineering leaders ship AI features, full-stack products, and the infrastructure behind them, with one accountable owner from architecture to the last pixel. I'm based in Nairobi and work with teams around the world.",
+    "heroAvailability": "Engagements range from focused one-to-three-week sprints to multi-quarter builds, plus fractional CTO retainers for founders who need senior technical judgment on call.",
+    "assessmentLink": "Not sure where to start? Take the fit assessment",
+    "trackRecordLink": "See my track record"
   },
   "about": {
     "title": "About",
-    "identity": "I'm a full-stack engineer who thinks in products. After years shipping across frontend, backend, integrations, and delivery, I've learned that the best work starts with sharper questions—not a longer backlog.",
-    "edge": "I thrive where technical depth meets product intuition: scoping ambiguous work, building MVPs you can learn from, and hardening systems when they start to matter. Founders and leads tend to bring me in when they need someone who can own a problem end-to-end without constant hand-holding.",
+    "identity": "I'm a product engineer who owns problems end-to-end. Over eight years shipping across frontend, backend, integrations, infrastructure, and AI, I've learned that the best work starts with sharper questions—not a longer backlog.",
+    "edge": "Clients bring me in where technical depth meets product judgment: scoping ambiguous work, building MVPs they can learn from, integrating AI into systems that already matter, and hardening platforms as they grow. I own the problem end-to-end, so you get progress, not another person to manage.",
     "personal": "Outside of code, I recharge by running, reading about how teams build, and chasing good coffee with friends.",
     "ctaContact": "Get in touch"
   },
   "work": {
-    "title": "Selected work",
-    "projects": {
-      "title": "Projects",
+    "title": "Track record",
+    "intro": "My consulting practice is new, so you won't find client case studies here yet. What you will find is the work I've owned over eight years inside product teams — as engineer, lead, and Head of Engineering — written up the way I'd report on an engagement. These were employers, not clients, and details are kept at a level that respects their confidentiality.",
+    "casesHeading": "What I've owned",
+    "labels": {
+      "problem": "Problem",
+      "approach": "What I did",
+      "result": "Result",
+      "services": "Related services"
+    },
+    "cases": {
+      "churpy": {
+        "company": "Churpy",
+        "meta": "Fullstack Engineer → Lead Product Engineer → Head of Engineering",
+        "context": "Kenyan fintech providing virtual accounts, M-Pesa collections and payouts, ledgers, and finance tooling for businesses.",
+        "items": {
+          "recon": {
+            "title": "AI-native reconciliation platform",
+            "problem": "Finance teams matched bank statements against cashbooks, and remittances against invoices, on a legacy microservice workflow that was slow to configure and hard to change.",
+            "approach": "Rebuilt it from the ground up as a single application: multi-engine PDF and OCR extraction, optimal one-to-many matching, and mailbox, SharePoint, and SFTP connectors. Claude proposes column mappings and match rules and explains exceptions, while matching, quality gates, report math, and approvals stay deterministic, with maker-checker sign-off.",
+            "result": "AI speeds up setup without ever making the decision. Only small samples reach the model, every AI feature falls back to heuristics when the model is unavailable, and each suggestion is audit-logged. Backed by roughly 310 backend tests."
+          },
+          "docsAi": {
+            "title": "Private document Q&A with citations",
+            "problem": "Teams needed answers from large, sensitive document collections without trusting an AI that could invent its sources.",
+            "approach": "Built a retrieval system on Postgres with pgvector and locally generated embeddings. Claude must cite a source for every sentence, and each citation opens the original page with the passage highlighted. A Microsoft Teams version answers from SharePoint, also with citations.",
+            "result": "Answers people can verify in one click, running on infrastructure the team controls and provisioned with Terraform."
+          },
+          "akountable": {
+            "title": "Finance platform for small businesses",
+            "problem": "Small businesses in Kenya juggled payments, invoicing, payroll, and tax compliance across disconnected tools.",
+            "approach": "Started the Vue and TypeScript frontend from scratch and wrote most of it, plus a large share of the Django backend: M-Pesa collections and payouts, KRA eTIMS tax compliance, invoicing, approvals, multi-branch inventory, and payroll.",
+            "result": "One product covering everything from payments to payroll. I later hardened the Go payments API with idempotency keys and callback deduplication, so retried payment requests are never processed twice."
+          },
+          "infra": {
+            "title": "Cloud migration from AWS to self-managed Kubernetes",
+            "problem": "Production ran on managed AWS Kubernetes at a cost and complexity out of step with the company's stage.",
+            "approach": "Wrote all of the roughly 27 Helm charts covering every service, plus Terraform, cert-manager for TLS, External Secrets, Prometheus and Grafana monitoring, and a self-hosted container registry, then moved production to a single self-managed cluster on Hetzner.",
+            "result": "Production cut over in June 2026, and the cluster's worker nodes later dropped from nine to five."
+          }
+        }
+      },
+      "productNotes": {
+        "company": "ProductNotes",
+        "meta": "Senior Fullstack Engineer",
+        "context": "Product operations platform that automates the analysis of user feedback for product teams.",
+        "items": {
+          "main": {
+            "title": "AI insights for product managers",
+            "problem": "Product managers spent hours pulling feedback out of a dozen tools before they could make a decision.",
+            "approach": "Built an AI-driven insights tool in React and Next.js with more than ten integrations, including OpenAI, Notion, Jira, Salesforce, Slack, Figma, Miro, Zapier, and Google Workspace, plus real-time analytics dashboards.",
+            "result": "Analysis time for product managers fell by 30%, and the dashboards lifted user engagement by 40%."
+          }
+        }
+      },
+      "apollo": {
+        "company": "Apollo API",
+        "meta": "Senior Fullstack Engineer",
+        "context": "Developer tooling for evaluating and improving AI models, including the open-source ModsysML toolbox.",
+        "items": {
+          "main": {
+            "title": "LLM management and evaluation tooling",
+            "problem": "Teams choosing and tuning models had no single place to compare them or trust the results.",
+            "approach": "Built a unified LLM management dashboard in React and Next.js, an improved sentiment-analysis module in Python and Django for trust-and-safety work, and interactive docs and onboarding. Contributed to ModsysML, an open-source toolbox for evaluating model responses against test cases.",
+            "result": "Model selection became 30% faster, sentiment-analysis accuracy improved by 25%, and developer setup time dropped by 20%."
+          }
+        }
+      },
+      "twende": {
+        "company": "Twende Mobility",
+        "meta": "Junior Engineer → Team Lead",
+        "context": "Mobility startup behind Kenya's first carpooling web app.",
+        "items": {
+          "main": {
+            "title": "From carpooling to a pandemic pivot",
+            "problem": "The product only existed on Android, and when COVID-19 hit, the business needed a new line of revenue fast.",
+            "approach": "Built the carpooling web app in React, Node.js, and Python, then led the rapid build of a logistics web app with authentication, payments, and order management. Grew from junior engineer to team lead, mentoring a growing team along the way.",
+            "result": "The web app went beyond the Android app's features and lifted engagement by 30%. The logistics pivot improved operational efficiency by 40%, and system reliability rose by 25%."
+          }
+        }
+      }
+    },
+    "buildsHeading": "Builds & lab",
+    "buildsIntro": "Things I build on my own time. The in-progress demos are open versions of patterns from the work above, so you can inspect the approach before we talk.",
+    "statusLive": "Live",
+    "statusInProgress": "In progress",
+    "builds": {
       "overture": {
         "name": "Overture",
         "context": "Independent product",
-        "problem": "Freelancers, consultants, and small agencies need proposals and contracts without juggling generic docs, client portals, and signature tools.",
-        "solution": "Overture is a proposal and contract platform covering the full flow from AI-guided intake and drafting through branded client portals, approvals, PDF generation, and e-signatures.",
-        "result": "Workspace billing, usage limits, and engagement analytics are built in.",
+        "summary": "A live proposal and contract platform for freelancers, consultants, and small agencies, covering AI-guided intake and drafting, branded client portals, approvals, PDF generation, and e-signatures, with workspace billing and engagement analytics built in.",
         "techLine": "Next.js · Supabase · Drizzle · Polar · PostHog · Fireworks AI"
+      },
+      "privateRag": {
+        "name": "Private document Q&A",
+        "context": "Open demo",
+        "summary": "A self-hostable reference build for answering questions over private documents: local embeddings, a citation on every sentence, and source highlighting."
+      },
+      "pdfAgent": {
+        "name": "Statement extraction agent",
+        "context": "Open demo",
+        "summary": "Turns bank statements and remittance PDFs into clean, validated rows, with AI proposing the mapping and deterministic checks deciding what gets through."
+      },
+      "evalHarness": {
+        "name": "LLM eval harness",
+        "context": "Open demo",
+        "summary": "A small, reusable harness for scoring model outputs against test cases and catching regressions before a prompt or model change ships."
       }
     },
-    "experience": "experience",
-    "capacityFullTime": "Full-Time",
-    "capacityContract": "Contract",
-    "capacityPartTime": "Part-Time",
-    "expChurpyDates": "Aug, 2022 - Present",
-    "expChurpyRoleHeadPosition": "Head of Engineering",
-    "expChurpyRoleHeadDates": "Jan, 2025 - Present",
-    "expChurpyRoleLeadPosition": "Lead Product Engineer",
-    "expChurpyRoleLeadDates": "Nov, 2023 - Dec, 2024",
-    "expChurpyRoleFullstackPosition": "Fullstack Engineer",
-    "expChurpyRoleFullstackDates": "Aug, 2022 - Oct, 2023",
-    "expProductNotesDates": "Oct, 2024 - Mar, 2025",
-    "expProductNotesPosition": "Senior Fullstack Engineer",
-    "expApolloDates": "Apr, 2023 - Mar, 2024",
-    "expApolloPosition": "Senior Fullstack Engineer",
-    "expTwendeDates": "Oct, 2018 - Jul, 2022",
-    "expTwendePosition": "Frontend Engineer"
+    "testimonialsHeading": "What colleagues say",
+    "timelineHeading": "Where I've worked",
+    "timeline": {
+      "churpy": {
+        "dates": "Aug, 2022 - Present",
+        "roles": {
+          "head": {
+            "position": "Head of Engineering",
+            "dates": "Jan, 2025 - Present"
+          },
+          "lead": {
+            "position": "Lead Product Engineer",
+            "dates": "Nov, 2023 - Dec, 2024"
+          },
+          "fullstack": {
+            "position": "Fullstack Engineer",
+            "dates": "Aug, 2022 - Oct, 2023"
+          }
+        }
+      },
+      "productNotes": {
+        "position": "Senior Fullstack Engineer",
+        "dates": "Oct, 2024 - Mar, 2025"
+      },
+      "apollo": {
+        "position": "Senior Fullstack Engineer",
+        "dates": "Apr, 2023 - Mar, 2024"
+      },
+      "twende": {
+        "position": "Junior Engineer → Team Lead",
+        "dates": "Oct, 2018 - Jul, 2022"
+      }
+    },
+    "cta": {
+      "title": "Want this kind of ownership on your project?",
+      "body": "Book a short discovery call and tell me what you're shipping, or take the two-minute fit assessment first.",
+      "discoveryButton": "Book a discovery call",
+      "assessmentLink": "Take the fit assessment"
+    }
   },
   "contact": {
     "title": "Contact",
@@ -93,8 +212,8 @@
       "tenureLabel": "Shipping production software",
       "engagementValue": "3 tiers",
       "engagementLabel": "Micro · MVP · Enterprise",
-      "sectorsValue": "FinTech · SaaS · LegalTech · PropTech",
-      "sectorsLabel": "Sectors I work with"
+      "sectorsValue": "FinTech · B2B SaaS · AI tooling · Mobility",
+      "sectorsLabel": "Sectors I've shipped in"
     },
     "tiers": {
       "micro": "Micro",
@@ -193,7 +312,7 @@
       "title": "How engagements run",
       "discovery": {
         "title": "1. Discovery",
-        "body": "A free 30-minute call to understand what you're trying to ship, what's in your way, and whether I'm the right person for it. No pitch — if it's not a fit, I'll say so and point you somewhere better."
+        "body": "A free 15-minute call to understand what you're trying to ship, what's in your way, and whether I'm the right person for it. No pitch — if it's not a fit, I'll say so and point you somewhere better."
       },
       "scope": {
         "title": "2. Scope & shape",
@@ -208,47 +327,52 @@
       "title": "Ready to scope your engagement?",
       "body": "Two ways to start. Pick whichever matches where you are.",
       "strategyButton": "Book a strategy call",
-      "discoveryButton": "Free 30-min discovery call",
+      "discoveryButton": "Free 15-min discovery call",
       "principlesLink": "How I think about the work"
+    },
+    "founding": {
+      "label": "Founding clients",
+      "title": "A few founding-client slots are open.",
+      "body": "I'm taking on a small number of founding-client engagements at a reduced rate. In exchange, we publish a short case study of the work, and you share an honest testimonial if you're happy with the result. Mention it on your discovery call."
     },
     "assessmentLink": "Take the 2-minute fit assessment"
   },
   "method": {
-    "title": "How to work with me",
-    "principlesHeading": "Guiding principles",
-    "howToWorkParagraph1": "I'm available for senior full-time roles, contract engagements from three months, and advisory work with early-stage startups.",
-    "howToWorkParagraph2": "I work best with teams building ambitious products who need someone to own problems end-to-end—from architecture and tradeoffs to the interface details users feel every day.",
-    "howToWorkParagraph3": "If that sounds like your team, visit the contact page or schedule a short intro—I'd love to see if there's a fit.",
-    "outro": "If this resonates with you, I'd love to hear what you're building. Reach out and I'll gladly discuss whether I'm the right engineer to help.",
+    "title": "How I work with clients",
+    "principlesHeading": "What you can expect",
+    "howToWorkParagraph1": "I take on scoped consulting engagements, from focused one-to-three-week sprints to multi-quarter builds, plus fractional CTO retainers for founders who need senior technical judgment on call.",
+    "howToWorkParagraph2": "I do my best work with teams building products where the details matter. I own problems end-to-end—from architecture and tradeoffs to the interface details users feel every day—and I leave your team able to run what we built.",
+    "howToWorkParagraph3": "If that sounds like what you need, take the fit assessment or book a short discovery call, and we'll find out quickly whether there's a fit.",
+    "outro": "If this resonates, I'd like to hear what you're building. Book a discovery call and I'll tell you honestly whether I'm the right person for it.",
     "userCentric": {
       "title": "user-centric",
       "subTitle": "Design for the user, build for the impact.",
-      "description": "I believe that truly impactful products solve real-world issues in ways that feel intuitive and natural. By embedding myself in the user's journey, I ensure that my technical solutions translate into meaningful experiences. I seek to work with teams that prioritize empathy and care deeply about the people using their product."
+      "description": "Impactful products solve real problems in ways that feel natural. On every engagement I start from the people using the product, not the feature list, and make sure technical decisions turn into experiences they actually notice. Expect me to ask who something is for before I ask how to build it."
     },
     "quality": {
       "title": "Quality",
       "subTitle": "Yes, ship fast - but don't ship junk.",
-      "description": "While moving fast is important, I believe quality should never be sacrificed for speed. I aim for a level of craftsmanship that results in reliable, scalable, and elegant solutions. My goal is to create products that stand the test of time, not just meet deadlines. I want to collaborate with teams that share a passion for getting the details right."
+      "description": "Moving fast matters, but not at the cost of what you'll be maintaining next year. I build for reliability and clarity: tests where they earn their keep, observability from day one, and code your team can pick up after handover. Deadlines get met without leaving a mess behind."
     },
     "collaboration": {
       "title": "Collaboration",
       "subTitle": "The best products come from diverse minds working together.",
-      "description": "I thrive in cross-functional environments where engineers, designers, and product teams come together to build something greater than the sum of its parts. I am seeking opportunities where collaborative problem-solving and shared-ownership are encouraged and prioritized."
+      "description": "I work as one of your engineers—in your repos, your standups, and your decision threads—alongside your designers and product people. Decisions are written down, tradeoffs are explained in plain language, and nobody has to chase me for a status update."
     },
     "iteration": {
       "title": "Iteration",
       "subTitle": "Perfection is found in iteration, not in a single release.",
-      "description": "Great products are born through cycles of learning, iterating, and refining. I'm a strong advocate for building MVPs that allow for quick feedback and continuous improvement. I look for partners who value feedback, understand the importance of iteration, and embrace continuous learning."
+      "description": "Great products come from cycles of learning and refining. I scope work so that something real ships early, gets instrumented, and tells us what to build next, instead of disappearing for months to deliver a big reveal."
     },
     "simplicity": {
       "title": "Simplicity",
       "subTitle": "Simple is powerful.",
-      "description": "In both software architecture and user experience, simplicity is key. I believe that the most elegant solutions are often the simplest, and that complexity should only be introduced where it provides genuine value. I'm looking for teams that appreciate the value of simplicity and strive for clarity in both code and design."
+      "description": "In both architecture and user experience, the simplest solution that works is usually the best one. I add complexity only where it pays for itself, which keeps your systems cheaper to run and easier to change long after the engagement ends."
     },
     "humanCenteredAi": {
       "title": "Human-Centered AI",
       "subTitle": "Design intelligent systems that enhance the human experience.",
-      "description": "I believe that the role of AI should be to optimize the world for humans. I'm inspired by ethical leaders in technology like Tristan Harris and Aza Raskin. I'm looking for teams that prioritize human-centered design and development, and that are committed to using AI to enhance the user experience."
+      "description": "AI should make people's work better, not just look impressive in a demo. Inspired by ethical technologists like Tristan Harris and Aza Raskin, I design AI features that keep humans in control: the model proposes and explains, people decide, and every suggestion can be traced."
     }
   },
   "notFound": {

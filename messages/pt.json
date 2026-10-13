@@ -1,19 +1,19 @@
 {
   "metadata": {
-    "title": "David Kinuthia",
-    "description": "Engenheiro de produto sênior — web full stack, recursos prontos para IA e entrega com senso de produto"
+    "title": "David Kinuthia — consultor de engenharia de produto e IA",
+    "description": "Consultoria e engenharia sob contrato para times que levam IA a contextos onde erros saem caro: integração de IA, implantações privadas de IA, automação agêntica, resgate de infraestrutura e apoio como CTO fracionário."
   },
   "nav": {
     "home": "início",
     "about": "sobre",
     "services": "serviços",
-    "work": "trabalhos",
+    "work": "histórico",
     "contact": "contato",
     "assessment": "avaliação"
   },
   "brand": {
     "name": "David Kinuthia",
-    "role": "Engenheiro de produto sênior"
+    "role": "Consultor de engenharia de produto e IA"
   },
   "common": {
     "bookIntro": "Vamos conversar",
@@ -22,7 +22,7 @@
     "openMenu": "Abrir menu",
     "mainNavigation": "Navegação principal",
     "closeMenu": "Fechar",
-    "seeSelectedWork": "Ver trabalhos selecionados",
+    "seeServices": "Ver serviços",
     "refresh": "Atualizar"
   },
   "language": {
@@ -35,48 +35,167 @@
     "sw": "Kiswahili"
   },
   "home": {
-    "heroTitle": "Engenheiro de produto sênior - encurtando a distância entre uma boa ideia e software em produção.",
-    "heroBody": "Construo produtos web full stack, fluxos com IA e a infraestrutura por trás deles para times e fundadores que querem um dono ponta a ponta, da arquitetura ao último pixel. Estou em Nairobi e trabalho com pessoas no mundo todo.",
-    "heroAvailability": "Estou aberto a cargos sênior em tempo integral, contratos a partir de três meses e consultoria para startups em estágio inicial.",
-    "assessmentLink": "Not sure where to start? Take the fit assessment"
+    "heroTitle": "Consultor de engenharia de produto e IA - encurtando a distância entre uma boa ideia e software que chega à produção.",
+    "heroBody": "Ajudo fundadores e líderes de engenharia a entregar recursos de IA, produtos full stack e a infraestrutura por trás deles, com um único responsável da arquitetura ao último pixel. Estou em Nairobi e trabalho com times no mundo todo.",
+    "heroAvailability": "Os engagements vão de sprints focados de uma a três semanas a construções de vários trimestres, além de retainers de CTO fracionário para fundadores que precisam de julgamento técnico sênior sempre à disposição.",
+    "assessmentLink": "Not sure where to start? Take the fit assessment",
+    "trackRecordLink": "Ver meu histórico"
   },
   "about": {
     "title": "Sobre",
-    "identity": "Sou um engenheiro full stack que pensa em produto. Depois de anos entregando em frontend, backend, integrações e operação, aprendi que o melhor trabalho começa com perguntas melhores—não com um backlog maior.",
-    "edge": "Me dou bem onde profundidade técnica encontra intuição de produto: delimitar trabalho ambíguo, construir MVPs dos quais dá para aprender e endurecer sistemas quando começam a importar. Fundadores e leads costumam me chamar quando precisam de alguém que assuma um problema de ponta a ponta sem microgerenciamento.",
+    "identity": "Sou engenheiro de produto e assumo os problemas de ponta a ponta. Em mais de oito anos entregando em frontend, backend, integrações, infraestrutura e IA, aprendi que o melhor trabalho começa com perguntas melhores—não com um backlog maior.",
+    "edge": "Clientes me chamam onde profundidade técnica encontra julgamento de produto: delimitar trabalho ambíguo, construir MVPs dos quais dá para aprender, integrar IA a sistemas que já importam e endurecer plataformas à medida que crescem. Assumo o problema de ponta a ponta, então você ganha progresso, não mais uma pessoa para gerenciar.",
     "personal": "Fora do código, recarrego com corridas, leituras sobre como times constroem e um bom café com amigos.",
     "ctaContact": "Entrar em contato"
   },
   "work": {
-    "title": "Trabalhos selecionados",
-    "projects": {
-      "title": "Projetos",
+    "title": "Histórico",
+    "intro": "Minha prática de consultoria é nova, então você ainda não vai encontrar estudos de caso de clientes aqui. O que vai encontrar é o trabalho pelo qual fui responsável ao longo de oito anos dentro de times de produto — como engenheiro, líder e Chefe de Engenharia — descrito do jeito que eu reportaria um engagement. Eram empregadores, não clientes, e os detalhes ficam num nível que respeita a confidencialidade deles.",
+    "casesHeading": "Pelo que fui responsável",
+    "labels": {
+      "problem": "Problema",
+      "approach": "O que eu fiz",
+      "result": "Resultado",
+      "services": "Serviços relacionados"
+    },
+    "cases": {
+      "churpy": {
+        "company": "Churpy",
+        "meta": "Engenheiro fullstack → Engenheiro de produto líder → Chefe de Engenharia",
+        "context": "Fintech queniana que oferece contas virtuais, recebimentos e pagamentos via M-Pesa, livros contábeis e ferramentas financeiras para empresas.",
+        "items": {
+          "recon": {
+            "title": "Plataforma de conciliação AI-nativa",
+            "problem": "Times financeiros conciliavam extratos bancários com livros-caixa, e remessas com faturas, num fluxo legado de microsserviços lento de configurar e difícil de mudar.",
+            "approach": "Reconstruí tudo do zero como uma única aplicação: extração de PDF e OCR com múltiplos motores, conciliação um-para-muitos otimizada e conectores para caixa de e-mail, SharePoint e SFTP. O Claude propõe mapeamentos de colunas e regras de conciliação e explica as exceções, enquanto a conciliação, os controles de qualidade, os cálculos dos relatórios e as aprovações continuam determinísticos, com aprovação em dupla verificação (maker-checker).",
+            "result": "A IA acelera a configuração sem nunca tomar a decisão. Só pequenas amostras chegam ao modelo, todo recurso de IA recorre a heurísticas quando o modelo está indisponível e cada sugestão fica registrada no log de auditoria. Sustentado por cerca de 310 testes de backend."
+          },
+          "docsAi": {
+            "title": "Perguntas e respostas privadas sobre documentos, com citações",
+            "problem": "Os times precisavam de respostas a partir de grandes coleções de documentos sensíveis sem confiar numa IA que pudesse inventar suas fontes.",
+            "approach": "Construí um sistema de recuperação sobre Postgres com pgvector e embeddings gerados localmente. O Claude precisa citar uma fonte para cada frase, e cada citação abre a página original com o trecho destacado. Uma versão para Microsoft Teams responde a partir do SharePoint, também com citações.",
+            "result": "Respostas que as pessoas conseguem verificar com um clique, rodando numa infraestrutura que o time controla e provisionada com Terraform."
+          },
+          "akountable": {
+            "title": "Plataforma financeira para pequenas empresas",
+            "problem": "Pequenas empresas no Quênia se viravam com pagamentos, faturamento, folha de pagamento e conformidade fiscal espalhados em ferramentas desconectadas.",
+            "approach": "Comecei do zero o frontend em Vue e TypeScript e escrevi a maior parte dele, além de uma grande parte do backend em Django: recebimentos e pagamentos via M-Pesa, conformidade fiscal com KRA eTIMS, faturamento, aprovações, estoque multifilial e folha de pagamento.",
+            "result": "Um único produto cobrindo tudo, dos pagamentos à folha. Depois reforcei a API de pagamentos em Go com chaves de idempotência e deduplicação de callbacks, para que requisições de pagamento repetidas nunca sejam processadas duas vezes."
+          },
+          "infra": {
+            "title": "Migração de nuvem da AWS para Kubernetes autogerenciado",
+            "problem": "A produção rodava em Kubernetes gerenciado na AWS, com custo e complexidade fora de proporção para o estágio da empresa.",
+            "approach": "Escrevi todos os cerca de 27 Helm charts cobrindo cada serviço, além de Terraform, cert-manager para TLS, External Secrets, monitoramento com Prometheus e Grafana e um registry de containers auto-hospedado, e depois movi a produção para um único cluster autogerenciado na Hetzner.",
+            "result": "A produção foi migrada em junho de 2026, e os nós de trabalho do cluster caíram depois de nove para cinco."
+          }
+        }
+      },
+      "productNotes": {
+        "company": "ProductNotes",
+        "meta": "Engenheiro full stack sênior",
+        "context": "Plataforma de operações de produto que automatiza a análise de feedback de usuários para times de produto.",
+        "items": {
+          "main": {
+            "title": "Insights de IA para gerentes de produto",
+            "problem": "Gerentes de produto passavam horas extraindo feedback de uma dúzia de ferramentas antes de conseguir tomar uma decisão.",
+            "approach": "Construí uma ferramenta de insights com IA em React e Next.js com mais de dez integrações, incluindo OpenAI, Notion, Jira, Salesforce, Slack, Figma, Miro, Zapier e Google Workspace, além de dashboards de analytics em tempo real.",
+            "result": "O tempo de análise dos gerentes de produto caiu 30%, e os dashboards aumentaram o engajamento dos usuários em 40%."
+          }
+        }
+      },
+      "apollo": {
+        "company": "Apollo API",
+        "meta": "Engenheiro full stack sênior",
+        "context": "Ferramentas para desenvolvedores avaliarem e melhorarem modelos de IA, incluindo o toolbox open source ModsysML.",
+        "items": {
+          "main": {
+            "title": "Ferramentas de gestão e avaliação de LLMs",
+            "problem": "Times que escolhiam e ajustavam modelos não tinham um lugar único para compará-los nem para confiar nos resultados.",
+            "approach": "Construí um dashboard unificado de gestão de LLMs em React e Next.js, um módulo aprimorado de análise de sentimento em Python e Django para trabalho de trust and safety, e documentação e onboarding interativos. Contribuí com o ModsysML, um toolbox open source para avaliar respostas de modelos contra casos de teste.",
+            "result": "A escolha de modelos ficou 30% mais rápida, a precisão da análise de sentimento melhorou 25% e o tempo de setup dos desenvolvedores caiu 20%."
+          }
+        }
+      },
+      "twende": {
+        "company": "Twende Mobility",
+        "meta": "Engenheiro júnior → Líder de time",
+        "context": "Startup de mobilidade por trás do primeiro web app de caronas do Quênia.",
+        "items": {
+          "main": {
+            "title": "Das caronas a um pivô na pandemia",
+            "problem": "O produto só existia no Android e, quando a COVID-19 chegou, o negócio precisava de uma nova fonte de receita, rápido.",
+            "approach": "Construí o web app de caronas em React, Node.js e Python e depois liderei a construção rápida de um web app de logística com autenticação, pagamentos e gestão de pedidos. Cresci de engenheiro júnior a líder de time, orientando um time em crescimento ao longo do caminho.",
+            "result": "O web app foi além dos recursos do app Android e aumentou o engajamento em 30%. O pivô para logística melhorou a eficiência operacional em 40%, e a confiabilidade do sistema subiu 25%."
+          }
+        }
+      }
+    },
+    "buildsHeading": "Projetos e laboratório",
+    "buildsIntro": "Coisas que construo no meu próprio tempo. As demos em andamento são versões abertas de padrões do trabalho acima, para você inspecionar a abordagem antes de conversarmos.",
+    "statusLive": "No ar",
+    "statusInProgress": "Em andamento",
+    "builds": {
       "overture": {
         "name": "Overture",
         "context": "Produto independente",
-        "problem": "Freelancers, consultores e pequenas agências precisam de propostas e contratos sem juntar documentos genéricos, portais de cliente e ferramentas de assinatura.",
-        "solution": "Overture é uma plataforma de propostas e contratos que cobre o fluxo completo: intake e redação guiados por IA, portais de cliente com marca, aprovações, PDFs e assinaturas eletrônicas.",
-        "result": "Cobrança por workspace, limites de uso e analytics de engajamento integrados.",
+        "summary": "Uma plataforma de propostas e contratos no ar para freelancers, consultores e pequenas agências, cobrindo intake e redação guiados por IA, portais de cliente com marca, aprovações, geração de PDFs e assinaturas eletrônicas, com cobrança por workspace e analytics de engajamento integrados.",
         "techLine": "Next.js · Supabase · Drizzle · Polar · PostHog · Fireworks AI"
+      },
+      "privateRag": {
+        "name": "Perguntas e respostas privadas sobre documentos",
+        "context": "Demo aberta",
+        "summary": "Uma construção de referência auto-hospedável para responder perguntas sobre documentos privados: embeddings locais, uma citação em cada frase e destaque da fonte."
+      },
+      "pdfAgent": {
+        "name": "Agente de extração de extratos",
+        "context": "Demo aberta",
+        "summary": "Transforma extratos bancários e PDFs de remessas em linhas limpas e validadas, com a IA propondo o mapeamento e verificações determinísticas decidindo o que passa."
+      },
+      "evalHarness": {
+        "name": "Arcabouço de evals para LLMs",
+        "context": "Demo aberta",
+        "summary": "Um arcabouço pequeno e reutilizável para pontuar saídas de modelos contra casos de teste e pegar regressões antes que uma mudança de prompt ou de modelo vá para produção."
       }
     },
-    "experience": "experiência",
-    "capacityFullTime": "Tempo integral",
-    "capacityContract": "Contrato",
-    "capacityPartTime": "Meio período",
-    "expChurpyDates": "ago 2022 - presente",
-    "expChurpyRoleHeadPosition": "Chefe de Engenharia",
-    "expChurpyRoleHeadDates": "jan 2025 - presente",
-    "expChurpyRoleLeadPosition": "Engenheiro de produto líder",
-    "expChurpyRoleLeadDates": "nov 2023 - dez 2024",
-    "expChurpyRoleFullstackPosition": "Engenheiro fullstack",
-    "expChurpyRoleFullstackDates": "ago 2022 - out 2023",
-    "expProductNotesDates": "out 2024 - mar 2025",
-    "expProductNotesPosition": "Engenheiro full stack sênior",
-    "expApolloDates": "abr 2023 - mar 2024",
-    "expApolloPosition": "Engenheiro full stack sênior",
-    "expTwendeDates": "out 2018 - jul 2022",
-    "expTwendePosition": "Engenheiro frontend"
+    "testimonialsHeading": "O que dizem os colegas",
+    "timelineHeading": "Onde trabalhei",
+    "timeline": {
+      "churpy": {
+        "dates": "ago 2022 - presente",
+        "roles": {
+          "head": {
+            "position": "Chefe de Engenharia",
+            "dates": "jan 2025 - presente"
+          },
+          "lead": {
+            "position": "Engenheiro de produto líder",
+            "dates": "nov 2023 - dez 2024"
+          },
+          "fullstack": {
+            "position": "Engenheiro fullstack",
+            "dates": "ago 2022 - out 2023"
+          }
+        }
+      },
+      "productNotes": {
+        "position": "Engenheiro full stack sênior",
+        "dates": "out 2024 - mar 2025"
+      },
+      "apollo": {
+        "position": "Engenheiro full stack sênior",
+        "dates": "abr 2023 - mar 2024"
+      },
+      "twende": {
+        "position": "Engenheiro júnior → Líder de time",
+        "dates": "out 2018 - jul 2022"
+      }
+    },
+    "cta": {
+      "title": "Quer esse tipo de responsabilidade no seu projeto?",
+      "body": "Agende uma chamada curta de discovery e me conte o que você está entregando, ou faça antes a avaliação de fit de dois minutos.",
+      "discoveryButton": "Agendar chamada de discovery",
+      "assessmentLink": "Fazer a avaliação de fit"
+    }
   },
   "contact": {
     "title": "Contato",
@@ -93,8 +212,8 @@
       "tenureLabel": "Entregando software em produção",
       "engagementValue": "3 níveis",
       "engagementLabel": "Micro · MVP · Enterprise",
-      "sectorsValue": "FinTech · SaaS · LegalTech · PropTech",
-      "sectorsLabel": "Setores com que trabalho"
+      "sectorsValue": "FinTech · SaaS B2B · Ferramentas de IA · Mobilidade",
+      "sectorsLabel": "Setores em que já entreguei"
     },
     "tiers": {
       "micro": "Micro",
@@ -193,7 +312,7 @@
       "title": "Como um engagement acontece",
       "discovery": {
         "title": "1. Discovery",
-        "body": "Uma chamada gratuita de 30 minutos para entender o que você quer entregar, o que está no caminho e se sou a pessoa certa. Sem pitch — se não for fit, eu falo e te aponto para alguém melhor."
+        "body": "Uma chamada gratuita de 15 minutos para entender o que você quer entregar, o que está no caminho e se sou a pessoa certa. Sem pitch — se não for fit, eu falo e te aponto para alguém melhor."
       },
       "scope": {
         "title": "2. Scope e forma",
@@ -208,47 +327,52 @@
       "title": "Pronto para escopar seu engagement?",
       "body": "Duas formas de começar. Escolha a que combina com o seu momento.",
       "strategyButton": "Agendar chamada de estratégia",
-      "discoveryButton": "Discovery gratuita de 30 min",
+      "discoveryButton": "Discovery gratuita de 15 min",
       "principlesLink": "Como eu penso o trabalho"
+    },
+    "founding": {
+      "label": "Clientes fundadores",
+      "title": "Há algumas vagas abertas para clientes fundadores.",
+      "body": "Estou aceitando um pequeno número de engagements com clientes fundadores a um valor reduzido. Em troca, publicamos um breve estudo de caso do trabalho, e você compartilha um depoimento honesto se ficar satisfeito com o resultado. Mencione isso na sua chamada de discovery."
     },
     "assessmentLink": "Take the 2-minute fit assessment"
   },
   "method": {
-    "title": "Como trabalhar comigo",
-    "principlesHeading": "Princípios orientadores",
-    "howToWorkParagraph1": "Estou disponível para cargos sênior em tempo integral, contratos a partir de três meses e consultoria para startups em estágio inicial.",
-    "howToWorkParagraph2": "Funciono melhor com times que constroem produtos ambiciosos e precisam de alguém para assumir problemas ponta a ponta—da arquitetura e trade-offs aos detalhes de interface que o usuário sente todo dia.",
-    "howToWorkParagraph3": "Se isso combina com o seu time, visite a página de contato ou agende uma intro curta—quero ver se faz sentido.",
-    "outro": "Se isso ressoa com você, adoraria saber o que você está construindo. Entre em contato e vejamos se sou o engenheiro certo para ajudar.",
+    "title": "Como trabalho com clientes",
+    "principlesHeading": "O que você pode esperar",
+    "howToWorkParagraph1": "Assumo engagements de consultoria com escopo definido, de sprints focados de uma a três semanas a construções de vários trimestres, além de retainers de CTO fracionário para fundadores que precisam de julgamento técnico sênior sempre à disposição.",
+    "howToWorkParagraph2": "Faço meu melhor trabalho com times que constroem produtos onde os detalhes importam. Assumo problemas de ponta a ponta—da arquitetura e trade-offs aos detalhes de interface que o usuário sente todo dia—e deixo o seu time capaz de operar o que construímos.",
+    "howToWorkParagraph3": "Se é disso que você precisa, faça a avaliação de fit ou agende uma chamada curta de discovery, e vamos descobrir rapidamente se há fit.",
+    "outro": "Se isso ressoa com você, quero saber o que você está construindo. Agende uma chamada de discovery e eu digo com honestidade se sou a pessoa certa para isso.",
     "userCentric": {
       "title": "centrado no usuário",
       "subTitle": "Desenhe para o usuário, construa para o impacto.",
-      "description": "Produtos realmente impactantes resolvem problemas reais de forma intuitiva e natural. Ao me inserir na jornada do usuário, garanto que soluções técnicas virem experiências significativas. Busco times que priorizam empatia e se importam profundamente com quem usa o produto."
+      "description": "Produtos com impacto resolvem problemas reais de um jeito que parece natural. Em todo engagement começo pelas pessoas que usam o produto, não pela lista de recursos, e garanto que as decisões técnicas virem experiências que elas realmente percebem. Espere que eu pergunte para quem algo é antes de perguntar como construí-lo."
     },
     "quality": {
       "title": "Qualidade",
       "subTitle": "Sim, entregue rápido—mas não entregue porcaria.",
-      "description": "Velocidade importa, mas qualidade não deve ser sacrificada. Busco artesanato que resulte em soluções confiáveis, escaláveis e elegantes. Meu objetivo é criar produtos que duram, não só bater prazo. Quero colaborar com times obcecados por detalhe."
+      "description": "Ir rápido importa, mas não à custa do que você vai manter no ano que vem. Construo com foco em confiabilidade e clareza: testes onde eles se pagam, observabilidade desde o primeiro dia e código que o seu time consegue assumir depois do handover. Os prazos são cumpridos sem deixar bagunça para trás."
     },
     "collaboration": {
       "title": "Colaboração",
       "subTitle": "Os melhores produtos vêm de mentes diversas trabalhando juntas.",
-      "description": "Floresço em ambientes multifuncionais onde engenharia, design e produto constroem algo maior que a soma das partes. Busco oportunidades onde resolver problemas em conjunto e dividir responsabilidade são prioridade."
+      "description": "Trabalho como um dos seus engenheiros—nos seus repositórios, standups e threads de decisão—ao lado dos seus designers e do pessoal de produto. As decisões ficam por escrito, os trade-offs são explicados em linguagem simples e ninguém precisa correr atrás de mim por uma atualização de status."
     },
     "iteration": {
       "title": "Iteração",
       "subTitle": "A perfeição aparece na iteração, não em um único lançamento.",
-      "description": "Grandes produtos nascem de ciclos de aprendizado, iteração e refinamento. Defendo MVPs com feedback rápido e melhoria contínua. Busco parceiros que valorizam feedback, entendem iteração e abraçam aprendizado contínuo."
+      "description": "Grandes produtos nascem de ciclos de aprendizado e refinamento. Defino o escopo do trabalho para que algo real seja entregue cedo, seja instrumentado e nos diga o que construir em seguida, em vez de sumir por meses para entregar uma grande revelação."
     },
     "simplicity": {
       "title": "Simplicidade",
       "subTitle": "Simples é poderoso.",
-      "description": "Em arquitetura e experiência, simplicidade é fundamental. As soluções mais elegantes costumam ser as mais simples; complexidade só quando agrega valor real. Busco times que valorizam clareza em código e design."
+      "description": "Tanto na arquitetura quanto na experiência do usuário, a solução mais simples que funciona costuma ser a melhor. Só adiciono complexidade onde ela se paga, o que mantém seus sistemas mais baratos de operar e mais fáceis de mudar muito depois do fim do engagement."
     },
     "humanCenteredAi": {
       "title": "IA centrada no humano",
       "subTitle": "Desenhe sistemas inteligentes que melhorem a experiência humana.",
-      "description": "Acredito que o papel da IA é otimizar o mundo para humanos. Líderes éticos como Tristan Harris e Aza Raskin me inspiram. Busco times que priorizam design e desenvolvimento centrados no humano e usam IA para enriquecer a experiência do usuário."
+      "description": "A IA deve melhorar o trabalho das pessoas, não só impressionar numa demo. Inspirado por tecnólogos éticos como Tristan Harris e Aza Raskin, desenho recursos de IA que mantêm os humanos no controle: o modelo propõe e explica, as pessoas decidem e cada sugestão pode ser rastreada."
     }
   },
   "notFound": {

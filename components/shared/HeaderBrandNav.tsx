@@ -11,6 +11,7 @@ import MobileNav from "@/components/shared/MobileNav";
 import Navigation from "@/components/shared/navigation";
 import ThemeToggle from "@/components/shared/ThemeToggle";
 import { Link } from "@/i18n/navigation";
+import { getDiscoveryCallUrl } from "@/lib/cal";
 
 export default function HeaderBrandNav() {
   const tBrand = useTranslations("brand");
@@ -47,9 +48,7 @@ export default function HeaderBrandNav() {
           motionVariants={navItemVariants}
           variant="default"
           className="hidden shrink-0 text-sm font-medium capitalize sm:text-base md:inline-flex md:py-5 lg:py-6"
-          onClick={() =>
-            window.open("https://cal.com/kinuthiadavid/15min", "_blank")
-          }
+          onClick={() => window.open(getDiscoveryCallUrl(), "_blank")}
         >
           {tCommon("scheduleIntro")}
         </AnimatedButton>

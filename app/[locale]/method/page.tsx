@@ -11,6 +11,7 @@ import {
 import MethodItemsList from "./_components/MethodItemsList";
 import AnimatedButton from "@/components/shared/AnimatedButton";
 import ContentSurface from "@/components/shared/ContentSurface";
+import { getDiscoveryCallUrl } from "@/lib/cal";
 
 const METHOD_KEYS = [
   "userCentric",
@@ -90,9 +91,7 @@ export default function Method() {
           motionVariants={navItemVariants}
           variant={"default"}
           className="w-full text-base font-medium py-5 md:py-6"
-          onClick={() =>
-            window.open("https://cal.com/kinuthiadavid/15min", "_blank")
-          }
+          onClick={() => window.open(getDiscoveryCallUrl(), "_blank")}
         >
           {tCommon("scheduleIntro")}
         </AnimatedButton>

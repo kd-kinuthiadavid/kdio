@@ -4,6 +4,7 @@ import { getTranslations } from "next-intl/server";
 import Link from "next/link";
 
 import ContentSurface from "@/components/shared/ContentSurface";
+import { getDiscoveryCallUrl } from "@/lib/cal";
 import {
   containerVariants,
   itemVariants,
@@ -17,7 +18,7 @@ export default async function Contact() {
     {
       name: "Cal",
       description: t("calDescription"),
-      url: "https://cal.com/kinuthiadavid/15min",
+      url: getDiscoveryCallUrl(),
       year: "2024",
     },
     {

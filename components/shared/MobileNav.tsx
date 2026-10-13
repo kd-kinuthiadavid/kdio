@@ -21,6 +21,7 @@ import { containerVariants, navItemVariants } from "@/app/motionVariants";
 import AnimatedButton from "./AnimatedButton";
 import { NAV_ITEMS } from "@/components/shared/nav-links";
 import { Link as LocalizedLink } from "@/i18n/navigation";
+import { getDiscoveryCallUrl } from "@/lib/cal";
 import { cn } from "@/lib/utils";
 
 const mobileLinkBase =
@@ -115,7 +116,7 @@ export default function MobileNav() {
               className="min-h-[48px] w-full text-base font-medium"
               onClick={() => {
                 setOpen(false);
-                window.open("https://cal.com/kinuthiadavid/15min", "_blank");
+                window.open(getDiscoveryCallUrl(), "_blank");
               }}
             >
               {tCommon("scheduleIntro")}

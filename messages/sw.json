@@ -1,19 +1,19 @@
 {
   "metadata": {
-    "title": "David Kinuthia",
-    "description": "Mhandisi mkuu wa bidhaa — wavuti full-stack, vipengele vilivyotayari kwa AI na utoaji wenye busara ya bidhaa"
+    "title": "David Kinuthia — mshauri wa uhandisi wa AI na bidhaa",
+    "description": "Ushauri na uhandisi wa kimkataba kwa timu zinazoleta AI mahali ambapo makosa ni gharama kubwa: muunganisho wa AI, uwekaji wa AI binafsi, automation ya agentic, uokoaji wa miundombinu na msaada wa CTO wa muda."
   },
   "nav": {
     "home": "nyumbani",
     "about": "kuhusu",
     "services": "huduma",
-    "work": "kazi",
+    "work": "rekodi ya kazi",
     "contact": "mawasiliano",
     "assessment": "tathmini"
   },
   "brand": {
     "name": "David Kinuthia",
-    "role": "Mhandisi mkuu wa bidhaa"
+    "role": "Mshauri wa uhandisi wa AI na bidhaa"
   },
   "common": {
     "bookIntro": "Hebu tuzungumze",
@@ -22,7 +22,7 @@
     "openMenu": "Fungua menyu",
     "mainNavigation": "Menyu kuu",
     "closeMenu": "Funga",
-    "seeSelectedWork": "Ona kazi zilizochaguliwa",
+    "seeServices": "Ona huduma",
     "refresh": "Onyesha upya"
   },
   "language": {
@@ -35,48 +35,167 @@
     "sw": "Kiswahili"
   },
   "home": {
-    "heroTitle": "Mhandisi mkuu wa bidhaa - anayepunguza pengo kati ya wazo lenye nguvu na programu inayotumika kweli.",
-    "heroBody": "Ninajenga bidhaa za wavuti full stack, mtiririko wenye AI na miundombinu nyuma yao kwa timu na waanzilishi wanaohitaji mmiliki mmoja tangu usanifu hadi pixel ya mwisho. Niko Nairobi na nafanya kazi na watu kote duniani.",
-    "heroAvailability": "Niko tayari kwa majukumu ya senior ya muda kamili, mikataba ya miezi mitatu au zaidi, na kazi ya ushauri na startups hatua ya mapema.",
-    "assessmentLink": "Not sure where to start? Take the fit assessment"
+    "heroTitle": "Mshauri wa uhandisi wa AI na bidhaa - anayeziba pengo kati ya wazo lenye nguvu na programu inayotolewa kweli.",
+    "heroBody": "Ninasaidia waanzilishi na viongozi wa uhandisi kutoa vipengele vya AI, bidhaa za full stack na miundombinu nyuma yake, wakiwa na mmiliki mmoja anayewajibika tangu usanifu hadi pixel ya mwisho. Niko Nairobi na nafanya kazi na timu kote duniani.",
+    "heroAvailability": "Engagements huanzia sprints zilizolenga za wiki moja hadi tatu hadi ujenzi wa robo nyingi, pamoja na retainers za CTO wa muda kwa waanzilishi wanaohitaji busara ya kiufundi ya ngazi ya juu wakati wowote.",
+    "assessmentLink": "Not sure where to start? Take the fit assessment",
+    "trackRecordLink": "Ona rekodi yangu ya kazi"
   },
   "about": {
     "title": "Kuhusu",
-    "identity": "Mimi ni mhandisi wa full stack anayefikiria kwa mtazamo wa bidhaa. Baada ya miaka ya kutoa mbele ya mtumiaji, nyuma, muunganisho na uendeshaji, nimejifunza kuwa kazi bora huanza na maswali bora—sio orodha ndefu ya kazi.",
-    "edge": "Ninastawi ambapo undani wa kiufundi ukikutana na hisia ya bidhaa: kupunguza kazi isiyo wazi, kujenga MVP ambazo unaweza kujifunza nazo, na kuimarisha mifumo inapoanza kuwa muhimu. Waanzilishi na viongozi mara nyingi huniita wanapohitaji mtu anayeweza kubeba tatizo kutoka mwanzo hadi mwisho bila usimamizi wa kila wakati.",
+    "identity": "Mimi ni mhandisi wa bidhaa ninayemiliki matatizo kuanzia mwanzo hadi mwisho. Katika miaka minane ya kutoa kazi kwenye frontend, backend, muunganisho, miundombinu na AI, nimejifunza kuwa kazi bora huanza na maswali makali zaidi—sio orodha ndefu ya kazi.",
+    "edge": "Wateja huniita pale ambapo undani wa kiufundi unakutana na busara ya bidhaa: kupanga kazi isiyo wazi, kujenga MVP wanazoweza kujifunza nazo, kuunganisha AI kwenye mifumo ambayo tayari ni muhimu, na kuimarisha majukwaa yanapokua. Ninamiliki tatizo kutoka mwanzo hadi mwisho, kwa hivyo unapata maendeleo, sio mtu mwingine wa kusimamia.",
     "personal": "Nje ya msimbo, najiweka upya kwa kukimbia, kusoma jinsi timu zinavyojenga, na kahawa nzuri na marafiki.",
     "ctaContact": "Wasiliana nami"
   },
   "work": {
-    "title": "Kazi zilizochaguliwa",
-    "projects": {
-      "title": "Miradi",
+    "title": "Rekodi ya kazi",
+    "intro": "Huduma yangu ya ushauri ni mpya, kwa hivyo bado hutapata hapa visa vya wateja. Utakachopata ni kazi niliyoimiliki kwa miaka minane ndani ya timu za bidhaa — kama mhandisi, kiongozi na Mkuu wa Uhandisi — imeandikwa jinsi ningeripoti kuhusu engagement. Hawa walikuwa waajiri, sio wateja, na maelezo yamewekwa katika kiwango kinachoheshimu usiri wao.",
+    "casesHeading": "Nilichokimiliki",
+    "labels": {
+      "problem": "Tatizo",
+      "approach": "Nilichofanya",
+      "result": "Matokeo",
+      "services": "Huduma zinazohusiana"
+    },
+    "cases": {
+      "churpy": {
+        "company": "Churpy",
+        "meta": "Mhandisi wa full stack → Mhandisi Kiongozi wa Bidhaa → Mkuu wa Uhandisi",
+        "context": "Fintech ya Kenya inayotoa akaunti pepe, makusanyo na malipo ya M-Pesa, leja na zana za fedha kwa biashara.",
+        "items": {
+          "recon": {
+            "title": "Jukwaa la upatanisho la asili-AI",
+            "problem": "Timu za fedha zililinganisha taarifa za benki na vitabu vya fedha, na remittances na ankara, kwenye workflow ya zamani ya microservices iliyokuwa polepole kusanidi na ngumu kubadilisha.",
+            "approach": "Niliijenga upya kutoka mwanzo kama programu moja: utoaji wa data kutoka PDF na OCR kwa injini nyingi, ulinganishaji bora wa moja-kwa-nyingi, na viunganishi vya mailbox, SharePoint na SFTP. Claude anapendekeza mpangilio wa safu na sheria za ulinganishaji na kueleza tofauti, huku ulinganishaji, milango ya ubora, hesabu za ripoti na idhini zikibaki deterministic, kwa idhini ya maker-checker.",
+            "result": "AI huharakisha usanidi bila kamwe kufanya uamuzi. Sampuli ndogo tu ndizo hufika kwa model, kila kipengele cha AI hurudi kwenye heuristics model isipopatikana, na kila pendekezo huandikwa kwenye audit log. Inaungwa mkono na takriban majaribio 310 ya backend."
+          },
+          "docsAi": {
+            "title": "Maswali na majibu ya hati binafsi yenye nukuu",
+            "problem": "Timu zilihitaji majibu kutoka kwa makusanyo makubwa ya hati nyeti bila kuamini AI ambayo ingeweza kubuni vyanzo vyake.",
+            "approach": "Nilijenga mfumo wa retrieval juu ya Postgres pamoja na pgvector na embeddings zinazozalishwa ndani. Claude lazima anukuu chanzo kwa kila sentensi, na kila nukuu hufungua ukurasa asili huku kifungu kikiwa kimeangaziwa. Toleo la Microsoft Teams hujibu kutoka SharePoint, pia kwa nukuu.",
+            "result": "Majibu ambayo watu wanaweza kuthibitisha kwa mbofyo mmoja, yakiendeshwa kwenye miundombinu ambayo timu inaidhibiti na iliyowekwa kwa Terraform."
+          },
+          "akountable": {
+            "title": "Jukwaa la fedha kwa biashara ndogo",
+            "problem": "Biashara ndogo nchini Kenya zilihangaika na malipo, ankara, mishahara na kufuata kanuni za kodi katika zana zisizounganishwa.",
+            "approach": "Nilianzisha frontend ya Vue na TypeScript kutoka mwanzo na kuandika sehemu kubwa yake, pamoja na sehemu kubwa ya backend ya Django: makusanyo na malipo ya M-Pesa, kufuata kanuni za kodi za KRA eTIMS, ankara, idhini, hesabu ya bidhaa ya matawi mengi na mishahara.",
+            "result": "Bidhaa moja inayoshughulikia kila kitu kuanzia malipo hadi mishahara. Baadaye niliimarisha API ya malipo ya Go kwa idempotency keys na kuondoa callbacks zilizorudiwa, ili maombi ya malipo yanayojaribiwa tena yasishughulikiwe mara mbili kamwe."
+          },
+          "infra": {
+            "title": "Uhamisho wa cloud kutoka AWS hadi Kubernetes inayojisimamia",
+            "problem": "Uzalishaji uliendeshwa kwenye Kubernetes inayosimamiwa ya AWS kwa gharama na utata usiolingana na hatua ya kampuni.",
+            "approach": "Niliandika Helm charts zote, takriban 27, zinazofunika kila huduma, pamoja na Terraform, cert-manager kwa TLS, External Secrets, ufuatiliaji wa Prometheus na Grafana, na container registry inayojiendesha yenyewe, kisha nikahamisha uzalishaji kwenye cluster moja inayojisimamia kwenye Hetzner.",
+            "result": "Uzalishaji ulihamishwa Juni 2026, na baadaye worker nodes za cluster zilipungua kutoka tisa hadi tano."
+          }
+        }
+      },
+      "productNotes": {
+        "company": "ProductNotes",
+        "meta": "Mhandisi mkuu wa full stack",
+        "context": "Jukwaa la product operations linaloendesha kiotomatiki uchambuzi wa maoni ya watumiaji kwa timu za bidhaa.",
+        "items": {
+          "main": {
+            "title": "Maarifa ya AI kwa product managers",
+            "problem": "Product managers walitumia saa nyingi kukusanya maoni kutoka zana kumi na mbili kabla ya kufanya uamuzi.",
+            "approach": "Nilijenga zana ya maarifa inayoendeshwa na AI kwa React na Next.js yenye miunganisho zaidi ya kumi, ikiwemo OpenAI, Notion, Jira, Salesforce, Slack, Figma, Miro, Zapier na Google Workspace, pamoja na dashboards za uchambuzi wa wakati halisi.",
+            "result": "Muda wa uchambuzi kwa product managers ulipungua kwa 30%, na dashboards ziliongeza ushiriki wa watumiaji kwa 40%."
+          }
+        }
+      },
+      "apollo": {
+        "company": "Apollo API",
+        "meta": "Mhandisi mkuu wa full stack",
+        "context": "Zana za wasanidi za kutathmini na kuboresha models za AI, ikiwemo ModsysML, toolbox ya open-source.",
+        "items": {
+          "main": {
+            "title": "Zana za usimamizi na tathmini ya LLM",
+            "problem": "Timu zilizokuwa zikichagua na kurekebisha models hazikuwa na mahali pamoja pa kuzilinganisha au kuamini matokeo.",
+            "approach": "Nilijenga dashboard moja ya usimamizi wa LLM kwa React na Next.js, moduli iliyoboreshwa ya sentiment analysis kwa Python na Django kwa kazi ya trust-and-safety, na nyaraka shirikishi pamoja na onboarding. Nilichangia ModsysML, toolbox ya open-source ya kutathmini majibu ya models dhidi ya test cases.",
+            "result": "Uchaguzi wa model ukawa haraka kwa 30%, usahihi wa sentiment analysis uliboreka kwa 25%, na muda wa setup kwa wasanidi ulipungua kwa 20%."
+          }
+        }
+      },
+      "twende": {
+        "company": "Twende Mobility",
+        "meta": "Mhandisi chipukizi → Kiongozi wa timu",
+        "context": "Startup ya usafiri iliyo nyuma ya programu ya kwanza ya wavuti ya carpooling nchini Kenya.",
+        "items": {
+          "main": {
+            "title": "Kutoka carpooling hadi mabadiliko wakati wa janga",
+            "problem": "Bidhaa ilikuwepo kwenye Android pekee, na COVID-19 ilipotokea, biashara ilihitaji chanzo kipya cha mapato haraka.",
+            "approach": "Nilijenga programu ya wavuti ya carpooling kwa React, Node.js na Python, kisha nikaongoza ujenzi wa haraka wa programu ya wavuti ya logistics yenye uthibitishaji, malipo na usimamizi wa oda. Nilikua kutoka mhandisi chipukizi hadi kiongozi wa timu, nikiwalea wenzangu katika timu iliyokuwa ikikua.",
+            "result": "Programu ya wavuti ilipita vipengele vya programu ya Android na kuongeza ushiriki kwa 30%. Mabadiliko kwenda logistics yaliboresha ufanisi wa kiutendaji kwa 40%, na uaminifu wa mfumo uliongezeka kwa 25%."
+          }
+        }
+      }
+    },
+    "buildsHeading": "Miradi binafsi na maabara",
+    "buildsIntro": "Vitu ninavyojenga kwa muda wangu. Demo zinazoendelea ni matoleo wazi ya mifumo kutoka kazi iliyo hapo juu, ili uweze kukagua mbinu kabla hatujazungumza.",
+    "statusLive": "Hai",
+    "statusInProgress": "Inaendelea",
+    "builds": {
       "overture": {
         "name": "Overture",
         "context": "Bidhaa huru",
-        "problem": "Wafanyakazi huru, washauri na mashirika madogo wanahitaji mapendekezo na mikataba bila kuunganisha hati za jumla, mlango wa wateja na zana za saini.",
-        "solution": "Overture ni jukwaa la mapendekezo na mikataba linalofunika mtiririko mzima: kuchukua na kuandika kwa mwongozo wa AI, mlango wa wateja wenye chapa, idhini, PDF na saini za kielektroniki.",
-        "result": "Malipo ya workspace, mipaka ya matumizi na uchambuzi wa ushiriki vimejengwa ndani.",
+        "summary": "Jukwaa hai la mapendekezo na mikataba kwa wafanyakazi huru, washauri na mashirika madogo, linalofunika kuchukua na kuandika kwa mwongozo wa AI, mlango wa wateja wenye chapa, idhini, utengenezaji wa PDF na saini za kielektroniki, pamoja na malipo ya workspace na uchambuzi wa ushiriki vilivyojengwa ndani.",
         "techLine": "Next.js · Supabase · Drizzle · Polar · PostHog · Fireworks AI"
+      },
+      "privateRag": {
+        "name": "Maswali na majibu ya hati binafsi",
+        "context": "Demo wazi",
+        "summary": "Ujenzi wa marejeleo unaoweza kujiendesha mwenyewe wa kujibu maswali kuhusu hati binafsi: embeddings za ndani, nukuu kwa kila sentensi na uangaziaji wa chanzo."
+      },
+      "pdfAgent": {
+        "name": "Agent wa kutoa data kutoka taarifa za benki",
+        "context": "Demo wazi",
+        "summary": "Hubadilisha taarifa za benki na PDF za remittance kuwa safu safi zilizothibitishwa, huku AI ikipendekeza mpangilio na ukaguzi wa deterministic ukiamua kinachopita."
+      },
+      "evalHarness": {
+        "name": "LLM eval harness",
+        "context": "Demo wazi",
+        "summary": "Harness ndogo inayoweza kutumika tena ya kupima matokeo ya model dhidi ya test cases na kunasa regressions kabla mabadiliko ya prompt au model hayajatolewa."
       }
     },
-    "experience": "uzoefu",
-    "capacityFullTime": "Muda kamili",
-    "capacityContract": "Mkataba",
-    "capacityPartTime": "Muda wa nusu",
-    "expChurpyDates": "Ago 2022 - sasa",
-    "expChurpyRoleHeadPosition": "Mkuu wa Uhandisi",
-    "expChurpyRoleHeadDates": "Jan 2025 - sasa",
-    "expChurpyRoleLeadPosition": "Mhandisi mkuu wa bidhaa",
-    "expChurpyRoleLeadDates": "Nov 2023 - Des 2024",
-    "expChurpyRoleFullstackPosition": "Mhandisi wa full stack",
-    "expChurpyRoleFullstackDates": "Ago 2022 - Okt 2023",
-    "expProductNotesDates": "Okt 2024 - Mac 2025",
-    "expProductNotesPosition": "Mhandisi mkuu wa full stack",
-    "expApolloDates": "Apr 2023 - Mac 2024",
-    "expApolloPosition": "Mhandisi mkuu wa full stack",
-    "expTwendeDates": "Okt 2018 - Jul 2022",
-    "expTwendePosition": "Mhandisi wa frontend"
+    "testimonialsHeading": "Wenzangu wanasema nini",
+    "timelineHeading": "Nilikofanya kazi",
+    "timeline": {
+      "churpy": {
+        "dates": "Ago 2022 - sasa",
+        "roles": {
+          "head": {
+            "position": "Mkuu wa Uhandisi",
+            "dates": "Jan 2025 - sasa"
+          },
+          "lead": {
+            "position": "Mhandisi Kiongozi wa Bidhaa",
+            "dates": "Nov 2023 - Des 2024"
+          },
+          "fullstack": {
+            "position": "Mhandisi wa full stack",
+            "dates": "Ago 2022 - Okt 2023"
+          }
+        }
+      },
+      "productNotes": {
+        "position": "Mhandisi mkuu wa full stack",
+        "dates": "Okt 2024 - Mac 2025"
+      },
+      "apollo": {
+        "position": "Mhandisi mkuu wa full stack",
+        "dates": "Apr 2023 - Mac 2024"
+      },
+      "twende": {
+        "position": "Mhandisi chipukizi → Kiongozi wa timu",
+        "dates": "Okt 2018 - Jul 2022"
+      }
+    },
+    "cta": {
+      "title": "Unataka umiliki wa aina hii kwenye mradi wako?",
+      "body": "Weka miadi ya discovery call fupi na uniambie unachotoa, au fanya kwanza fit assessment ya dakika mbili.",
+      "discoveryButton": "Weka miadi ya discovery call",
+      "assessmentLink": "Fanya fit assessment"
+    }
   },
   "contact": {
     "title": "Mawasiliano",
@@ -93,8 +212,8 @@
       "tenureLabel": "Kutoa programu inayoendesha biashara",
       "engagementValue": "Ngazi 3",
       "engagementLabel": "Micro · MVP · Enterprise",
-      "sectorsValue": "FinTech · SaaS · LegalTech · PropTech",
-      "sectorsLabel": "Sekta ninazofanya nazo kazi"
+      "sectorsValue": "FinTech · B2B SaaS · Zana za AI · Usafiri",
+      "sectorsLabel": "Sekta nilizotoa kazi ndani yake"
     },
     "tiers": {
       "micro": "Micro",
@@ -193,7 +312,7 @@
       "title": "Jinsi engagement inavyokwenda",
       "discovery": {
         "title": "1. Discovery",
-        "body": "Simu ya bure ya dakika 30 ili kuelewa unachotaka kuwasilisha, kinachokuzuia na kama mimi ndiye mtu sahihi. Hakuna pitch — kama haifai, nitakuambia na kukuelekeza mahali pengine."
+        "body": "Simu ya bure ya dakika 15 ili kuelewa unachotaka kuwasilisha, kinachokuzuia na kama mimi ndiye mtu sahihi. Hakuna pitch — kama haifai, nitakuambia na kukuelekeza mahali pengine bora zaidi."
       },
       "scope": {
         "title": "2. Scope na umbo",
@@ -208,47 +327,52 @@
       "title": "Tayari kupanga engagement yako?",
       "body": "Njia mbili za kuanza. Chagua inayolingana na ulipo.",
       "strategyButton": "Weka miadi ya strategy call",
-      "discoveryButton": "Discovery call ya bure ya dakika 30",
+      "discoveryButton": "Discovery call ya bure ya dakika 15",
       "principlesLink": "Jinsi ninavyofikiria kazi"
+    },
+    "founding": {
+      "label": "Wateja waanzilishi",
+      "title": "Nafasi chache za wateja waanzilishi ziko wazi.",
+      "body": "Ninachukua idadi ndogo ya engagements za wateja waanzilishi kwa bei iliyopunguzwa. Kwa kubadilishana, tunachapisha kisa kifupi cha kazi, na unatoa ushuhuda wa kweli ikiwa umeridhika na matokeo. Litaje kwenye discovery call yako."
     },
     "assessmentLink": "Take the 2-minute fit assessment"
   },
   "method": {
-    "title": "Jinsi ya kufanya kazi nami",
-    "principlesHeading": "Kanuni kuu",
-    "howToWorkParagraph1": "Niko tayari kwa majukumu ya senior ya muda kamili, mikataba ya miezi mitatu au zaidi, na kazi ya ushauri na startups hatua ya mapema.",
-    "howToWorkParagraph2": "Ninafanya vizuri zaidi na timu zinazounda bidhaa zenye malengo makubwa zinazohitaji mtu kubeba matatizo kutoka mwanzo hadi mwisho—kuanzia usanifu na ubadilishaji hadi maelezo ya kiolesura ambayo watumiaji wanahisi kila siku.",
-    "howToWorkParagraph3": "Ikiwa hilo linafanana na timu yako, tembelea ukurasa wa mawasiliano au weka utangulizi mfupi—ningependa kuona kama tunafaa pamoja.",
-    "outro": "Ikiwa hii inagusa, ningependa kusikia unachokijenga. Wasiliana nami na tuone kama mimi ndiye mhandisi sahihi wa kusaidia.",
+    "title": "Jinsi ninavyofanya kazi na wateja",
+    "principlesHeading": "Unachoweza kutarajia",
+    "howToWorkParagraph1": "Ninachukua engagements za ushauri zenye wigo uliopangwa, kuanzia sprints zilizolenga za wiki moja hadi tatu hadi ujenzi wa robo nyingi, pamoja na retainers za CTO wa muda kwa waanzilishi wanaohitaji busara ya kiufundi ya ngazi ya juu wakati wowote.",
+    "howToWorkParagraph2": "Ninafanya kazi bora zaidi na timu zinazojenga bidhaa ambapo maelezo madogo ni muhimu. Ninamiliki matatizo kutoka mwanzo hadi mwisho—kuanzia usanifu na maamuzi ya kubadilishana hadi maelezo ya kiolesura ambayo watumiaji wanahisi kila siku—na naiacha timu yako ikiweza kuendesha tulichojenga.",
+    "howToWorkParagraph3": "Ikiwa hilo ndilo unalohitaji, fanya fit assessment au weka miadi ya discovery call fupi, na tutajua haraka kama tunafaana.",
+    "outro": "Ikiwa hii inagusa, ningependa kusikia unachokijenga. Weka miadi ya discovery call na nitakuambia kwa uaminifu kama mimi ndiye mtu sahihi kwa kazi hiyo.",
     "userCentric": {
       "title": "kuzingatia mtumiaji",
       "subTitle": "Tengeneza kwa mtumiaji, jenga kwa athari.",
-      "description": "Bidhaa zenye athari halisi hutatua masuala halisi kwa njia ya kueleweka na asili. Kwa kujihusisha na safari ya mtumiaji, nahakikisha suluhisho zangu za kiufundi zinabadilishwa kuwa matumizi yenye maana. Natafuta timu zinazopekeza uelewa na kujali watu wanaotumia bidhaa."
+      "description": "Bidhaa zenye athari hutatua matatizo halisi kwa njia zinazohisi asili. Katika kila engagement naanza na watu wanaotumia bidhaa, sio orodha ya vipengele, na nahakikisha maamuzi ya kiufundi yanageuka kuwa matumizi wanayoyaona kweli. Tarajia nitauliza kitu ni cha nani kabla sijauliza jinsi ya kukijenga."
     },
     "quality": {
       "title": "Ubora",
       "subTitle": "Ndio, toa haraka—lakini usitoe takataka.",
-      "description": "Kasi ni muhimu, lakini ubora haupaswi kupotezwa kwa kasi. Ninalenga kiwango cha ufanisi kinachotoa suluhisho thabiti, zinazoweza kupanuka, na za kupendeza. Lengo langu ni bidhaa zinazodumu, si tu kukamilisha tarehe. Nataka kushirikiana na timu zinazopenda undani."
+      "description": "Kwenda haraka ni muhimu, lakini sio kwa gharama ya kile utakachokuwa ukikitunza mwaka ujao. Ninajenga kwa uaminifu na uwazi: majaribio pale yanapolipa, observability tangu siku ya kwanza, na msimbo ambao timu yako inaweza kuuchukua baada ya handover. Tarehe za mwisho hutimizwa bila kuacha fujo nyuma."
     },
     "collaboration": {
       "title": "Ushirikiano",
       "subTitle": "Bidhaa bora hutoka akili mbalimbali zinazofanya kazi pamoja.",
-      "description": "Ninastawi katika mazingira ya kazi pamoja ambapo wahandisi, wabunifu, na timu ya bidhaa wanajenga kitu kikubwa kuliko jumla ya sehemu. Natafuta fursa ambapo kutatua matatizo kwa pamoja na umiliki wa pamoja vinahimizwa."
+      "description": "Ninafanya kazi kama mmoja wa wahandisi wenu—kwenye repos zenu, standups zenu na decision threads zenu—pamoja na wabunifu na watu wa bidhaa. Maamuzi huandikwa, maamuzi ya kubadilishana hufafanuliwa kwa lugha rahisi, na hakuna anayelazimika kunifuatilia ili kupata taarifa ya maendeleo."
     },
     "iteration": {
       "title": "Rudia",
       "subTitle": "Ukamilifu upatikana kwa kurudia, sio katika toleo moja.",
-      "description": "Bidhaa kuu huzaliwa kupitia mizunguko ya kujifunza, kurudia, na kuboresha. Ninaunga mkono MVP zinazoruhusu maoni ya haraka na uboreshaji endelevu. Natafuta washirika wanathamini maoni, wanaelewa umuhimu wa kurudia, na wanakubali kujifunza kuendelea."
+      "description": "Bidhaa bora hutokana na mizunguko ya kujifunza na kuboresha. Ninapanga wigo wa kazi ili kitu halisi kitolewe mapema, kipimwe, na kituambie cha kujenga baadaye, badala ya kutoweka kwa miezi ili kuleta ufunuo mkubwa."
     },
     "simplicity": {
       "title": "Urahisi",
       "subTitle": "Rahisi ni nguvu.",
-      "description": "Katika usanifu wa programu na matumizi, urahisi ni muhimu. Suluhisho za kupendeza mara nyingi ni rahisi; utata unapaswa kuja tu inapotoa thamani halisi. Natafuta timu zinazothamini uwazi katika nambari na muundo."
+      "description": "Katika usanifu na matumizi ya mtumiaji, suluhisho rahisi zaidi linalofanya kazi kwa kawaida ndilo bora. Ninaongeza utata pale tu unapojilipia, jambo linalofanya mifumo yako iwe nafuu kuendesha na rahisi kubadilisha muda mrefu baada ya engagement kuisha."
     },
     "humanCenteredAi": {
       "title": "AI inayoelekezwa kwa binadamu",
       "subTitle": "Tengeneza mifumo mahiri inayoboresha matumizi ya binadamu.",
-      "description": "Naamini jukumu la AI ni kuboresha ulimwengu kwa binadamu. Nainuliwa na viongozi wa maadili katika teknolojia kama Tristan Harris na Aza Raskin. Natafuta timu zinazopekeza muundo na maendeleo yanayoelekezwa kwa binadamu na zilizojitolea kutumia AI kuboresha matumizi ya mtumiaji."
+      "description": "AI inapaswa kuboresha kazi ya watu, sio tu kuonekana ya kuvutia kwenye demo. Nikihamasishwa na wanateknolojia wenye maadili kama Tristan Harris na Aza Raskin, ninabuni vipengele vya AI vinavyowaacha binadamu katika udhibiti: model inapendekeza na kueleza, watu wanaamua, na kila pendekezo linaweza kufuatiliwa."
     }
   },
   "notFound": {

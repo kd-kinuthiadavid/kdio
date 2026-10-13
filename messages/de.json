@@ -1,19 +1,19 @@
 {
   "metadata": {
-    "title": "David Kinuthia",
-    "description": "Senior-Produktingenieur — Full-Stack-Web, KI-taugliche Features und Lieferung mit Produktsinn"
+    "title": "David Kinuthia — Berater für KI- & Produkt-Engineering",
+    "description": "Beratung und Engineering auf Vertragsbasis für Teams, die KI dort einsetzen, wo Fehler teuer sind: KI-Integration, private KI-Deployments, agentische Automatisierung, Infrastruktur-Rettung und Fractional-CTO-Unterstützung."
   },
   "nav": {
     "home": "start",
     "about": "über mich",
     "services": "leistungen",
-    "work": "arbeit",
+    "work": "referenzen",
     "contact": "kontakt",
     "assessment": "bewertung"
   },
   "brand": {
     "name": "David Kinuthia",
-    "role": "Senior-Produktingenieur"
+    "role": "Berater für KI- & Produkt-Engineering"
   },
   "common": {
     "bookIntro": "Lass uns reden",
@@ -22,7 +22,7 @@
     "openMenu": "Menü öffnen",
     "mainNavigation": "Hauptnavigation",
     "closeMenu": "Schließen",
-    "seeSelectedWork": "Ausgewählte Arbeiten ansehen",
+    "seeServices": "Leistungen ansehen",
     "refresh": "Aktualisieren"
   },
   "language": {
@@ -35,48 +35,167 @@
     "sw": "Kiswahili"
   },
   "home": {
-    "heroTitle": "Senior-Produktingenieur, der die Lücke zwischen einer starken Idee und Software, die live geht, schließt.",
-    "heroBody": "Ich baue Full-Stack-Webprodukte, KI-gestützte Workflows und die Infrastruktur darunter für Teams und Gründer, die eine Person von Architektur bis zum letzten Pixel brauchen. Ich bin in Nairobi und arbeite mit Menschen weltweit.",
-    "heroAvailability": "Ich bin offen für Senior-Vollzeitrollen, Verträge ab drei Monaten und Beratung für frühe Startups.",
-    "assessmentLink": "Not sure where to start? Take the fit assessment"
+    "heroTitle": "Berater für KI- & Produkt-Engineering – ich schließe die Lücke zwischen einer starken Idee und Software, die live geht.",
+    "heroBody": "Ich helfe Gründern und Engineering-Leads, KI-Features, Full-Stack-Produkte und die Infrastruktur dahinter auszuliefern – mit einer verantwortlichen Person von der Architektur bis zum letzten Pixel. Ich sitze in Nairobi und arbeite mit Teams auf der ganzen Welt.",
+    "heroAvailability": "Engagements reichen von fokussierten Sprints über ein bis drei Wochen bis zu Builds über mehrere Quartale, dazu Fractional-CTO-Retainer für Gründer, die erfahrenes technisches Urteilsvermögen auf Abruf brauchen.",
+    "assessmentLink": "Not sure where to start? Take the fit assessment",
+    "trackRecordLink": "Meine Referenzen ansehen"
   },
   "about": {
     "title": "Über mich",
-    "identity": "Ich bin ein Full-Stack-Ingenieur, der in Produkten denkt. Nach Jahren Lieferung über Frontend, Backend, Integrationen und Betrieb habe ich gelernt: Die beste Arbeit beginnt mit besseren Fragen—nicht mit einem längeren Backlog.",
-    "edge": "Ich gedeihe dort, wo technische Tiefe auf Produktintuition trifft: unklare Arbeit eingrenzen, MVPs bauen, aus denen man lernt, und Systeme härten, wenn sie zählen. Gründer und Leads holen mich oft, wenn jemand ein Problem End-to-End tragen soll—ohne ständiges Händchenhalten.",
+    "identity": "Ich bin Product Engineer und verantworte Probleme von Anfang bis Ende. In acht Jahren Lieferung über Frontend, Backend, Integrationen, Infrastruktur und KI habe ich gelernt: Die beste Arbeit beginnt mit schärferen Fragen—nicht mit einem längeren Backlog.",
+    "edge": "Kunden holen mich dort, wo technische Tiefe auf Produkturteil trifft: unklare Arbeit eingrenzen, MVPs bauen, aus denen sie lernen können, KI in Systeme integrieren, die bereits zählen, und Plattformen härten, während sie wachsen. Ich trage das Problem End-to-End – ihr bekommt Fortschritt, nicht noch eine Person, die gemanagt werden muss.",
     "personal": "Außerhalb von Code tanken Lauftraining, Lesen darüber, wie Teams bauen, und guter Kaffee mit Freunden.",
     "ctaContact": "Kontakt aufnehmen"
   },
   "work": {
-    "title": "Ausgewählte Arbeiten",
-    "projects": {
-      "title": "Projekte",
+    "title": "Referenzen",
+    "intro": "Meine Beratungspraxis ist neu, deshalb findet ihr hier noch keine Kunden-Fallstudien. Was ihr findet, ist die Arbeit, die ich in acht Jahren in Produktteams verantwortet habe – als Engineer, Lead und Head of Engineering –, so aufbereitet, wie ich über ein Engagement berichten würde. Das waren Arbeitgeber, keine Kunden, und die Details bleiben auf einer Ebene, die ihre Vertraulichkeit respektiert.",
+    "casesHeading": "Was ich verantwortet habe",
+    "labels": {
+      "problem": "Problem",
+      "approach": "Was ich getan habe",
+      "result": "Ergebnis",
+      "services": "Passende Leistungen"
+    },
+    "cases": {
+      "churpy": {
+        "company": "Churpy",
+        "meta": "Fullstack Engineer → Lead Product Engineer → Head of Engineering",
+        "context": "Kenianisches Fintech, das Unternehmen virtuelle Konten, M-Pesa-Einzahlungen und -Auszahlungen, Hauptbücher und Finanz-Tools bietet.",
+        "items": {
+          "recon": {
+            "title": "KI-native Abstimmungsplattform",
+            "problem": "Finanzteams glichen Kontoauszüge mit Kassenbüchern und Zahlungsavise mit Rechnungen ab – auf einem veralteten Microservice-Workflow, der langsam zu konfigurieren und schwer zu ändern war.",
+            "approach": "Von Grund auf als eine einzige Anwendung neu gebaut: PDF- und OCR-Extraktion mit mehreren Engines, optimales One-to-Many-Matching sowie Konnektoren für Postfächer, SharePoint und SFTP. Claude schlägt Spaltenzuordnungen und Matching-Regeln vor und erklärt Ausnahmen, während Matching, Quality Gates, Berichtsberechnungen und Freigaben deterministisch bleiben – mit Vier-Augen-Freigabe.",
+            "result": "KI beschleunigt die Einrichtung, ohne je die Entscheidung zu treffen. Nur kleine Stichproben erreichen das Modell, jedes KI-Feature fällt auf Heuristiken zurück, wenn das Modell nicht verfügbar ist, und jeder Vorschlag wird im Audit-Log festgehalten. Abgesichert durch rund 310 Backend-Tests."
+          },
+          "docsAi": {
+            "title": "Private Dokumenten-Q&A mit Quellenangaben",
+            "problem": "Teams brauchten Antworten aus großen, sensiblen Dokumentensammlungen, ohne einer KI vertrauen zu müssen, die ihre Quellen erfinden könnte.",
+            "approach": "Ein Retrieval-System auf Postgres mit pgvector und lokal erzeugten Embeddings gebaut. Claude muss für jeden Satz eine Quelle angeben, und jede Quellenangabe öffnet die Originalseite mit hervorgehobener Passage. Eine Microsoft-Teams-Version beantwortet Fragen aus SharePoint, ebenfalls mit Quellenangaben.",
+            "result": "Antworten, die man mit einem Klick überprüfen kann – auf Infrastruktur, die das Team selbst kontrolliert, bereitgestellt mit Terraform."
+          },
+          "akountable": {
+            "title": "Finanzplattform für kleine Unternehmen",
+            "problem": "Kleine Unternehmen in Kenia jonglierten Zahlungen, Rechnungsstellung, Lohnabrechnung und Steuer-Compliance über voneinander getrennte Tools.",
+            "approach": "Das Vue- und TypeScript-Frontend von Grund auf begonnen und größtenteils selbst geschrieben, dazu einen großen Teil des Django-Backends: M-Pesa-Einzahlungen und -Auszahlungen, KRA-eTIMS-Steuer-Compliance, Rechnungsstellung, Freigaben, Lagerverwaltung über mehrere Filialen und Lohnabrechnung.",
+            "result": "Ein Produkt, das alles von Zahlungen bis zur Lohnabrechnung abdeckt. Später habe ich die Go-Payments-API mit Idempotenzschlüsseln und Callback-Deduplizierung gehärtet, sodass wiederholte Zahlungsanfragen nie doppelt verarbeitet werden."
+          },
+          "infra": {
+            "title": "Cloud-Migration von AWS zu selbstverwaltetem Kubernetes",
+            "problem": "Die Produktion lief auf verwaltetem AWS-Kubernetes – mit Kosten und Komplexität, die nicht zur Phase des Unternehmens passten.",
+            "approach": "Alle rund 27 Helm-Charts für sämtliche Services geschrieben, dazu Terraform, cert-manager für TLS, External Secrets, Monitoring mit Prometheus und Grafana sowie eine selbst gehostete Container-Registry – und anschließend die Produktion auf einen einzelnen selbstverwalteten Cluster bei Hetzner umgezogen.",
+            "result": "Die Produktion wurde im Juni 2026 umgestellt, und die Worker-Nodes des Clusters sanken später von neun auf fünf."
+          }
+        }
+      },
+      "productNotes": {
+        "company": "ProductNotes",
+        "meta": "Senior Fullstack Engineer",
+        "context": "Product-Operations-Plattform, die die Analyse von Nutzerfeedback für Produktteams automatisiert.",
+        "items": {
+          "main": {
+            "title": "KI-Insights für Produktmanager",
+            "problem": "Produktmanager verbrachten Stunden damit, Feedback aus einem Dutzend Tools zusammenzutragen, bevor sie eine Entscheidung treffen konnten.",
+            "approach": "Ein KI-gestütztes Insights-Tool in React und Next.js mit mehr als zehn Integrationen gebaut, darunter OpenAI, Notion, Jira, Salesforce, Slack, Figma, Miro, Zapier und Google Workspace, dazu Echtzeit-Analytics-Dashboards.",
+            "result": "Die Analysezeit für Produktmanager sank um 30 %, und die Dashboards steigerten das Nutzerengagement um 40 %."
+          }
+        }
+      },
+      "apollo": {
+        "company": "Apollo API",
+        "meta": "Senior Fullstack Engineer",
+        "context": "Entwickler-Tools zur Bewertung und Verbesserung von KI-Modellen, einschließlich der Open-Source-Toolbox ModsysML.",
+        "items": {
+          "main": {
+            "title": "Tools für LLM-Management und -Evaluierung",
+            "problem": "Teams, die Modelle auswählten und abstimmten, hatten keinen zentralen Ort, um sie zu vergleichen oder den Ergebnissen zu vertrauen.",
+            "approach": "Ein einheitliches LLM-Management-Dashboard in React und Next.js gebaut, ein verbessertes Sentiment-Analyse-Modul in Python und Django für Trust-and-Safety-Arbeit sowie interaktive Dokumentation und Onboarding. Beiträge zu ModsysML, einer Open-Source-Toolbox zur Bewertung von Modellantworten anhand von Testfällen.",
+            "result": "Die Modellauswahl wurde 30 % schneller, die Genauigkeit der Sentiment-Analyse stieg um 25 %, und die Einrichtungszeit für Entwickler sank um 20 %."
+          }
+        }
+      },
+      "twende": {
+        "company": "Twende Mobility",
+        "meta": "Junior Engineer → Team Lead",
+        "context": "Mobilitäts-Startup hinter Kenias erster Carpooling-Web-App.",
+        "items": {
+          "main": {
+            "title": "Vom Carpooling zum Pandemie-Pivot",
+            "problem": "Das Produkt gab es nur für Android, und als COVID-19 kam, brauchte das Unternehmen schnell eine neue Einnahmequelle.",
+            "approach": "Die Carpooling-Web-App in React, Node.js und Python gebaut und anschließend den schnellen Aufbau einer Logistik-Web-App mit Authentifizierung, Zahlungen und Bestellverwaltung geleitet. Vom Junior Engineer zum Team Lead gewachsen und dabei ein wachsendes Team gementort.",
+            "result": "Die Web-App ging über den Funktionsumfang der Android-App hinaus und steigerte das Engagement um 30 %. Der Logistik-Pivot verbesserte die operative Effizienz um 40 %, und die Systemzuverlässigkeit stieg um 25 %."
+          }
+        }
+      }
+    },
+    "buildsHeading": "Eigene Projekte & Labor",
+    "buildsIntro": "Dinge, die ich in meiner freien Zeit baue. Die laufenden Demos sind offene Versionen von Mustern aus der obigen Arbeit, sodass ihr den Ansatz prüfen könnt, bevor wir sprechen.",
+    "statusLive": "Live",
+    "statusInProgress": "In Arbeit",
+    "builds": {
       "overture": {
         "name": "Overture",
         "context": "Eigenständiges Produkt",
-        "problem": "Freelancer, Berater und kleine Agenturen brauchen Angebote und Verträge ohne generische Docs, Kundenportale und Signatur-Tools zu verbinden.",
-        "solution": "Overture ist eine Plattform für Angebote und Verträge—von KI-gestützter Aufnahme und Entwurf über gebrandete Kundenportale, Freigaben und PDFs bis zu E-Signaturen.",
-        "result": "Workspace-Abrechnung, Nutzungslimits und Engagement-Analytics sind eingebaut.",
+        "summary": "Eine produktive Plattform für Angebote und Verträge für Freelancer, Berater und kleine Agenturen – mit KI-gestützter Aufnahme und Entwurf, gebrandeten Kundenportalen, Freigaben, PDF-Erstellung und E-Signaturen, dazu eingebauter Workspace-Abrechnung und Engagement-Analytics.",
         "techLine": "Next.js · Supabase · Drizzle · Polar · PostHog · Fireworks AI"
+      },
+      "privateRag": {
+        "name": "Private Dokumenten-Q&A",
+        "context": "Offene Demo",
+        "summary": "Ein selbst hostbarer Referenz-Build, um Fragen zu privaten Dokumenten zu beantworten: lokale Embeddings, eine Quellenangabe für jeden Satz und Hervorhebung der Quelle."
+      },
+      "pdfAgent": {
+        "name": "Agent zur Kontoauszugs-Extraktion",
+        "context": "Offene Demo",
+        "summary": "Verwandelt Kontoauszüge und Zahlungsavis-PDFs in saubere, validierte Zeilen – die KI schlägt die Zuordnung vor, deterministische Prüfungen entscheiden, was durchkommt."
+      },
+      "evalHarness": {
+        "name": "LLM-Eval-Harness",
+        "context": "Offene Demo",
+        "summary": "Ein kleines, wiederverwendbares Harness, das Modellausgaben anhand von Testfällen bewertet und Regressionen erkennt, bevor eine Prompt- oder Modelländerung live geht."
       }
     },
-    "experience": "erfahrung",
-    "capacityFullTime": "Vollzeit",
-    "capacityContract": "Vertrag",
-    "capacityPartTime": "Teilzeit",
-    "expChurpyDates": "Aug. 2022 - heute",
-    "expChurpyRoleHeadPosition": "Head of Engineering",
-    "expChurpyRoleHeadDates": "Jan. 2025 - heute",
-    "expChurpyRoleLeadPosition": "Lead Product Engineer",
-    "expChurpyRoleLeadDates": "Nov. 2023 - Dez. 2024",
-    "expChurpyRoleFullstackPosition": "Fullstack Engineer",
-    "expChurpyRoleFullstackDates": "Aug. 2022 - Okt. 2023",
-    "expProductNotesDates": "Okt. 2024 - März 2025",
-    "expProductNotesPosition": "Senior Fullstack Engineer",
-    "expApolloDates": "Apr. 2023 - März 2024",
-    "expApolloPosition": "Senior Fullstack Engineer",
-    "expTwendeDates": "Okt. 2018 - Juli 2022",
-    "expTwendePosition": "Frontend Engineer"
+    "testimonialsHeading": "Was Kollegen sagen",
+    "timelineHeading": "Wo ich gearbeitet habe",
+    "timeline": {
+      "churpy": {
+        "dates": "Aug. 2022 - heute",
+        "roles": {
+          "head": {
+            "position": "Head of Engineering",
+            "dates": "Jan. 2025 - heute"
+          },
+          "lead": {
+            "position": "Lead Product Engineer",
+            "dates": "Nov. 2023 - Dez. 2024"
+          },
+          "fullstack": {
+            "position": "Fullstack Engineer",
+            "dates": "Aug. 2022 - Okt. 2023"
+          }
+        }
+      },
+      "productNotes": {
+        "position": "Senior Fullstack Engineer",
+        "dates": "Okt. 2024 - März 2025"
+      },
+      "apollo": {
+        "position": "Senior Fullstack Engineer",
+        "dates": "Apr. 2023 - März 2024"
+      },
+      "twende": {
+        "position": "Junior Engineer → Team Lead",
+        "dates": "Okt. 2018 - Juli 2022"
+      }
+    },
+    "cta": {
+      "title": "Wollt ihr diese Art von Verantwortung für euer Projekt?",
+      "body": "Bucht einen kurzen Discovery-Call und erzählt mir, was ihr ausliefern wollt – oder macht zuerst das zweiminütige Fit-Assessment.",
+      "discoveryButton": "Discovery-Call buchen",
+      "assessmentLink": "Fit-Assessment machen"
+    }
   },
   "contact": {
     "title": "Kontakt",
@@ -93,8 +212,8 @@
       "tenureLabel": "Produktionssoftware ausgeliefert",
       "engagementValue": "3 Stufen",
       "engagementLabel": "Micro · MVP · Enterprise",
-      "sectorsValue": "FinTech · SaaS · LegalTech · PropTech",
-      "sectorsLabel": "Branchen, mit denen ich arbeite"
+      "sectorsValue": "FinTech · B2B SaaS · KI-Tools · Mobilität",
+      "sectorsLabel": "Branchen, in denen ich ausgeliefert habe"
     },
     "tiers": {
       "micro": "Micro",
@@ -193,7 +312,7 @@
       "title": "So laufen Engagements ab",
       "discovery": {
         "title": "1. Discovery",
-        "body": "Ein kostenloser 30-Minuten-Call, um zu verstehen, was ihr liefern wollt, was im Weg steht und ob ich der richtige Partner bin. Kein Pitch – wenn es nicht passt, sage ich es und verweise euch weiter."
+        "body": "Ein kostenloser 15-Minuten-Call, um zu verstehen, was ihr liefern wollt, was im Weg steht und ob ich der richtige Partner bin. Kein Pitch – wenn es nicht passt, sage ich es und verweise euch weiter."
       },
       "scope": {
         "title": "2. Scope & Form",
@@ -208,47 +327,52 @@
       "title": "Bereit, euer Engagement zu scopen?",
       "body": "Zwei Wege zu starten. Wählt, was zu eurem Stand passt.",
       "strategyButton": "Strategie-Call buchen",
-      "discoveryButton": "Kostenloser 30-Min-Discovery-Call",
+      "discoveryButton": "Kostenloser 15-Min-Discovery-Call",
       "principlesLink": "Wie ich die Arbeit denke"
+    },
+    "founding": {
+      "label": "Gründungskunden",
+      "title": "Einige Plätze für Gründungskunden sind frei.",
+      "body": "Ich nehme eine kleine Zahl von Engagements mit Gründungskunden zu einem reduzierten Satz an. Im Gegenzug veröffentlichen wir eine kurze Fallstudie zur Arbeit, und ihr gebt ein ehrliches Testimonial ab, wenn ihr mit dem Ergebnis zufrieden seid. Sprecht es einfach im Discovery-Call an."
     },
     "assessmentLink": "Take the 2-minute fit assessment"
   },
   "method": {
-    "title": "So arbeitest du mit mir",
-    "principlesHeading": "Leitprinzipien",
-    "howToWorkParagraph1": "Ich bin verfügbar für Senior-Vollzeitrollen, Verträge ab drei Monaten und Beratung für frühe Startups.",
-    "howToWorkParagraph2": "Am besten arbeite ich mit Teams, die ambitionierte Produkte bauen und jemanden brauchen, der Probleme End-to-End trägt—von Architektur und Trade-offs bis zu Oberflächendetails, die Nutzer täglich spüren.",
-    "howToWorkParagraph3": "Wenn das zu eurem Team passt, besucht die Kontaktseite oder plant ein kurzes Intro—ich würde gern sehen, ob es passt.",
-    "outro": "Wenn das bei dir ankommt, höre ich gern, was du baust. Melde dich und ich kläre gern mit dir, ob ich der richtige Ingenieur bin.",
+    "title": "Wie ich mit Kunden arbeite",
+    "principlesHeading": "Was ihr erwarten könnt",
+    "howToWorkParagraph1": "Ich übernehme klar umrissene Beratungs-Engagements – von fokussierten Sprints über ein bis drei Wochen bis zu Builds über mehrere Quartale –, dazu Fractional-CTO-Retainer für Gründer, die erfahrenes technisches Urteilsvermögen auf Abruf brauchen.",
+    "howToWorkParagraph2": "Am besten arbeite ich mit Teams, die Produkte bauen, bei denen die Details zählen. Ich trage Probleme End-to-End—von Architektur und Trade-offs bis zu den Oberflächendetails, die Nutzer täglich spüren—und hinterlasse euer Team in der Lage, das Gebaute selbst zu betreiben.",
+    "howToWorkParagraph3": "Wenn das nach dem klingt, was ihr braucht, macht das Fit-Assessment oder bucht einen kurzen Discovery-Call, und wir finden schnell heraus, ob es passt.",
+    "outro": "Wenn das bei euch ankommt, höre ich gern, was ihr baut. Bucht einen Discovery-Call, und ich sage euch ehrlich, ob ich die richtige Person dafür bin.",
     "userCentric": {
       "title": "nutzerzentriert",
       "subTitle": "Für Nutzer gestalten, für Wirkung bauen.",
-      "description": "Wirklich wirkungsvolle Produkte lösen echte Probleme intuitiv und natürlich. Indem ich mich in die Nutzerreise eindenke, stelle ich sicher, dass technische Lösungen zu bedeutsamen Erlebnissen werden. Ich suche Teams, die Empathie priorisieren und sich tief um die Menschen kümmern, die das Produkt nutzen."
+      "description": "Wirkungsvolle Produkte lösen echte Probleme auf eine Weise, die sich natürlich anfühlt. Bei jedem Engagement gehe ich von den Menschen aus, die das Produkt nutzen, nicht von der Feature-Liste, und sorge dafür, dass technische Entscheidungen zu Erlebnissen werden, die sie tatsächlich wahrnehmen. Rechnet damit, dass ich frage, für wen etwas gedacht ist, bevor ich frage, wie man es baut."
     },
     "quality": {
       "title": "Qualität",
       "subTitle": "Ja, schnell liefern—aber keinen Schrott liefern.",
-      "description": "Geschwindigkeit zählt, aber Qualität darf nicht geopfert werden. Ich strebe Handwerkskunst an, die zuverlässige, skalierbare und elegante Lösungen ergibt. Mein Ziel: Produkte, die Bestand haben—not nur Deadlines. Ich möchte mit Teams arbeiten, denen Details wichtig sind."
+      "description": "Tempo zählt, aber nicht auf Kosten dessen, was ihr nächstes Jahr warten müsst. Ich baue auf Zuverlässigkeit und Klarheit: Tests dort, wo sie sich lohnen, Observability vom ersten Tag an und Code, den euer Team nach der Übergabe übernehmen kann. Deadlines werden eingehalten, ohne Chaos zu hinterlassen."
     },
     "collaboration": {
       "title": "Zusammenarbeit",
       "subTitle": "Die besten Produkte entstehen, wenn vielfältige Köpfe zusammenarbeiten.",
-      "description": "Ich gedeihe in cross-funktionalen Umgebungen, in denen Engineering, Design und Produkt gemeinsam etwas Größeres als die Summe der Teile bauen. Ich suche Orte, an denen kollaboratives Problemlösen und geteilte Verantwortung gelebt werden."
+      "description": "Ich arbeite als einer eurer Ingenieure—in euren Repos, euren Standups und euren Entscheidungsthreads—Seite an Seite mit euren Designern und Produktleuten. Entscheidungen werden schriftlich festgehalten, Trade-offs in klarer Sprache erklärt, und niemand muss mir für ein Status-Update hinterherlaufen."
     },
     "iteration": {
       "title": "Iteration",
       "subTitle": "Perfektion entsteht in Iteration, nicht in einem einzelnen Release.",
-      "description": "Große Produkte entstehen durch Lernen, Iterieren und Verfeinern. Ich setze auf MVPs mit schnellem Feedback und kontinuierlicher Verbesserung. Ich suche Partner, die Feedback schätzen, Iteration verstehen und kontinuierliches Lernen leben."
+      "description": "Großartige Produkte entstehen aus Zyklen des Lernens und Verfeinerns. Ich schneide Arbeit so zu, dass früh etwas Echtes live geht, instrumentiert wird und uns zeigt, was als Nächstes zu bauen ist – statt monatelang zu verschwinden, um dann eine große Enthüllung zu liefern."
     },
     "simplicity": {
       "title": "Einfachheit",
       "subTitle": "Einfach ist mächtig.",
-      "description": "In Architektur und Nutzererlebnis ist Einfachheit entscheidend. Die elegantesten Lösungen sind oft die einfachsten; Komplexität nur, wenn sie echten Wert bringt. Ich suche Teams, die Klarheit in Code und Design schätzen."
+      "description": "In Architektur wie im Nutzererlebnis ist die einfachste Lösung, die funktioniert, meist die beste. Komplexität füge ich nur dort hinzu, wo sie sich bezahlt macht – so bleiben eure Systeme günstiger im Betrieb und leichter zu ändern, lange nachdem das Engagement endet."
     },
     "humanCenteredAi": {
       "title": "Menschzentrierte KI",
       "subTitle": "Intelligente Systeme gestalten, die das menschliche Erlebnis verbessern.",
-      "description": "Ich glaube, die Rolle von KI ist es, die Welt für Menschen zu optimieren. Ethik-Vorbilder wie Tristan Harris und Aza Raskin inspirieren mich. Ich suche Teams, die menschzentriertes Design und Development priorisieren und KI nutzen, um die Nutzererfahrung zu verbessern."
+      "description": "KI soll die Arbeit von Menschen besser machen, nicht nur in einer Demo beeindrucken. Inspiriert von ethisch denkenden Technologen wie Tristan Harris und Aza Raskin gestalte ich KI-Features, bei denen Menschen die Kontrolle behalten: Das Modell schlägt vor und erklärt, Menschen entscheiden, und jeder Vorschlag ist nachvollziehbar."
     }
   },
   "notFound": {

@@ -1,11 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 import AnimatedButton from "@/components/shared/AnimatedButton";
 import ContentSurface from "@/components/shared/ContentSurface";
+import { TRACK_RECORD_ENABLED } from "@/components/shared/nav-links";
 import { Link, useRouter } from "@/i18n/navigation";
+import { getDiscoveryCallUrl } from "@/lib/cal";
 import {
   containerVariants,
   itemVariants,
@@ -61,9 +64,7 @@ export default function Home() {
             motionVariants={navItemVariants}
             variant={"default"}
             className="w-full text-base font-medium py-5 sm:min-w-[12rem] sm:flex-1 md:py-6"
-            onClick={() =>
-              window.open("https://cal.com/kinuthiadavid/15min", "_blank")
-            }
+            onClick={() => window.open(getDiscoveryCallUrl(), "_blank")}
           >
             {tCommon("scheduleIntro")}
           </AnimatedButton>
@@ -71,11 +72,22 @@ export default function Home() {
             motionVariants={navItemVariants}
             variant={"outline"}
             className="w-full text-base font-medium py-5 sm:min-w-[12rem] sm:flex-1 md:py-6"
-            onClick={() => router.push("/work")}
+            onClick={() => router.push("/services")}
           >
-            {tCommon("seeSelectedWork")}
+            {tCommon("seeServices")}
           </AnimatedButton>
         </motion.div>
+        {TRACK_RECORD_ENABLED && (
+          <motion.p variants={navItemVariants}>
+            <Link
+              href="/work"
+              className="inline-flex items-center gap-x-1.5 text-sm font-medium text-muted-foreground underline underline-offset-4 transition-colors hover:text-accent-foreground sm:text-base"
+            >
+              {t("trackRecordLink")}
+              <ArrowRight size={16} className="shrink-0" aria-hidden />
+            </Link>
+          </motion.p>
+        )}
       </motion.div>
     </ContentSurface>
   );

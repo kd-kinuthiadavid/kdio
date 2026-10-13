@@ -6,6 +6,7 @@ import { useTranslations } from "next-intl";
 import AnimatedButton from "@/components/shared/AnimatedButton";
 import ContentSurface from "@/components/shared/ContentSurface";
 import { useRouter } from "@/i18n/navigation";
+import { getDiscoveryCallUrl } from "@/lib/cal";
 import {
   containerVariants,
   itemVariants,
@@ -67,9 +68,7 @@ export default function About() {
             motionVariants={navItemVariants}
             variant="default"
             className="w-full text-base font-medium py-5 sm:min-w-[12rem] sm:flex-1 md:py-6"
-            onClick={() =>
-              window.open("https://cal.com/kinuthiadavid/15min", "_blank")
-            }
+            onClick={() => window.open(getDiscoveryCallUrl(), "_blank")}
           >
             {tCommon("scheduleIntro")}
           </AnimatedButton>
