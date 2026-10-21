@@ -42,15 +42,16 @@ export async function saveCustomerAction(
     };
   }
 
-  const id = text(formData, "id");
+  let id = text(formData, "id");
   try {
     if (id) await updateCustomer(id, parsed.data);
-    else await createCustomer(parsed.data);
+    else id = (await createCustomer(parsed.data)).id;
   } catch (e) {
     console.error("save customer", e);
     return { error: "Could not save the customer" };
   }
 
   revalidatePath("/admin/customers");
-  redirect("/admin/customers");
+  revalidatePath(`/admin/customers/${id}`);
+  redirect(`/admin/customers/${id}`);
 }

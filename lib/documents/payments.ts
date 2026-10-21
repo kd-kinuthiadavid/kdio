@@ -98,11 +98,20 @@ export type Receivable = {
 };
 
 /** Outstanding and overdue totals per currency across every issued invoice. */
-export async function getReceivables(today: string): Promise<Receivable[]> {
+export async function getReceivables(
+  today: string,
+  filters: { customerId?: string } = {}
+): Promise<Receivable[]> {
   const invoices = await getDb()
     .select({ id: documents.id, currency: documents.currency, data: documents.data })
     .from(documents)
-    .where(and(eq(documents.type, "invoice"), eq(documents.status, "issued")));
+    .where(
+      and(
+        eq(documents.type, "invoice"),
+        eq(documents.status, "issued"),
+        filters.customerId ? eq(documents.customerId, filters.customerId) : undefined
+      )
+    );
   const summaries = await getPaymentSummaries(invoices.map((i) => i.id));
   const byCurrency = new Map<string, Receivable>();
   for (const invoice of invoices) {

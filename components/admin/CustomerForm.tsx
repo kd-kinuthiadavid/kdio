@@ -91,7 +91,7 @@ export function CustomerForm({ customer }: { customer?: CustomerRow }) {
           {pending ? "Saving…" : customer ? "Save changes" : "Create customer"}
         </Button>
         <Button variant="outline" asChild>
-          <Link href="/admin/customers">Cancel</Link>
+          <Link href={customer ? `/admin/customers/${customer.id}` : "/admin/customers"}>Cancel</Link>
         </Button>
       </div>
     </form>

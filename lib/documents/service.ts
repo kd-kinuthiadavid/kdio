@@ -253,11 +253,13 @@ export async function getDocument(id: string) {
 export async function listDocuments(filters: {
   type?: DocumentType;
   status?: DocumentStatus;
+  customerId?: string;
   limit?: number;
 } = {}) {
   const where: SQL[] = [];
   if (filters.type) where.push(eq(documents.type, filters.type));
   if (filters.status) where.push(eq(documents.status, filters.status));
+  if (filters.customerId) where.push(eq(documents.customerId, filters.customerId));
   return getDb()
     .select({ document: documents, customer: customers })
     .from(documents)
