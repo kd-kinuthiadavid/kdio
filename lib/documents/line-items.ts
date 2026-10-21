@@ -11,7 +11,7 @@ export const isoDate = z.iso.date();
 export const discountSchema = z
   .object({
     kind: z.enum(["percent", "amount"]),
-    value: z.number().min(0),
+    value: z.number({ error: "Enter a discount value" }).min(0, "Discount cannot be negative"),
   })
   .refine((d) => d.kind !== "percent" || d.value <= 100, {
     message: "Percentage discount cannot exceed 100",
@@ -22,11 +22,18 @@ export type Discount = z.infer<typeof discountSchema>;
 export const lineItemSchema = z.object({
   id: z.string().min(1),
   description: z.string().trim().min(1, "Description is required"),
-  quantity: z.number().positive(),
+  quantity: z.number({ error: "Enter a quantity" }).positive("Quantity must be above 0"),
   unit: z.enum(UNITS),
-  unitPriceMinor: z.number().int().min(0),
+  unitPriceMinor: z
+    .number({ error: "Enter a unit price" })
+    .int()
+    .min(0, "Unit price cannot be negative"),
   discount: discountSchema.nullable().default(null),
-  taxRate: z.number().min(0).max(100).default(0),
+  taxRate: z
+    .number({ error: "Enter a tax rate" })
+    .min(0, "Tax rate cannot be negative")
+    .max(100, "Tax rate cannot exceed 100")
+    .default(0),
 });
 
 export type LineItem = z.infer<typeof lineItemSchema>;

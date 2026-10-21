@@ -198,28 +198,32 @@ export function DocumentForm({
           {e.lines ? <p className="text-xs text-destructive">{e.lines}</p> : null}
           {values.lines.map((line, i) => {
             const le = (field: string) => e[`lines.${i}.${field}`];
+            const fid = (field: string) => `line-${line.id}-${field}`;
             const lineTotal = lineTotalsByIndex[i];
             return (
               <div
                 key={line.id}
                 className="grid gap-3 rounded-lg border border-border p-3 sm:grid-cols-12"
               >
-                <FormField label="Description" error={le("description")} className="sm:col-span-12">
+                <FormField label="Description" htmlFor={fid("description")} error={le("description")} className="sm:col-span-12">
                   <Textarea
+                    id={fid("description")}
                     rows={2}
                     value={line.description}
                     onChange={(ev) => setLine(i, { description: ev.target.value })}
                   />
                 </FormField>
-                <FormField label="Qty" error={le("quantity")} className="sm:col-span-2">
+                <FormField label="Qty" htmlFor={fid("quantity")} error={le("quantity")} className="sm:col-span-2">
                   <Input
+                    id={fid("quantity")}
                     inputMode="decimal"
                     value={line.quantity}
                     onChange={(ev) => setLine(i, { quantity: ev.target.value })}
                   />
                 </FormField>
-                <FormField label="Unit" className="sm:col-span-2">
+                <FormField label="Unit" htmlFor={fid("unit")} className="sm:col-span-2">
                   <NativeSelect
+                    id={fid("unit")}
                     value={line.unit}
                     onChange={(ev) => setLine(i, { unit: ev.target.value as FormLine["unit"] })}
                   >
@@ -230,16 +234,18 @@ export function DocumentForm({
                     ))}
                   </NativeSelect>
                 </FormField>
-                <FormField label="Unit price" error={le("unitPriceMinor")} className="sm:col-span-2">
+                <FormField label="Unit price" htmlFor={fid("price")} error={le("unitPriceMinor")} className="sm:col-span-2">
                   <Input
+                    id={fid("price")}
                     inputMode="decimal"
                     value={line.unitPrice}
                     onChange={(ev) => setLine(i, { unitPrice: ev.target.value })}
                   />
                 </FormField>
-                <FormField label="Discount" error={le("discount") ?? le("discount.value")} className="sm:col-span-3">
+                <FormField label="Discount" htmlFor={fid("discount")} error={le("discount") ?? le("discount.value")} className="sm:col-span-3">
                   <div className="flex gap-2">
                     <NativeSelect
+                      aria-label="Discount type"
                       className="w-24 shrink-0"
                       value={line.discountKind}
                       onChange={(ev) =>
@@ -251,6 +257,7 @@ export function DocumentForm({
                       <option value="amount">Amt</option>
                     </NativeSelect>
                     <Input
+                      id={fid("discount")}
                       inputMode="decimal"
                       disabled={line.discountKind === "none"}
                       value={line.discountValue}
@@ -258,8 +265,9 @@ export function DocumentForm({
                     />
                   </div>
                 </FormField>
-                <FormField label="Tax %" error={le("taxRate")} className="sm:col-span-1">
+                <FormField label="Tax %" htmlFor={fid("tax")} error={le("taxRate")} className="sm:col-span-1">
                   <Input
+                    id={fid("tax")}
                     inputMode="decimal"
                     value={line.taxRate}
                     onChange={(ev) => setLine(i, { taxRate: ev.target.value })}
@@ -312,10 +320,12 @@ export function DocumentForm({
           <CardContent className="space-y-3 pt-6 text-sm">
             <FormField
               label="Document discount"
+              htmlFor="documentDiscount"
               error={e.documentDiscount ?? e["documentDiscount.value"]}
             >
               <div className="flex gap-2">
                 <NativeSelect
+                  aria-label="Document discount type"
                   className="w-24 shrink-0"
                   value={values.documentDiscount.kind}
                   onChange={(ev) =>
@@ -330,6 +340,7 @@ export function DocumentForm({
                   <option value="amount">Amt</option>
                 </NativeSelect>
                 <Input
+                  id="documentDiscount"
                   inputMode="decimal"
                   disabled={values.documentDiscount.kind === "none"}
                   value={values.documentDiscount.value}
