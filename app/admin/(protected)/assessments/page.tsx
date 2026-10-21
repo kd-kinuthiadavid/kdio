@@ -1,9 +1,6 @@
 import { desc } from "drizzle-orm";
-import Link from "next/link";
 
 import SubmissionsTierChart from "@/components/admin/SubmissionsTierChart";
-import { AdminSignOutButton } from "@/components/admin/AdminSignOutButton";
-import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -21,7 +18,6 @@ import {
 } from "@/components/ui/table";
 import { assessmentSubmissions } from "@/db/schema";
 import { getDb } from "@/lib/db";
-import { getSiteUrl } from "@/lib/site-url";
 
 export const dynamic = "force-dynamic";
 
@@ -58,19 +54,11 @@ export default async function AdminAssessmentsPage({
 
   return (
     <div className="space-y-8">
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <div>
-          <h1 className="text-2xl font-semibold tracking-tight">Assessments</h1>
-          <p className="text-sm text-muted-foreground">
-            {completed} completed · {drafts} drafts (last {rows.length} rows)
-          </p>
-        </div>
-        <div className="flex flex-wrap gap-2">
-          <Button variant="outline" size="sm" asChild>
-            <Link href={getSiteUrl()}>View site</Link>
-          </Button>
-          <AdminSignOutButton />
-        </div>
+      <div>
+        <h1 className="text-2xl font-semibold tracking-tight">Assessments</h1>
+        <p className="text-sm text-muted-foreground">
+          {completed} completed · {drafts} drafts (last {rows.length} rows)
+        </p>
       </div>
 
       {chartData.length > 0 ? (
