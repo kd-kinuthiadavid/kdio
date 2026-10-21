@@ -4,6 +4,7 @@ import { getTranslations } from "next-intl/server";
 import Link from "next/link";
 
 import ContentSurface from "@/components/shared/ContentSurface";
+import { brand } from "@/lib/brand";
 import { getDiscoveryCallUrl } from "@/lib/cal";
 import {
   containerVariants,
@@ -24,13 +25,13 @@ export default async function Contact() {
     {
       name: "Email",
       description: t("emailDescription"),
-      url: "mailto:david.kinuthia@gmail.com",
+      url: `mailto:${brand.email}`,
       year: "2024",
     },
     {
       name: "LinkedIn",
       description: t("linkedinDescription"),
-      url: "https://www.linkedin.com/in/david-kinuthia/",
+      url: brand.linkedinUrl,
       year: "2024",
     },
   ];

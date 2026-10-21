@@ -11,7 +11,9 @@ export const brandColors = {
 
 export const brand = {
   name: "David Kinuthia",
-  tagline: "Senior product engineer",
+  tagline: "AI & product engineering consultant",
+  email: "david.kinuthia@gmail.com",
+  linkedinUrl: "https://www.linkedin.com/in/david-kinuthia/",
   colors: brandColors,
   /** Stroke paths of app/icon.svg (24x24 viewBox) */
   logoPaths: [
