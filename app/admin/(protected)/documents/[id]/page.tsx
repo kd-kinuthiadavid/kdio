@@ -74,6 +74,14 @@ export default async function DocumentDetailPage({
               </span>
             ) : null}
           </div>
+          {d.status === "issued" ? (
+            <p className="mt-1 max-w-md text-sm text-muted-foreground">
+              Issued documents are locked.{" "}
+              {d.type === "invoice"
+                ? "Correct amounts with a credit or debit note, or void it."
+                : "To change it, void it and raise a new note."}
+            </p>
+          ) : null}
         </div>
         <div className="flex flex-wrap items-start gap-2">
           {isDraft ? (
