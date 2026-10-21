@@ -1,4 +1,4 @@
-import { and, desc, eq, sql, type SQL } from "drizzle-orm";
+import { and, asc, desc, eq, sql, type SQL } from "drizzle-orm";
 import { z } from "zod";
 
 import {
@@ -6,14 +6,19 @@ import {
   documentEvents,
   documents,
   type DocumentEventRow,
+  type DocumentRow,
   type DocumentStatus,
   type DocumentType,
 } from "@/db/schema";
 import { getDb } from "@/lib/db";
 import { getIssuer } from "@/lib/documents/issuer";
-import { CURRENCIES } from "@/lib/documents/money";
+import { CURRENCIES, formatMoney } from "@/lib/documents/money";
 import { getDocumentType } from "@/lib/documents/registry";
-import { customerSnapshot, type DocumentSnapshot } from "@/lib/documents/snapshot";
+import {
+  customerSnapshot,
+  type DocumentSnapshot,
+  type RelatedSnapshot,
+} from "@/lib/documents/snapshot";
 import { fieldErrorsFrom } from "@/lib/zod-errors";
 
 export type Actor = string;
@@ -63,8 +68,90 @@ function prepare(input: DraftInput) {
   };
 }
 
+export type InvoiceBalance = {
+  invoice: DocumentRow;
+  /** Every note that references the invoice, in any status */
+  notes: DocumentRow[];
+  totalMinor: number;
+  debitMinor: number;
+  creditMinor: number;
+  /** Invoice total + issued debit notes − issued credit notes */
+  balanceMinor: number;
+};
+
+export async function getInvoiceBalance(invoiceId: string): Promise<InvoiceBalance | null> {
+  const db = getDb();
+  const [invoice] = await db.select().from(documents).where(eq(documents.id, invoiceId)).limit(1);
+  if (!invoice || invoice.type !== "invoice") return null;
+  const notes = await db
+    .select()
+    .from(documents)
+    .where(eq(documents.relatedDocumentId, invoiceId))
+    .orderBy(asc(documents.createdAt));
+  const issuedSum = (type: DocumentType) =>
+    notes
+      .filter((n) => n.type === type && n.status === "issued")
+      .reduce((sum, n) => sum + n.totalMinor, 0);
+  const debitMinor = issuedSum("debit_note");
+  const creditMinor = issuedSum("credit_note");
+  return {
+    invoice,
+    notes,
+    totalMinor: invoice.totalMinor,
+    debitMinor,
+    creditMinor,
+    balanceMinor: invoice.totalMinor + debitMinor - creditMinor,
+  };
+}
+
+/**
+ * Notes must point at an issued invoice for the same customer and currency,
+ * and issued credit can never exceed the invoice total plus its debit notes.
+ */
+async function checkParent(
+  type: DocumentType,
+  meta: { customerId: string; currency: string; relatedDocumentId?: string | null },
+  totalMinor: number
+): Promise<DocumentRow | null> {
+  const def = getDocumentType(type);
+  if (!def.requiresParent) {
+    if (meta.relatedDocumentId) {
+      throw new DocumentValidationError(`${def.label} cannot reference another document`);
+    }
+    return null;
+  }
+  const balance = meta.relatedDocumentId ? await getInvoiceBalance(meta.relatedDocumentId) : null;
+  if (!balance) throw new DocumentValidationError(`${def.label} must reference an invoice`);
+  const parent = balance.invoice;
+  if (parent.status !== "issued") {
+    throw new DocumentValidationError(
+      `Invoice ${parent.number ?? "draft"} is ${parent.status}; notes need an issued invoice`
+    );
+  }
+  if (parent.customerId !== meta.customerId) {
+    throw new DocumentValidationError("Please fix the highlighted fields", {
+      customerId: `Must match the customer on ${parent.number}`,
+    });
+  }
+  if (parent.currency !== meta.currency) {
+    throw new DocumentValidationError("Please fix the highlighted fields", {
+      currency: `Must be ${parent.currency}, the currency of ${parent.number}`,
+    });
+  }
+  if (type === "credit_note") {
+    const available = balance.balanceMinor;
+    if (totalMinor > available) {
+      throw new DocumentValidationError(
+        `This credit (${formatMoney(totalMinor, parent.currency)}) exceeds what remains creditable on ${parent.number} (${formatMoney(available, parent.currency)})`
+      );
+    }
+  }
+  return parent;
+}
+
 export async function createDraft(input: DraftInput, actor: Actor = "admin") {
   const { meta, data, totals } = prepare(input);
+  await checkParent(input.type, meta, totals.totalMinor);
   const id = crypto.randomUUID();
   const db = getDb();
   await db.batch([
@@ -89,8 +176,17 @@ export async function updateDraft(
   input: DraftInput,
   actor: Actor = "admin"
 ) {
-  const { meta, data, totals } = prepare(input);
   const db = getDb();
+  const [existing] = await db.select().from(documents).where(eq(documents.id, id)).limit(1);
+  if (!existing || existing.status !== "draft") {
+    throw new DocumentValidationError("Only drafts can be edited");
+  }
+  const { meta, data, totals } = prepare({
+    ...input,
+    type: existing.type,
+    relatedDocumentId: existing.relatedDocumentId,
+  });
+  await checkParent(existing.type, meta, totals.totalMinor);
   const updated = await db
     .update(documents)
     .set({
@@ -180,20 +276,41 @@ export async function issueDocument(
     relatedDocumentId: document.relatedDocumentId,
   });
 
+  const parent = await checkParent(document.type, document, totals.totalMinor);
+
   const snapshot: DocumentSnapshot = {
     issuer: getIssuer(),
     customer: customerSnapshot(customer),
     totals,
+    related: parent ? relatedSnapshot(parent) : null,
   };
 
   const issueDate = typeof data.issueDate === "string" ? data.issueDate : null;
   const year = issueDate ? Number(issueDate.slice(0, 4)) : new Date().getFullYear();
+
+  // Re-checked inside the statement so a concurrent issue or void can't slip past checkParent.
+  const parentGuard = parent
+    ? sql`AND EXISTS (SELECT 1 FROM documents p WHERE p.id = ${parent.id} AND p.status = 'issued')`
+    : sql``;
+  const creditGuard =
+    parent && document.type === "credit_note"
+      ? sql`AND (
+          SELECT p.total_minor + COALESCE(SUM(
+            CASE WHEN n.type = 'debit_note' THEN n.total_minor ELSE -n.total_minor END
+          ), 0)
+          FROM documents p
+          LEFT JOIN documents n ON n.related_document_id = p.id AND n.status = 'issued'
+          WHERE p.id = ${parent.id}
+          GROUP BY p.total_minor
+        ) >= ${totals.totalMinor}`
+      : sql``;
 
   const result = await getDb().execute<{ id: string; number: string }>(sql`
     WITH seq AS (
       INSERT INTO document_sequences (type, year, next_value)
       SELECT ${document.type}, ${year}, 2
       WHERE EXISTS (SELECT 1 FROM documents WHERE id = ${id} AND status = 'draft')
+        ${parentGuard} ${creditGuard}
       ON CONFLICT (type, year)
         DO UPDATE SET next_value = document_sequences.next_value + 1
       RETURNING next_value - 1 AS n
@@ -218,6 +335,32 @@ export async function issueDocument(
   `);
 
   const row = result.rows[0];
-  if (!row) throw new DocumentValidationError("Document was already issued");
+  if (!row) {
+    const [current] = await getDb()
+      .select({ status: documents.status })
+      .from(documents)
+      .where(eq(documents.id, id));
+    throw new DocumentValidationError(
+      current?.status === "draft"
+        ? "The original invoice changed while issuing; reload and try again"
+        : "Document was already issued"
+    );
+  }
   return row;
+}
+
+function relatedSnapshot(parent: DocumentRow): RelatedSnapshot {
+  const data = parent.data as { issueDate?: string };
+  return { number: parent.number ?? "", issueDate: data.issueDate ?? "" };
+}
+
+/** Parent reference for rendering drafts; issued notes use their snapshot. */
+export async function getRelatedSnapshot(document: DocumentRow): Promise<RelatedSnapshot | null> {
+  if (!document.relatedDocumentId) return null;
+  const [parent] = await getDb()
+    .select()
+    .from(documents)
+    .where(eq(documents.id, document.relatedDocumentId))
+    .limit(1);
+  return parent?.number ? relatedSnapshot(parent) : null;
 }
