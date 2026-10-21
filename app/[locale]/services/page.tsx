@@ -7,6 +7,7 @@ import { useTranslations } from "next-intl";
 import AnimatedButton from "@/components/shared/AnimatedButton";
 import ContentSurface from "@/components/shared/ContentSurface";
 import { Link } from "@/i18n/navigation";
+import { SERVICE_IDS } from "@/lib/assessment/types";
 import { getDiscoveryCallUrl, getStrategyCallUrl } from "@/lib/cal";
 import {
   containerVariants,
@@ -15,15 +16,6 @@ import {
 } from "../../motionVariants";
 import ServicesList from "./_components/ServicesList";
 import type { ServiceContent } from "./_components/ServiceItem";
-
-const SERVICE_IDS = [
-  "aiIntegration",
-  "secureAi",
-  "aiNative",
-  "agenticOps",
-  "mlopsRescue",
-  "fractionalCto",
-] as const;
 
 const TIER_IDS = ["micro", "mvp", "enterprise"] as const;
 

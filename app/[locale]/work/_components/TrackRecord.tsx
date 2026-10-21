@@ -6,6 +6,7 @@ import { useTranslations } from "next-intl";
 import AnimatedButton from "@/components/shared/AnimatedButton";
 import ContentSurface from "@/components/shared/ContentSurface";
 import { Link } from "@/i18n/navigation";
+import type { ServiceId } from "@/lib/assessment/types";
 import { getDiscoveryCallUrl } from "@/lib/cal";
 import {
   containerVariants,
@@ -16,14 +17,6 @@ import BuildItem, { type BuildContent } from "./BuildItem";
 import CareerTimeline, { type TimelineItem } from "./CareerTimeline";
 import CaseStudy, { type CaseEntry } from "./CaseStudy";
 import Testimonials, { type TestimonialContent } from "./Testimonials";
-
-type ServiceId =
-  | "aiIntegration"
-  | "secureAi"
-  | "aiNative"
-  | "agenticOps"
-  | "mlopsRescue"
-  | "fractionalCto";
 
 const COMPANY_URLS = {
   churpy: "https://www.churpy.co/",
