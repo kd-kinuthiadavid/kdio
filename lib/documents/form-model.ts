@@ -1,11 +1,14 @@
-import type { DocumentRow } from "@/db/schema";
+import type { DocumentRow, DocumentType } from "@/db/schema";
+import { addDaysIso } from "@/lib/documents/dates";
 import {
   newLineItemId,
   type Discount,
   type LineItem,
   type Unit,
 } from "@/lib/documents/line-items";
-import { fromMinor, toMinor } from "@/lib/documents/money";
+import { fromMinor, toMinor, type PaymentMethod } from "@/lib/documents/money";
+import type { CreditNoteData, SettlementMethod } from "@/lib/documents/types/credit-note";
+import type { DebitNoteData } from "@/lib/documents/types/debit-note";
 import type { InvoiceData } from "@/lib/documents/types/invoice";
 
 /** Editable line state: numbers stay as strings while typing, money in major units. */
@@ -83,6 +86,7 @@ export function fromLineItem(l: LineItem): FormLine {
   };
 }
 
+/** One flat shape for every document type; each type reads the fields it needs. */
 export type DocumentFormValues = {
   id?: string;
   customerId: string;
@@ -97,24 +101,131 @@ export type DocumentFormValues = {
   documentDiscount: FormDiscount;
   notes: string;
   terms: string;
+  reason: string;
+  reasonDetails: string;
+  settlementMethod: SettlementMethod | "";
+  refundMethod: PaymentMethod | "";
+  refundDate: string;
 };
 
-export function formValuesFromDocument(doc: DocumentRow): DocumentFormValues {
-  const data = doc.data as InvoiceData;
+const blank = {
+  servicePeriodFrom: "",
+  servicePeriodTo: "",
+  reference: "",
+  notes: "",
+  terms: "",
+  reason: "",
+  reasonDetails: "",
+  settlementMethod: "",
+  refundMethod: "",
+  refundDate: "",
+} satisfies Partial<DocumentFormValues>;
+
+function optional(v: string): string | undefined {
+  const t = v.trim();
+  return t ? t : undefined;
+}
+
+/** Builds the type-specific `data` payload the registry schema validates. */
+export function toDocumentData(type: DocumentType, v: DocumentFormValues) {
+  const common = {
+    issueDate: v.issueDate,
+    reference: optional(v.reference),
+    lines: v.lines.map(toLineItem),
+    documentDiscount: toDiscount(v.documentDiscount),
+    notes: optional(v.notes),
+  };
+  switch (type) {
+    case "invoice":
+      return {
+        ...common,
+        dueDate: v.dueDate,
+        servicePeriodFrom: optional(v.servicePeriodFrom),
+        servicePeriodTo: optional(v.servicePeriodTo),
+        terms: optional(v.terms),
+      };
+    case "credit_note":
+      return {
+        ...common,
+        reason: optional(v.reason),
+        reasonDetails: optional(v.reasonDetails),
+        settlement: {
+          method: optional(v.settlementMethod),
+          refundMethod: v.settlementMethod === "refund" ? optional(v.refundMethod) : undefined,
+          refundDate: v.settlementMethod === "refund" ? optional(v.refundDate) : undefined,
+        },
+      };
+    case "debit_note":
+      return {
+        ...common,
+        reason: optional(v.reason),
+        reasonDetails: optional(v.reasonDetails),
+        dueDate: v.dueDate,
+        terms: optional(v.terms),
+      };
+  }
+}
+
+export function newInvoiceValues(
+  issueDate: string,
+  customer?: { id: string; defaultCurrency: string; paymentTermsDays: number }
+): DocumentFormValues {
   return {
+    ...blank,
+    customerId: customer?.id ?? "",
+    currency: customer?.defaultCurrency ?? "USD",
+    issueDate,
+    dueDate: addDaysIso(issueDate, customer?.paymentTermsDays ?? 14),
+    lines: [emptyFormLine()],
+    documentDiscount: { kind: "none", value: "" },
+  };
+}
+
+/** Starts a credit or debit note from an issued invoice, copying its lines. */
+export function noteValuesFromInvoice(
+  type: "credit_note" | "debit_note",
+  invoice: DocumentRow,
+  issueDate: string,
+  paymentTermsDays: number
+): DocumentFormValues {
+  const data = invoice.data as InvoiceData;
+  return {
+    ...blank,
+    customerId: invoice.customerId,
+    currency: invoice.currency,
+    relatedDocumentId: invoice.id,
+    issueDate,
+    dueDate: addDaysIso(issueDate, paymentTermsDays),
+    reference: data.reference ?? "",
+    lines: data.lines.map((l) => ({ ...fromLineItem(l), id: newLineItemId() })),
+    documentDiscount: fromDiscount(data.documentDiscount),
+    settlementMethod: type === "credit_note" ? "apply_to_balance" : "",
+  };
+}
+
+export function formValuesFromDocument(doc: DocumentRow): DocumentFormValues {
+  const base = doc.data as InvoiceData & Partial<CreditNoteData> & Partial<DebitNoteData>;
+  const settlement = (doc.data as Partial<CreditNoteData>).settlement;
+  return {
+    ...blank,
     id: doc.id,
     customerId: doc.customerId,
     currency: doc.currency,
     relatedDocumentId: doc.relatedDocumentId,
-    issueDate: data.issueDate,
-    dueDate: data.dueDate,
-    servicePeriodFrom: data.servicePeriodFrom ?? "",
-    servicePeriodTo: data.servicePeriodTo ?? "",
-    reference: data.reference ?? "",
-    lines: data.lines.map(fromLineItem),
-    documentDiscount: fromDiscount(data.documentDiscount),
-    notes: data.notes ?? "",
-    terms: data.terms ?? "",
+    issueDate: base.issueDate,
+    dueDate: base.dueDate ?? "",
+    servicePeriodFrom: base.servicePeriodFrom ?? "",
+    servicePeriodTo: base.servicePeriodTo ?? "",
+    reference: base.reference ?? "",
+    lines: base.lines.map(fromLineItem),
+    documentDiscount: fromDiscount(base.documentDiscount),
+    notes: base.notes ?? "",
+    terms: base.terms ?? "",
+    reason: base.reason ?? "",
+    reasonDetails: base.reasonDetails ?? "",
+    settlementMethod: settlement?.method ?? "",
+    refundMethod: settlement?.refundMethod ?? "",
+    refundDate: settlement?.refundDate ?? "",
   };
 }
 

@@ -17,35 +17,46 @@ import {
   emptyFormLine,
   isComputable,
   toDiscount,
+  toDocumentData,
   toLineItem,
   type DocumentFormValues,
   type FormDiscount,
   type FormLine,
 } from "@/lib/documents/form-model";
 import { computeLineTotals, UNITS } from "@/lib/documents/line-items";
-import { CURRENCIES, formatMoney } from "@/lib/documents/money";
+import {
+  CURRENCIES,
+  formatMoney,
+  PAYMENT_METHOD_LABELS,
+  type PaymentMethod,
+} from "@/lib/documents/money";
+import { reasonOptions } from "@/lib/documents/reasons";
+import { SETTLEMENT_METHODS, type SettlementMethod } from "@/lib/documents/types/credit-note";
 
 export type DocumentFormCustomer = Pick<
   CustomerRow,
   "id" | "name" | "company" | "defaultCurrency" | "paymentTermsDays"
 >;
 
-function optional(v: string): string | undefined {
-  const t = v.trim();
-  return t ? t : undefined;
-}
-
 export function DocumentForm({
   type,
   typeLabel,
   customers,
   initial,
+  parent,
+  cancelHref = "/admin/documents",
 }: {
   type: DocumentType;
   typeLabel: string;
   customers: DocumentFormCustomer[];
   initial: DocumentFormValues;
+  /** The issued invoice a credit or debit note adjusts */
+  parent?: { number: string; balance: string };
+  cancelHref?: string;
 }) {
+  const reasons = reasonOptions(type);
+  const hasDueDate = type !== "credit_note";
+  const locked = Boolean(parent);
   const [state, action, pending] = useActionState<FormState, FormData>(saveDraftAction, {});
   const [values, setValues] = useState<DocumentFormValues>(initial);
   const e = state.fieldErrors ?? {};
@@ -88,17 +99,7 @@ export function DocumentForm({
     customerId: values.customerId,
     currency: values.currency,
     relatedDocumentId: values.relatedDocumentId ?? null,
-    data: {
-      issueDate: values.issueDate,
-      dueDate: values.dueDate,
-      servicePeriodFrom: optional(values.servicePeriodFrom),
-      servicePeriodTo: optional(values.servicePeriodTo),
-      reference: optional(values.reference),
-      lines: lineItems,
-      documentDiscount,
-      notes: optional(values.notes),
-      terms: optional(values.terms),
-    },
+    data: toDocumentData(type, values),
   });
 
   const money = (minor: number) => formatMoney(minor, values.currency);
@@ -107,6 +108,14 @@ export function DocumentForm({
     <form action={action} className="space-y-6">
       <input type="hidden" name="payload" value={payload} />
       <FormError state={state} />
+
+      {parent ? (
+        <p className="text-sm text-muted-foreground">
+          Adjusts invoice <span className="font-medium text-foreground">{parent.number}</span>,
+          current balance <span className="font-medium text-foreground">{parent.balance}</span>.
+          Customer and currency follow the invoice.
+        </p>
+      ) : null}
 
       <Card>
         <CardHeader>
@@ -117,6 +126,7 @@ export function DocumentForm({
             <NativeSelect
               id="customerId"
               value={values.customerId}
+              disabled={locked}
               onChange={(ev) => onCustomerChange(ev.target.value)}
             >
               <option value="">Choose a customer…</option>
@@ -131,6 +141,7 @@ export function DocumentForm({
             <NativeSelect
               id="currency"
               value={values.currency}
+              disabled={locked}
               onChange={(ev) => set("currency", ev.target.value)}
             >
               {CURRENCIES.map((c) => (
@@ -155,32 +166,134 @@ export function DocumentForm({
               onChange={(ev) => set("issueDate", ev.target.value)}
             />
           </FormField>
-          <FormField label="Due date" htmlFor="dueDate" error={e.dueDate}>
-            <Input
-              id="dueDate"
-              type="date"
-              value={values.dueDate}
-              onChange={(ev) => set("dueDate", ev.target.value)}
-            />
-          </FormField>
-          <FormField label="Service period from" htmlFor="spFrom" error={e.servicePeriodFrom}>
-            <Input
-              id="spFrom"
-              type="date"
-              value={values.servicePeriodFrom}
-              onChange={(ev) => set("servicePeriodFrom", ev.target.value)}
-            />
-          </FormField>
-          <FormField label="Service period to" htmlFor="spTo" error={e.servicePeriodTo}>
-            <Input
-              id="spTo"
-              type="date"
-              value={values.servicePeriodTo}
-              onChange={(ev) => set("servicePeriodTo", ev.target.value)}
-            />
-          </FormField>
+          {hasDueDate ? (
+            <FormField label="Due date" htmlFor="dueDate" error={e.dueDate}>
+              <Input
+                id="dueDate"
+                type="date"
+                value={values.dueDate}
+                onChange={(ev) => set("dueDate", ev.target.value)}
+              />
+            </FormField>
+          ) : null}
+          {type === "invoice" ? (
+            <>
+              <FormField label="Service period from" htmlFor="spFrom" error={e.servicePeriodFrom}>
+                <Input
+                  id="spFrom"
+                  type="date"
+                  value={values.servicePeriodFrom}
+                  onChange={(ev) => set("servicePeriodFrom", ev.target.value)}
+                />
+              </FormField>
+              <FormField label="Service period to" htmlFor="spTo" error={e.servicePeriodTo}>
+                <Input
+                  id="spTo"
+                  type="date"
+                  value={values.servicePeriodTo}
+                  onChange={(ev) => set("servicePeriodTo", ev.target.value)}
+                />
+              </FormField>
+            </>
+          ) : null}
         </CardContent>
       </Card>
+
+      {reasons ? (
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-base">Reason</CardTitle>
+          </CardHeader>
+          <CardContent className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <FormField label="Reason" htmlFor="reason" error={e.reason} className="sm:col-span-2">
+              <NativeSelect
+                id="reason"
+                value={values.reason}
+                onChange={(ev) => set("reason", ev.target.value)}
+              >
+                <option value="">Choose a reason…</option>
+                {Object.entries(reasons).map(([value, label]) => (
+                  <option key={value} value={value}>
+                    {label}
+                  </option>
+                ))}
+              </NativeSelect>
+            </FormField>
+            {type === "credit_note" ? (
+              <FormField
+                label="Settlement"
+                htmlFor="settlementMethod"
+                error={e["settlement.method"]}
+                className="sm:col-span-2"
+              >
+                <NativeSelect
+                  id="settlementMethod"
+                  value={values.settlementMethod}
+                  onChange={(ev) =>
+                    set("settlementMethod", ev.target.value as SettlementMethod | "")
+                  }
+                >
+                  <option value="">Choose…</option>
+                  {Object.entries(SETTLEMENT_METHODS).map(([value, label]) => (
+                    <option key={value} value={value}>
+                      {label}
+                    </option>
+                  ))}
+                </NativeSelect>
+              </FormField>
+            ) : null}
+            <FormField
+              label="Details (shown on the document)"
+              htmlFor="reasonDetails"
+              error={e.reasonDetails}
+              className="sm:col-span-2 lg:col-span-4"
+            >
+              <Textarea
+                id="reasonDetails"
+                rows={2}
+                value={values.reasonDetails}
+                onChange={(ev) => set("reasonDetails", ev.target.value)}
+              />
+            </FormField>
+            {type === "credit_note" && values.settlementMethod === "refund" ? (
+              <>
+                <FormField
+                  label="Refund method"
+                  htmlFor="refundMethod"
+                  error={e["settlement.refundMethod"]}
+                  className="sm:col-span-2"
+                >
+                  <NativeSelect
+                    id="refundMethod"
+                    value={values.refundMethod}
+                    onChange={(ev) => set("refundMethod", ev.target.value as PaymentMethod | "")}
+                  >
+                    <option value="">Choose…</option>
+                    {Object.entries(PAYMENT_METHOD_LABELS).map(([value, label]) => (
+                      <option key={value} value={value}>
+                        {label}
+                      </option>
+                    ))}
+                  </NativeSelect>
+                </FormField>
+                <FormField
+                  label="Refund date"
+                  htmlFor="refundDate"
+                  error={e["settlement.refundDate"]}
+                  className="sm:col-span-2"
+                >
+                  <Input
+                    id="refundDate"
+                    type="date"
+                    value={values.refundDate}
+                    onChange={(ev) => set("refundDate", ev.target.value)}
+                  />
+                </FormField>
+              </>
+            ) : null}
+          </CardContent>
+        </Card>
+      ) : null}
 
       <Card>
         <CardHeader className="flex flex-row items-center justify-between space-y-0">
@@ -305,14 +418,16 @@ export function DocumentForm({
                 onChange={(ev) => set("notes", ev.target.value)}
               />
             </FormField>
-            <FormField label="Terms" htmlFor="terms" error={e.terms}>
-              <Textarea
-                id="terms"
-                rows={2}
-                value={values.terms}
-                onChange={(ev) => set("terms", ev.target.value)}
-              />
-            </FormField>
+            {hasDueDate ? (
+              <FormField label="Terms" htmlFor="terms" error={e.terms}>
+                <Textarea
+                  id="terms"
+                  rows={2}
+                  value={values.terms}
+                  onChange={(ev) => set("terms", ev.target.value)}
+                />
+              </FormField>
+            ) : null}
           </CardContent>
         </Card>
 
@@ -379,7 +494,7 @@ export function DocumentForm({
           {pending ? "Saving…" : "Save draft"}
         </Button>
         <Button variant="outline" asChild>
-          <Link href="/admin/documents">Cancel</Link>
+          <Link href={cancelHref}>Cancel</Link>
         </Button>
       </div>
     </form>

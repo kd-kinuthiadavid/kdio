@@ -13,6 +13,7 @@ import { customerDisplayName } from "@/lib/documents/customers";
 import { formatDate, formatDateTime } from "@/lib/documents/dates";
 import { formatMoney } from "@/lib/documents/money";
 import { getDocumentType } from "@/lib/documents/registry";
+import { reasonLabel } from "@/lib/documents/reasons";
 import { getDocument } from "@/lib/documents/service";
 
 export default async function DocumentDetailPage({
@@ -25,7 +26,14 @@ export default async function DocumentDetailPage({
   if (!found) notFound();
   const { document: d, customer } = found;
   const def = getDocumentType(d.type);
-  const data = d.data as { issueDate?: string; dueDate?: string; reference?: string };
+  const data = d.data as {
+    issueDate?: string;
+    dueDate?: string;
+    reference?: string;
+    reason?: string;
+  };
+  const reason = data.reason ? reasonLabel(d.type, data.reason) : null;
+  const parent = d.relatedDocumentId ? (await getDocument(d.relatedDocumentId))?.document : null;
   const pdfUrl = `/api/admin/documents/${d.id}/pdf`;
   const isDraft = d.status === "draft";
 
@@ -61,6 +69,20 @@ export default async function DocumentDetailPage({
               />
             </>
           ) : null}
+          {d.type === "invoice" && d.status === "issued" ? (
+            <>
+              <Button variant="outline" size="sm" asChild>
+                <Link href={`/admin/documents/new?type=credit_note&from=${d.id}`}>
+                  New credit note
+                </Link>
+              </Button>
+              <Button variant="outline" size="sm" asChild>
+                <Link href={`/admin/documents/new?type=debit_note&from=${d.id}`}>
+                  New debit note
+                </Link>
+              </Button>
+            </>
+          ) : null}
           <Button variant="outline" size="sm" asChild>
             <a href={pdfUrl} target="_blank" rel="noreferrer">
               Open PDF
@@ -90,6 +112,25 @@ export default async function DocumentDetailPage({
                   </Link>
                 </dd>
               </div>
+              {parent ? (
+                <div>
+                  <dt className="text-muted-foreground">Original invoice</dt>
+                  <dd>
+                    <Link
+                      href={`/admin/documents/${parent.id}`}
+                      className="underline-offset-4 hover:underline"
+                    >
+                      {parent.number ?? "Draft"}
+                    </Link>
+                  </dd>
+                </div>
+              ) : null}
+              {reason ? (
+                <div>
+                  <dt className="text-muted-foreground">Reason</dt>
+                  <dd>{reason}</dd>
+                </div>
+              ) : null}
               <div className="grid grid-cols-2 gap-3">
                 <div>
                   <dt className="text-muted-foreground">Issue date</dt>
