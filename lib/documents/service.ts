@@ -111,8 +111,10 @@ export async function getInvoiceBalance(invoiceId: string): Promise<InvoiceBalan
 async function checkParent(
   type: DocumentType,
   meta: { customerId: string; currency: string; relatedDocumentId?: string | null },
-  totalMinor: number
+  totalMinor: number,
+  data: Record<string, unknown>
 ): Promise<DocumentRow | null> {
+  const issueDate = typeof data.issueDate === "string" ? data.issueDate : null;
   const def = getDocumentType(type);
   if (!def.requiresParent) {
     if (meta.relatedDocumentId) {
@@ -138,6 +140,12 @@ async function checkParent(
       currency: `Must be ${parent.currency}, the currency of ${parent.number}`,
     });
   }
+  const parentIssueDate = (parent.data as { issueDate?: string }).issueDate;
+  if (issueDate && parentIssueDate && issueDate < parentIssueDate) {
+    throw new DocumentValidationError("Please fix the highlighted fields", {
+      issueDate: `Cannot be before ${parent.number}'s issue date (${parentIssueDate})`,
+    });
+  }
   if (type === "credit_note") {
     const available = balance.balanceMinor;
     if (totalMinor > available) {
@@ -151,7 +159,7 @@ async function checkParent(
 
 export async function createDraft(input: DraftInput, actor: Actor = "admin") {
   const { meta, data, totals } = prepare(input);
-  await checkParent(input.type, meta, totals.totalMinor);
+  await checkParent(input.type, meta, totals.totalMinor, data);
   const id = crypto.randomUUID();
   const db = getDb();
   await db.batch([
@@ -186,7 +194,7 @@ export async function updateDraft(
     type: existing.type,
     relatedDocumentId: existing.relatedDocumentId,
   });
-  await checkParent(existing.type, meta, totals.totalMinor);
+  await checkParent(existing.type, meta, totals.totalMinor, data);
   const updated = await db
     .update(documents)
     .set({
@@ -276,7 +284,7 @@ export async function issueDocument(
     relatedDocumentId: document.relatedDocumentId,
   });
 
-  const parent = await checkParent(document.type, document, totals.totalMinor);
+  const parent = await checkParent(document.type, document, totals.totalMinor, data);
 
   const snapshot: DocumentSnapshot = {
     issuer: getIssuer(),
