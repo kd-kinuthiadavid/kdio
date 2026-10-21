@@ -7,6 +7,7 @@ import { useActionState, useState } from "react";
 import { saveDraftAction } from "@/app/admin/(protected)/documents/actions";
 import { FormError, FormField, type FormState } from "@/components/admin/FormField";
 import { Notice } from "@/components/admin/Notice";
+import { useFormSubmit } from "@/components/admin/use-form-submit";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -59,6 +60,7 @@ export function DocumentForm({
   const hasDueDate = type !== "credit_note";
   const locked = Boolean(parent);
   const [state, action, pending] = useActionState<FormState, FormData>(saveDraftAction, {});
+  const onSubmit = useFormSubmit(action);
   const [values, setValues] = useState<DocumentFormValues>(initial);
   const e = state.fieldErrors ?? {};
 
@@ -106,7 +108,7 @@ export function DocumentForm({
   const money = (minor: number) => formatMoney(minor, values.currency);
 
   return (
-    <form action={action} className="space-y-6">
+    <form onSubmit={onSubmit} className="space-y-6">
       <input type="hidden" name="payload" value={payload} />
       <FormError state={state} />
 

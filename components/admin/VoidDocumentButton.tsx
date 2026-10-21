@@ -5,12 +5,16 @@ import { useActionState, useState } from "react";
 import { voidDocumentAction } from "@/app/admin/(protected)/documents/actions";
 import type { FormState } from "@/components/admin/FormField";
 import { FieldMessage } from "@/components/admin/Notice";
+import { useFormSubmit } from "@/components/admin/use-form-submit";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
 export function VoidDocumentButton({ id, label }: { id: string; label: string }) {
   const [open, setOpen] = useState(false);
   const [state, action, pending] = useActionState<FormState, FormData>(voidDocumentAction, {});
+  const onSubmit = useFormSubmit(action, () =>
+    window.confirm(`Void this ${label.toLowerCase()}? This cannot be undone.`)
+  );
 
   if (!open) {
     return (
@@ -21,15 +25,7 @@ export function VoidDocumentButton({ id, label }: { id: string; label: string })
   }
 
   return (
-    <form
-      action={action}
-      onSubmit={(e) => {
-        if (!window.confirm(`Void this ${label.toLowerCase()}? This cannot be undone.`)) {
-          e.preventDefault();
-        }
-      }}
-      className="flex w-full flex-col gap-1 sm:w-auto"
-    >
+    <form onSubmit={onSubmit} className="flex w-full flex-col gap-1 sm:w-auto">
       <input type="hidden" name="id" value={id} />
       <div className="flex gap-2">
         <Input

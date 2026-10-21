@@ -5,6 +5,7 @@ import { useActionState } from "react";
 
 import { saveCustomerAction } from "@/app/admin/(protected)/customers/actions";
 import { FormError, FormField, type FormState } from "@/components/admin/FormField";
+import { useFormSubmit } from "@/components/admin/use-form-submit";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { NativeSelect } from "@/components/ui/native-select";
@@ -17,10 +18,11 @@ export function CustomerForm({ customer }: { customer?: CustomerRow }) {
     saveCustomerAction,
     {}
   );
+  const onSubmit = useFormSubmit(action);
   const e = state.fieldErrors ?? {};
 
   return (
-    <form action={action} className="max-w-2xl space-y-5">
+    <form onSubmit={onSubmit} className="max-w-2xl space-y-5">
       {customer ? <input type="hidden" name="id" value={customer.id} /> : null}
       <FormError state={state} />
       <div className="grid gap-4 sm:grid-cols-2">
