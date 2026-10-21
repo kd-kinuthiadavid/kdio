@@ -40,6 +40,17 @@ export function summarizePayments(figures: PaymentFigures): PaymentSummary {
   return { ...figures, netPaidMinor, outstandingMinor, state };
 }
 
+/** Whole days past the due date while money is still outstanding; null when not overdue. */
+export function daysOverdue(
+  dueDate: string | undefined,
+  outstandingMinor: number,
+  today: string
+): number | null {
+  if (!dueDate || outstandingMinor <= 0 || dueDate >= today) return null;
+  const ms = Date.parse(`${today}T00:00:00Z`) - Date.parse(`${dueDate}T00:00:00Z`);
+  return Math.round(ms / 86_400_000);
+}
+
 export function isRefundCredit(data: unknown): boolean {
   const settlement = (data as { settlement?: { method?: string } } | null)?.settlement;
   return settlement?.method === "refund";

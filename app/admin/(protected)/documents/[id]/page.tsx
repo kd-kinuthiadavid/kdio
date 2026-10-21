@@ -21,8 +21,9 @@ import { VoidDocumentButton } from "@/components/admin/VoidDocumentButton";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { customerDisplayName } from "@/lib/documents/customers";
-import { formatDate, formatDateTime } from "@/lib/documents/dates";
+import { formatDate, formatDateTime, todayIso } from "@/lib/documents/dates";
 import { formatMoney } from "@/lib/documents/money";
+import { daysOverdue } from "@/lib/documents/payment-state";
 import { getDocumentType } from "@/lib/documents/registry";
 import { reasonLabel } from "@/lib/documents/reasons";
 import { getDocument, getInvoiceBalance, listEvents } from "@/lib/documents/service";
@@ -51,6 +52,10 @@ export default async function DocumentDetailPage({
     d.type === "invoice" && d.status !== "draft" ? getInvoiceBalance(d.id) : null,
     listEvents(d.id),
   ]);
+  const overdue =
+    balance && d.status === "issued"
+      ? daysOverdue(data.dueDate, balance.outstandingMinor, todayIso())
+      : null;
   const pdfUrl = `/api/admin/documents/${d.id}/pdf`;
   const isDraft = d.status === "draft";
 
@@ -63,6 +68,11 @@ export default async function DocumentDetailPage({
             <h1 className="text-2xl font-semibold tracking-tight">{d.number ?? "Draft"}</h1>
             <DocumentStatusBadge status={d.status} />
             {balance && d.status === "issued" ? <PaymentStateBadge state={balance.state} /> : null}
+            {overdue !== null ? (
+              <span className="text-sm font-medium text-danger">
+                Overdue {overdue} day{overdue === 1 ? "" : "s"}
+              </span>
+            ) : null}
           </div>
         </div>
         <div className="flex flex-wrap items-start gap-2">

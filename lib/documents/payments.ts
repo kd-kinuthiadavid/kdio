@@ -1,9 +1,14 @@
-import { sql } from "drizzle-orm";
+import { and, eq, sql } from "drizzle-orm";
 import { z } from "zod";
 
+import { documents } from "@/db/schema";
 import { getDb } from "@/lib/db";
 import { PAYMENT_METHODS, toMinor } from "@/lib/documents/money";
-import { summarizePayments, type PaymentSummary } from "@/lib/documents/payment-state";
+import {
+  daysOverdue,
+  summarizePayments,
+  type PaymentSummary,
+} from "@/lib/documents/payment-state";
 import { DocumentValidationError, type Actor } from "@/lib/documents/service";
 import { fieldErrorsFrom } from "@/lib/zod-errors";
 
@@ -83,6 +88,41 @@ export async function deletePayment(paymentId: string, actor: Actor = "admin") {
   `);
   if (!result.rows[0]) throw new DocumentValidationError("Payment not found");
   return { documentId: result.rows[0].id };
+}
+
+export type Receivable = {
+  currency: string;
+  outstandingMinor: number;
+  overdueMinor: number;
+  overdueCount: number;
+};
+
+/** Outstanding and overdue totals per currency across every issued invoice. */
+export async function getReceivables(today: string): Promise<Receivable[]> {
+  const invoices = await getDb()
+    .select({ id: documents.id, currency: documents.currency, data: documents.data })
+    .from(documents)
+    .where(and(eq(documents.type, "invoice"), eq(documents.status, "issued")));
+  const summaries = await getPaymentSummaries(invoices.map((i) => i.id));
+  const byCurrency = new Map<string, Receivable>();
+  for (const invoice of invoices) {
+    const summary = summaries.get(invoice.id);
+    if (!summary || summary.outstandingMinor <= 0) continue;
+    const row = byCurrency.get(invoice.currency) ?? {
+      currency: invoice.currency,
+      outstandingMinor: 0,
+      overdueMinor: 0,
+      overdueCount: 0,
+    };
+    row.outstandingMinor += summary.outstandingMinor;
+    const dueDate = (invoice.data as { dueDate?: string }).dueDate;
+    if (daysOverdue(dueDate, summary.outstandingMinor, today) !== null) {
+      row.overdueMinor += summary.outstandingMinor;
+      row.overdueCount += 1;
+    }
+    byCurrency.set(invoice.currency, row);
+  }
+  return [...byCurrency.values()].sort((a, b) => a.currency.localeCompare(b.currency));
 }
 
 /** Payment summaries for many invoices in one query, keyed by invoice id. */

@@ -14,9 +14,10 @@ import {
 } from "@/components/ui/table";
 import type { DocumentStatus } from "@/db/schema";
 import { customerDisplayName } from "@/lib/documents/customers";
-import { formatDate } from "@/lib/documents/dates";
+import { formatDate, todayIso } from "@/lib/documents/dates";
 import { formatMoney } from "@/lib/documents/money";
-import { getPaymentSummaries } from "@/lib/documents/payments";
+import { daysOverdue } from "@/lib/documents/payment-state";
+import { getPaymentSummaries, getReceivables } from "@/lib/documents/payments";
 import { getDocumentType, isDocumentType, listDocumentTypes } from "@/lib/documents/registry";
 import { listDocuments } from "@/lib/documents/service";
 import { cn } from "@/lib/utils";
@@ -53,12 +54,16 @@ export default async function DocumentsPage({
   const sp = await searchParams;
   const type = sp.type && isDocumentType(sp.type) ? sp.type : undefined;
   const status = STATUSES.find((s) => s === sp.status);
+  const today = todayIso();
   const rows = await listDocuments({ type, status });
-  const payments = await getPaymentSummaries(
-    rows
-      .filter(({ document: d }) => d.type === "invoice" && d.status === "issued")
-      .map(({ document: d }) => d.id)
-  );
+  const [payments, receivables] = await Promise.all([
+    getPaymentSummaries(
+      rows
+        .filter(({ document: d }) => d.type === "invoice" && d.status === "issued")
+        .map(({ document: d }) => d.id)
+    ),
+    getReceivables(today),
+  ]);
 
   return (
     <div className="space-y-6">
@@ -71,6 +76,31 @@ export default async function DocumentsPage({
           <Link href="/admin/documents/new">New invoice</Link>
         </Button>
       </div>
+
+      {receivables.length ? (
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {receivables.map((r) => (
+            <Card key={r.currency}>
+              <CardContent className="space-y-1 pt-5">
+                <p className="text-sm text-muted-foreground">Outstanding ({r.currency})</p>
+                <p className="text-xl font-semibold tabular-nums">
+                  {formatMoney(r.outstandingMinor, r.currency)}
+                </p>
+                <p
+                  className={cn(
+                    "text-xs tabular-nums",
+                    r.overdueCount ? "font-medium text-danger" : "text-muted-foreground"
+                  )}
+                >
+                  {r.overdueCount
+                    ? `${formatMoney(r.overdueMinor, r.currency)} overdue on ${r.overdueCount} invoice${r.overdueCount === 1 ? "" : "s"}`
+                    : "Nothing overdue"}
+                </p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      ) : null}
 
       <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
         <div className="flex flex-wrap gap-1">
@@ -114,8 +144,11 @@ export default async function DocumentsPage({
               </TableHeader>
               <TableBody>
                 {rows.map(({ document: d, customer: c }) => {
-                  const data = d.data as { issueDate?: string };
+                  const data = d.data as { issueDate?: string; dueDate?: string };
                   const payment = payments.get(d.id);
+                  const overdue = payment
+                    ? daysOverdue(data.dueDate, payment.outstandingMinor, today)
+                    : null;
                   return (
                     <TableRow key={d.id}>
                       <TableCell>
@@ -142,6 +175,11 @@ export default async function DocumentsPage({
                             {payment.outstandingMinor > 0 && payment.state !== "unpaid" ? (
                               <span className="text-xs tabular-nums text-muted-foreground">
                                 {formatMoney(payment.outstandingMinor, d.currency)} due
+                              </span>
+                            ) : null}
+                            {overdue !== null ? (
+                              <span className="text-xs font-medium text-danger">
+                                Overdue {overdue} day{overdue === 1 ? "" : "s"}
                               </span>
                             ) : null}
                           </div>
