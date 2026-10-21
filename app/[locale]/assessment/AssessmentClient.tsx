@@ -274,7 +274,10 @@ export default function AssessmentClient() {
         variants={containerVariants}
         className="flex w-full flex-col gap-y-8 sm:gap-y-10"
       >
-        <motion.div variants={containerVariants} className="flex flex-col gap-y-3">
+        <motion.div
+          variants={containerVariants}
+          className="flex flex-col gap-y-3"
+        >
           <motion.h1
             variants={itemVariants}
             className="text-balance font-semibold text-3xl leading-tight sm:text-4xl"
@@ -306,18 +309,34 @@ export default function AssessmentClient() {
         ) : null}
 
         {busy && step !== "results" ? (
-          <motion.p variants={itemVariants} className="text-sm text-muted-foreground" aria-live="polite">
-            {step === "intro" && searchParams.get("resume") ? t("resumeLoading") : t("saving")}
+          <motion.p
+            variants={itemVariants}
+            className="text-sm text-muted-foreground"
+            aria-live="polite"
+          >
+            {step === "intro" && searchParams.get("resume")
+              ? t("resumeLoading")
+              : t("saving")}
           </motion.p>
         ) : null}
 
         {step === "intro" && (
-          <motion.div variants={containerVariants} className="flex flex-col gap-y-6">
-            <motion.p variants={itemVariants} className="text-base leading-relaxed">
+          <motion.div
+            variants={containerVariants}
+            className="flex flex-col gap-y-6"
+          >
+            <motion.p
+              variants={itemVariants}
+              className="text-base leading-relaxed"
+            >
               {t("introLead")}
             </motion.p>
             <motion.div variants={navItemVariants}>
-              <Button type="button" className="w-full py-6 text-base" onClick={() => setStep("email")}>
+              <Button
+                type="button"
+                className="w-full py-6 text-base"
+                onClick={() => setStep("email")}
+              >
                 {t("startCta")}
               </Button>
             </motion.div>
@@ -325,7 +344,10 @@ export default function AssessmentClient() {
         )}
 
         {step === "email" && (
-          <motion.div variants={containerVariants} className="flex flex-col gap-y-5">
+          <motion.div
+            variants={containerVariants}
+            className="flex flex-col gap-y-5"
+          >
             <div className="flex flex-col gap-y-2">
               <Label htmlFor="assess-email">{t("emailLabel")}</Label>
               <Input
@@ -347,8 +369,16 @@ export default function AssessmentClient() {
               />
               <span>{t("consentLabel")}</span>
             </label>
-            <motion.div variants={navItemVariants} className="flex flex-col gap-3 sm:flex-row">
-              <Button type="button" variant="outline" className="w-full py-5" onClick={handleBack}>
+            <motion.div
+              variants={navItemVariants}
+              className="flex flex-col gap-3 sm:flex-row"
+            >
+              <Button
+                type="button"
+                variant="outline"
+                className="w-full py-5"
+                onClick={handleBack}
+              >
                 {t("backCta")}
               </Button>
               <Button
@@ -381,7 +411,11 @@ export default function AssessmentClient() {
 
             {current.type === "single" ? (
               <RadioGroup
-                value={typeof currentValue() === "string" ? (currentValue() as string) : ""}
+                value={
+                  typeof currentValue() === "string"
+                    ? (currentValue() as string)
+                    : ""
+                }
                 onValueChange={(v) => setCurrentValue(v)}
                 className="flex flex-col gap-3"
               >
@@ -390,9 +424,16 @@ export default function AssessmentClient() {
                     key={opt.id}
                     className="flex cursor-pointer items-center gap-3 rounded-lg border border-border bg-background/50 px-4 py-3 transition-colors hover:bg-accent/20 has-[[data-state=checked]]:border-primary has-[[data-state=checked]]:bg-accent/25"
                   >
-                    <RadioGroupItem value={opt.id} id={`${current.id}-${opt.id}`} />
+                    <RadioGroupItem
+                      value={opt.id}
+                      id={`${current.id}-${opt.id}`}
+                    />
                     <span className="text-base leading-snug">
-                      {t(`questions.${current.id}.options.${opt.id}` as Parameters<typeof t>[0])}
+                      {t(
+                        `questions.${current.id}.options.${opt.id}` as Parameters<
+                          typeof t
+                        >[0],
+                      )}
                     </span>
                   </label>
                 ))}
@@ -400,8 +441,20 @@ export default function AssessmentClient() {
             ) : (
               <div className="flex flex-col gap-y-3">
                 <div className="flex justify-between text-xs text-muted-foreground">
-                  <span>{t(`questions.${current.id}.scaleLow` as Parameters<typeof t>[0])}</span>
-                  <span>{t(`questions.${current.id}.scaleHigh` as Parameters<typeof t>[0])}</span>
+                  <span>
+                    {t(
+                      `questions.${current.id}.scaleLow` as Parameters<
+                        typeof t
+                      >[0],
+                    )}
+                  </span>
+                  <span>
+                    {t(
+                      `questions.${current.id}.scaleHigh` as Parameters<
+                        typeof t
+                      >[0],
+                    )}
+                  </span>
                 </div>
                 <input
                   type="range"
@@ -417,45 +470,81 @@ export default function AssessmentClient() {
                   className="w-full accent-primary"
                 />
                 <p className="text-center text-sm font-medium tabular-nums">
-                  {typeof currentValue() === "number" ? currentValue() : 5} / {current.max}
+                  {typeof currentValue() === "number" ? currentValue() : 5} /{" "}
+                  {current.max}
                 </p>
               </div>
             )}
 
             <div className="flex flex-col gap-3 sm:flex-row">
-              <Button type="button" variant="outline" className="w-full py-5" onClick={handleBack}>
+              <Button
+                type="button"
+                variant="outline"
+                className="w-full py-5"
+                onClick={handleBack}
+              >
                 {t("backCta")}
               </Button>
-              <Button type="button" className="w-full py-5" disabled={busy} onClick={handleNext}>
-                {qIndex >= ASSESSMENT_QUESTIONS.length - 1 ? t("submitCta") : t("nextCta")}
+              <Button
+                type="button"
+                className="w-full py-5"
+                disabled={busy}
+                onClick={handleNext}
+              >
+                {qIndex >= ASSESSMENT_QUESTIONS.length - 1
+                  ? t("submitCta")
+                  : t("nextCta")}
               </Button>
             </div>
           </motion.div>
         )}
 
         {step === "results" && result && (
-          <motion.div variants={containerVariants} className="flex flex-col gap-y-6">
-            <motion.h2 variants={itemVariants} className="text-2xl font-semibold">
+          <motion.div
+            variants={containerVariants}
+            className="flex flex-col gap-y-6"
+          >
+            <motion.h2
+              variants={itemVariants}
+              className="text-2xl font-semibold"
+            >
               {t("resultsTitle")}
             </motion.h2>
-            <motion.p variants={itemVariants} className="text-lg text-muted-foreground">
+            <motion.p
+              variants={itemVariants}
+              className="text-lg text-muted-foreground"
+            >
               {t("resultsScore", { score: result.totalScore })}
             </motion.p>
             <motion.div
               variants={itemVariants}
               className="rounded-lg border border-border bg-background/50 p-5"
             >
-              <p className="text-sm font-medium text-muted-foreground">{t("resultsService")}</p>
-              <p className="text-lg font-semibold text-primary">
-                {tServices(`items.${result.serviceId}.name` as Parameters<typeof tServices>[0])}
+              <p className="text-sm font-medium text-muted-foreground">
+                {t("resultsService")}
               </p>
-              <p className="mt-3 text-sm text-muted-foreground">{t("resultsTier")}</p>
-              <p className="text-base font-medium">{t(`tiers.${result.tier}.label`)}</p>
-              <p className="mt-3 text-base leading-relaxed">{t(`tiers.${result.tier}.body`)}</p>
+              <p className="text-lg font-semibold text-primary">
+                {tServices(
+                  `items.${result.serviceId}.name` as Parameters<
+                    typeof tServices
+                  >[0],
+                )}
+              </p>
+              <p className="mt-3 text-sm text-muted-foreground">
+                {t("resultsTier")}
+              </p>
+              <p className="text-base font-medium">
+                {t(`tiers.${result.tier}.label`)}
+              </p>
+              <p className="mt-3 text-base leading-relaxed">
+                {t(`tiers.${result.tier}.body`)}
+              </p>
             </motion.div>
 
             {result.tier === "notFit" ? (
-              <p className="text-base leading-relaxed text-muted-foreground">{t("resultsNotFit")}</p>
+              <p className="text-base leading-relaxed text-muted-foreground">
+                {t("resultsNotFit")}
+              </p>
             ) : (
               <div className="flex flex-col gap-3">
                 {result.tier === "strong" ? (
@@ -468,7 +557,7 @@ export default function AssessmentClient() {
                           email,
                           notes: calNotes,
                         }),
-                        "_blank"
+                        "_blank",
                       )
                     }
                   >
@@ -486,7 +575,7 @@ export default function AssessmentClient() {
                           email,
                           notes: calNotes,
                         }),
-                        "_blank"
+                        "_blank",
                       )
                     }
                   >
@@ -498,11 +587,15 @@ export default function AssessmentClient() {
                     <Button
                       type="button"
                       className="w-full py-6 text-base"
-                      onClick={() => window.open(getNurtureGuideUrl(), "_blank")}
+                      onClick={() =>
+                        window.open(getNurtureGuideUrl(), "_blank")
+                      }
                     >
                       {t("resultsCtaGuide")}
                     </Button>
-                    <p className="text-sm text-muted-foreground">{t("nurtureHint")}</p>
+                    <p className="text-sm text-muted-foreground">
+                      {t("nurtureHint")}
+                    </p>
                   </>
                 ) : null}
               </div>
@@ -510,10 +603,15 @@ export default function AssessmentClient() {
           </motion.div>
         )}
 
-        <motion.footer variants={itemVariants} className="border-t border-border pt-8 text-sm leading-relaxed text-muted-foreground">
+        <motion.footer
+          variants={itemVariants}
+          className="border-t border-border pt-8 text-sm leading-relaxed text-muted-foreground"
+        >
           <p className="font-semibold text-foreground">{t("privacyTitle")}</p>
           <p className="mt-2">{t("privacyBody")}</p>
-          <p className="mt-4 text-xs leading-relaxed opacity-90">{t("triagePlaybook")}</p>
+          <p className="mt-4 text-xs leading-relaxed opacity-90">
+            {t("triagePlaybook")}
+          </p>
         </motion.footer>
       </motion.div>
     </ContentSurface>
