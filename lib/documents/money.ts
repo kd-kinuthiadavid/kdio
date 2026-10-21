@@ -1,6 +1,16 @@
 export const CURRENCIES = ["USD", "EUR", "GBP", "KES"] as const;
 export type Currency = (typeof CURRENCIES)[number];
 
+export const PAYMENT_METHODS = ["bank", "mpesa", "card", "other"] as const;
+export type PaymentMethod = (typeof PAYMENT_METHODS)[number];
+
+export const PAYMENT_METHOD_LABELS: Record<PaymentMethod, string> = {
+  bank: "Bank transfer",
+  mpesa: "M-Pesa",
+  card: "Card",
+  other: "Other",
+};
+
 /** All supported currencies use 2 minor digits. */
 const MINOR_FACTOR = 100;
 
