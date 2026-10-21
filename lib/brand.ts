@@ -1,0 +1,22 @@
+/** Light palette aligned with app/globals.css :root */
+export const brandColors = {
+  bg: "#f4f4e8",
+  fg: "#1a1a12",
+  muted: "#5c5c52",
+  primary: "#0d4a45",
+  accent: "#e5f62c",
+  border: "#e2e2d4",
+  card: "#ffffff",
+};
+
+export const brand = {
+  name: "David Kinuthia",
+  tagline: "Senior product engineer",
+  colors: brandColors,
+  /** Stroke paths of app/icon.svg (24x24 viewBox) */
+  logoPaths: [
+    "m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z",
+    "m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65",
+    "m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65",
+  ],
+};

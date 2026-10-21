@@ -13,15 +13,9 @@ import {
   Text,
 } from "@react-email/components";
 
-/** Light palette aligned with app/globals.css :root */
-export const colors = {
-  bg: "#f4f4e8",
-  fg: "#1a1a12",
-  muted: "#5c5c52",
-  primary: "#0d4a45",
-  border: "#e2e2d4",
-  card: "#ffffff",
-};
+import { brand, brandColors as colors } from "@/lib/brand";
+
+export { colors };
 
 export function EmailShell({
   preview,
@@ -66,7 +60,7 @@ export function EmailShell({
             marginTop: "24px",
           }}
         >
-          David Kinuthia · Senior product engineer
+          {brand.name} · {brand.tagline}
         </Text>
       </Body>
     </Html>
