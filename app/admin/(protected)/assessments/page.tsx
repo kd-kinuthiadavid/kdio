@@ -94,7 +94,7 @@ export default async function AdminAssessmentsPage({
               {rows.map((r) => (
                 <TableRow
                   key={r.id}
-                  className={highlightId === r.id ? "bg-accent/30" : undefined}
+                  className={highlightId === r.id ? "bg-accent/60" : undefined}
                 >
                   <TableCell className="whitespace-nowrap text-xs sm:text-sm">
                     {r.createdAt instanceof Date

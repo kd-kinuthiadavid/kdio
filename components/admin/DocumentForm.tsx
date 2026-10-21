@@ -6,6 +6,7 @@ import { useActionState, useState } from "react";
 
 import { saveDraftAction } from "@/app/admin/(protected)/documents/actions";
 import { FormError, FormField, type FormState } from "@/components/admin/FormField";
+import { Notice } from "@/components/admin/Notice";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -308,7 +309,7 @@ export function DocumentForm({
           </Button>
         </CardHeader>
         <CardContent className="space-y-4">
-          {e.lines ? <p className="text-xs text-destructive">{e.lines}</p> : null}
+          {e.lines ? <Notice tone="error">{e.lines}</Notice> : null}
           {values.lines.map((line, i) => {
             const le = (field: string) => e[`lines.${i}.${field}`];
             const fid = (field: string) => `line-${line.id}-${field}`;

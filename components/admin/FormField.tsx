@@ -1,3 +1,4 @@
+import { FieldMessage, Notice } from "@/components/admin/Notice";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
 
@@ -26,7 +27,7 @@ export function FormField({
       <Label htmlFor={htmlFor}>{label}</Label>
       {children}
       {error ? (
-        <p className="text-xs text-destructive">{error}</p>
+        <FieldMessage>{error}</FieldMessage>
       ) : hint ? (
         <p className="text-xs text-muted-foreground">{hint}</p>
       ) : null}
@@ -36,9 +37,5 @@ export function FormField({
 
 export function FormError({ state }: { state: FormState }) {
   if (!state.error) return null;
-  return (
-    <p className="rounded-md border border-destructive/40 bg-destructive/10 px-3 py-2 text-sm text-destructive">
-      {state.error}
-    </p>
-  );
+  return <Notice tone="error">{state.error}</Notice>;
 }

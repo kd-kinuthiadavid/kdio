@@ -1,11 +1,23 @@
+import { cn } from "@/lib/utils";
+
 export default function AdminLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  // z-10 lifts content above the fixed grid and edge-frost layers on body::before/::after.
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <div className="mx-auto w-full max-w-6xl px-4 py-8 sm:px-6">{children}</div>
+    <div className="admin-theme relative z-10 min-h-screen text-foreground">
+      <div className="mx-auto w-full max-w-6xl px-3 py-6 sm:px-6 sm:py-10">
+        <div
+          className={cn(
+            "rounded-2xl border border-border/70 bg-background/85 px-4 py-6 shadow-sm sm:px-8 sm:py-8",
+            "backdrop-blur-xl [-webkit-backdrop-filter:blur(20px)]"
+          )}
+        >
+          {children}
+        </div>
+      </div>
     </div>
   );
 }

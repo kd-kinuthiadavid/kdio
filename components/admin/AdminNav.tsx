@@ -24,9 +24,9 @@ export function AdminNav({ siteUrl }: { siteUrl: string }) {
             key={l.href}
             href={l.href}
             className={cn(
-              "rounded-md px-3 py-1.5 text-sm transition-colors hover:bg-accent/40",
+              "rounded-md px-3 py-1.5 text-sm transition-colors hover:bg-accent/60 hover:text-accent-foreground",
               pathname.startsWith(l.href)
-                ? "bg-accent/30 font-medium text-foreground"
+                ? "bg-accent font-medium text-accent-foreground"
                 : "text-muted-foreground"
             )}
           >

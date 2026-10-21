@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 const tones: Record<string, string> = {
   draft: "border-border bg-transparent text-muted-foreground",
   issued: "border-transparent bg-primary text-primary-foreground",
-  void: "border-destructive/40 bg-destructive/10 text-destructive",
+  void: "border-danger-border bg-danger-muted text-danger",
 };
 
 export function DocumentStatusBadge({

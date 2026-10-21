@@ -3,6 +3,7 @@
 import { useActionState } from "react";
 
 import type { FormState } from "@/components/admin/FormField";
+import { FieldMessage } from "@/components/admin/Notice";
 import { Button, type ButtonProps } from "@/components/ui/button";
 
 export function ConfirmActionButton({
@@ -40,7 +41,7 @@ export function ConfirmActionButton({
       <Button type="submit" size="sm" variant={variant} disabled={pending}>
         {pending ? (pendingLabel ?? `${label}…`) : label}
       </Button>
-      {state.error ? <span className="max-w-xs text-xs text-destructive">{state.error}</span> : null}
+      {state.error ? <FieldMessage className="max-w-xs">{state.error}</FieldMessage> : null}
     </form>
   );
 }

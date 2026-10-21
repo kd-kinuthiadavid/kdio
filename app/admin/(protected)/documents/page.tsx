@@ -34,8 +34,8 @@ function FilterLink({ href, active, children }: { href: string; active: boolean;
     <Link
       href={href}
       className={cn(
-        "rounded-md px-2.5 py-1 text-xs transition-colors hover:bg-accent/40",
-        active ? "bg-accent/30 font-medium" : "text-muted-foreground"
+        "rounded-md px-2.5 py-1 text-xs transition-colors hover:bg-accent/60 hover:text-accent-foreground",
+        active ? "bg-accent font-medium text-accent-foreground" : "text-muted-foreground"
       )}
     >
       {children}

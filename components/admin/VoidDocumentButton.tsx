@@ -4,6 +4,7 @@ import { useActionState, useState } from "react";
 
 import { voidDocumentAction } from "@/app/admin/(protected)/documents/actions";
 import type { FormState } from "@/components/admin/FormField";
+import { FieldMessage } from "@/components/admin/Notice";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
@@ -46,7 +47,7 @@ export function VoidDocumentButton({ id, label }: { id: string; label: string })
           Cancel
         </Button>
       </div>
-      {state.error ? <span className="max-w-sm text-xs text-destructive">{state.error}</span> : null}
+      {state.error ? <FieldMessage className="max-w-sm">{state.error}</FieldMessage> : null}
     </form>
   );
 }

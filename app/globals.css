@@ -39,6 +39,19 @@ body {
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
+    /* Feedback text/surface/border triples, each readable on --background and its own muted fill */
+    --danger: 0 72% 36%;
+    --danger-muted: 0 80% 95%;
+    --danger-border: 0 60% 68%;
+    --warning: 30 90% 28%;
+    --warning-muted: 45 95% 89%;
+    --warning-border: 38 80% 55%;
+    --info: 205 80% 30%;
+    --info-muted: 205 85% 94%;
+    --info-border: 205 60% 62%;
+    --success: 152 65% 24%;
+    --success-muted: 145 55% 90%;
+    --success-border: 150 45% 50%;
   }
   .dark {
     /* Page shell — deep olive */
@@ -71,6 +84,30 @@ body {
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
+    --danger: 0 90% 80%;
+    --danger-muted: 0 45% 17%;
+    --danger-border: 0 55% 45%;
+    --warning: 42 95% 72%;
+    --warning-muted: 38 45% 15%;
+    --warning-border: 38 60% 42%;
+    --info: 200 90% 80%;
+    --info-muted: 205 40% 17%;
+    --info-border: 205 50% 45%;
+    --success: 150 60% 74%;
+    --success-muted: 150 35% 14%;
+    --success-border: 150 40% 40%;
+  }
+
+  /* Admin pages are data-dense: stronger borders and secondary text than the marketing site */
+  .admin-theme {
+    --border: 60 16% 74%;
+    --input: 60 16% 66%;
+    --muted-foreground: 60 8% 30%;
+  }
+  .dark .admin-theme {
+    --border: 60 14% 36%;
+    --input: 60 14% 42%;
+    --muted-foreground: 60 14% 80%;
   }
 }
 
