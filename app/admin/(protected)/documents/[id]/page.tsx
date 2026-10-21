@@ -16,6 +16,7 @@ import {
 } from "@/components/admin/InvoiceBalanceCard";
 import { Notice } from "@/components/admin/Notice";
 import { PaymentStateBadge } from "@/components/admin/PaymentStateBadge";
+import { SendDocumentButton } from "@/components/admin/SendDocumentButton";
 import { VoidDocumentButton } from "@/components/admin/VoidDocumentButton";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -109,6 +110,13 @@ export default async function DocumentDetailPage({
             <a href={`${pdfUrl}?download=1`}>Download</a>
           </Button>
           {d.status === "issued" ? <VoidDocumentButton id={d.id} label={def.label} /> : null}
+          {d.status === "issued" ? (
+            <SendDocumentButton
+              id={d.id}
+              defaultTo={customer.email ?? ""}
+              defaultCc={process.env.NOTIFY_EMAIL ?? ""}
+            />
+          ) : null}
         </div>
       </div>
 

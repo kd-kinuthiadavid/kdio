@@ -11,6 +11,7 @@ const LABELS: Record<string, string> = {
   pdf_stored: "PDF stored",
   payment_recorded: "Payment recorded",
   payment_removed: "Payment removed",
+  sent: "Sent by email",
 };
 
 function detail(event: DocumentEventRow): string | null {
@@ -20,6 +21,10 @@ function detail(event: DocumentEventRow): string | null {
   }
   if (event.type === "issued" && typeof p.number === "string") return p.number;
   if (event.type === "voided" && typeof p.reason === "string") return p.reason;
+  if (event.type === "sent" && Array.isArray(p.to)) {
+    const cc = Array.isArray(p.cc) && p.cc.length ? ` (cc ${p.cc.join(", ")})` : "";
+    return `${p.to.join(", ")}${cc}`;
+  }
   if (event.type === "pdf_stored" && typeof p.sha256 === "string") {
     return `sha256 ${p.sha256.slice(0, 12)}…`;
   }

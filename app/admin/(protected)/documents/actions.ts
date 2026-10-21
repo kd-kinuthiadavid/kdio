@@ -17,6 +17,7 @@ import {
   voidDocument,
 } from "@/lib/documents/service";
 import { storeIssuedPdf } from "@/lib/documents/storage";
+import { sendDocumentEmail } from "@/lib/email/send-document";
 
 const payloadSchema = z.object({
   id: z.string().uuid().optional(),
@@ -154,6 +155,26 @@ export async function deletePaymentAction(
   }
   revalidatePath("/admin/documents");
   return {};
+}
+
+export async function sendDocumentAction(
+  _prev: FormState,
+  formData: FormData
+): Promise<FormState> {
+  await assertAdmin();
+  const id = idFrom(formData);
+  let sentTo: string[];
+  try {
+    ({ to: sentTo } = await sendDocumentEmail(id, {
+      to: String(formData.get("to") ?? ""),
+      cc: String(formData.get("cc") ?? ""),
+      message: String(formData.get("message") ?? ""),
+    }));
+  } catch (e) {
+    return toFormState(e, "Could not send the email");
+  }
+  revalidatePath(`/admin/documents/${id}`);
+  return { success: `Sent to ${sentTo.join(", ")}` };
 }
 
 export async function deleteDraftAction(

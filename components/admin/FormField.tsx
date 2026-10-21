@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 export type FormState = {
   error?: string;
   fieldErrors?: Record<string, string>;
+  success?: string;
 };
 
 export function FormField({
