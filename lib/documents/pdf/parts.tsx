@@ -2,7 +2,12 @@ import { Path, Svg, Text, View } from "@react-pdf/renderer";
 
 import { brand } from "@/lib/brand";
 import { formatDate } from "@/lib/documents/dates";
-import type { LineItem, Totals } from "@/lib/documents/line-items";
+import {
+  discountLabel,
+  quantityLabel,
+  type LineItem,
+  type Totals,
+} from "@/lib/documents/line-items";
 import { formatAmount, formatMoney } from "@/lib/documents/money";
 import type { PdfModel } from "@/lib/documents/pdf/model";
 import { pdfColors, styles } from "@/lib/documents/pdf/styles";
@@ -121,18 +126,6 @@ const col = {
   tax: { flex: 0.8, textAlign: "right" as const },
   amount: { flex: 1.5, textAlign: "right" as const },
 };
-
-function quantityLabel(line: LineItem): string {
-  if (line.unit === "fixed") return String(line.quantity);
-  return `${line.quantity} ${line.unit}${line.quantity === 1 ? "" : "s"}`;
-}
-
-function discountLabel(line: LineItem, discountMinor: number): string {
-  if (!line.discount || discountMinor === 0) return "—";
-  return line.discount.kind === "percent"
-    ? `${line.discount.value}%`
-    : formatAmount(discountMinor);
-}
 
 export function LineItemsTable({
   lines,

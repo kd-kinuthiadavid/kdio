@@ -7,6 +7,7 @@ import { DocumentActivity } from "@/components/admin/DocumentActivity";
 import { DocumentHeader } from "@/components/admin/DocumentHeader";
 import { DocumentStatusBadge } from "@/components/admin/DocumentStatusBadge";
 import { LinkedNotesSection, PaymentsSection } from "@/components/admin/InvoiceSections";
+import { LineItemsSection } from "@/components/admin/LineItemsSection";
 import { Notice } from "@/components/admin/Notice";
 import { PaymentStateBadge } from "@/components/admin/PaymentStateBadge";
 import { Section, Stat, StatStrip } from "@/components/admin/Section";
@@ -34,6 +35,8 @@ export default async function DocumentDetailPage({
   const data = d.data as {
     issueDate?: string;
     dueDate?: string;
+    servicePeriodFrom?: string;
+    servicePeriodTo?: string;
     reference?: string;
     reason?: string;
   };
@@ -93,6 +96,11 @@ export default async function DocumentDetailPage({
       <StatStrip>
         <Stat label="Issue date">{formatDate(data.issueDate)}</Stat>
         {data.dueDate ? <Stat label="Due date">{formatDate(data.dueDate)}</Stat> : null}
+        {data.servicePeriodFrom && data.servicePeriodTo ? (
+          <Stat label="Service period">
+            {formatDate(data.servicePeriodFrom)} – {formatDate(data.servicePeriodTo)}
+          </Stat>
+        ) : null}
         {parent ? (
           <Stat label="Original invoice">
             <Link href={`/admin/documents/${parent.id}`} className={link}>
@@ -138,6 +146,8 @@ export default async function DocumentDetailPage({
         ) : null}
         {d.voidedAt ? <Stat label="Voided">{formatDateTime(d.voidedAt)}</Stat> : null}
       </StatStrip>
+
+      <LineItemsSection document={d} />
 
       {balance && (d.status === "issued" || balance.payments.length) ? (
         <PaymentsSection balance={balance} />

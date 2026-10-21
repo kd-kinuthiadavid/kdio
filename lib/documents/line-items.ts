@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-import { allocate, percentOf } from "@/lib/documents/money";
+import { allocate, formatAmount, percentOf } from "@/lib/documents/money";
 
 export const UNITS = ["hour", "day", "week", "month", "item", "fixed"] as const;
 export type Unit = (typeof UNITS)[number];
@@ -114,6 +114,18 @@ export function computeLineTotals(
       .sort(([a], [b]) => a - b)
       .map(([rate, v]) => ({ rate, ...v })),
   };
+}
+
+export function quantityLabel(line: LineItem): string {
+  if (line.unit === "fixed") return String(line.quantity);
+  return `${line.quantity} ${line.unit}${line.quantity === 1 ? "" : "s"}`;
+}
+
+export function discountLabel(line: LineItem, discountMinor: number): string {
+  if (!line.discount || discountMinor === 0) return "—";
+  return line.discount.kind === "percent"
+    ? `${line.discount.value}%`
+    : formatAmount(discountMinor);
 }
 
 export function newLineItemId(): string {
