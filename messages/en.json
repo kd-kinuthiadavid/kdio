@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "David Kinuthia — AI & product engineering consultant",
-    "description": "Consulting and contract engineering for teams shipping AI where mistakes are expensive: AI integration, private AI deployments, agentic automation, infrastructure rescue, and fractional CTO support."
+    "description": "Consulting and contract engineering for teams shipping AI where mistakes are expensive: AI integration, private AI deployments, agentic automation, AI product readiness reviews, agent-ready codebases, and fractional CTO support."
   },
   "nav": {
     "home": "home",
@@ -206,7 +206,7 @@
   },
   "services": {
     "title": "Engineering partnerships for teams shipping AI where mistakes are expensive.",
-    "subtitle": "Six ways I plug into a team — from a tight architectural rescue to a full 0-to-1 build — with one engineer accountable from the first whiteboard to the last deploy.",
+    "subtitle": "Seven ways I plug into a team — from a fixed readiness review to a full 0-to-1 build — with one engineer accountable from the first whiteboard to the last deploy.",
     "stats": {
       "tenureValue": "8+ yrs",
       "tenureLabel": "Shipping production software",
@@ -255,7 +255,7 @@
         "persona": "For FinTech & B2B teams with critical legacy systems",
         "summary": "Plug AI capabilities into existing production systems without putting transactions, uptime, or compliance at risk. I design parallel infrastructure that talks to your core engine instead of replacing it.",
         "included": "Architecture review, threat model, isolated AI service design, eval harness for failure modes, rollout plan with rollback gates.",
-        "upsells": "Normally goes with: MLOps & infrastructure (Enterprise) for observability and cost controls."
+        "upsells": "Often starts with an AI product readiness review when the system is already live and you need to know what is unsafe before changing it."
       },
       "secureAi": {
         "name": "Secure & compliant AI deployment",
@@ -278,12 +278,19 @@
         "included": "Process audit, agent orchestration, integration with existing CRM/ERP, human-in-the-loop checkpoints, and ROI measurement.",
         "upsells": "Normally goes with: Secure & compliant AI deployment when the documents can't leave your tenancy."
       },
-      "mlopsRescue": {
-        "name": "MLOps & infrastructure rescue",
-        "persona": "For Series A/B teams whose AI features are on fire",
-        "summary": "Cloud bill out of control? Inference latency unacceptable? CI/CD for models doesn't exist? I come in, stop the bleeding, and leave you with a platform your team can actually operate.",
-        "included": "Inference cost audit, model serving setup (vLLM/equivalent), observability for LLMs, deployment pipelines, and a written runbook for the team taking it over.",
-        "upsells": "Normally goes with: AI integration & architecture if the underlying design is what's making it expensive."
+      "productReadiness": {
+        "name": "AI product readiness review",
+        "persona": "For founders putting an AI product in front of real customers",
+        "summary": "You built it with AI tools and it works when you demo it. This is a fixed review of whether it is safe, reliable, and affordable to run once a customer depends on it. You get a written risk assessment, findings ranked by what blocks your next milestone, a walkthrough you can repeat to an investor or a customer, and a remediation plan in the order the work should actually happen. The report is useful if you hire someone else to do the fixes.",
+        "included": "Codebase and architecture, authentication and tenant data isolation, AI reliability and evals, cost per successful task, deployment and production readiness, a keep-fix-or-rebuild call, and a prioritized roadmap. Not a penetration test or a compliance certification.",
+        "upsells": "Often followed by implementing the roadmap, or by an agent-ready codebase so you can keep building with AI without repeating the same mistakes."
+      },
+      "agentReady": {
+        "name": "Agent-ready codebase",
+        "persona": "For founders building with AI coding tools, without a full-time engineer",
+        "summary": "The product is yours to keep building. The repo is not set up for the agents doing the building. I make the codebase a place an agent can work in: instructions, the product context those agents are missing, checks that fail a bad change, and fences around the parts a prompt must not touch. You leave able to run the next feature yourself, with a recording of how.",
+        "included": "AGENTS.md and CLAUDE.md from the real repo, including per-app instructions where the codebase needs them. Product, design, and customer docs written so an agent can use them. Skills for the work you actually repeat. Lint, types, format, tests, and CI that run on a fresh clone. One workflow proven with a pull request. A handover recording.",
+        "upsells": "Best after a readiness review when you do not yet know what is unsafe. If the product is sound and the problem is the repo, start here."
       },
       "fractionalCto": {
         "name": "Fractional CTO & technical advisory",
@@ -299,7 +306,8 @@
         "funded": "You're past pre-seed — there's revenue, funding, or an enterprise contract that makes engineering quality a board-level concern.",
         "regulated": "You operate in regulated, high-trust, or high-stakes environments where 'move fast and break things' isn't an option.",
         "legacy": "You have systems that work and matter, and you need AI integrated alongside them — not a green-field rebuild.",
-        "scale": "You've been burned by a generic AI wrapper before and now you need someone who can show you the architecture, not just the demo."
+        "scale": "You've been burned by a generic AI wrapper before and now you need someone who can show you the architecture, not just the demo.",
+        "aiBuilt": "You've built an AI product with coding tools and you're about to put customers or their data on it."
       },
       "notForTitle": "This probably isn't a fit if",
       "notFor": {
@@ -459,7 +467,8 @@
           "secureRegulated": "Deploy AI in a regulated or confidential environment",
           "productAiNative": "Ship AI-native product UX (not a bolt-on chatbot)",
           "opsAutomation": "Automate ops-heavy workflows (documents, renewals, back office)",
-          "infraCost": "MLOps / infra rescue (cost, latency, reliability)",
+          "productReadiness": "Know whether an AI product is safe for real customers",
+          "agentReady": "Make a codebase work with AI coding agents",
           "advisoryExec": "Fractional CTO / executive technical advisory"
         }
       },

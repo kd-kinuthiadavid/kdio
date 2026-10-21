@@ -22,7 +22,8 @@ const SERVICE_LABEL: Record<ServiceId, string> = {
   secureAi: "Secure & compliant AI deployment",
   aiNative: "AI-native product engineering",
   agenticOps: "Agentic workflow automation",
-  mlopsRescue: "MLOps & infrastructure rescue",
+  productReadiness: "AI product readiness review",
+  agentReady: "Agent-ready codebase",
   fractionalCto: "Fractional CTO & technical advisory",
 };
 

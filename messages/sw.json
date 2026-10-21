@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "David Kinuthia — mshauri wa uhandisi wa AI na bidhaa",
-    "description": "Ushauri na uhandisi wa kimkataba kwa timu zinazoleta AI mahali ambapo makosa ni gharama kubwa: muunganisho wa AI, uwekaji wa AI binafsi, automation ya agentic, uokoaji wa miundombinu na msaada wa CTO wa muda."
+    "description": "Ushauri na uhandisi wa kimkataba kwa timu zinazoleta AI mahali ambapo makosa ni gharama kubwa: muunganisho wa AI, uwekaji wa AI binafsi, automation ya agentic, ukaguzi wa utayari wa bidhaa za AI, codebase zilizo tayari kwa agents na msaada wa CTO wa muda."
   },
   "nav": {
     "home": "nyumbani",
@@ -206,7 +206,7 @@
   },
   "services": {
     "title": "Ushirikiano wa uhandisi kwa timu zinazoleta AI mahali ambapo makosa ni gharama kubwa.",
-    "subtitle": "Njia sita ninazoweza kuingia kwenye timu — kutoka uokoaji wa usanifu wa haraka hadi ujenzi kamili wa 0-hadi-1 — na mhandisi mmoja anayebeba dhamana tangu ubao wa kwanza hadi deploy ya mwisho.",
+    "subtitle": "Njia saba ninazoweza kuingia kwenye timu — kutoka ukaguzi wa utayari wenye wigo maalum hadi ujenzi kamili wa 0-hadi-1 — na mhandisi mmoja anayebeba dhamana tangu ubao wa kwanza hadi deploy ya mwisho.",
     "stats": {
       "tenureValue": "Miaka 8+",
       "tenureLabel": "Kutoa programu inayoendesha biashara",
@@ -255,7 +255,7 @@
         "persona": "Kwa timu za FinTech na B2B zenye mifumo ya zamani muhimu",
         "summary": "Kuunganisha uwezo wa AI kwenye mifumo ya uzalishaji bila kuhatarisha miamala, upatikanaji au kufuata kanuni. Ninaunda miundombinu inayofanya kazi sambamba inayozungumza na injini yenu kuu badala ya kuibadilisha.",
         "included": "Mapitio ya usanifu, mtindo wa vitisho, huduma ya AI iliyotengwa, mfumo wa evals kwa hali za kushindwa na mpango wa rollout wenye milango ya kurudi nyuma.",
-        "upsells": "Mara nyingi huenda na: MLOps na miundombinu (Enterprise) kwa observability na udhibiti wa gharama."
+        "upsells": "Mara nyingi huanza na ukaguzi wa utayari wa bidhaa ya AI, pale mfumo tayari uko hewani na unahitaji kujua kipi si salama kabla ya kuubadilisha."
       },
       "secureAi": {
         "name": "Uwekaji wa AI salama na unaofuata kanuni",
@@ -278,12 +278,19 @@
         "included": "Ukaguzi wa michakato, orchestration ya agenti, muunganisho na CRM/ERP iliyopo, vituo vya human-in-the-loop na upimaji wa ROI.",
         "upsells": "Mara nyingi huenda na: uwekaji wa AI salama wakati hati haziwezi kuondoka kwenye tenancy yenu."
       },
-      "mlopsRescue": {
-        "name": "Uokoaji wa MLOps na miundombinu",
-        "persona": "Kwa timu za Series A/B ambazo vipengele vya AI vinawaka",
-        "summary": "Bili ya cloud nje ya udhibiti? Inference latency haikubaliki? CI/CD ya models haipo? Naingia, nakomesha damu na kuwaacha na jukwaa ambalo timu yenu inaweza kuliendesha kweli.",
-        "included": "Ukaguzi wa gharama za inference, setup ya model serving (vLLM/sawa), observability kwa LLMs, deployment pipelines na runbook iliyoandikwa kwa wanaorithi.",
-        "upsells": "Mara nyingi huenda na: muunganisho na usanifu wa AI ikiwa design ya msingi ndio inayofanya iwe ghali."
+      "productReadiness": {
+        "name": "Ukaguzi wa utayari wa bidhaa ya AI",
+        "persona": "Kwa waanzilishi wanaoweka bidhaa ya AI mbele ya wateja halisi",
+        "summary": "Uliijenga kwa zana za AI na inafanya kazi kwenye demo. Huu ni ukaguzi wenye wigo maalum wa kujua kama ni salama, inaaminika na ni nafuu kuendesha pale mteja anapoitegemea. Unapata tathmini ya hatari iliyoandikwa, matokeo yaliyopangwa kulingana na kinachozuia hatua yako inayofuata, maelezo unayoweza kurudia kwa mwekezaji au mteja, na mpango wa marekebisho kwa mpangilio ambao kazi inapaswa kufanyika. Ripoti inafaa hata kama utamwajiri mtu mwingine kufanya marekebisho.",
+        "included": "Codebase na usanifu, uthibitishaji na utengano wa data kati ya wateja, uaminifu na evals za AI, gharama kwa kila kazi iliyofanikiwa, deployment na utayari wa production, uamuzi wa kubaki, kurekebisha au kujenga upya, na roadmap iliyopangwa kwa kipaumbele. Si penetration test wala cheti cha compliance.",
+        "upsells": "Mara nyingi hufuatwa na kutekeleza roadmap, au codebase iliyo tayari kwa agents ili uendelee kujenga kwa AI bila kurudia makosa yale yale."
+      },
+      "agentReady": {
+        "name": "Codebase iliyo tayari kwa agents",
+        "persona": "Kwa waanzilishi wanaojenga kwa zana za coding za AI, bila mhandisi wa muda wote",
+        "summary": "Bidhaa ni yako kuendelea kuijenga. Repo haijaandaliwa kwa agents wanaojenga. Ninaifanya codebase kuwa mahali ambapo agent anaweza kufanya kazi: maelekezo, muktadha wa bidhaa ambao agents hawana, ukaguzi unaokataa mabadiliko mabaya, na mipaka kwenye sehemu ambazo prompt haipaswi kugusa. Unaondoka ukiweza kujenga feature inayofuata mwenyewe, na rekodi ya jinsi ya kufanya hivyo.",
+        "included": "AGENTS.md na CLAUDE.md kutoka repo halisi, pamoja na maelekezo kwa kila app pale codebase inapohitaji. Nyaraka za bidhaa, design na wateja zilizoandikwa ili agent azitumie. Skills kwa kazi unayorudia kweli. Lint, types, formatting, tests na CI zinazofanya kazi kwenye clone mpya. Workflow moja iliyothibitishwa kwa pull request. Rekodi ya makabidhiano.",
+        "upsells": "Bora baada ya ukaguzi wa utayari kama bado hujui kipi si salama. Kama bidhaa iko imara na tatizo ni repo, anza hapa."
       },
       "fractionalCto": {
         "name": "CTO ya muda na ushauri wa kiufundi",
@@ -299,7 +306,8 @@
         "funded": "Umepita pre-seed — kuna mapato, ufadhili au mkataba wa enterprise unaofanya ubora wa uhandisi kuwa suala la bodi.",
         "regulated": "Unafanya kazi katika mazingira yaliyodhibitiwa, ya imani kubwa au ya hatari kubwa ambapo 'kwenda haraka na kuvunja vitu' haitoshi.",
         "legacy": "Una mifumo inayofanya kazi na muhimu, na unahitaji AI iunganishwe pamoja nayo — siyo kuandika upya kutoka mwanzo.",
-        "scale": "Tayari umechomwa na wrapper ya jumla ya AI na sasa unahitaji mtu wa kukuonyesha usanifu, siyo demo tu."
+        "scale": "Tayari umechomwa na wrapper ya jumla ya AI na sasa unahitaji mtu wa kukuonyesha usanifu, siyo demo tu.",
+        "aiBuilt": "Umejenga bidhaa ya AI kwa zana za coding na unakaribia kuweka wateja au data zao juu yake."
       },
       "notForTitle": "Pengine si fit kama",
       "notFor": {
@@ -459,7 +467,8 @@
           "secureRegulated": "Deploy AI in a regulated or confidential environment",
           "productAiNative": "Ship AI-native product UX (not a bolt-on chatbot)",
           "opsAutomation": "Automate ops-heavy workflows (documents, renewals, back office)",
-          "infraCost": "MLOps / infra rescue (cost, latency, reliability)",
+          "productReadiness": "Know whether an AI product is safe for real customers",
+          "agentReady": "Make a codebase work with AI coding agents",
           "advisoryExec": "Fractional CTO / executive technical advisory"
         }
       },

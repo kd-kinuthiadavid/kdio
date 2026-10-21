@@ -42,8 +42,10 @@ export function routeService(answers: AssessmentAnswers): ServiceId {
       return "aiNative";
     case "opsAutomation":
       return "agenticOps";
-    case "infraCost":
-      return "mlopsRescue";
+    case "productReadiness":
+      return "productReadiness";
+    case "agentReady":
+      return "agentReady";
     case "advisoryExec":
       return "fractionalCto";
     default:
@@ -115,7 +117,8 @@ export function assertAnswersForScoring(
     "secureRegulated",
     "productAiNative",
     "opsAutomation",
-    "infraCost",
+    "productReadiness",
+    "agentReady",
     "advisoryExec",
   ];
   if (!challenges.includes(challenge as ChallengeId)) return null;

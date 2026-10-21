@@ -37,7 +37,7 @@ const CASES: {
       { id: "recon", services: ["aiIntegration", "agenticOps"] },
       { id: "docsAi", services: ["secureAi"] },
       { id: "akountable", services: ["fractionalCto"] },
-      { id: "infra", services: ["mlopsRescue"] },
+      { id: "infra", services: [] },
     ],
   },
   { id: "productNotes", items: [{ id: "main", services: ["aiNative"] }] },

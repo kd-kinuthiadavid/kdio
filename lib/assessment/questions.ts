@@ -57,7 +57,8 @@ export const ASSESSMENT_QUESTIONS: AssessmentQuestion[] = [
       { id: "secureRegulated", score: 10 },
       { id: "productAiNative", score: 10 },
       { id: "opsAutomation", score: 10 },
-      { id: "infraCost", score: 10 },
+      { id: "productReadiness", score: 10 },
+      { id: "agentReady", score: 10 },
       { id: "advisoryExec", score: 10 },
     ],
   },
@@ -156,7 +157,8 @@ export function normalizeChallenge(value: string): ChallengeId | null {
     "secureRegulated",
     "productAiNative",
     "opsAutomation",
-    "infraCost",
+    "productReadiness",
+    "agentReady",
     "advisoryExec",
   ];
   return ids.includes(value as ChallengeId) ? (value as ChallengeId) : null;

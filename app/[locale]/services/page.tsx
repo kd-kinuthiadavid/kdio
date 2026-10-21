@@ -19,7 +19,13 @@ import type { ServiceContent } from "./_components/ServiceItem";
 
 const TIER_IDS = ["micro", "mvp", "enterprise"] as const;
 
-const FIT_FOR_KEYS = ["funded", "regulated", "legacy", "scale"] as const;
+const FIT_FOR_KEYS = [
+  "funded",
+  "regulated",
+  "legacy",
+  "scale",
+  "aiBuilt",
+] as const;
 const FIT_NOT_FOR_KEYS = [
   "ideaGuy",
   "agencyMiddleman",

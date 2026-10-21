@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "David Kinuthia — consultor de engenharia de produto e IA",
-    "description": "Consultoria e engenharia sob contrato para times que levam IA a contextos onde erros saem caro: integração de IA, implantações privadas de IA, automação agêntica, resgate de infraestrutura e apoio como CTO fracionário."
+    "description": "Consultoria e engenharia sob contrato para times que levam IA a contextos onde erros saem caro: integração de IA, implantações privadas de IA, automação agêntica, revisões de prontidão de produtos de IA, codebases prontas para agentes e apoio como CTO fracionário."
   },
   "nav": {
     "home": "início",
@@ -206,7 +206,7 @@
   },
   "services": {
     "title": "Parcerias de engenharia para times que levam IA a sistemas onde erros saem caro.",
-    "subtitle": "Seis formas de eu entrar num time — de um resgate arquitetural pontual a uma construção 0-para-1 completa — com um único engenheiro responsável do primeiro quadro branco ao último deploy.",
+    "subtitle": "Sete formas de eu entrar num time — de uma revisão de prontidão com escopo fechado a uma construção 0-para-1 completa — com um único engenheiro responsável do primeiro quadro branco ao último deploy.",
     "stats": {
       "tenureValue": "8+ anos",
       "tenureLabel": "Entregando software em produção",
@@ -255,7 +255,7 @@
         "persona": "Para times FinTech e B2B com sistemas legados críticos",
         "summary": "Plugar capacidades de IA em sistemas de produção sem colocar em risco transações, disponibilidade ou conformidade. Desenho uma infraestrutura paralela que conversa com o seu motor central em vez de substituí-lo.",
         "included": "Revisão de arquitetura, modelo de ameaças, serviço de IA isolado, arcabouço de evals para modos de falha e plano de rollout com travas de rollback.",
-        "upsells": "Costuma vir junto com: MLOps e infraestrutura (Enterprise) para observabilidade e controle de custos."
+        "upsells": "Costuma começar com uma revisão de prontidão do produto de IA, quando o sistema já está em produção e você precisa saber o que é inseguro antes de mexer nele."
       },
       "secureAi": {
         "name": "Implantação de IA segura e em conformidade",
@@ -278,12 +278,19 @@
         "included": "Auditoria de processos, orquestração de agentes, integração com CRM/ERP existente, pontos de controle com humano no loop e medição de ROI.",
         "upsells": "Costuma vir junto com: implantação de IA segura e em conformidade quando os documentos não podem deixar seu ambiente."
       },
-      "mlopsRescue": {
-        "name": "Resgate de MLOps e infraestrutura",
-        "persona": "Para times Series A/B com recursos de IA pegando fogo",
-        "summary": "Fatura da nuvem fora de controle? Latência de inferência inaceitável? Não existe CI/CD para modelos? Entro, estanco o sangramento e deixo uma plataforma que o seu time consegue operar de verdade.",
-        "included": "Auditoria de custo de inferência, setup de model serving (vLLM/equivalente), observabilidade para LLMs, pipelines de deploy e um runbook escrito para quem assumir.",
-        "upsells": "Costuma vir junto com: integração e arquitetura de IA quando o design subjacente é o que encarece tudo."
+      "productReadiness": {
+        "name": "Revisão de prontidão de produto de IA",
+        "persona": "Para fundadores colocando um produto de IA na frente de clientes reais",
+        "summary": "Você construiu com ferramentas de IA e funciona na demo. Esta é uma revisão de escopo fechado para saber se é seguro, confiável e viável de operar quando um cliente depender dele. Você recebe uma avaliação de riscos por escrito, achados ordenados pelo que bloqueia o seu próximo marco, uma apresentação que você pode repetir para um investidor ou cliente, e um plano de correção na ordem em que o trabalho deve acontecer de fato. O relatório é útil mesmo se outra pessoa fizer as correções.",
+        "included": "Código e arquitetura, autenticação e isolamento de dados entre clientes, confiabilidade e evals da IA, custo por tarefa bem-sucedida, deploy e prontidão para produção, uma decisão de manter, corrigir ou reconstruir, e um roadmap priorizado. Não é teste de invasão nem certificação de conformidade.",
+        "upsells": "Costuma ser seguida pela implementação do roadmap, ou por uma codebase pronta para agentes para você continuar construindo com IA sem repetir os mesmos erros."
+      },
+      "agentReady": {
+        "name": "Codebase pronta para agentes",
+        "persona": "Para fundadores construindo com ferramentas de código com IA, sem um engenheiro em tempo integral",
+        "summary": "O produto é você quem continua construindo. O repositório não está preparado para os agentes que constroem. Eu transformo a codebase num lugar onde um agente consegue trabalhar: instruções, o contexto de produto que falta aos agentes, verificações que reprovam uma mudança ruim e limites em volta das partes que um prompt não pode tocar. Você sai capaz de fazer a próxima funcionalidade sozinho, com uma gravação de como fazer.",
+        "included": "AGENTS.md e CLAUDE.md a partir do repositório real, com instruções por app onde a codebase precisar. Documentos de produto, design e clientes escritos para um agente usar. Skills para o trabalho que você realmente repete. Lint, tipos, formatação, testes e CI que rodam num clone novo. Um fluxo comprovado com um pull request. Uma gravação de passagem.",
+        "upsells": "Melhor depois de uma revisão de prontidão, se você ainda não sabe o que é inseguro. Se o produto está sólido e o problema é o repositório, comece aqui."
       },
       "fractionalCto": {
         "name": "CTO fracionário e consultoria técnica",
@@ -299,7 +306,8 @@
         "funded": "Você passou do pre-seed — há receita, investimento ou um contrato enterprise que faz a qualidade de engenharia ser pauta de board.",
         "regulated": "Você opera em ambientes regulados, de alta confiança ou alto risco onde 'mova-se rápido e quebre coisas' não é opção.",
         "legacy": "Você tem sistemas que funcionam e importam, e precisa integrar IA ao lado deles — não uma reescrita do zero.",
-        "scale": "Já se queimou com um wrapper genérico de IA e agora precisa de alguém que mostre a arquitetura, não só a demo."
+        "scale": "Já se queimou com um wrapper genérico de IA e agora precisa de alguém que mostre a arquitetura, não só a demo.",
+        "aiBuilt": "Você construiu um produto de IA com ferramentas de código e está prestes a colocar clientes ou os dados deles nele."
       },
       "notForTitle": "Provavelmente não é um fit se",
       "notFor": {
@@ -459,7 +467,8 @@
           "secureRegulated": "Deploy AI in a regulated or confidential environment",
           "productAiNative": "Ship AI-native product UX (not a bolt-on chatbot)",
           "opsAutomation": "Automate ops-heavy workflows (documents, renewals, back office)",
-          "infraCost": "MLOps / infra rescue (cost, latency, reliability)",
+          "productReadiness": "Know whether an AI product is safe for real customers",
+          "agentReady": "Make a codebase work with AI coding agents",
           "advisoryExec": "Fractional CTO / executive technical advisory"
         }
       },

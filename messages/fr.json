@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "David Kinuthia — Consultant en ingénierie IA et produit",
-    "description": "Conseil et ingénierie en mission pour les équipes qui livrent de l’IA là où les erreurs coûtent cher : intégration IA, déploiements d’IA privés, automatisation agentique, sauvetage d’infrastructure et accompagnement CTO fractionnel."
+    "description": "Conseil et ingénierie en mission pour les équipes qui livrent de l’IA là où les erreurs coûtent cher : intégration IA, déploiements d’IA privés, automatisation agentique, revues de préparation de produits IA, codebases prêtes pour les agents et accompagnement CTO fractionnel."
   },
   "nav": {
     "home": "accueil",
@@ -206,7 +206,7 @@
   },
   "services": {
     "title": "Partenariats d’ingénierie pour les équipes qui livrent de l’IA là où les erreurs coûtent cher.",
-    "subtitle": "Six manières de m’intégrer à une équipe — d’un sauvetage architectural ciblé à une construction 0-à-1 complète — avec un seul ingénieur responsable du premier tableau blanc au dernier déploiement.",
+    "subtitle": "Sept manières de m’intégrer à une équipe — d’une revue de préparation à périmètre fixe à une construction 0-à-1 complète — avec un seul ingénieur responsable du premier tableau blanc au dernier déploiement.",
     "stats": {
       "tenureValue": "8+ ans",
       "tenureLabel": "Livraison de logiciels en production",
@@ -255,7 +255,7 @@
         "persona": "Pour les équipes FinTech et B2B avec des systèmes legacy critiques",
         "summary": "Brancher des capacités IA sur des systèmes en production sans mettre en jeu les transactions, la disponibilité ou la conformité. Je conçois une infrastructure parallèle qui dialogue avec votre moteur principal au lieu de le remplacer.",
         "included": "Revue d’architecture, modèle de menaces, service IA isolé, harnais d’évaluation des modes de défaillance, plan de déploiement avec garde-fous de retour arrière.",
-        "upsells": "S’accompagne souvent de : MLOps & infrastructure (Enterprise) pour l’observabilité et le contrôle des coûts."
+        "upsells": "Commence souvent par une revue de préparation du produit IA, quand le système est déjà en production et que vous devez savoir ce qui est risqué avant d’y toucher."
       },
       "secureAi": {
         "name": "Déploiement IA sécurisé et conforme",
@@ -278,12 +278,19 @@
         "included": "Audit des processus, orchestration d’agents, intégration au CRM/ERP existant, points de contrôle human-in-the-loop et mesure du ROI.",
         "upsells": "S’accompagne souvent de : déploiement IA sécurisé et conforme quand les documents ne peuvent pas quitter votre périmètre."
       },
-      "mlopsRescue": {
-        "name": "Sauvetage MLOps et infrastructure",
-        "persona": "Pour les équipes Series A/B dont les fonctions IA partent en fumée",
-        "summary": "Facture cloud incontrôlée ? Latence d’inférence inacceptable ? CI/CD pour les modèles inexistant ? J’entre, arrête l’hémorragie et vous laisse une plateforme que votre équipe peut vraiment exploiter.",
-        "included": "Audit des coûts d’inférence, mise en place du model serving (vLLM/équivalent), observabilité pour LLM, pipelines de déploiement et runbook écrit pour la reprise.",
-        "upsells": "S’accompagne souvent de : intégration et architecture IA si la conception sous-jacente est ce qui coûte cher."
+      "productReadiness": {
+        "name": "Revue de préparation d’un produit IA",
+        "persona": "Pour les fondateurs qui mettent un produit IA entre les mains de vrais clients",
+        "summary": "Vous l’avez construit avec des outils d’IA et il fonctionne en démo. Il s’agit d’une revue à périmètre fixe pour savoir s’il est sûr, fiable et abordable à faire tourner dès qu’un client en dépend. Vous recevez une évaluation écrite des risques, des constats classés selon ce qui bloque votre prochain jalon, une présentation que vous pouvez refaire devant un investisseur ou un client, et un plan de remédiation dans l’ordre où le travail devrait vraiment se faire. Le rapport reste utile si vous confiez les corrections à quelqu’un d’autre.",
+        "included": "Code et architecture, authentification et isolation des données entre clients, fiabilité et évaluations de l’IA, coût par tâche réussie, déploiement et préparation à la production, une décision garder, corriger ou reconstruire, et une feuille de route priorisée. Ni test d’intrusion, ni certification de conformité.",
+        "upsells": "Souvent suivie de la mise en œuvre de la feuille de route, ou d’une codebase prête pour les agents pour continuer à construire avec l’IA sans répéter les mêmes erreurs."
+      },
+      "agentReady": {
+        "name": "Codebase prête pour les agents",
+        "persona": "Pour les fondateurs qui construisent avec des outils de code IA, sans ingénieur à plein temps",
+        "summary": "Le produit, c’est vous qui continuez à le construire. Le dépôt n’est pas préparé pour les agents qui construisent. Je fais de la codebase un endroit où un agent peut travailler : des instructions, le contexte produit qui manque aux agents, des vérifications qui font échouer un mauvais changement et des garde-fous autour des parties qu’un prompt ne doit pas toucher. Vous repartez capable de livrer la prochaine fonctionnalité vous-même, avec un enregistrement qui montre comment.",
+        "included": "AGENTS.md et CLAUDE.md tirés du vrai dépôt, avec des instructions par application là où la codebase en a besoin. Documents produit, design et clients rédigés pour qu’un agent puisse s’en servir. Des skills pour le travail que vous répétez vraiment. Lint, types, formatage, tests et CI qui tournent sur un clone neuf. Un workflow validé par une pull request. Un enregistrement de passation.",
+        "upsells": "Idéal après une revue de préparation si vous ne savez pas encore ce qui est risqué. Si le produit est sain et que le problème est le dépôt, commencez ici."
       },
       "fractionalCto": {
         "name": "CTO fractionnel et conseil technique",
@@ -299,7 +306,8 @@
         "funded": "Vous êtes au-delà du pre-seed — il y a des revenus, du financement ou un contrat entreprise qui fait de la qualité d’ingénierie un sujet board.",
         "regulated": "Vous opérez dans des environnements régulés, à forte confiance ou à enjeux élevés où « aller vite et casser des choses » n’est pas une option.",
         "legacy": "Vous avez des systèmes qui fonctionnent et qui comptent, et vous avez besoin d’intégrer l’IA à côté — pas d’une refonte greenfield.",
-        "scale": "Vous vous êtes déjà fait avoir par un wrapper IA générique et vous voulez maintenant quelqu’un qui vous montre l’architecture, pas seulement la démo."
+        "scale": "Vous vous êtes déjà fait avoir par un wrapper IA générique et vous voulez maintenant quelqu’un qui vous montre l’architecture, pas seulement la démo.",
+        "aiBuilt": "Vous avez construit un produit IA avec des outils de code et vous êtes sur le point d’y mettre des clients ou leurs données."
       },
       "notForTitle": "Probablement pas un fit si",
       "notFor": {
@@ -459,7 +467,8 @@
           "secureRegulated": "Deploy AI in a regulated or confidential environment",
           "productAiNative": "Ship AI-native product UX (not a bolt-on chatbot)",
           "opsAutomation": "Automate ops-heavy workflows (documents, renewals, back office)",
-          "infraCost": "MLOps / infra rescue (cost, latency, reliability)",
+          "productReadiness": "Know whether an AI product is safe for real customers",
+          "agentReady": "Make a codebase work with AI coding agents",
           "advisoryExec": "Fractional CTO / executive technical advisory"
         }
       },

@@ -4,7 +4,8 @@ export const SERVICE_IDS = [
   "secureAi",
   "aiNative",
   "agenticOps",
-  "mlopsRescue",
+  "productReadiness",
+  "agentReady",
   "fractionalCto",
 ] as const;
 
@@ -35,7 +36,8 @@ export const CHALLENGE_IDS = [
   "secureRegulated",
   "productAiNative",
   "opsAutomation",
-  "infraCost",
+  "productReadiness",
+  "agentReady",
   "advisoryExec",
 ] as const;
 
