@@ -247,6 +247,15 @@ export function dateRow(label: string, iso: string | undefined | null): MetaRow 
   return iso ? { label, value: formatDate(iso) } : null;
 }
 
+/** Original invoice reference shown on credit and debit notes. */
+export function relatedRows(model: PdfModel): (MetaRow | null)[] {
+  if (!model.related) return [];
+  return [
+    { label: "Original invoice", value: model.related.number },
+    dateRow("Invoice date", model.related.issueDate),
+  ];
+}
+
 export function compactRows(rows: (MetaRow | null)[]): MetaRow[] {
   return rows.filter((r): r is MetaRow => r !== null);
 }
