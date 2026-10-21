@@ -16,6 +16,7 @@ import { getIssuer, type Issuer } from "@/lib/documents/issuer";
 import type { Totals } from "@/lib/documents/line-items";
 import { CURRENCIES } from "@/lib/documents/money";
 import { getDocumentType } from "@/lib/documents/registry";
+import { fieldErrorsFrom } from "@/lib/zod-errors";
 
 export type Actor = string;
 
@@ -53,15 +54,6 @@ export type DraftInput = {
   data: unknown;
   relatedDocumentId?: string | null;
 };
-
-function fieldErrorsFrom(error: z.ZodError): Record<string, string> {
-  const out: Record<string, string> = {};
-  for (const issue of error.issues) {
-    const key = issue.path.join(".") || "_";
-    out[key] ??= issue.message;
-  }
-  return out;
-}
 
 function prepare(input: DraftInput) {
   const def = getDocumentType(input.type);

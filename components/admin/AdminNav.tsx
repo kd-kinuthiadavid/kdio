@@ -7,7 +7,10 @@ import { AdminSignOutButton } from "@/components/admin/AdminSignOutButton";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
-const links = [{ href: "/admin/assessments", label: "Assessments" }];
+const links = [
+  { href: "/admin/customers", label: "Customers" },
+  { href: "/admin/assessments", label: "Assessments" },
+];
 
 export function AdminNav({ siteUrl }: { siteUrl: string }) {
   const pathname = usePathname();
