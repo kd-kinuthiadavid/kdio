@@ -1,25 +1,16 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import {
-  deleteDraftAction,
-  issueDocumentAction,
-  storeDocumentPdfAction,
-} from "@/app/admin/(protected)/documents/actions";
+import { storeDocumentPdfAction } from "@/app/admin/(protected)/documents/actions";
 import { ConfirmActionButton } from "@/components/admin/ConfirmActionButton";
-import { DocumentEventsCard } from "@/components/admin/DocumentEventsCard";
+import { DocumentActivity } from "@/components/admin/DocumentActivity";
+import { DocumentHeader } from "@/components/admin/DocumentHeader";
 import { DocumentStatusBadge } from "@/components/admin/DocumentStatusBadge";
-import {
-  InvoiceBalanceSummary,
-  LinkedNotesCard,
-  PaymentsCard,
-} from "@/components/admin/InvoiceBalanceCard";
+import { LinkedNotesSection, PaymentsSection } from "@/components/admin/InvoiceSections";
 import { Notice } from "@/components/admin/Notice";
 import { PaymentStateBadge } from "@/components/admin/PaymentStateBadge";
-import { SendDocumentButton } from "@/components/admin/SendDocumentButton";
-import { VoidDocumentButton } from "@/components/admin/VoidDocumentButton";
+import { Section, Stat, StatStrip } from "@/components/admin/Section";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { customerDisplayName } from "@/lib/documents/customers";
 import { formatDate, formatDateTime, todayIso } from "@/lib/documents/dates";
 import { formatMoney } from "@/lib/documents/money";
@@ -27,6 +18,8 @@ import { daysOverdue } from "@/lib/documents/payment-state";
 import { getDocumentType } from "@/lib/documents/registry";
 import { reasonLabel } from "@/lib/documents/reasons";
 import { getDocument, getInvoiceBalance, listEvents } from "@/lib/documents/service";
+
+const link = "underline-offset-4 hover:underline";
 
 export default async function DocumentDetailPage({
   params,
@@ -56,199 +49,145 @@ export default async function DocumentDetailPage({
     balance && d.status === "issued"
       ? daysOverdue(data.dueDate, balance.outstandingMinor, todayIso())
       : null;
+  const money = (minor: number) => formatMoney(minor, d.currency);
   const pdfUrl = `/api/admin/documents/${d.id}/pdf`;
   const isDraft = d.status === "draft";
+  const adjusted = balance ? balance.debitMinor > 0 || balance.creditMinor > 0 : false;
 
   return (
     <div className="space-y-6">
-      <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
-        <div>
-          <p className="text-sm text-muted-foreground">{def.label}</p>
-          <div className="flex items-center gap-3">
-            <h1 className="text-2xl font-semibold tracking-tight">{d.number ?? "Draft"}</h1>
-            <DocumentStatusBadge status={d.status} />
-            {balance && d.status === "issued" ? <PaymentStateBadge state={balance.state} /> : null}
-            {overdue !== null ? (
-              <span className="text-sm font-medium text-danger">
-                Overdue {overdue} day{overdue === 1 ? "" : "s"}
-              </span>
-            ) : null}
-          </div>
-          {d.status === "issued" ? (
-            <p className="mt-1 max-w-md text-sm text-muted-foreground">
-              Issued documents are locked.{" "}
-              {d.type === "invoice"
-                ? "Correct amounts with a credit or debit note, or void it."
-                : "To change it, void it and raise a new note."}
-            </p>
+      <DocumentHeader
+        id={d.id}
+        label={def.label}
+        status={d.status}
+        isInvoice={d.type === "invoice"}
+        defaultTo={customer.email ?? ""}
+        defaultCc={process.env.NOTIFY_EMAIL ?? ""}
+      >
+        <p className="text-sm text-muted-foreground">
+          {def.label} for{" "}
+          <Link href={`/admin/customers/${customer.id}`} className={`text-foreground ${link}`}>
+            {customerDisplayName(customer)}
+          </Link>
+        </p>
+        <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1">
+          <h1 className="text-2xl font-semibold tracking-tight">{d.number ?? "Draft"}</h1>
+          <DocumentStatusBadge status={d.status} />
+          {balance && d.status === "issued" ? <PaymentStateBadge state={balance.state} /> : null}
+          {overdue !== null ? (
+            <span className="text-sm font-medium text-danger">
+              Overdue {overdue} day{overdue === 1 ? "" : "s"}
+            </span>
           ) : null}
         </div>
-        <div className="flex flex-wrap items-start gap-2">
-          {isDraft ? (
-            <>
-              <Button variant="outline" size="sm" asChild>
-                <Link href={`/admin/documents/${d.id}/edit`}>Edit</Link>
-              </Button>
-              <ConfirmActionButton
-                action={issueDocumentAction}
-                id={d.id}
-                label="Issue"
-                pendingLabel="Issuing…"
-                confirm={`Issue this ${def.label.toLowerCase()}? It gets a number and can no longer be edited.`}
-              />
-              <ConfirmActionButton
-                action={deleteDraftAction}
-                id={d.id}
-                label="Delete draft"
-                variant="ghost"
-                confirm="Delete this draft?"
-              />
-            </>
-          ) : null}
-          {d.type === "invoice" && d.status === "issued" ? (
-            <>
-              <Button variant="outline" size="sm" asChild>
-                <Link href={`/admin/documents/new?type=credit_note&from=${d.id}`}>
-                  New credit note
-                </Link>
-              </Button>
-              <Button variant="outline" size="sm" asChild>
-                <Link href={`/admin/documents/new?type=debit_note&from=${d.id}`}>
-                  New debit note
-                </Link>
-              </Button>
-            </>
-          ) : null}
-          <Button variant="outline" size="sm" asChild>
-            <a href={pdfUrl} target="_blank" rel="noreferrer">
-              Open PDF
-            </a>
-          </Button>
-          <Button variant="outline" size="sm" asChild>
-            <a href={`${pdfUrl}?download=1`}>Download</a>
-          </Button>
-          {d.status === "issued" ? <VoidDocumentButton id={d.id} label={def.label} /> : null}
-          {d.status === "issued" ? (
-            <SendDocumentButton
+        {d.status === "issued" ? (
+          <p className="mt-1 text-sm text-muted-foreground">
+            Issued documents are locked.{" "}
+            {d.type === "invoice"
+              ? "Correct amounts with a credit or debit note, or void it."
+              : "To change it, void it and raise a new note."}
+          </p>
+        ) : null}
+      </DocumentHeader>
+
+      <StatStrip>
+        <Stat label="Issue date">{formatDate(data.issueDate)}</Stat>
+        {data.dueDate ? <Stat label="Due date">{formatDate(data.dueDate)}</Stat> : null}
+        {parent ? (
+          <Stat label="Original invoice">
+            <Link href={`/admin/documents/${parent.id}`} className={link}>
+              {parent.number ?? "Draft"}
+            </Link>
+          </Stat>
+        ) : null}
+        {reason ? <Stat label="Reason">{reason}</Stat> : null}
+        {data.reference ? <Stat label="Reference">{data.reference}</Stat> : null}
+        <Stat label="Total" emphasis={!balance}>
+          {money(d.totalMinor)}
+        </Stat>
+        {balance && adjusted ? (
+          <Stat
+            label="Balance"
+            hint={`+${money(balance.debitMinor)} debit, −${money(balance.creditMinor)} credit`}
+          >
+            {money(balance.balanceMinor)}
+          </Stat>
+        ) : null}
+        {balance ? (
+          <Stat
+            label="Paid"
+            hint={balance.refundedMinor ? `${money(balance.refundedMinor)} refunded` : undefined}
+          >
+            {money(balance.paidMinor)}
+          </Stat>
+        ) : null}
+        {balance ? (
+          <Stat
+            label={balance.outstandingMinor < 0 ? "In credit" : "Outstanding"}
+            emphasis
+            hint={
+              overdue !== null ? (
+                <span className="font-medium text-danger">
+                  Overdue {overdue} day{overdue === 1 ? "" : "s"}
+                </span>
+              ) : undefined
+            }
+          >
+            {money(Math.abs(balance.outstandingMinor))}
+          </Stat>
+        ) : null}
+        {d.voidedAt ? <Stat label="Voided">{formatDateTime(d.voidedAt)}</Stat> : null}
+      </StatStrip>
+
+      {balance && (d.status === "issued" || balance.payments.length) ? (
+        <PaymentsSection balance={balance} />
+      ) : null}
+      {balance ? <LinkedNotesSection balance={balance} /> : null}
+
+      <Section
+        title="Document"
+        actions={
+          <>
+            <Button variant="outline" size="sm" asChild>
+              <a href={pdfUrl} target="_blank" rel="noreferrer">
+                Open PDF
+              </a>
+            </Button>
+            <Button variant="outline" size="sm" asChild>
+              <a href={`${pdfUrl}?download=1`}>Download</a>
+            </Button>
+          </>
+        }
+      >
+        {isDraft ? (
+          <p className="text-sm text-muted-foreground">
+            Live preview. The final PDF is stored when the {def.label.toLowerCase()} is issued.
+          </p>
+        ) : d.pdfSha256 ? (
+          <p className="text-sm text-muted-foreground">
+            Stored copy, sha256{" "}
+            <span className="break-all font-mono text-xs text-foreground">{d.pdfSha256}</span>
+          </p>
+        ) : (
+          <div className="flex flex-wrap items-center gap-3">
+            <Notice tone="warning">The issued PDF hasn&apos;t been stored yet.</Notice>
+            <ConfirmActionButton
+              action={storeDocumentPdfAction}
               id={d.id}
-              defaultTo={customer.email ?? ""}
-              defaultCc={process.env.NOTIFY_EMAIL ?? ""}
+              label="Store PDF"
+              pendingLabel="Storing…"
             />
-          ) : null}
-        </div>
-      </div>
+          </div>
+        )}
+        <iframe
+          key={d.updatedAt.toISOString()}
+          src={pdfUrl}
+          title={`${def.label} PDF preview`}
+          className="mx-auto block aspect-[1/1.414] w-full max-w-3xl rounded-lg border border-border bg-white"
+        />
+      </Section>
 
-      <div className="grid gap-6 lg:grid-cols-[320px_1fr]">
-        <div className="space-y-6">
-          <Card className="h-fit">
-            <CardHeader>
-              <CardTitle className="text-base">Summary</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <dl className="space-y-3 text-sm">
-                <div>
-                  <dt className="text-muted-foreground">Customer</dt>
-                  <dd>
-                    <Link
-                      href={`/admin/customers/${customer.id}`}
-                      className="underline-offset-4 hover:underline"
-                    >
-                      {customerDisplayName(customer)}
-                    </Link>
-                  </dd>
-                </div>
-                {parent ? (
-                  <div>
-                    <dt className="text-muted-foreground">Original invoice</dt>
-                    <dd>
-                      <Link
-                        href={`/admin/documents/${parent.id}`}
-                        className="underline-offset-4 hover:underline"
-                      >
-                        {parent.number ?? "Draft"}
-                      </Link>
-                    </dd>
-                  </div>
-                ) : null}
-                {reason ? (
-                  <div>
-                    <dt className="text-muted-foreground">Reason</dt>
-                    <dd>{reason}</dd>
-                  </div>
-                ) : null}
-                <div className="grid grid-cols-2 gap-3">
-                  <div>
-                    <dt className="text-muted-foreground">Issue date</dt>
-                    <dd>{formatDate(data.issueDate)}</dd>
-                  </div>
-                  {data.dueDate ? (
-                    <div>
-                      <dt className="text-muted-foreground">Due date</dt>
-                      <dd>{formatDate(data.dueDate)}</dd>
-                    </div>
-                  ) : null}
-                </div>
-                {data.reference ? (
-                  <div>
-                    <dt className="text-muted-foreground">Reference</dt>
-                    <dd>{data.reference}</dd>
-                  </div>
-                ) : null}
-                <div>
-                  <dt className="text-muted-foreground">Total</dt>
-                  <dd className="text-lg font-semibold tabular-nums">
-                    {formatMoney(d.totalMinor, d.currency)}
-                  </dd>
-                </div>
-                {d.issuedAt ? (
-                  <div>
-                    <dt className="text-muted-foreground">Issued</dt>
-                    <dd>{formatDateTime(d.issuedAt)}</dd>
-                  </div>
-                ) : null}
-                {d.voidedAt ? (
-                  <div>
-                    <dt className="text-muted-foreground">Voided</dt>
-                    <dd>{formatDateTime(d.voidedAt)}</dd>
-                  </div>
-                ) : null}
-                {d.pdfSha256 ? (
-                  <div>
-                    <dt className="text-muted-foreground">Stored PDF (sha256)</dt>
-                    <dd className="break-all font-mono text-xs">{d.pdfSha256}</dd>
-                  </div>
-                ) : null}
-              </dl>
-              {!isDraft && !d.pdfSha256 ? (
-                <div className="mt-4 space-y-2">
-                  <Notice tone="warning">The issued PDF hasn&apos;t been stored yet.</Notice>
-                  <ConfirmActionButton
-                    action={storeDocumentPdfAction}
-                    id={d.id}
-                    label="Store PDF"
-                    pendingLabel="Storing…"
-                  />
-                </div>
-              ) : null}
-            </CardContent>
-          </Card>
-          {balance && d.status === "issued" ? <InvoiceBalanceSummary balance={balance} /> : null}
-          <DocumentEventsCard events={events} />
-        </div>
-
-        <div className="space-y-6">
-          {balance && (d.status === "issued" || balance.payments.length) ? (
-            <PaymentsCard balance={balance} />
-          ) : null}
-          {balance ? <LinkedNotesCard balance={balance} /> : null}
-          <iframe
-            key={d.updatedAt.toISOString()}
-            src={pdfUrl}
-            title={`${def.label} PDF preview`}
-            className="h-[900px] w-full rounded-lg border border-border bg-white"
-          />
-        </div>
-      </div>
+      <DocumentActivity events={events} />
     </div>
   );
 }
