@@ -12,6 +12,7 @@ import {
   LineItemsTable,
   NotesBlock,
   PartiesAndMeta,
+  PromoBlock,
   TotalsBlock,
 } from "@/lib/documents/pdf/parts";
 import { styles } from "@/lib/documents/pdf/styles";
@@ -44,6 +45,7 @@ export function InvoicePdf({ model }: { model: PdfModel }) {
         <NotesBlock title="Payment details" lines={model.issuer.paymentLines} />
         <NotesBlock title="Notes" text={data.notes} />
         <NotesBlock title="Terms" text={data.terms} />
+        <PromoBlock model={model} />
         <Footer model={model} />
       </Page>
     </Document>

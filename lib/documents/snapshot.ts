@@ -1,6 +1,7 @@
 import type { CustomerRow, DocumentRow } from "@/db/schema";
 import type { Issuer } from "@/lib/documents/issuer";
 import type { Totals } from "@/lib/documents/line-items";
+import type { PromoLinks } from "@/lib/promo";
 
 export type CustomerSnapshot = Pick<
   CustomerRow,
@@ -14,6 +15,8 @@ export type DocumentSnapshot = {
   customer: CustomerSnapshot;
   totals: Totals;
   related?: RelatedSnapshot | null;
+  /** Absent on documents issued before links were added; they render without them. */
+  promo?: PromoLinks | null;
 };
 
 export function customerSnapshot(c: CustomerRow): CustomerSnapshot {

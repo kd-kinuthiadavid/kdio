@@ -11,6 +11,7 @@ import {
   LineItemsTable,
   NotesBlock,
   PartiesAndMeta,
+  PromoBlock,
   relatedRows,
   TotalsBlock,
 } from "@/lib/documents/pdf/parts";
@@ -45,6 +46,7 @@ export function DebitNotePdf({ model }: { model: PdfModel }) {
         <NotesBlock title="Payment details" lines={model.issuer.paymentLines} />
         <NotesBlock title="Notes" text={data.notes} />
         <NotesBlock title="Terms" text={data.terms} />
+        <PromoBlock model={model} />
         <Footer model={model} />
       </Page>
     </Document>

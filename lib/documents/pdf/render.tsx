@@ -5,6 +5,7 @@ import { getIssuer } from "@/lib/documents/issuer";
 import type { PdfModel } from "@/lib/documents/pdf/model";
 import { getDocumentType } from "@/lib/documents/registry";
 import { customerSnapshot, getSnapshot } from "@/lib/documents/snapshot";
+import { getPromoLinks } from "@/lib/promo";
 
 /**
  * Issued documents render from their frozen snapshot so later changes to the
@@ -26,6 +27,7 @@ export function buildPdfModel(document: DocumentRow, customer: CustomerRow): Pdf
     data,
     totals: snapshot?.totals ?? def.computeTotals(data),
     related: snapshot?.related ?? null,
+    promo: snapshot ? (snapshot.promo ?? null) : getPromoLinks(),
   };
 }
 

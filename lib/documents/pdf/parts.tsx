@@ -1,4 +1,4 @@
-import { Path, Svg, Text, View } from "@react-pdf/renderer";
+import { Link, Path, Svg, Text, View } from "@react-pdf/renderer";
 
 import { brand } from "@/lib/brand";
 import { formatDate } from "@/lib/documents/dates";
@@ -10,7 +10,9 @@ import {
 } from "@/lib/documents/line-items";
 import { formatAmount, formatMoney } from "@/lib/documents/money";
 import type { PdfModel } from "@/lib/documents/pdf/model";
+import { qrPath } from "@/lib/documents/pdf/qr";
 import { pdfColors, styles } from "@/lib/documents/pdf/styles";
+import { displayUrl, trackedUrl } from "@/lib/promo";
 
 function Logo({ size = 26 }: { size?: number }) {
   return (
@@ -44,24 +46,74 @@ export function documentProps(model: PdfModel) {
   };
 }
 
+const plainLink = { color: pdfColors.muted, textDecoration: "none" as const };
+
+function websiteLink(model: PdfModel, medium: "pdf" | "qr" = "pdf"): string | null {
+  if (!model.promo) return null;
+  return trackedUrl(model.promo.websiteUrl, {
+    source: model.type,
+    medium,
+    campaign: medium === "pdf" ? model.number : null,
+  });
+}
+
+type ContactItem = { text: string; href?: string };
+
+function contactItems(model: PdfModel): ContactItem[] {
+  const { issuer, promo } = model;
+  const items: ContactItem[] = [];
+  if (issuer.email) items.push({ text: issuer.email, href: promo ? `mailto:${issuer.email}` : undefined });
+  if (issuer.phone) {
+    items.push({ text: issuer.phone, href: promo ? `tel:${issuer.phone.replace(/\s+/g, "")}` : undefined });
+  }
+  const website = issuer.website ?? (promo ? displayUrl(promo.websiteUrl) : null);
+  if (website) items.push({ text: website, href: websiteLink(model) ?? undefined });
+  return items;
+}
+
 export function Letterhead({ model }: { model: PdfModel }) {
   const { issuer } = model;
-  const contact = [issuer.email, issuer.phone, issuer.website].filter(Boolean);
+  const contact = contactItems(model);
+  const home = websiteLink(model);
+  const brandMark = (
+    <View style={[styles.row, { alignItems: "center", marginBottom: 8 }]}>
+      <Logo />
+      <Text style={[styles.brandName, { marginLeft: 8 }]}>{issuer.name}</Text>
+    </View>
+  );
   return (
     <View>
       <View style={styles.accentBar} fixed />
       <View style={styles.spaceBetween}>
         <View style={{ maxWidth: 280 }}>
-          <View style={[styles.row, { alignItems: "center", marginBottom: 8 }]}>
-            <Logo />
-            <Text style={[styles.brandName, { marginLeft: 8 }]}>{issuer.name}</Text>
-          </View>
+          {home ? (
+            <Link src={home} style={{ textDecoration: "none" }}>
+              {brandMark}
+            </Link>
+          ) : (
+            brandMark
+          )}
           {issuer.addressLines.map((l) => (
             <Text key={l} style={styles.muted}>
               {l}
             </Text>
           ))}
-          {contact.length ? <Text style={styles.muted}>{contact.join("  ·  ")}</Text> : null}
+          {contact.length ? (
+            <Text style={styles.muted}>
+              {contact.map((c, i) => (
+                <Text key={c.text}>
+                  {i > 0 ? "  ·  " : ""}
+                  {c.href ? (
+                    <Link src={c.href} style={plainLink}>
+                      {c.text}
+                    </Link>
+                  ) : (
+                    c.text
+                  )}
+                </Text>
+              ))}
+            </Text>
+          ) : null}
           {issuer.kraPin ? <Text style={styles.muted}>KRA PIN: {issuer.kraPin}</Text> : null}
           {issuer.vatNumber ? <Text style={styles.muted}>VAT No: {issuer.vatNumber}</Text> : null}
         </View>
@@ -230,13 +282,78 @@ export function NotesBlock({
 }
 
 export function Footer({ model }: { model: PdfModel }) {
+  const home = websiteLink(model);
   return (
     <View style={styles.footer} fixed>
       <Text>
         {model.issuer.name}
         {model.number ? `  ·  ${model.number}` : ""}
       </Text>
+      {home && model.promo ? (
+        <Link src={home} style={plainLink}>
+          {displayUrl(model.promo.websiteUrl)}
+        </Link>
+      ) : null}
       <Text render={({ pageNumber, totalPages }) => `Page ${pageNumber} of ${totalPages}`} />
+    </View>
+  );
+}
+
+const QR_SIZE = 62;
+
+/**
+ * A short thank-you with a booking link, a referral ask and a QR code to book a
+ * call. Only on documents that ask for payment, never on credit notes or voids.
+ */
+export function PromoBlock({ model }: { model: PdfModel }) {
+  const { promo } = model;
+  if (!promo || model.type === "credit_note" || model.status === "void") return null;
+  const booking = trackedUrl(promo.bookingUrl, {
+    source: model.type,
+    medium: "pdf",
+    campaign: model.number,
+  });
+  const qr = qrPath(trackedUrl(promo.bookingUrl, { source: model.type, medium: "qr" }));
+  return (
+    <View
+      style={[
+        styles.section,
+        styles.row,
+        {
+          marginTop: 24,
+          padding: 12,
+          gap: 16,
+          alignItems: "center",
+          backgroundColor: pdfColors.bg,
+          borderLeftWidth: 3,
+          borderLeftColor: pdfColors.primary,
+          borderRadius: 4,
+        },
+      ]}
+      wrap={false}
+    >
+      <View style={{ flex: 1 }}>
+        <Text style={[styles.bold, { color: pdfColors.primary, fontSize: 10.5, marginBottom: 4 }]}>
+          Thank you for your business.
+        </Text>
+        <Text>
+          Planning what&apos;s next? Book a call at{" "}
+          <Link src={booking} style={{ color: pdfColors.primary }}>
+            {displayUrl(promo.bookingUrl)}
+          </Link>
+          .
+        </Text>
+        <Text style={[styles.muted, { marginTop: 4 }]}>
+          Know a team shipping AI where mistakes are expensive? Introductions are always
+          appreciated.
+        </Text>
+      </View>
+      <Link src={booking} style={{ textDecoration: "none", alignItems: "center" }}>
+        <Svg width={QR_SIZE} height={QR_SIZE} viewBox={`-2 -2 ${qr.size + 4} ${qr.size + 4}`}>
+          <Path d={qr.path} fill={pdfColors.fg} />
+        </Svg>
+        <Text style={[styles.muted, { fontSize: 7, marginTop: 2 }]}>Scan to book</Text>
+      </Link>
     </View>
   );
 }

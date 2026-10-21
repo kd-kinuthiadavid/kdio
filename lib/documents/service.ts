@@ -26,6 +26,7 @@ import {
   type DocumentSnapshot,
   type RelatedSnapshot,
 } from "@/lib/documents/snapshot";
+import { getPromoLinks } from "@/lib/promo";
 import { fieldErrorsFrom } from "@/lib/zod-errors";
 
 export type Actor = string;
@@ -310,6 +311,7 @@ export async function issueDocument(
     customer: customerSnapshot(customer),
     totals,
     related: parent ? relatedSnapshot(parent) : null,
+    promo: getPromoLinks(),
   };
 
   const issueDate = typeof data.issueDate === "string" ? data.issueDate : null;

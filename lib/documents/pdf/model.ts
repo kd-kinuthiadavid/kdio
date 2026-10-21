@@ -2,6 +2,7 @@ import type { DocumentStatus, DocumentType } from "@/db/schema";
 import type { Issuer } from "@/lib/documents/issuer";
 import type { Totals } from "@/lib/documents/line-items";
 import type { CustomerSnapshot, RelatedSnapshot } from "@/lib/documents/snapshot";
+import type { PromoLinks } from "@/lib/promo";
 
 export type PdfModel = {
   type: DocumentType;
@@ -16,4 +17,5 @@ export type PdfModel = {
   data: Record<string, unknown>;
   totals: Totals;
   related: RelatedSnapshot | null;
+  promo: PromoLinks | null;
 };
