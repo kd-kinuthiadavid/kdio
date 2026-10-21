@@ -1,6 +1,9 @@
+import { sql } from "drizzle-orm";
 import {
   type AnyPgColumn,
   bigint,
+  check,
+  date,
   index,
   integer,
   jsonb,
@@ -10,6 +13,8 @@ import {
   timestamp,
   uuid,
 } from "drizzle-orm/pg-core";
+
+import type { PaymentMethod } from "../lib/documents/money";
 
 export const assessmentSubmissions = pgTable(
   "assessment_submissions",
@@ -157,3 +162,29 @@ export const documentEvents = pgTable(
 );
 
 export type DocumentEventRow = typeof documentEvents.$inferSelect;
+
+export const documentPayments = pgTable(
+  "document_payments",
+  {
+    id: uuid("id").defaultRandom().primaryKey(),
+    createdAt: timestamp("created_at", { withTimezone: true })
+      .notNull()
+      .defaultNow(),
+    documentId: uuid("document_id")
+      .notNull()
+      .references(() => documents.id, { onDelete: "cascade" }),
+    amountMinor: bigint("amount_minor", { mode: "number" }).notNull(),
+    currency: text("currency").notNull(),
+    paidOn: date("paid_on").notNull(),
+    method: text("method").notNull().$type<PaymentMethod>(),
+    reference: text("reference"),
+    notes: text("notes"),
+    createdBy: text("created_by").notNull().default("admin"),
+  },
+  (t) => [
+    index("document_payments_document_idx").on(t.documentId, t.paidOn),
+    check("document_payments_amount_positive", sql`${t.amountMinor} > 0`),
+  ]
+);
+
+export type DocumentPaymentRow = typeof documentPayments.$inferSelect;
