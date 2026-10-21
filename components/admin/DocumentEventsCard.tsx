@@ -1,6 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import type { DocumentEventRow } from "@/db/schema";
 import { formatDateTime } from "@/lib/documents/dates";
+import { formatMoney } from "@/lib/documents/money";
 
 const LABELS: Record<string, string> = {
   created: "Draft created",
@@ -8,10 +9,15 @@ const LABELS: Record<string, string> = {
   issued: "Issued",
   voided: "Voided",
   pdf_stored: "PDF stored",
+  payment_recorded: "Payment recorded",
+  payment_removed: "Payment removed",
 };
 
 function detail(event: DocumentEventRow): string | null {
   const p = (event.payload ?? {}) as Record<string, unknown>;
+  if (typeof p.amountMinor === "number" && typeof p.currency === "string") {
+    return formatMoney(p.amountMinor, p.currency);
+  }
   if (event.type === "issued" && typeof p.number === "string") return p.number;
   if (event.type === "voided" && typeof p.reason === "string") return p.reason;
   if (event.type === "pdf_stored" && typeof p.sha256 === "string") {

@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { DocumentStatusBadge } from "@/components/admin/DocumentStatusBadge";
+import { PaymentStateBadge } from "@/components/admin/PaymentStateBadge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -15,6 +16,7 @@ import type { DocumentStatus } from "@/db/schema";
 import { customerDisplayName } from "@/lib/documents/customers";
 import { formatDate } from "@/lib/documents/dates";
 import { formatMoney } from "@/lib/documents/money";
+import { getPaymentSummaries } from "@/lib/documents/payments";
 import { getDocumentType, isDocumentType, listDocumentTypes } from "@/lib/documents/registry";
 import { listDocuments } from "@/lib/documents/service";
 import { cn } from "@/lib/utils";
@@ -52,6 +54,11 @@ export default async function DocumentsPage({
   const type = sp.type && isDocumentType(sp.type) ? sp.type : undefined;
   const status = STATUSES.find((s) => s === sp.status);
   const rows = await listDocuments({ type, status });
+  const payments = await getPaymentSummaries(
+    rows
+      .filter(({ document: d }) => d.type === "invoice" && d.status === "issued")
+      .map(({ document: d }) => d.id)
+  );
 
   return (
     <div className="space-y-6">
@@ -102,11 +109,13 @@ export default async function DocumentsPage({
                   <TableHead>Issue date</TableHead>
                   <TableHead className="text-right">Total</TableHead>
                   <TableHead>Status</TableHead>
+                  <TableHead>Payment</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
                 {rows.map(({ document: d, customer: c }) => {
                   const data = d.data as { issueDate?: string };
+                  const payment = payments.get(d.id);
                   return (
                     <TableRow key={d.id}>
                       <TableCell>
@@ -125,6 +134,20 @@ export default async function DocumentsPage({
                       </TableCell>
                       <TableCell>
                         <DocumentStatusBadge status={d.status} />
+                      </TableCell>
+                      <TableCell className="whitespace-nowrap">
+                        {payment ? (
+                          <div className="flex flex-col items-start gap-1">
+                            <PaymentStateBadge state={payment.state} />
+                            {payment.outstandingMinor > 0 && payment.state !== "unpaid" ? (
+                              <span className="text-xs tabular-nums text-muted-foreground">
+                                {formatMoney(payment.outstandingMinor, d.currency)} due
+                              </span>
+                            ) : null}
+                          </div>
+                        ) : (
+                          <span className="text-muted-foreground">—</span>
+                        )}
                       </TableCell>
                     </TableRow>
                   );

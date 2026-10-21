@@ -9,8 +9,13 @@ import {
 import { ConfirmActionButton } from "@/components/admin/ConfirmActionButton";
 import { DocumentEventsCard } from "@/components/admin/DocumentEventsCard";
 import { DocumentStatusBadge } from "@/components/admin/DocumentStatusBadge";
-import { InvoiceBalanceSummary, LinkedNotesCard } from "@/components/admin/InvoiceBalanceCard";
+import {
+  InvoiceBalanceSummary,
+  LinkedNotesCard,
+  PaymentsCard,
+} from "@/components/admin/InvoiceBalanceCard";
 import { Notice } from "@/components/admin/Notice";
+import { PaymentStateBadge } from "@/components/admin/PaymentStateBadge";
 import { VoidDocumentButton } from "@/components/admin/VoidDocumentButton";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -56,6 +61,7 @@ export default async function DocumentDetailPage({
           <div className="flex items-center gap-3">
             <h1 className="text-2xl font-semibold tracking-tight">{d.number ?? "Draft"}</h1>
             <DocumentStatusBadge status={d.status} />
+            {balance && d.status === "issued" ? <PaymentStateBadge state={balance.state} /> : null}
           </div>
         </div>
         <div className="flex flex-wrap items-start gap-2">
@@ -205,6 +211,9 @@ export default async function DocumentDetailPage({
         </div>
 
         <div className="space-y-6">
+          {balance && (d.status === "issued" || balance.payments.length) ? (
+            <PaymentsCard balance={balance} />
+          ) : null}
           {balance ? <LinkedNotesCard balance={balance} /> : null}
           <iframe
             key={d.updatedAt.toISOString()}

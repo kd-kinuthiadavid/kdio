@@ -6,6 +6,7 @@ import { z } from "zod";
 
 import type { FormState } from "@/components/admin/FormField";
 import { assertAdmin } from "@/lib/admin-auth";
+import { deletePayment, recordPayment, type PaymentInput } from "@/lib/documents/payments";
 import { isDocumentType } from "@/lib/documents/registry";
 import {
   createDraft,
@@ -114,6 +115,44 @@ export async function voidDocumentAction(
   }
   revalidatePath("/admin/documents");
   revalidatePath(`/admin/documents/${id}`);
+  return {};
+}
+
+export async function recordPaymentAction(
+  _prev: FormState,
+  formData: FormData
+): Promise<FormState> {
+  await assertAdmin();
+  const id = idFrom(formData);
+  const field = (name: string) => String(formData.get(name) ?? "");
+  try {
+    await recordPayment(id, {
+      amount: field("amount"),
+      paidOn: field("paidOn"),
+      method: field("method") as PaymentInput["method"],
+      reference: field("reference"),
+      notes: field("notes"),
+    });
+  } catch (e) {
+    return toFormState(e, "Could not record the payment");
+  }
+  revalidatePath("/admin/documents");
+  revalidatePath(`/admin/documents/${id}`);
+  return {};
+}
+
+export async function deletePaymentAction(
+  _prev: FormState,
+  formData: FormData
+): Promise<FormState> {
+  await assertAdmin();
+  try {
+    const { documentId } = await deletePayment(idFrom(formData));
+    revalidatePath(`/admin/documents/${documentId}`);
+  } catch (e) {
+    return toFormState(e, "Could not remove the payment");
+  }
+  revalidatePath("/admin/documents");
   return {};
 }
 

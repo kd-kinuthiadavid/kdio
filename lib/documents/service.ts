@@ -4,8 +4,10 @@ import { z } from "zod";
 import {
   customers,
   documentEvents,
+  documentPayments,
   documents,
   type DocumentEventRow,
+  type DocumentPaymentRow,
   type DocumentRow,
   type DocumentStatus,
   type DocumentType,
@@ -13,6 +15,11 @@ import {
 import { getDb } from "@/lib/db";
 import { getIssuer } from "@/lib/documents/issuer";
 import { CURRENCIES, formatMoney } from "@/lib/documents/money";
+import {
+  isRefundCredit,
+  summarizePayments,
+  type PaymentSummary,
+} from "@/lib/documents/payment-state";
 import { getDocumentType } from "@/lib/documents/registry";
 import {
   customerSnapshot,
@@ -68,39 +75,49 @@ function prepare(input: DraftInput) {
   };
 }
 
-export type InvoiceBalance = {
+export type InvoiceBalance = PaymentSummary & {
   invoice: DocumentRow;
   /** Every note that references the invoice, in any status */
   notes: DocumentRow[];
+  payments: DocumentPaymentRow[];
   totalMinor: number;
   debitMinor: number;
   creditMinor: number;
-  /** Invoice total + issued debit notes − issued credit notes */
-  balanceMinor: number;
 };
 
 export async function getInvoiceBalance(invoiceId: string): Promise<InvoiceBalance | null> {
   const db = getDb();
   const [invoice] = await db.select().from(documents).where(eq(documents.id, invoiceId)).limit(1);
   if (!invoice || invoice.type !== "invoice") return null;
-  const notes = await db
-    .select()
-    .from(documents)
-    .where(eq(documents.relatedDocumentId, invoiceId))
-    .orderBy(asc(documents.createdAt));
-  const issuedSum = (type: DocumentType) =>
-    notes
-      .filter((n) => n.type === type && n.status === "issued")
-      .reduce((sum, n) => sum + n.totalMinor, 0);
-  const debitMinor = issuedSum("debit_note");
-  const creditMinor = issuedSum("credit_note");
+  const [notes, payments] = await Promise.all([
+    db
+      .select()
+      .from(documents)
+      .where(eq(documents.relatedDocumentId, invoiceId))
+      .orderBy(asc(documents.createdAt)),
+    db
+      .select()
+      .from(documentPayments)
+      .where(eq(documentPayments.documentId, invoiceId))
+      .orderBy(asc(documentPayments.paidOn), asc(documentPayments.createdAt)),
+  ]);
+  const issued = notes.filter((n) => n.status === "issued");
+  const sum = (rows: { totalMinor: number }[]) => rows.reduce((s, r) => s + r.totalMinor, 0);
+  const credits = issued.filter((n) => n.type === "credit_note");
+  const debitMinor = sum(issued.filter((n) => n.type === "debit_note"));
+  const creditMinor = sum(credits);
   return {
     invoice,
     notes,
+    payments,
     totalMinor: invoice.totalMinor,
     debitMinor,
     creditMinor,
-    balanceMinor: invoice.totalMinor + debitMinor - creditMinor,
+    ...summarizePayments({
+      balanceMinor: invoice.totalMinor + debitMinor - creditMinor,
+      paidMinor: payments.reduce((s, p) => s + p.amountMinor, 0),
+      refundedMinor: sum(credits.filter((n) => isRefundCredit(n.data))),
+    }),
   };
 }
 
@@ -359,8 +376,8 @@ export async function issueDocument(
 
 /**
  * Voids an issued document, keeping its number. Blocked while issued notes
- * still reference it, so void those first; the check and the update share
- * one statement.
+ * still reference it or payments are recorded against it, so void or remove
+ * those first; the checks and the update share one statement.
  */
 export async function voidDocument(id: string, reason: string, actor: Actor = "admin") {
   const trimmed = reason.trim();
@@ -374,6 +391,7 @@ export async function voidDocument(id: string, reason: string, actor: Actor = "a
         AND NOT EXISTS (
           SELECT 1 FROM documents n WHERE n.related_document_id = ${id} AND n.status = 'issued'
         )
+        AND NOT EXISTS (SELECT 1 FROM document_payments p WHERE p.document_id = ${id})
       RETURNING id
     ), ev AS (
       INSERT INTO document_events (document_id, type, actor, payload)
@@ -384,12 +402,22 @@ export async function voidDocument(id: string, reason: string, actor: Actor = "a
   `);
   if (result.rows[0]) return;
 
-  const [current] = await getDb()
-    .select({ status: documents.status })
-    .from(documents)
-    .where(eq(documents.id, id));
+  const db = getDb();
+  const [[current], [payment]] = await Promise.all([
+    db.select({ status: documents.status }).from(documents).where(eq(documents.id, id)),
+    db
+      .select({ id: documentPayments.id })
+      .from(documentPayments)
+      .where(eq(documentPayments.documentId, id))
+      .limit(1),
+  ]);
   if (current?.status !== "issued") {
     throw new DocumentValidationError("Only issued documents can be voided");
+  }
+  if (payment) {
+    throw new DocumentValidationError(
+      "Payments are recorded against this document; remove them first"
+    );
   }
   throw new DocumentValidationError(
     "Issued credit or debit notes reference this document; void them first"
