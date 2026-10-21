@@ -13,6 +13,7 @@ import {
   DocumentValidationError,
   issueDocument,
   updateDraft,
+  voidDocument,
 } from "@/lib/documents/service";
 
 const payloadSchema = z.object({
@@ -76,6 +77,22 @@ export async function issueDocumentAction(
     await issueDocument(id);
   } catch (e) {
     return toFormState(e, "Could not issue the document");
+  }
+  revalidatePath("/admin/documents");
+  revalidatePath(`/admin/documents/${id}`);
+  return {};
+}
+
+export async function voidDocumentAction(
+  _prev: FormState,
+  formData: FormData
+): Promise<FormState> {
+  await assertAdmin();
+  const id = idFrom(formData);
+  try {
+    await voidDocument(id, String(formData.get("reason") ?? ""));
+  } catch (e) {
+    return toFormState(e, "Could not void the document");
   }
   revalidatePath("/admin/documents");
   revalidatePath(`/admin/documents/${id}`);

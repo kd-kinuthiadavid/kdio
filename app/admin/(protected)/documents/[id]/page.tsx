@@ -7,6 +7,7 @@ import {
 } from "@/app/admin/(protected)/documents/actions";
 import { ConfirmActionButton } from "@/components/admin/ConfirmActionButton";
 import { DocumentStatusBadge } from "@/components/admin/DocumentStatusBadge";
+import { VoidDocumentButton } from "@/components/admin/VoidDocumentButton";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { customerDisplayName } from "@/lib/documents/customers";
@@ -91,6 +92,7 @@ export default async function DocumentDetailPage({
           <Button variant="outline" size="sm" asChild>
             <a href={`${pdfUrl}?download=1`}>Download</a>
           </Button>
+          {d.status === "issued" ? <VoidDocumentButton id={d.id} label={def.label} /> : null}
         </div>
       </div>
 

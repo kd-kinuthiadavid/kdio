@@ -349,6 +349,45 @@ export async function issueDocument(
   return row;
 }
 
+/**
+ * Voids an issued document, keeping its number. Blocked while issued notes
+ * still reference it, so void those first; the check and the update share
+ * one statement.
+ */
+export async function voidDocument(id: string, reason: string, actor: Actor = "admin") {
+  const trimmed = reason.trim();
+  if (!trimmed) {
+    throw new DocumentValidationError("Give a reason for voiding", { reason: "Required" });
+  }
+  const result = await getDb().execute<{ id: string }>(sql`
+    WITH upd AS (
+      UPDATE documents SET status = 'void', voided_at = now(), updated_at = now()
+      WHERE id = ${id} AND status = 'issued'
+        AND NOT EXISTS (
+          SELECT 1 FROM documents n WHERE n.related_document_id = ${id} AND n.status = 'issued'
+        )
+      RETURNING id
+    ), ev AS (
+      INSERT INTO document_events (document_id, type, actor, payload)
+      SELECT upd.id, 'voided', ${actor}, jsonb_build_object('reason', ${trimmed}::text)
+      FROM upd
+    )
+    SELECT id FROM upd
+  `);
+  if (result.rows[0]) return;
+
+  const [current] = await getDb()
+    .select({ status: documents.status })
+    .from(documents)
+    .where(eq(documents.id, id));
+  if (current?.status !== "issued") {
+    throw new DocumentValidationError("Only issued documents can be voided");
+  }
+  throw new DocumentValidationError(
+    "Issued credit or debit notes reference this document; void them first"
+  );
+}
+
 function relatedSnapshot(parent: DocumentRow): RelatedSnapshot {
   const data = parent.data as { issueDate?: string };
   return { number: parent.number ?? "", issueDate: data.issueDate ?? "" };
