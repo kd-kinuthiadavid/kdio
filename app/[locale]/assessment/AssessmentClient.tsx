@@ -12,7 +12,10 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Progress } from "@/components/ui/progress";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { ASSESSMENT_QUESTIONS } from "@/lib/assessment/questions";
+import {
+  ASSESSMENT_QUESTIONS,
+  normalizeChallenge,
+} from "@/lib/assessment/questions";
 import {
   buildCalNotes,
 } from "@/lib/assessment/scoring";
@@ -128,6 +131,12 @@ export default function AssessmentClient() {
         setResumeToken(resume);
         if (data.email) setEmail(data.email);
         const merged = { ...data.answers } as Record<string, string | number>;
+        if (
+          typeof merged.challenge === "string" &&
+          !normalizeChallenge(merged.challenge)
+        ) {
+          delete merged.challenge;
+        }
         setAnswers(merged);
         if (data.status === "completed" && data.totalScore != null && data.tier && data.serviceId) {
           setResult({
@@ -524,11 +533,17 @@ export default function AssessmentClient() {
                 {t("resultsService")}
               </p>
               <p className="text-lg font-semibold text-primary">
-                {tServices(
+                {tServices.has(
                   `items.${result.serviceId}.name` as Parameters<
-                    typeof tServices
+                    typeof tServices.has
                   >[0],
-                )}
+                )
+                  ? tServices(
+                      `items.${result.serviceId}.name` as Parameters<
+                        typeof tServices
+                      >[0],
+                    )
+                  : result.serviceId}
               </p>
               <p className="mt-3 text-sm text-muted-foreground">
                 {t("resultsTier")}
