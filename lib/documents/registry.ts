@@ -3,8 +3,15 @@ import type { z } from "zod";
 
 import type { DocumentType } from "@/db/schema";
 import type { Totals } from "@/lib/documents/line-items";
+import { CreditNotePdf } from "@/lib/documents/pdf/CreditNotePdf";
+import { DebitNotePdf } from "@/lib/documents/pdf/DebitNotePdf";
 import { InvoicePdf } from "@/lib/documents/pdf/InvoicePdf";
 import type { PdfModel } from "@/lib/documents/pdf/model";
+import {
+  computeCreditNoteTotals,
+  creditNoteDataSchema,
+} from "@/lib/documents/types/credit-note";
+import { computeDebitNoteTotals, debitNoteDataSchema } from "@/lib/documents/types/debit-note";
 import { computeInvoiceTotals, invoiceDataSchema } from "@/lib/documents/types/invoice";
 
 export type DocumentTypeDefinition<TData = unknown> = {
@@ -31,6 +38,24 @@ const registry: Partial<Record<DocumentType, DocumentTypeDefinition>> = {
     schema: invoiceDataSchema,
     computeTotals: computeInvoiceTotals,
     Pdf: InvoicePdf,
+  }),
+  credit_note: define({
+    type: "credit_note",
+    label: "Credit note",
+    prefix: "CN",
+    requiresParent: true,
+    schema: creditNoteDataSchema,
+    computeTotals: computeCreditNoteTotals,
+    Pdf: CreditNotePdf,
+  }),
+  debit_note: define({
+    type: "debit_note",
+    label: "Debit note",
+    prefix: "DN",
+    requiresParent: true,
+    schema: debitNoteDataSchema,
+    computeTotals: computeDebitNoteTotals,
+    Pdf: DebitNotePdf,
   }),
 };
 
