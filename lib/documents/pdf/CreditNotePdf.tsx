@@ -6,6 +6,7 @@ import type { PdfModel } from "@/lib/documents/pdf/model";
 import {
   compactRows,
   dateRow,
+  documentProps,
   DraftWatermark,
   Footer,
   Letterhead,
@@ -41,7 +42,7 @@ export function CreditNotePdf({ model }: { model: PdfModel }) {
   const reason = CREDIT_NOTE_REASONS[data.reason];
 
   return (
-    <Document title={`${model.title} ${model.number ?? "draft"}`} author={model.issuer.name}>
+    <Document {...documentProps(model)}>
       <Page size="A4" style={styles.page}>
         <DraftWatermark model={model} />
         <Letterhead model={model} />

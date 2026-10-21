@@ -115,6 +115,9 @@ export const documents = pgTable(
     createdBy: text("created_by").notNull().default("admin"),
     issuedAt: timestamp("issued_at", { withTimezone: true }),
     voidedAt: timestamp("voided_at", { withTimezone: true }),
+    /** Private Blob pathname of the PDF as issued */
+    pdfPathname: text("pdf_pathname"),
+    pdfSha256: text("pdf_sha256"),
   },
   (t) => [
     index("documents_type_status_idx").on(t.type, t.status),

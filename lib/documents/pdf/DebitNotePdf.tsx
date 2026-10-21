@@ -4,6 +4,7 @@ import type { PdfModel } from "@/lib/documents/pdf/model";
 import {
   compactRows,
   dateRow,
+  documentProps,
   DraftWatermark,
   Footer,
   Letterhead,
@@ -20,7 +21,7 @@ export function DebitNotePdf({ model }: { model: PdfModel }) {
   const data = model.data as DebitNoteData;
 
   return (
-    <Document title={`${model.title} ${model.number ?? "draft"}`} author={model.issuer.name}>
+    <Document {...documentProps(model)}>
       <Page size="A4" style={styles.page}>
         <DraftWatermark model={model} />
         <Letterhead model={model} />

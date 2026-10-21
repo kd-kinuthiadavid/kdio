@@ -4,11 +4,13 @@ import { notFound } from "next/navigation";
 import {
   deleteDraftAction,
   issueDocumentAction,
+  storeDocumentPdfAction,
 } from "@/app/admin/(protected)/documents/actions";
 import { ConfirmActionButton } from "@/components/admin/ConfirmActionButton";
 import { DocumentEventsCard } from "@/components/admin/DocumentEventsCard";
 import { DocumentStatusBadge } from "@/components/admin/DocumentStatusBadge";
 import { InvoiceBalanceSummary, LinkedNotesCard } from "@/components/admin/InvoiceBalanceCard";
+import { Notice } from "@/components/admin/Notice";
 import { VoidDocumentButton } from "@/components/admin/VoidDocumentButton";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -178,7 +180,24 @@ export default async function DocumentDetailPage({
                     <dd>{formatDateTime(d.voidedAt)}</dd>
                   </div>
                 ) : null}
+                {d.pdfSha256 ? (
+                  <div>
+                    <dt className="text-muted-foreground">Stored PDF (sha256)</dt>
+                    <dd className="break-all font-mono text-xs">{d.pdfSha256}</dd>
+                  </div>
+                ) : null}
               </dl>
+              {!isDraft && !d.pdfSha256 ? (
+                <div className="mt-4 space-y-2">
+                  <Notice tone="warning">The issued PDF hasn&apos;t been stored yet.</Notice>
+                  <ConfirmActionButton
+                    action={storeDocumentPdfAction}
+                    id={d.id}
+                    label="Store PDF"
+                    pendingLabel="Storing…"
+                  />
+                </div>
+              ) : null}
             </CardContent>
           </Card>
           {balance && d.status === "issued" ? <InvoiceBalanceSummary balance={balance} /> : null}

@@ -19,6 +19,7 @@ export function buildPdfModel(document: DocumentRow, customer: CustomerRow): Pdf
     title: def.label,
     number: document.number,
     status: document.status,
+    issuedAt: document.issuedAt,
     currency: document.currency,
     issuer: snapshot?.issuer ?? getIssuer(),
     customer: snapshot?.customer ?? customerSnapshot(customer),

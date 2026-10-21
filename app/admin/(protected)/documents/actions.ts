@@ -15,6 +15,7 @@ import {
   updateDraft,
   voidDocument,
 } from "@/lib/documents/service";
+import { storeIssuedPdf } from "@/lib/documents/storage";
 
 const payloadSchema = z.object({
   id: z.string().uuid().optional(),
@@ -78,7 +79,24 @@ export async function issueDocumentAction(
   } catch (e) {
     return toFormState(e, "Could not issue the document");
   }
+  // The issue stands even if storage fails; the detail page offers a retry.
+  await storeIssuedPdf(id).catch((e) => console.error("Could not store issued PDF", id, e));
   revalidatePath("/admin/documents");
+  revalidatePath(`/admin/documents/${id}`);
+  return {};
+}
+
+export async function storeDocumentPdfAction(
+  _prev: FormState,
+  formData: FormData
+): Promise<FormState> {
+  await assertAdmin();
+  const id = idFrom(formData);
+  try {
+    await storeIssuedPdf(id);
+  } catch (e) {
+    return toFormState(e, "Could not store the PDF");
+  }
   revalidatePath(`/admin/documents/${id}`);
   return {};
 }

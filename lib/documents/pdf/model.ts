@@ -8,6 +8,7 @@ export type PdfModel = {
   title: string;
   number: string | null;
   status: DocumentStatus;
+  issuedAt: Date | null;
   currency: string;
   issuer: Issuer;
   customer: CustomerSnapshot;

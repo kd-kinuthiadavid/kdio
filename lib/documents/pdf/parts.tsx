@@ -25,6 +25,20 @@ function Logo({ size = 26 }: { size?: number }) {
   );
 }
 
+/**
+ * PDF metadata. Pinning both dates to the issue time keeps re-renders of an
+ * issued document byte-identical, so its stored sha256 can be re-verified.
+ */
+export function documentProps(model: PdfModel) {
+  const date = model.issuedAt ?? undefined;
+  return {
+    title: `${model.title} ${model.number ?? "draft"}`,
+    author: model.issuer.name,
+    creationDate: date,
+    modificationDate: date,
+  };
+}
+
 export function Letterhead({ model }: { model: PdfModel }) {
   const { issuer } = model;
   const contact = [issuer.email, issuer.phone, issuer.website].filter(Boolean);

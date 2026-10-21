@@ -7,12 +7,16 @@ const LABELS: Record<string, string> = {
   updated: "Draft updated",
   issued: "Issued",
   voided: "Voided",
+  pdf_stored: "PDF stored",
 };
 
 function detail(event: DocumentEventRow): string | null {
   const p = (event.payload ?? {}) as Record<string, unknown>;
   if (event.type === "issued" && typeof p.number === "string") return p.number;
   if (event.type === "voided" && typeof p.reason === "string") return p.reason;
+  if (event.type === "pdf_stored" && typeof p.sha256 === "string") {
+    return `sha256 ${p.sha256.slice(0, 12)}…`;
+  }
   return null;
 }
 
