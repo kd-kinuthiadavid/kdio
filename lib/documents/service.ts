@@ -5,17 +5,15 @@ import {
   customers,
   documentEvents,
   documents,
-  type CustomerRow,
   type DocumentEventRow,
-  type DocumentRow,
   type DocumentStatus,
   type DocumentType,
 } from "@/db/schema";
 import { getDb } from "@/lib/db";
-import { getIssuer, type Issuer } from "@/lib/documents/issuer";
-import type { Totals } from "@/lib/documents/line-items";
+import { getIssuer } from "@/lib/documents/issuer";
 import { CURRENCIES } from "@/lib/documents/money";
 import { getDocumentType } from "@/lib/documents/registry";
+import { customerSnapshot, type DocumentSnapshot } from "@/lib/documents/snapshot";
 import { fieldErrorsFrom } from "@/lib/zod-errors";
 
 export type Actor = string;
@@ -28,18 +26,6 @@ export class DocumentValidationError extends Error {
     super(message);
   }
 }
-
-export type CustomerSnapshot = Pick<
-  CustomerRow,
-  "name" | "company" | "email" | "phone" | "addressLines" | "country" | "taxId"
->;
-
-export type DocumentSnapshot = {
-  issuer: Issuer;
-  customer: CustomerSnapshot;
-  totals: Totals;
-  related?: { number: string; issueDate: string } | null;
-};
 
 const draftInputSchema = z.object({
   customerId: z.string().uuid("Choose a customer"),
@@ -168,18 +154,6 @@ export async function listEvents(documentId: string): Promise<DocumentEventRow[]
     .orderBy(desc(documentEvents.createdAt));
 }
 
-function customerSnapshot(c: CustomerRow): CustomerSnapshot {
-  return {
-    name: c.name,
-    company: c.company,
-    email: c.email,
-    phone: c.phone,
-    addressLines: c.addressLines,
-    country: c.country,
-    taxId: c.taxId,
-  };
-}
-
 /**
  * Locks a draft: validates it again, freezes issuer/customer/totals into the
  * snapshot, and assigns the next number for (type, year). The neon-http driver
@@ -246,8 +220,4 @@ export async function issueDocument(
   const row = result.rows[0];
   if (!row) throw new DocumentValidationError("Document was already issued");
   return row;
-}
-
-export function getSnapshot(document: DocumentRow): DocumentSnapshot | null {
-  return (document.snapshot as DocumentSnapshot | null) ?? null;
 }

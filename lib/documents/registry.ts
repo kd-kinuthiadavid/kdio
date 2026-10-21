@@ -1,7 +1,10 @@
+import type { ComponentType } from "react";
 import type { z } from "zod";
 
 import type { DocumentType } from "@/db/schema";
 import type { Totals } from "@/lib/documents/line-items";
+import { InvoicePdf } from "@/lib/documents/pdf/InvoicePdf";
+import type { PdfModel } from "@/lib/documents/pdf/model";
 import { computeInvoiceTotals, invoiceDataSchema } from "@/lib/documents/types/invoice";
 
 export type DocumentTypeDefinition<TData = unknown> = {
@@ -12,6 +15,7 @@ export type DocumentTypeDefinition<TData = unknown> = {
   requiresParent: boolean;
   schema: z.ZodType<TData>;
   computeTotals: (data: TData) => Totals;
+  Pdf: ComponentType<{ model: PdfModel }>;
 };
 
 function define<TData>(def: DocumentTypeDefinition<TData>) {
@@ -26,6 +30,7 @@ const registry: Partial<Record<DocumentType, DocumentTypeDefinition>> = {
     requiresParent: false,
     schema: invoiceDataSchema,
     computeTotals: computeInvoiceTotals,
+    Pdf: InvoicePdf,
   }),
 };
 
