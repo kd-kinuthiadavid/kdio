@@ -1,24 +1,12 @@
 import Link from "next/link";
 
-import { DocumentStatusBadge } from "@/components/admin/DocumentStatusBadge";
-import { PaymentStateBadge } from "@/components/admin/PaymentStateBadge";
+import { DocumentsTable, payableIds, ReceivablesCards } from "@/components/admin/DocumentsTable";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
 import type { DocumentStatus } from "@/db/schema";
-import { customerDisplayName } from "@/lib/documents/customers";
-import { formatDate, todayIso } from "@/lib/documents/dates";
-import { formatMoney } from "@/lib/documents/money";
-import { daysOverdue } from "@/lib/documents/payment-state";
+import { todayIso } from "@/lib/documents/dates";
 import { getPaymentSummaries, getReceivables } from "@/lib/documents/payments";
-import { getDocumentType, isDocumentType, listDocumentTypes } from "@/lib/documents/registry";
+import { isDocumentType, listDocumentTypes } from "@/lib/documents/registry";
 import { listDocuments } from "@/lib/documents/service";
 import { cn } from "@/lib/utils";
 
@@ -57,11 +45,7 @@ export default async function DocumentsPage({
   const today = todayIso();
   const rows = await listDocuments({ type, status });
   const [payments, receivables] = await Promise.all([
-    getPaymentSummaries(
-      rows
-        .filter(({ document: d }) => d.type === "invoice" && d.status === "issued")
-        .map(({ document: d }) => d.id)
-    ),
+    getPaymentSummaries(payableIds(rows)),
     getReceivables(today),
   ]);
 
@@ -77,30 +61,7 @@ export default async function DocumentsPage({
         </Button>
       </div>
 
-      {receivables.length ? (
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {receivables.map((r) => (
-            <Card key={r.currency}>
-              <CardContent className="space-y-1 pt-5">
-                <p className="text-sm text-muted-foreground">Outstanding ({r.currency})</p>
-                <p className="text-xl font-semibold tabular-nums">
-                  {formatMoney(r.outstandingMinor, r.currency)}
-                </p>
-                <p
-                  className={cn(
-                    "text-xs tabular-nums",
-                    r.overdueCount ? "font-medium text-danger" : "text-muted-foreground"
-                  )}
-                >
-                  {r.overdueCount
-                    ? `${formatMoney(r.overdueMinor, r.currency)} overdue on ${r.overdueCount} invoice${r.overdueCount === 1 ? "" : "s"}`
-                    : "Nothing overdue"}
-                </p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      ) : null}
+      <ReceivablesCards receivables={receivables} />
 
       <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
         <div className="flex flex-wrap gap-1">
@@ -130,68 +91,7 @@ export default async function DocumentsPage({
           {rows.length === 0 ? (
             <p className="text-sm text-muted-foreground">No documents yet.</p>
           ) : (
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>Number</TableHead>
-                  <TableHead>Type</TableHead>
-                  <TableHead>Customer</TableHead>
-                  <TableHead>Issue date</TableHead>
-                  <TableHead className="text-right">Total</TableHead>
-                  <TableHead>Status</TableHead>
-                  <TableHead>Payment</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {rows.map(({ document: d, customer: c }) => {
-                  const data = d.data as { issueDate?: string; dueDate?: string };
-                  const payment = payments.get(d.id);
-                  const overdue = payment
-                    ? daysOverdue(data.dueDate, payment.outstandingMinor, today)
-                    : null;
-                  return (
-                    <TableRow key={d.id}>
-                      <TableCell>
-                        <Link
-                          href={`/admin/documents/${d.id}`}
-                          className="font-medium underline-offset-4 hover:underline"
-                        >
-                          {d.number ?? "Draft"}
-                        </Link>
-                      </TableCell>
-                      <TableCell>{getDocumentType(d.type).label}</TableCell>
-                      <TableCell className="max-w-[220px] truncate">{customerDisplayName(c)}</TableCell>
-                      <TableCell className="whitespace-nowrap">{formatDate(data.issueDate)}</TableCell>
-                      <TableCell className="whitespace-nowrap text-right tabular-nums">
-                        {formatMoney(d.totalMinor, d.currency)}
-                      </TableCell>
-                      <TableCell>
-                        <DocumentStatusBadge status={d.status} />
-                      </TableCell>
-                      <TableCell className="whitespace-nowrap">
-                        {payment ? (
-                          <div className="flex flex-col items-start gap-1">
-                            <PaymentStateBadge state={payment.state} />
-                            {payment.outstandingMinor > 0 && payment.state !== "unpaid" ? (
-                              <span className="text-xs tabular-nums text-muted-foreground">
-                                {formatMoney(payment.outstandingMinor, d.currency)} due
-                              </span>
-                            ) : null}
-                            {overdue !== null ? (
-                              <span className="text-xs font-medium text-danger">
-                                Overdue {overdue} day{overdue === 1 ? "" : "s"}
-                              </span>
-                            ) : null}
-                          </div>
-                        ) : (
-                          <span className="text-muted-foreground">—</span>
-                        )}
-                      </TableCell>
-                    </TableRow>
-                  );
-                })}
-              </TableBody>
-            </Table>
+            <DocumentsTable rows={rows} payments={payments} today={today} />
           )}
         </CardContent>
       </Card>

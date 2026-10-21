@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { clickableRow, rowLink } from "@/components/admin/row-link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -43,12 +44,9 @@ export default async function CustomersPage() {
               </TableHeader>
               <TableBody>
                 {rows.map((c) => (
-                  <TableRow key={c.id}>
+                  <TableRow key={c.id} className={clickableRow}>
                     <TableCell>
-                      <Link
-                        href={`/admin/customers/${c.id}`}
-                        className="font-medium underline-offset-4 hover:underline"
-                      >
+                      <Link href={`/admin/customers/${c.id}`} className={rowLink}>
                         {c.name}
                       </Link>
                     </TableCell>

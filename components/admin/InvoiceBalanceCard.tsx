@@ -5,6 +5,7 @@ import { ConfirmActionButton } from "@/components/admin/ConfirmActionButton";
 import { DocumentStatusBadge } from "@/components/admin/DocumentStatusBadge";
 import { PaymentStateBadge } from "@/components/admin/PaymentStateBadge";
 import { RecordPaymentForm } from "@/components/admin/RecordPaymentForm";
+import { clickableRow, rowLink } from "@/components/admin/row-link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Table,
@@ -159,12 +160,9 @@ export function LinkedNotesCard({ balance }: { balance: InvoiceBalance }) {
               {balance.notes.map((n) => {
                 const data = n.data as { issueDate?: string; reason?: string };
                 return (
-                  <TableRow key={n.id}>
+                  <TableRow key={n.id} className={clickableRow}>
                     <TableCell>
-                      <Link
-                        href={`/admin/documents/${n.id}`}
-                        className="font-medium underline-offset-4 hover:underline"
-                      >
+                      <Link href={`/admin/documents/${n.id}`} className={rowLink}>
                         {n.number ?? "Draft"}
                       </Link>
                     </TableCell>
