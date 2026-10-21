@@ -18,6 +18,8 @@ import {
 } from "@/lib/documents/service";
 import { getSnapshot } from "@/lib/documents/snapshot";
 import { getStoredPdf } from "@/lib/documents/storage";
+import { trackedUrl } from "@/lib/promo";
+import { getSiteUrl } from "@/lib/site-url";
 
 const emailList = (label: string, min: number) =>
   z
@@ -75,7 +77,7 @@ export async function sendDocumentEmail(
   const snapshot = getSnapshot(document);
   const issuer = snapshot?.issuer ?? getIssuer();
   const contact = snapshot?.customer ?? customer;
-  const data = document.data as { issueDate?: string; dueDate?: string };
+  const data = document.data as { issueDate?: string; dueDate?: string; terms?: string };
   const total = formatMoney(document.totalMinor, document.currency);
   const related = snapshot?.related?.number;
 
@@ -105,6 +107,8 @@ export async function sendDocumentEmail(
         ? `Please find attached debit note ${document.number} for ${total} relating to invoice ${related}${due}.`
         : `Please find attached ${label} ${document.number} for ${total}${due}.`;
 
+  const asksForPayment = document.type !== "credit_note";
+  const utm = { source: document.type, campaign: document.number };
   const html = await render(
     DocumentIssuedEmail({
       preview: `${def.label} ${document.number} from ${issuer.name}`,
@@ -113,8 +117,18 @@ export async function sendDocumentEmail(
       intro,
       message: message || undefined,
       rows,
+      paymentLines: asksForPayment ? issuer.paymentLines : [],
+      terms: asksForPayment ? data.terms : undefined,
       signoff: "Thank you,",
       senderName: issuer.name,
+      postscript: asksForPayment
+        ? {
+            text: "Planning your next AI build? The two-minute fit assessment helps scope it.",
+            linkLabel: "Take the fit assessment",
+            href: trackedUrl(`${getSiteUrl()}/en/assessment`, { ...utm, medium: "email" }),
+          }
+        : undefined,
+      utm,
     })
   );
 
