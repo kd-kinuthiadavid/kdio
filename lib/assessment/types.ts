@@ -23,6 +23,9 @@ export type TierBandId = (typeof TIER_BAND_IDS)[number];
 export const SECTOR_IDS = [
   "fintech",
   "b2bSaas",
+  "insurance",
+  "healthcare",
+  "logistics",
   "legaltech",
   "proptech",
   "other",

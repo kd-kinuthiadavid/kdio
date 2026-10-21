@@ -1,4 +1,9 @@
-import type { ChallengeId, QuestionId, SectorId } from "./types";
+import {
+  SECTOR_IDS,
+  type ChallengeId,
+  type QuestionId,
+  type SectorId,
+} from "./types";
 
 export type QuestionOption<T extends string = string> = {
   id: T;
@@ -32,9 +37,12 @@ export const ASSESSMENT_QUESTIONS: AssessmentQuestion[] = [
     options: [
       { id: "fintech", score: 10 },
       { id: "b2bSaas", score: 10 },
+      { id: "insurance", score: 10 },
+      { id: "healthcare", score: 10 },
+      { id: "logistics", score: 10 },
       { id: "legaltech", score: 10 },
       { id: "proptech", score: 10 },
-      { id: "other", score: 4 },
+      { id: "other", score: 10 },
     ],
   },
   {
@@ -145,10 +153,7 @@ export function isCompleteAnswers(
 }
 
 export function normalizeSector(value: string): SectorId | null {
-  if (value === "fintech" || value === "b2bSaas" || value === "legaltech" || value === "proptech" || value === "other") {
-    return value;
-  }
-  return null;
+  return SECTOR_IDS.includes(value as SectorId) ? (value as SectorId) : null;
 }
 
 export function normalizeChallenge(value: string): ChallengeId | null {

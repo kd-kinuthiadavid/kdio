@@ -1,9 +1,10 @@
-import type {
-  AssessmentAnswers,
-  ChallengeId,
-  SectorId,
-  ServiceId,
-  TierBandId,
+import {
+  SECTOR_IDS,
+  type AssessmentAnswers,
+  type ChallengeId,
+  type SectorId,
+  type ServiceId,
+  type TierBandId,
 } from "./types";
 import { ASSESSMENT_QUESTIONS } from "./questions";
 
@@ -51,8 +52,14 @@ export function routeService(answers: AssessmentAnswers): ServiceId {
     default:
       break;
   }
-  if (sector === "legaltech") return "secureAi";
-  if (sector === "proptech") return "agenticOps";
+  if (sector === "legaltech" || sector === "healthcare") return "secureAi";
+  if (
+    sector === "proptech" ||
+    sector === "insurance" ||
+    sector === "logistics"
+  ) {
+    return "agenticOps";
+  }
   if (sector === "fintech") return "aiIntegration";
   return "aiNative";
 }
@@ -95,14 +102,7 @@ export function assertAnswersForScoring(
   const a: AssessmentAnswers = {};
   const sector = answers.sector;
   if (typeof sector !== "string") return null;
-  const sectors: SectorId[] = [
-    "fintech",
-    "b2bSaas",
-    "legaltech",
-    "proptech",
-    "other",
-  ];
-  if (!sectors.includes(sector as SectorId)) return null;
+  if (!SECTOR_IDS.includes(sector as SectorId)) return null;
   a.sector = sector as SectorId;
 
   const role = answers.role;

@@ -444,13 +444,16 @@
     },
     "questions": {
       "sector": {
-        "title": "Which sector is closest?",
+        "title": "Which best describes your business?",
         "options": {
           "fintech": "FinTech",
           "b2bSaas": "B2B SaaS",
+          "insurance": "Insurance",
+          "healthcare": "Healthcare",
+          "logistics": "Logistics",
           "legaltech": "LegalTech",
           "proptech": "PropTech",
-          "other": "Other / hybrid"
+          "other": "Something else"
         }
       },
       "role": {
