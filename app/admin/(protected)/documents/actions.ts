@@ -9,7 +9,9 @@ import { assertAdmin } from "@/lib/admin-auth";
 import { isDocumentType } from "@/lib/documents/registry";
 import {
   createDraft,
+  deleteDraft,
   DocumentValidationError,
+  issueDocument,
   updateDraft,
 } from "@/lib/documents/service";
 
@@ -56,5 +58,40 @@ export async function saveDraftAction(
   }
 
   revalidatePath("/admin/documents");
-  redirect(`/admin/documents/${savedId}/edit?saved=1`);
+  redirect(`/admin/documents/${savedId}`);
+}
+
+function idFrom(formData: FormData): string {
+  const id = formData.get("id");
+  return typeof id === "string" ? id : "";
+}
+
+export async function issueDocumentAction(
+  _prev: FormState,
+  formData: FormData
+): Promise<FormState> {
+  await assertAdmin();
+  const id = idFrom(formData);
+  try {
+    await issueDocument(id);
+  } catch (e) {
+    return toFormState(e, "Could not issue the document");
+  }
+  revalidatePath("/admin/documents");
+  revalidatePath(`/admin/documents/${id}`);
+  return {};
+}
+
+export async function deleteDraftAction(
+  _prev: FormState,
+  formData: FormData
+): Promise<FormState> {
+  await assertAdmin();
+  try {
+    await deleteDraft(idFrom(formData));
+  } catch (e) {
+    return toFormState(e, "Could not delete the draft");
+  }
+  revalidatePath("/admin/documents");
+  redirect("/admin/documents");
 }

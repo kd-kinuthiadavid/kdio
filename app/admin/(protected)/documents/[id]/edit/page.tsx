@@ -8,13 +8,10 @@ import { getDocument } from "@/lib/documents/service";
 
 export default async function EditDocumentPage({
   params,
-  searchParams,
 }: {
   params: Promise<{ id: string }>;
-  searchParams: Promise<{ saved?: string }>;
 }) {
   const { id } = await params;
-  const { saved } = await searchParams;
   const found = await getDocument(id).catch(() => null);
   if (!found) notFound();
   const { document } = found;
@@ -25,12 +22,8 @@ export default async function EditDocumentPage({
 
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="text-2xl font-semibold tracking-tight">Edit {def.label.toLowerCase()} draft</h1>
-        {saved ? <p className="text-sm text-muted-foreground">Draft saved.</p> : null}
-      </div>
+      <h1 className="text-2xl font-semibold tracking-tight">Edit {def.label.toLowerCase()} draft</h1>
       <DocumentForm
-        key={document.updatedAt.toISOString()}
         type={document.type}
         typeLabel={def.label}
         customers={customers}
