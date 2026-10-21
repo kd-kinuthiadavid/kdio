@@ -88,9 +88,14 @@ export const styles = StyleSheet.create({
     color: "#ffffff",
     borderRadius: 4,
   },
+  // The page-number render prop is re-laid out on a detached page, which
+  // re-scales a unitless lineHeight and ignores `bottom`; without the point
+  // lineHeight and `top` offset (A4 height minus 28pt margin and footer
+  // height) the footer silently disappears.
   footer: {
     position: "absolute",
-    bottom: 28,
+    top: 794,
+    lineHeight: "1.4pt",
     left: 44,
     right: 44,
     flexDirection: "row",
