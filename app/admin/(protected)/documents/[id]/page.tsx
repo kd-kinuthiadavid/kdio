@@ -7,7 +7,7 @@ import { DocumentActivity } from "@/components/admin/DocumentActivity";
 import { DocumentHeader } from "@/components/admin/DocumentHeader";
 import { DocumentStatusBadge } from "@/components/admin/DocumentStatusBadge";
 import { LinkedNotesSection, PaymentsSection } from "@/components/admin/InvoiceSections";
-import { LineItemsSection } from "@/components/admin/LineItemsSection";
+import { LineItemsSection, NotesAndTermsSection } from "@/components/admin/LineItemsSection";
 import { Notice } from "@/components/admin/Notice";
 import { PaymentStateBadge } from "@/components/admin/PaymentStateBadge";
 import { Section, Stat, StatStrip } from "@/components/admin/Section";
@@ -148,6 +148,7 @@ export default async function DocumentDetailPage({
       </StatStrip>
 
       <LineItemsSection document={d} />
+      <NotesAndTermsSection document={d} />
 
       {balance && (d.status === "issued" || balance.payments.length) ? (
         <PaymentsSection balance={balance} />

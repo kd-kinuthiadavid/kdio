@@ -94,22 +94,8 @@ export function LineItemsSection({ document: d }: { document: DocumentRow }) {
         </Table>
       </div>
 
-      <div className="flex flex-col-reverse gap-6 sm:flex-row sm:items-start sm:justify-between">
-        <div className="max-w-xl space-y-3 text-sm">
-          {data.notes ? (
-            <div>
-              <p className="text-muted-foreground">Notes</p>
-              <p className="whitespace-pre-line">{data.notes}</p>
-            </div>
-          ) : null}
-          {data.terms ? (
-            <div>
-              <p className="text-muted-foreground">Terms</p>
-              <p className="whitespace-pre-line">{data.terms}</p>
-            </div>
-          ) : null}
-        </div>
-        <dl className="w-full space-y-1.5 text-sm sm:w-72 sm:shrink-0">
+      <div className="flex justify-end">
+        <dl className="w-full space-y-1.5 text-sm sm:w-72">
           <TotalRow label="Subtotal">{formatAmount(totals.subtotalMinor - lineDiscount)}</TotalRow>
           {docDiscount > 0 ? (
             <TotalRow label="Discount">−{formatAmount(docDiscount)}</TotalRow>
@@ -123,6 +109,29 @@ export function LineItemsSection({ document: d }: { document: DocumentRow }) {
             {formatMoney(totals.totalMinor, d.currency)}
           </TotalRow>
         </dl>
+      </div>
+    </Section>
+  );
+}
+
+/** Free-text notes and terms printed on the document; hidden when there are none. */
+export function NotesAndTermsSection({ document: d }: { document: DocumentRow }) {
+  const data = getDocumentType(d.type).schema.parse(d.data) as LineData;
+  const blocks = [
+    data.notes ? { label: "Notes", text: data.notes } : null,
+    data.terms ? { label: "Terms", text: data.terms } : null,
+  ].filter((b) => b !== null);
+  if (blocks.length === 0) return null;
+
+  return (
+    <Section title={blocks.map((b) => b.label).join(" and ")}>
+      <div className={blocks.length > 1 ? "grid gap-6 text-sm sm:grid-cols-2" : "max-w-prose text-sm"}>
+        {blocks.map((b) => (
+          <div key={b.label}>
+            {blocks.length > 1 ? <p className="text-muted-foreground">{b.label}</p> : null}
+            <p className="whitespace-pre-line">{b.text}</p>
+          </div>
+        ))}
       </div>
     </Section>
   );
