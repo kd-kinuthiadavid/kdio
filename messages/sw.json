@@ -212,8 +212,8 @@
       "tenureLabel": "Kutoa programu inayoendesha biashara",
       "engagementValue": "Ngazi 3",
       "engagementLabel": "Micro · MVP · Enterprise",
-      "sectorsValue": "FinTech · B2B SaaS · Zana za AI · Usafiri",
-      "sectorsLabel": "Sekta nilizotoa kazi ndani yake"
+      "sectorsValue": "Malipo · leja · nyaraka · tathmini za AI",
+      "sectorsLabel": "Nilichojenga AI kukizunguka"
     },
     "tiers": {
       "micro": "Micro",
@@ -252,28 +252,28 @@
     "items": {
       "aiIntegration": {
         "name": "Muunganisho na usanifu wa AI",
-        "persona": "Kwa timu za FinTech na B2B zenye mifumo ya zamani muhimu",
+        "persona": "Kwa timu zinazoongeza AI kwenye mifumo inayohamisha pesa au kutunza kumbukumbu",
         "summary": "Kuunganisha uwezo wa AI kwenye mifumo ya uzalishaji bila kuhatarisha miamala, upatikanaji au kufuata kanuni. Ninaunda miundombinu inayofanya kazi sambamba inayozungumza na injini yenu kuu badala ya kuibadilisha.",
         "included": "Mapitio ya usanifu, mtindo wa vitisho, huduma ya AI iliyotengwa, mfumo wa evals kwa hali za kushindwa na mpango wa rollout wenye milango ya kurudi nyuma.",
         "upsells": "Mara nyingi huanza na ukaguzi wa utayari wa bidhaa ya AI, pale mfumo tayari uko hewani na unahitaji kujua kipi si salama kabla ya kuubadilisha."
       },
       "secureAi": {
         "name": "Uwekaji wa AI salama na unaofuata kanuni",
-        "persona": "Kwa LegalTech, compliance na sekta zilizodhibitiwa",
+        "persona": "Kwa timu ambazo nyaraka zao haziwezi kutoka nje ya miundombinu yao wenyewe",
         "summary": "Mifumo ya AI ya on-premise au cloud binafsi kwa timu ambazo data zao haziwezi kutoka nje. Index, utafutaji na ufupisho wa hati zenye usahihi kamili wa nukuu na rekodi ya ukaguzi.",
         "included": "Usanifu wa RAG binafsi, ukubwa wa vector store, evals za nukuu na grounding, ukatishaji unaofaa SOC2 na mwongozo wa uwekaji kwa timu yako ya infra.",
         "upsells": "Mara nyingi huenda na: retainer ya CTO ya muda kwa mapitio endelevu ya usalama na pen-test triage."
       },
       "aiNative": {
         "name": "Uhandisi wa bidhaa wa asili-AI",
-        "persona": "Kwa waanzilishi katika 0→1 au wanaobadilisha SaaS ya zamani",
+        "persona": "Kwa waanzilishi wanaojenga bidhaa ambayo AI ndiyo mtiririko wa kazi, si dirisha la mazungumzo",
         "summary": "Toa UX ya kichawi uliyoiwasilisha kwa bodi. Ninajenga workflows za agentic na vipengele vya AI kwenye uso wa bidhaa — siyo chatbot iliyobandikwa pembeni, bali jinsi bidhaa yenu inavyofanya kazi kweli.",
         "included": "Uhandisi wa bidhaa kutoka mwanzo hadi mwisho: mfano wa data, design ya agent, mtiririko wa UI, instrumentation na hali za makosa zisizovutia zinazofanya AI ihisi kuaminika.",
         "upsells": "Mara nyingi huenda na: automation ya workflows za agentic wakati faida iko nyuma badala ya mbele."
       },
       "agenticOps": {
         "name": "Automation ya workflows za agentic",
-        "persona": "Kwa timu zenye operesheni nyingi: PropTech, huduma na back-office",
+        "persona": "Kwa timu zilizozama kwenye nyaraka, upatanisho wa hesabu na ufuatiliaji",
         "summary": "Badilisha jeshi la wachambuzi wanaosoma PDF, wanaofuatilia upyaji na wanaolinganisha spreadsheets. Agenti zinazotoa, zinazoonya na zinazoandika — juu ya zana mlizonazo, siyo dashboard nyingine.",
         "included": "Ukaguzi wa michakato, orchestration ya agenti, muunganisho na CRM/ERP iliyopo, vituo vya human-in-the-loop na upimaji wa ROI.",
         "upsells": "Mara nyingi huenda na: uwekaji wa AI salama wakati hati haziwezi kuondoka kwenye tenancy yenu."
@@ -307,14 +307,16 @@
         "regulated": "Unafanya kazi katika mazingira yaliyodhibitiwa, ya imani kubwa au ya hatari kubwa ambapo 'kwenda haraka na kuvunja vitu' haitoshi.",
         "legacy": "Una mifumo inayofanya kazi na muhimu, na unahitaji AI iunganishwe pamoja nayo — siyo kuandika upya kutoka mwanzo.",
         "scale": "Tayari umechomwa na wrapper ya jumla ya AI na sasa unahitaji mtu wa kukuonyesha usanifu, siyo demo tu.",
-        "aiBuilt": "Umejenga bidhaa ya AI kwa zana za coding na unakaribia kuweka wateja au data zao juu yake."
+        "aiBuilt": "Umejenga bidhaa ya AI kwa zana za coding na unakaribia kuweka wateja au data zao juu yake.",
+        "offList": "Sekta yako haipo kwenye orodha yoyote ya sekta \"zilizo tayari kwa AI\", lakini kazi inahusisha pesa, kumbukumbu au data za watu."
       },
       "notForTitle": "Pengine si fit kama",
       "notFor": {
         "ideaGuy": "Unatafuta mtu wa kujenga wazo lako kwa equity, au unatarajia MVP ya $50K kwa $3K.",
         "agencyMiddleman": "Wewe ni mmiliki wa agency asiye na kiufundi anayetaka kuuza tena kazi ya uhandisi wa juu kwa faida ya chini.",
         "noTechBudget": "Unataka AI kwa sababu umesikia juu yake, lakini biashara yako bado haijawa na ukomavu wa kiutendaji (au bajeti) wa kuendesha programu ambayo haijaijenga yenyewe."
-      }
+      },
+      "industriesNote": "Kazi yangu nyingi imekuwa kwenye malipo, operesheni za fedha na programu za B2B. Matatizo ninayoshughulikia yanafanana kwenye bima, afya, usafirishaji, sheria na mali isiyohamishika: AI inayogusa pesa, kumbukumbu au data za wateja, ambapo jibu lisilo sahihi linagharimu zaidi kuliko jibu la polepole. Kama hiyo ndiyo hali yako, sekta ni muhimu kidogo kuliko hatari."
     },
     "process": {
       "title": "Jinsi engagement inavyokwenda",

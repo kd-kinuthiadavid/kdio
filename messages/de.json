@@ -212,8 +212,8 @@
       "tenureLabel": "Produktionssoftware ausgeliefert",
       "engagementValue": "3 Stufen",
       "engagementLabel": "Micro · MVP · Enterprise",
-      "sectorsValue": "FinTech · B2B SaaS · KI-Tools · Mobilität",
-      "sectorsLabel": "Branchen, in denen ich ausgeliefert habe"
+      "sectorsValue": "Zahlungen · Hauptbücher · Dokumente · KI-Evals",
+      "sectorsLabel": "Worum herum ich KI gebaut habe"
     },
     "tiers": {
       "micro": "Micro",
@@ -252,28 +252,28 @@
     "items": {
       "aiIntegration": {
         "name": "KI-Integration & Architektur",
-        "persona": "Für FinTech- und B2B-Teams mit kritischen Legacy-Systemen",
+        "persona": "Für Teams, die KI in Systeme bringen, die Geld bewegen oder Aufzeichnungen führen",
         "summary": "KI-Fähigkeiten in bestehende Produktionssysteme einbinden, ohne Transaktionen, Verfügbarkeit oder Compliance zu gefährden. Ich entwerfe parallele Infrastruktur, die mit eurer Kern-Engine spricht, statt sie zu ersetzen.",
         "included": "Architekturreview, Threat Model, isolierter KI-Service, Eval-Harness für Fehlermodi, Rollout-Plan mit Rollback-Gates.",
         "upsells": "Beginnt oft mit einem Readiness-Review für KI-Produkte, wenn das System schon live ist und ihr wissen müsst, was unsicher ist, bevor ihr es ändert."
       },
       "secureAi": {
         "name": "Sichere & konforme KI-Implementierung",
-        "persona": "Für LegalTech, Compliance und regulierte Branchen",
+        "persona": "Für Teams, deren Dokumente die eigene Infrastruktur nicht verlassen dürfen",
         "summary": "On-Premise- oder Private-Cloud-KI-Systeme für Teams, deren Daten nicht nach Hause telefonieren dürfen. Dokumentenindexierung, Retrieval und Zusammenfassung mit voller Quellengenauigkeit und Audit-Trail.",
         "included": "Private RAG-Architektur, Vector-Store-Dimensionierung, Citation- und Grounding-Evals, SOC2-freundliches Logging, Deployment-Guide für euer Infra-Team.",
         "upsells": "Geht meist einher mit: Fractional-CTO-Retainer für laufende Security-Reviews und Pen-Test-Triage."
       },
       "aiNative": {
         "name": "KI-natives Produkt-Engineering",
-        "persona": "Für Gründer im 0→1 oder bei Legacy-SaaS-Evolutionen",
+        "persona": "Für Gründer, deren Produkt KI als Workflow nutzt, nicht als Chatfenster",
         "summary": "Liefert das magische UX, das ihr dem Board versprochen habt. Ich baue agentische Workflows und KI-Features in die Produktoberfläche – nicht als angeklebten Chatbot, sondern als die Art, wie euer Produkt tatsächlich funktioniert.",
         "included": "Produkt-Engineering durchgängig: Datenmodell, Agent-Design, UI-Flows, Instrumentierung und die unspektakulären Fehlerzustände, die KI-Features verlässlich wirken lassen.",
         "upsells": "Geht meist einher mit: agentischer Workflow-Automatisierung, wenn der Gewinn im Backoffice statt im Frontend liegt."
       },
       "agenticOps": {
         "name": "Agentische Workflow-Automatisierung",
-        "persona": "Für ops-lastige Teams in PropTech, Services und Backoffice",
+        "persona": "Für Teams, die unter Dokumenten, Abgleichen und Nachfassen begraben sind",
         "summary": "Ersetzt die Heerschar an Analysten, die PDFs lesen, Verlängerungen verfolgen und Tabellen abgleichen. Agenten, die extrahieren, melden und entwerfen – als Schicht über euren bestehenden Tools, nicht als noch ein Dashboard.",
         "included": "Prozessaudit, Agent-Orchestrierung, Integration in vorhandene CRM/ERP, Human-in-the-Loop-Checkpoints und ROI-Messung.",
         "upsells": "Geht meist einher mit: sicherer & konformer KI-Implementierung, wenn die Dokumente eure Tenancy nicht verlassen dürfen."
@@ -307,14 +307,16 @@
         "regulated": "Ihr operiert in regulierten, vertrauensintensiven oder risikoreichen Umgebungen, in denen „schnell handeln und Dinge brechen“ keine Option ist.",
         "legacy": "Ihr habt Systeme, die funktionieren und zählen, und braucht KI daneben integriert – keinen Greenfield-Rebuild.",
         "scale": "Ihr seid schon einmal von einem generischen KI-Wrapper enttäuscht worden und braucht jetzt jemanden, der die Architektur zeigt, nicht nur die Demo.",
-        "aiBuilt": "Ihr habt ein KI-Produkt mit Coding-Tools gebaut und wollt jetzt Kunden oder ihre Daten darauf bringen."
+        "aiBuilt": "Ihr habt ein KI-Produkt mit Coding-Tools gebaut und wollt jetzt Kunden oder ihre Daten darauf bringen.",
+        "offList": "Eure Branche steht auf keiner Liste „KI-bereiter“ Sektoren, aber die Arbeit betrifft Geld, Aufzeichnungen oder personenbezogene Daten."
       },
       "notForTitle": "Wahrscheinlich kein Fit, wenn",
       "notFor": {
         "ideaGuy": "Ihr sucht jemanden, der eure Idee gegen Anteile baut, oder erwartet ein 50K-MVP für 3K.",
         "agencyMiddleman": "Ihr seid ein nicht-technischer Agenturinhaber, der Senior-Engineering zur Junior-Marge weiterverkaufen möchte.",
         "noTechBudget": "Ihr wollt KI, weil ihr davon gelesen habt, aber euer Unternehmen hat noch nicht die operative Reife (oder das Budget), Software zu betreiben, die ihr nicht selbst gebaut habt."
-      }
+      },
+      "industriesNote": "Den Großteil meiner Arbeit habe ich in Zahlungsverkehr, Finanzprozessen und B2B-Software gemacht. Die Probleme, die ich übernehme, sehen in Versicherung, Gesundheitswesen, Logistik, Recht und Immobilien genauso aus: KI, die Geld, Aufzeichnungen oder Kundendaten berührt, wo eine falsche Antwort mehr kostet als eine langsame. Wenn das eure Lage ist, zählt die Branche weniger als das Risiko."
     },
     "process": {
       "title": "So laufen Engagements ab",

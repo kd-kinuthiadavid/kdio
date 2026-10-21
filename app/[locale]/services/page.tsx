@@ -25,6 +25,7 @@ const FIT_FOR_KEYS = [
   "legacy",
   "scale",
   "aiBuilt",
+  "offList",
 ] as const;
 const FIT_NOT_FOR_KEYS = [
   "ideaGuy",
@@ -253,6 +254,13 @@ export default function Services() {
             </motion.ul>
           </motion.div>
         </motion.div>
+
+        <motion.p
+          variants={itemVariants}
+          className="max-w-prose font-normal text-base leading-relaxed text-muted-foreground sm:text-lg"
+        >
+          {t("fit.industriesNote")}
+        </motion.p>
 
         {/* Process */}
         <motion.div

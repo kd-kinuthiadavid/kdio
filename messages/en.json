@@ -212,8 +212,8 @@
       "tenureLabel": "Shipping production software",
       "engagementValue": "3 tiers",
       "engagementLabel": "Micro · MVP · Enterprise",
-      "sectorsValue": "FinTech · B2B SaaS · AI tooling · Mobility",
-      "sectorsLabel": "Sectors I've shipped in"
+      "sectorsValue": "Payments · ledgers · documents · AI evals",
+      "sectorsLabel": "What I've built AI around"
     },
     "tiers": {
       "micro": "Micro",
@@ -252,28 +252,28 @@
     "items": {
       "aiIntegration": {
         "name": "AI integration & architecture",
-        "persona": "For FinTech & B2B teams with critical legacy systems",
+        "persona": "For teams adding AI to systems that move money or keep records",
         "summary": "Plug AI capabilities into existing production systems without putting transactions, uptime, or compliance at risk. I design parallel infrastructure that talks to your core engine instead of replacing it.",
         "included": "Architecture review, threat model, isolated AI service design, eval harness for failure modes, rollout plan with rollback gates.",
         "upsells": "Often starts with an AI product readiness review when the system is already live and you need to know what is unsafe before changing it."
       },
       "secureAi": {
         "name": "Secure & compliant AI deployment",
-        "persona": "For LegalTech, compliance, and regulated industries",
+        "persona": "For teams whose documents can't leave their own infrastructure",
         "summary": "On-prem or private-cloud AI systems for teams who can't let data phone home. Document indexing, retrieval, and summarization with full citation accuracy and an audit trail.",
         "included": "Private RAG architecture, vector store sizing, citation/grounding evals, SOC2-friendly logging, deployment guide for your infra team.",
         "upsells": "Normally goes with: Fractional CTO retainer for ongoing security review and pen-test triage."
       },
       "aiNative": {
         "name": "AI-native product engineering",
-        "persona": "For founders building 0→1 or evolving a legacy SaaS",
+        "persona": "For founders building a product where AI is the workflow, not a chat box",
         "summary": "Ship the magical UX you've been pitching the board. I build agentic workflows and AI features into the product surface — not as a chatbot bolted on the side, but as the way your product actually works.",
         "included": "Product engineering end-to-end: data model, agent design, UI flows, instrumentation, and the unglamorous error states that make AI features feel reliable.",
         "upsells": "Normally goes with: Agentic workflow automation when the win is on the back office, not the front-end."
       },
       "agenticOps": {
         "name": "Agentic workflow automation",
-        "persona": "For ops-heavy teams in PropTech, services, and back-office",
+        "persona": "For teams buried in documents, reconciliations, and follow-ups",
         "summary": "Replace the army of analysts reading PDFs, chasing renewals, and reconciling spreadsheets. Agents that extract, flag, and draft — layered over the tools you already use, not another dashboard to log into.",
         "included": "Process audit, agent orchestration, integration with existing CRM/ERP, human-in-the-loop checkpoints, and ROI measurement.",
         "upsells": "Normally goes with: Secure & compliant AI deployment when the documents can't leave your tenancy."
@@ -307,14 +307,16 @@
         "regulated": "You operate in regulated, high-trust, or high-stakes environments where 'move fast and break things' isn't an option.",
         "legacy": "You have systems that work and matter, and you need AI integrated alongside them — not a green-field rebuild.",
         "scale": "You've been burned by a generic AI wrapper before and now you need someone who can show you the architecture, not just the demo.",
-        "aiBuilt": "You've built an AI product with coding tools and you're about to put customers or their data on it."
+        "aiBuilt": "You've built an AI product with coding tools and you're about to put customers or their data on it.",
+        "offList": "Your industry isn't on anyone's list of \"AI-ready\" sectors, but the work involves money, records, or people's data."
       },
       "notForTitle": "This probably isn't a fit if",
       "notFor": {
         "ideaGuy": "You're looking for someone to build your idea for equity, or you expect a $50K MVP for $3K.",
         "agencyMiddleman": "You're a non-technical agency owner who wants to white-label senior engineering work at a junior margin.",
         "noTechBudget": "You want AI because you read about it, but your business doesn't yet have the operational maturity (or budget) to maintain software you didn't build yourself."
-      }
+      },
+      "industriesNote": "Most of my work has been in payments, finance operations, and B2B software. The problems I take on look the same in insurance, healthcare, logistics, legal, and property: AI that touches money, records, or customer data, where a wrong answer costs more than a slow one. If that's your situation, the industry matters less than the risk."
     },
     "process": {
       "title": "How engagements run",

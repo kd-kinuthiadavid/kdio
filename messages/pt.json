@@ -212,8 +212,8 @@
       "tenureLabel": "Entregando software em produção",
       "engagementValue": "3 níveis",
       "engagementLabel": "Micro · MVP · Enterprise",
-      "sectorsValue": "FinTech · SaaS B2B · Ferramentas de IA · Mobilidade",
-      "sectorsLabel": "Setores em que já entreguei"
+      "sectorsValue": "Pagamentos · livros contábeis · documentos · evals de IA",
+      "sectorsLabel": "Em torno de que já construí IA"
     },
     "tiers": {
       "micro": "Micro",
@@ -252,28 +252,28 @@
     "items": {
       "aiIntegration": {
         "name": "Integração e arquitetura de IA",
-        "persona": "Para times FinTech e B2B com sistemas legados críticos",
+        "persona": "Para times adicionando IA a sistemas que movimentam dinheiro ou mantêm registros",
         "summary": "Plugar capacidades de IA em sistemas de produção sem colocar em risco transações, disponibilidade ou conformidade. Desenho uma infraestrutura paralela que conversa com o seu motor central em vez de substituí-lo.",
         "included": "Revisão de arquitetura, modelo de ameaças, serviço de IA isolado, arcabouço de evals para modos de falha e plano de rollout com travas de rollback.",
         "upsells": "Costuma começar com uma revisão de prontidão do produto de IA, quando o sistema já está em produção e você precisa saber o que é inseguro antes de mexer nele."
       },
       "secureAi": {
         "name": "Implantação de IA segura e em conformidade",
-        "persona": "Para LegalTech, compliance e setores regulados",
+        "persona": "Para times cujos documentos não podem sair da própria infraestrutura",
         "summary": "Sistemas de IA on-premise ou em nuvem privada para times cujos dados não podem sair de casa. Indexação, busca e resumo de documentos com precisão total de citação e trilha de auditoria.",
         "included": "Arquitetura RAG privada, dimensionamento de vector store, evals de citação e grounding, logging compatível com SOC2 e guia de implantação para o seu time de infra.",
         "upsells": "Costuma vir junto com: retainer de CTO fracionário para revisão contínua de segurança e triagem de pen-tests."
       },
       "aiNative": {
         "name": "Engenharia de produto AI-nativa",
-        "persona": "Para fundadores em 0→1 ou evoluindo um SaaS legado",
+        "persona": "Para fundadores construindo um produto em que a IA é o fluxo de trabalho, não uma janela de chat",
         "summary": "Entregar o UX mágico que você prometeu ao board. Construo workflows agênticos e recursos de IA na própria superfície do produto — não como um chatbot pendurado de lado, mas como o jeito que o produto realmente funciona.",
         "included": "Engenharia de produto de ponta a ponta: modelo de dados, design de agentes, fluxos de UI, instrumentação e os estados de erro pouco glamourosos que fazem a IA parecer confiável.",
         "upsells": "Costuma vir junto com: automação de workflows agênticos quando o ganho está no back office, não no front."
       },
       "agenticOps": {
         "name": "Automação de workflows agênticos",
-        "persona": "Para times pesados em operações: PropTech, serviços e back-office",
+        "persona": "Para times soterrados em documentos, conciliações e follow-ups",
         "summary": "Substituir o exército de analistas que lê PDFs, persegue renovações e concilia planilhas. Agentes que extraem, sinalizam e redigem — em cima das ferramentas que você já usa, não outro dashboard para entrar.",
         "included": "Auditoria de processos, orquestração de agentes, integração com CRM/ERP existente, pontos de controle com humano no loop e medição de ROI.",
         "upsells": "Costuma vir junto com: implantação de IA segura e em conformidade quando os documentos não podem deixar seu ambiente."
@@ -307,14 +307,16 @@
         "regulated": "Você opera em ambientes regulados, de alta confiança ou alto risco onde 'mova-se rápido e quebre coisas' não é opção.",
         "legacy": "Você tem sistemas que funcionam e importam, e precisa integrar IA ao lado deles — não uma reescrita do zero.",
         "scale": "Já se queimou com um wrapper genérico de IA e agora precisa de alguém que mostre a arquitetura, não só a demo.",
-        "aiBuilt": "Você construiu um produto de IA com ferramentas de código e está prestes a colocar clientes ou os dados deles nele."
+        "aiBuilt": "Você construiu um produto de IA com ferramentas de código e está prestes a colocar clientes ou os dados deles nele.",
+        "offList": "Seu setor não está em nenhuma lista de setores \"prontos para IA\", mas o trabalho envolve dinheiro, registros ou dados de pessoas."
       },
       "notForTitle": "Provavelmente não é um fit se",
       "notFor": {
         "ideaGuy": "Você procura alguém para construir sua ideia em troca de equity, ou espera um MVP de 50 mil por 3 mil.",
         "agencyMiddleman": "Você é dono de agência não técnico que quer revender engenharia sênior na margem de júnior.",
         "noTechBudget": "Você quer IA porque leu sobre ela, mas seu negócio ainda não tem maturidade operacional (nem orçamento) para manter software que não foi construído internamente."
-      }
+      },
+      "industriesNote": "A maior parte do meu trabalho foi em pagamentos, operações financeiras e software B2B. Os problemas que assumo são os mesmos em seguros, saúde, logística, jurídico e imobiliário: IA que toca dinheiro, registros ou dados de clientes, onde uma resposta errada custa mais do que uma lenta. Se essa é a sua situação, o setor importa menos do que o risco."
     },
     "process": {
       "title": "Como um engagement acontece",
