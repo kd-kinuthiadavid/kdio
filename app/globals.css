@@ -103,11 +103,15 @@ body {
     --border: 60 16% 74%;
     --input: 60 16% 66%;
     --muted-foreground: 60 8% 30%;
+    --destructive: 0 72% 42%;
+    --destructive-foreground: 0 0% 100%;
   }
   .dark .admin-theme {
     --border: 60 14% 36%;
     --input: 60 14% 42%;
     --muted-foreground: 60 14% 80%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 60 16% 91%;
   }
 }
 
