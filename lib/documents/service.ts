@@ -337,15 +337,16 @@ export async function issueDocument(
   const result = await getDb().execute<{ id: string; number: string }>(sql`
     WITH seq AS (
       INSERT INTO document_sequences (type, year, next_value)
-      SELECT ${document.type}, ${year}, 2
+      SELECT ${document.type}, ${year}, ${def.startAt + 1}
       WHERE EXISTS (SELECT 1 FROM documents WHERE id = ${id} AND status = 'draft')
         ${parentGuard} ${creditGuard}
       ON CONFLICT (type, year)
-        DO UPDATE SET next_value = document_sequences.next_value + 1
+        DO UPDATE SET next_value = GREATEST(document_sequences.next_value, ${def.startAt}) + 1
       RETURNING next_value - 1 AS n
     ), upd AS (
       UPDATE documents SET
-        number = ${def.prefix} || '-' || ${String(year)} || '-' || lpad(seq.n::text, 4, '0'),
+        number = ${def.prefix} || '-' || ${String(year)} || '-'
+          || lpad(seq.n::text, GREATEST(4, length(seq.n::text)), '0'),
         status = 'issued',
         issued_at = now(),
         updated_at = now(),

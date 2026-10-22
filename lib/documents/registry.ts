@@ -18,6 +18,8 @@ export type DocumentTypeDefinition<TData = unknown> = {
   type: DocumentType;
   label: string;
   prefix: string;
+  /** Lowest sequence number issued in any year */
+  startAt: number;
   /** Credit and debit notes must reference an issued invoice */
   requiresParent: boolean;
   schema: z.ZodType<TData>;
@@ -34,6 +36,7 @@ const registry: Partial<Record<DocumentType, DocumentTypeDefinition>> = {
     type: "invoice",
     label: "Invoice",
     prefix: "INV",
+    startAt: 247,
     requiresParent: false,
     schema: invoiceDataSchema,
     computeTotals: computeInvoiceTotals,
@@ -43,6 +46,7 @@ const registry: Partial<Record<DocumentType, DocumentTypeDefinition>> = {
     type: "credit_note",
     label: "Credit note",
     prefix: "CN",
+    startAt: 18,
     requiresParent: true,
     schema: creditNoteDataSchema,
     computeTotals: computeCreditNoteTotals,
@@ -52,6 +56,7 @@ const registry: Partial<Record<DocumentType, DocumentTypeDefinition>> = {
     type: "debit_note",
     label: "Debit note",
     prefix: "DN",
+    startAt: 31,
     requiresParent: true,
     schema: debitNoteDataSchema,
     computeTotals: computeDebitNoteTotals,
