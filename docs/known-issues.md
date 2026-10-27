@@ -45,7 +45,7 @@ Open bugs and risks, highest priority first. Remove an entry when its fix ships,
 ## 4. Components created during render reset their state
 
 - **Severity:** Medium
-- **Where:** `app/[locale]/services/_components/ServiceItem.tsx`, `app/[locale]/method/_components/MethodItem.tsx`, `components/shared/HeaderBrandNav.tsx`, `components/shared/MobileNav.tsx`
+- **Where:** `app/[locale]/services/_components/ServiceItem.tsx`, `app/[locale]/method/_components/MethodItem.tsx` (the header components were fixed with the navigation overlap fix)
 - **Symptom:** `motion.create(...)` runs inside the component body, so every render creates a new component type and React remounts that subtree. Accordion state can reset and animations can replay on re-render. Flagged by `react-hooks/static-components`.
 - **Fix:** Move the `motion.create(...)` calls to module scope.
 

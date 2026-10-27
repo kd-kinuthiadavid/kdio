@@ -47,9 +47,13 @@ export default function LanguageSwitcher({
           )}
           aria-label={t("label")}
         >
-          <Globe className="size-4 shrink-0 opacity-80" aria-hidden />
+          <Globe
+            className="size-4 shrink-0 opacity-80 max-[339px]:hidden"
+            aria-hidden
+          />
           <span className="tabular-nums tracking-wide">
-            {localeCodes[locale as keyof typeof localeCodes] ?? locale.toUpperCase()}
+            {localeCodes[locale as keyof typeof localeCodes] ??
+              locale.toUpperCase()}
           </span>
         </button>
       </DropdownMenuTrigger>

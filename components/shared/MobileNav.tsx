@@ -24,6 +24,8 @@ import { Link as LocalizedLink } from "@/i18n/navigation";
 import { getDiscoveryCallUrl } from "@/lib/cal";
 import { cn } from "@/lib/utils";
 
+const MotionLink = motion.create(LocalizedLink);
+
 const mobileLinkBase =
   "rounded-lg text-base font-medium outline-none transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background";
 
@@ -40,8 +42,6 @@ export default function MobileNav() {
   const tBrand = useTranslations("brand");
   const tCommon = useTranslations("common");
 
-  const MotionLink = motion.create(LocalizedLink);
-
   useEffect(() => {
     setOpen(false);
   }, [pathname]);
@@ -57,7 +57,7 @@ export default function MobileNav() {
       <DrawerTrigger asChild>
         <button
           type="button"
-          className="inline-flex min-h-[44px] min-w-[44px] shrink-0 items-center justify-center rounded-md text-foreground outline-none ring-offset-background hover:bg-accent/15 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 md:hidden"
+          className="inline-flex min-h-[44px] min-w-[44px] shrink-0 items-center justify-center rounded-md text-foreground outline-none ring-offset-background hover:bg-accent/15 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 lg:hidden"
           aria-expanded={open}
           aria-controls="mobile-navigation-drawer"
           aria-haspopup="dialog"
@@ -101,7 +101,7 @@ export default function MobileNav() {
                   onClick={() => setOpen(false)}
                   className={cn(
                     mobileItemClass(href),
-                    "flex min-h-[44px] w-full items-center px-4 py-3 capitalize"
+                    "flex min-h-[44px] w-full items-center justify-center px-4 py-3 text-center capitalize",
                   )}
                 >
                   {tNav(labelKey)}
