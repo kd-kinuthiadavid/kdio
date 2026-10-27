@@ -9,11 +9,29 @@ export const brandColors = {
   card: "#ffffff",
 };
 
+const linkedinUrl = "https://www.linkedin.com/in/david-kinuthia/";
+const githubUrl = "https://github.com/kd-kinuthiadavid";
+
 export const brand = {
   name: "David Kinuthia",
   tagline: "AI & product engineering consultant",
   email: "david.kinuthia@gmail.com",
-  linkedinUrl: "https://www.linkedin.com/in/david-kinuthia/",
+  linkedinUrl,
+  githubUrl,
+  /** Public profiles that identify the same person (JSON-LD `sameAs`) */
+  sameAs: [linkedinUrl, githubUrl],
+  location: { locality: "Nairobi", country: "KE" },
+  knowsAbout: [
+    "AI integration",
+    "Private AI deployment",
+    "Retrieval-augmented generation (RAG)",
+    "Agentic automation",
+    "LLM evaluation",
+    "AI product readiness",
+    "Full-stack product engineering",
+    "Cloud infrastructure",
+    "Fractional CTO",
+  ],
   colors: brandColors,
   /** Stroke paths of app/icon.svg (24x24 viewBox) */
   logoPaths: [

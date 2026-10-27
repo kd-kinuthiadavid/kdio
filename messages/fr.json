@@ -1,5 +1,27 @@
 {
   "metadata": {
+    "pages": {
+      "about": {
+        "title": "À propos — ingénieur IA et produit basé à Nairobi",
+        "description": "Huit ans à livrer du frontend, du backend, des intégrations, de l’infrastructure et de l’IA. Découvrez l’ingénieur qui prend les problèmes en charge de bout en bout pour des fondateurs et des responsables techniques du monde entier."
+      },
+      "services": {
+        "title": "Services — intégration IA, IA privée et CTO fractionnel",
+        "description": "Sept façons de collaborer : intégration et architecture IA, déploiements d’IA privés et sécurisés, produits AI-native, automatisation de workflows agentiques, revues de préparation de produits IA, codebases prêtes pour les agents et accompagnement CTO fractionnel."
+      },
+      "method": {
+        "title": "Méthode — comment je travaille avec mes clients",
+        "description": "Les principes derrière chaque mission : conception centrée utilisateur, qualité, collaboration étroite, itération rapide, simplicité et IA centrée sur l’humain."
+      },
+      "contact": {
+        "title": "Contact — réserver un appel découverte",
+        "description": "Réservez un appel découverte, envoyez un e-mail ou connectons-nous sur LinkedIn pour parler de votre projet d’IA ou d’ingénierie produit."
+      },
+      "work": {
+        "title": "Parcours — ingénierie produit et IA",
+        "description": "Huit ans de travail au sein d’équipes produit en tant qu’ingénieur, lead et Head of Engineering : études de cas, produits en ligne, témoignages et parcours professionnel."
+      }
+    },
     "title": "David Kinuthia — Consultant en ingénierie IA et produit",
     "description": "Conseil et ingénierie en mission pour les équipes qui livrent de l’IA là où les erreurs coûtent cher : intégration IA, déploiements d’IA privés, automatisation agentique, revues de préparation de produits IA, codebases prêtes pour les agents et accompagnement CTO fractionnel."
   },
@@ -396,6 +418,7 @@
   "assessment": {
     "metaTitle": "Fit assessment",
     "metaDescription": "A short assessment to see whether we are a fit — and which engagement matches your context.",
+    "loadingLabel": "Loading the fit assessment",
     "title": "Fit assessment",
     "subtitle": "A few sharp questions. Your answers shape a clear read on fit, the right service lane, and what to do next.",
     "introLead": "This takes most people under three minutes. You can pause anytime — we will email you a link to pick up where you left off.",

@@ -1,5 +1,27 @@
 {
   "metadata": {
+    "pages": {
+      "about": {
+        "title": "Kuhusu — mhandisi wa AI na bidhaa aliye Nairobi",
+        "description": "Miaka minane ya kujenga frontend, backend, miunganisho, miundombinu na AI. Mfahamu mhandisi anayebeba matatizo mwanzo hadi mwisho kwa waanzilishi na viongozi wa uhandisi duniani kote."
+      },
+      "services": {
+        "title": "Huduma — muunganisho wa AI, AI binafsi na CTO wa muda",
+        "description": "Njia saba za kushirikiana: muunganisho na usanifu wa AI, uwekaji wa AI binafsi ulio salama, bidhaa za asili-AI, automation ya workflows za agentic, ukaguzi wa utayari wa bidhaa za AI, codebase zilizo tayari kwa agents na ushauri wa CTO wa muda."
+      },
+      "method": {
+        "title": "Mbinu — jinsi ninavyofanya kazi na wateja",
+        "description": "Kanuni zinazoongoza kila mradi: muundo unaomlenga mtumiaji, ubora, ushirikiano wa karibu, marudio ya haraka, urahisi na AI inayomlenga binadamu."
+      },
+      "contact": {
+        "title": "Mawasiliano — panga simu ya utangulizi",
+        "description": "Panga simu ya utangulizi, tuma barua pepe au ungana nami kwenye LinkedIn ili tuzungumze kuhusu mradi wako wa AI au uhandisi wa bidhaa."
+      },
+      "work": {
+        "title": "Rekodi ya kazi — uhandisi wa bidhaa na AI",
+        "description": "Miaka minane ya kazi ndani ya timu za bidhaa kama mhandisi, kiongozi na Head of Engineering: mifano ya kazi, bidhaa zilizo hewani, ushuhuda na safari ya kikazi."
+      }
+    },
     "title": "David Kinuthia — mshauri wa uhandisi wa AI na bidhaa",
     "description": "Ushauri na uhandisi wa kimkataba kwa timu zinazoleta AI mahali ambapo makosa ni gharama kubwa: muunganisho wa AI, uwekaji wa AI binafsi, automation ya agentic, ukaguzi wa utayari wa bidhaa za AI, codebase zilizo tayari kwa agents na msaada wa CTO wa muda."
   },
@@ -396,6 +418,7 @@
   "assessment": {
     "metaTitle": "Fit assessment",
     "metaDescription": "A short assessment to see whether we are a fit — and which engagement matches your context.",
+    "loadingLabel": "Loading the fit assessment",
     "title": "Fit assessment",
     "subtitle": "A few sharp questions. Your answers shape a clear read on fit, the right service lane, and what to do next.",
     "introLead": "This takes most people under three minutes. You can pause anytime — we will email you a link to pick up where you left off.",

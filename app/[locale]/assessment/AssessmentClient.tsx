@@ -6,7 +6,6 @@ import { useLocale, useTranslations } from "next-intl";
 import { useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
-import ContentSurface from "@/components/shared/ContentSurface";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -276,359 +275,339 @@ export default function AssessmentClient() {
   }, [result, email]);
 
   return (
-    <ContentSurface className="w-full min-w-0 max-w-[min(100%,clamp(22rem,92vw,40rem))]">
-      <motion.div
-        initial="hidden"
-        animate="visible"
-        variants={containerVariants}
-        className="flex w-full flex-col gap-y-8 sm:gap-y-10"
-      >
+    <motion.div
+      initial="hidden"
+      animate="visible"
+      variants={containerVariants}
+      className="flex w-full flex-col gap-y-8 sm:gap-y-10"
+    >
+      {step !== "intro" && step !== "email" && (
+        <motion.div variants={itemVariants}>
+          <Progress value={Math.min(100, progressPct)} className="h-2" />
+        </motion.div>
+      )}
+
+      {error ? (
+        <motion.p
+          variants={itemVariants}
+          className="rounded-md border border-destructive/40 bg-destructive/10 px-3 py-2 text-sm text-destructive"
+          role="alert"
+        >
+          {error}
+        </motion.p>
+      ) : null}
+
+      {busy && step !== "results" ? (
+        <motion.p
+          variants={itemVariants}
+          className="text-sm text-muted-foreground"
+          aria-live="polite"
+        >
+          {step === "intro" && searchParams.get("resume")
+            ? t("resumeLoading")
+            : t("saving")}
+        </motion.p>
+      ) : null}
+
+      {step === "intro" && (
         <motion.div
           variants={containerVariants}
-          className="flex flex-col gap-y-3"
+          className="flex flex-col gap-y-6"
         >
-          <motion.h1
-            variants={itemVariants}
-            className="text-balance font-semibold text-3xl leading-tight sm:text-4xl"
-          >
-            {t("title")}
-          </motion.h1>
           <motion.p
             variants={itemVariants}
-            className="max-w-prose text-base leading-relaxed text-muted-foreground sm:text-lg"
+            className="text-base leading-relaxed"
           >
-            {t("subtitle")}
+            {t("introLead")}
           </motion.p>
+          <motion.div variants={navItemVariants}>
+            <Button
+              type="button"
+              className="w-full py-6 text-base"
+              onClick={() => setStep("email")}
+            >
+              {t("startCta")}
+            </Button>
+          </motion.div>
         </motion.div>
+      )}
 
-        {step !== "intro" && step !== "email" && (
-          <motion.div variants={itemVariants}>
-            <Progress value={Math.min(100, progressPct)} className="h-2" />
-          </motion.div>
-        )}
-
-        {error ? (
-          <motion.p
-            variants={itemVariants}
-            className="rounded-md border border-destructive/40 bg-destructive/10 px-3 py-2 text-sm text-destructive"
-            role="alert"
-          >
-            {error}
-          </motion.p>
-        ) : null}
-
-        {busy && step !== "results" ? (
-          <motion.p
-            variants={itemVariants}
-            className="text-sm text-muted-foreground"
-            aria-live="polite"
-          >
-            {step === "intro" && searchParams.get("resume")
-              ? t("resumeLoading")
-              : t("saving")}
-          </motion.p>
-        ) : null}
-
-        {step === "intro" && (
-          <motion.div
-            variants={containerVariants}
-            className="flex flex-col gap-y-6"
-          >
-            <motion.p
-              variants={itemVariants}
-              className="text-base leading-relaxed"
-            >
-              {t("introLead")}
-            </motion.p>
-            <motion.div variants={navItemVariants}>
-              <Button
-                type="button"
-                className="w-full py-6 text-base"
-                onClick={() => setStep("email")}
-              >
-                {t("startCta")}
-              </Button>
-            </motion.div>
-          </motion.div>
-        )}
-
-        {step === "email" && (
-          <motion.div
-            variants={containerVariants}
-            className="flex flex-col gap-y-5"
-          >
-            <div className="flex flex-col gap-y-2">
-              <Label htmlFor="assess-email">{t("emailLabel")}</Label>
-              <Input
-                id="assess-email"
-                type="email"
-                autoComplete="email"
-                placeholder={t("emailPlaceholder")}
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="text-base"
-              />
-            </div>
-            <label className="flex cursor-pointer items-start gap-3 text-sm leading-relaxed">
-              <input
-                type="checkbox"
-                checked={consent}
-                onChange={(e) => setConsent(e.target.checked)}
-                className="mt-1 size-4 shrink-0 rounded border border-input"
-              />
-              <span>{t("consentLabel")}</span>
-            </label>
-            <motion.div
-              variants={navItemVariants}
-              className="flex flex-col gap-3 sm:flex-row"
-            >
-              <Button
-                type="button"
-                variant="outline"
-                className="w-full py-5"
-                onClick={handleBack}
-              >
-                {t("backCta")}
-              </Button>
-              <Button
-                type="button"
-                className="w-full py-5"
-                disabled={busy || !email || !consent}
-                onClick={handleStartEmail}
-              >
-                {t("startCta")}
-              </Button>
-            </motion.div>
-          </motion.div>
-        )}
-
-        {step === "questions" && current && (
-          <motion.div
-            key={current.id}
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="flex flex-col gap-y-6"
-          >
-            {showBlockHeading ? (
-              <p className="text-sm font-semibold uppercase tracking-wide text-primary">
-                {blockTitle}
-              </p>
-            ) : null}
-            <h2 className="text-xl font-semibold leading-snug sm:text-2xl">
-              {t(`questions.${current.id}.title` as Parameters<typeof t>[0])}
-            </h2>
-
-            {current.type === "single" ? (
-              <RadioGroup
-                value={
-                  typeof currentValue() === "string"
-                    ? (currentValue() as string)
-                    : ""
-                }
-                onValueChange={(v) => setCurrentValue(v)}
-                className="flex flex-col gap-3"
-              >
-                {current.options.map((opt) => (
-                  <label
-                    key={opt.id}
-                    className="flex cursor-pointer items-center gap-3 rounded-lg border border-border bg-background/50 px-4 py-3 transition-colors hover:bg-accent/20 has-[[data-state=checked]]:border-primary has-[[data-state=checked]]:bg-accent/25"
-                  >
-                    <RadioGroupItem
-                      value={opt.id}
-                      id={`${current.id}-${opt.id}`}
-                    />
-                    <span className="text-base leading-snug">
-                      {t(
-                        `questions.${current.id}.options.${opt.id}` as Parameters<
-                          typeof t
-                        >[0],
-                      )}
-                    </span>
-                  </label>
-                ))}
-              </RadioGroup>
-            ) : (
-              <div className="flex flex-col gap-y-3">
-                <div className="flex justify-between text-xs text-muted-foreground">
-                  <span>
-                    {t(
-                      `questions.${current.id}.scaleLow` as Parameters<
-                        typeof t
-                      >[0],
-                    )}
-                  </span>
-                  <span>
-                    {t(
-                      `questions.${current.id}.scaleHigh` as Parameters<
-                        typeof t
-                      >[0],
-                    )}
-                  </span>
-                </div>
-                <input
-                  type="range"
-                  min={current.min}
-                  max={current.max}
-                  step={1}
-                  value={
-                    typeof currentValue() === "number"
-                      ? (currentValue() as number)
-                      : 5
-                  }
-                  onChange={(e) => setCurrentValue(Number(e.target.value))}
-                  className="w-full accent-primary"
-                />
-                <p className="text-center text-sm font-medium tabular-nums">
-                  {typeof currentValue() === "number" ? currentValue() : 5} /{" "}
-                  {current.max}
-                </p>
-              </div>
-            )}
-
-            <div className="flex flex-col gap-3 sm:flex-row">
-              <Button
-                type="button"
-                variant="outline"
-                className="w-full py-5"
-                onClick={handleBack}
-              >
-                {t("backCta")}
-              </Button>
-              <Button
-                type="button"
-                className="w-full py-5"
-                disabled={busy}
-                onClick={handleNext}
-              >
-                {qIndex >= ASSESSMENT_QUESTIONS.length - 1
-                  ? t("submitCta")
-                  : t("nextCta")}
-              </Button>
-            </div>
-          </motion.div>
-        )}
-
-        {step === "results" && result && (
-          <motion.div
-            variants={containerVariants}
-            className="flex flex-col gap-y-6"
-          >
-            <motion.h2
-              variants={itemVariants}
-              className="text-2xl font-semibold"
-            >
-              {t("resultsTitle")}
-            </motion.h2>
-            <motion.p
-              variants={itemVariants}
-              className="text-lg text-muted-foreground"
-            >
-              {t("resultsScore", { score: result.totalScore })}
-            </motion.p>
-            <motion.div
-              variants={itemVariants}
-              className="rounded-lg border border-border bg-background/50 p-5"
-            >
-              <p className="text-sm font-medium text-muted-foreground">
-                {t("resultsService")}
-              </p>
-              <p className="text-lg font-semibold text-primary">
-                {tServices.has(
-                  `items.${result.serviceId}.name` as Parameters<
-                    typeof tServices.has
-                  >[0],
-                )
-                  ? tServices(
-                      `items.${result.serviceId}.name` as Parameters<
-                        typeof tServices
-                      >[0],
-                    )
-                  : result.serviceId}
-              </p>
-              <p className="mt-3 text-sm text-muted-foreground">
-                {t("resultsTier")}
-              </p>
-              <p className="text-base font-medium">
-                {t(`tiers.${result.tier}.label`)}
-              </p>
-              <p className="mt-3 text-base leading-relaxed">
-                {t(`tiers.${result.tier}.body`)}
-              </p>
-            </motion.div>
-
-            {result.tier === "notFit" ? (
-              <p className="text-base leading-relaxed text-muted-foreground">
-                {t("resultsNotFit")}
-              </p>
-            ) : (
-              <div className="flex flex-col gap-3">
-                {result.tier === "strong" ? (
-                  <Button
-                    type="button"
-                    className="w-full py-6 text-base"
-                    onClick={() =>
-                      window.open(
-                        calUrlWithPrefill(getStrategyCallUrl(), {
-                          email,
-                          notes: calNotes,
-                        }),
-                        "_blank",
-                      )
-                    }
-                  >
-                    {t("resultsCtaStrategy")}
-                  </Button>
-                ) : null}
-                {result.tier === "good" || result.tier === "strong" ? (
-                  <Button
-                    type="button"
-                    variant={result.tier === "good" ? "default" : "outline"}
-                    className="w-full py-6 text-base"
-                    onClick={() =>
-                      window.open(
-                        calUrlWithPrefill(getDiscoveryCallUrl(), {
-                          email,
-                          notes: calNotes,
-                        }),
-                        "_blank",
-                      )
-                    }
-                  >
-                    {t("resultsCtaDiscovery")}
-                  </Button>
-                ) : null}
-                {result.tier === "nurture" ? (
-                  <>
-                    <Button
-                      type="button"
-                      className="w-full py-6 text-base"
-                      onClick={() =>
-                        window.open(getNurtureGuideUrl(), "_blank")
-                      }
-                    >
-                      {t("resultsCtaGuide")}
-                    </Button>
-                    <p className="text-sm text-muted-foreground">
-                      {t("nurtureHint")}
-                    </p>
-                  </>
-                ) : null}
-              </div>
-            )}
-          </motion.div>
-        )}
-
-        <motion.footer
-          variants={itemVariants}
-          className="border-t border-border pt-8 text-sm leading-relaxed text-muted-foreground"
+      {step === "email" && (
+        <motion.div
+          variants={containerVariants}
+          className="flex flex-col gap-y-5"
         >
-          <p className="font-semibold text-foreground">{t("privacyTitle")}</p>
-          <p className="mt-2">{t("privacyBody")}</p>
-          <p className="mt-4 text-xs leading-relaxed opacity-90">
-            {t("triagePlaybook")}
-          </p>
-        </motion.footer>
-      </motion.div>
-    </ContentSurface>
+          <div className="flex flex-col gap-y-2">
+            <Label htmlFor="assess-email">{t("emailLabel")}</Label>
+            <Input
+              id="assess-email"
+              type="email"
+              autoComplete="email"
+              placeholder={t("emailPlaceholder")}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="text-base"
+            />
+          </div>
+          <label className="flex cursor-pointer items-start gap-3 text-sm leading-relaxed">
+            <input
+              type="checkbox"
+              checked={consent}
+              onChange={(e) => setConsent(e.target.checked)}
+              className="mt-1 size-4 shrink-0 rounded border border-input"
+            />
+            <span>{t("consentLabel")}</span>
+          </label>
+          <motion.div
+            variants={navItemVariants}
+            className="flex flex-col gap-3 sm:flex-row"
+          >
+            <Button
+              type="button"
+              variant="outline"
+              className="w-full py-5"
+              onClick={handleBack}
+            >
+              {t("backCta")}
+            </Button>
+            <Button
+              type="button"
+              className="w-full py-5"
+              disabled={busy || !email || !consent}
+              onClick={handleStartEmail}
+            >
+              {t("startCta")}
+            </Button>
+          </motion.div>
+        </motion.div>
+      )}
+
+      {step === "questions" && current && (
+        <motion.div
+          key={current.id}
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="flex flex-col gap-y-6"
+        >
+          {showBlockHeading ? (
+            <p className="text-sm font-semibold uppercase tracking-wide text-primary">
+              {blockTitle}
+            </p>
+          ) : null}
+          <h2 className="text-xl font-semibold leading-snug sm:text-2xl">
+            {t(`questions.${current.id}.title` as Parameters<typeof t>[0])}
+          </h2>
+
+          {current.type === "single" ? (
+            <RadioGroup
+              value={
+                typeof currentValue() === "string"
+                  ? (currentValue() as string)
+                  : ""
+              }
+              onValueChange={(v) => setCurrentValue(v)}
+              className="flex flex-col gap-3"
+            >
+              {current.options.map((opt) => (
+                <label
+                  key={opt.id}
+                  className="flex cursor-pointer items-center gap-3 rounded-lg border border-border bg-background/50 px-4 py-3 transition-colors hover:bg-accent/20 has-[[data-state=checked]]:border-primary has-[[data-state=checked]]:bg-accent/25"
+                >
+                  <RadioGroupItem
+                    value={opt.id}
+                    id={`${current.id}-${opt.id}`}
+                  />
+                  <span className="text-base leading-snug">
+                    {t(
+                      `questions.${current.id}.options.${opt.id}` as Parameters<
+                        typeof t
+                      >[0],
+                    )}
+                  </span>
+                </label>
+              ))}
+            </RadioGroup>
+          ) : (
+            <div className="flex flex-col gap-y-3">
+              <div className="flex justify-between text-xs text-muted-foreground">
+                <span>
+                  {t(
+                    `questions.${current.id}.scaleLow` as Parameters<
+                      typeof t
+                    >[0],
+                  )}
+                </span>
+                <span>
+                  {t(
+                    `questions.${current.id}.scaleHigh` as Parameters<
+                      typeof t
+                    >[0],
+                  )}
+                </span>
+              </div>
+              <input
+                type="range"
+                min={current.min}
+                max={current.max}
+                step={1}
+                value={
+                  typeof currentValue() === "number"
+                    ? (currentValue() as number)
+                    : 5
+                }
+                onChange={(e) => setCurrentValue(Number(e.target.value))}
+                className="w-full accent-primary"
+              />
+              <p className="text-center text-sm font-medium tabular-nums">
+                {typeof currentValue() === "number" ? currentValue() : 5} /{" "}
+                {current.max}
+              </p>
+            </div>
+          )}
+
+          <div className="flex flex-col gap-3 sm:flex-row">
+            <Button
+              type="button"
+              variant="outline"
+              className="w-full py-5"
+              onClick={handleBack}
+            >
+              {t("backCta")}
+            </Button>
+            <Button
+              type="button"
+              className="w-full py-5"
+              disabled={busy}
+              onClick={handleNext}
+            >
+              {qIndex >= ASSESSMENT_QUESTIONS.length - 1
+                ? t("submitCta")
+                : t("nextCta")}
+            </Button>
+          </div>
+        </motion.div>
+      )}
+
+      {step === "results" && result && (
+        <motion.div
+          variants={containerVariants}
+          className="flex flex-col gap-y-6"
+        >
+          <motion.h2
+            variants={itemVariants}
+            className="text-2xl font-semibold"
+          >
+            {t("resultsTitle")}
+          </motion.h2>
+          <motion.p
+            variants={itemVariants}
+            className="text-lg text-muted-foreground"
+          >
+            {t("resultsScore", { score: result.totalScore })}
+          </motion.p>
+          <motion.div
+            variants={itemVariants}
+            className="rounded-lg border border-border bg-background/50 p-5"
+          >
+            <p className="text-sm font-medium text-muted-foreground">
+              {t("resultsService")}
+            </p>
+            <p className="text-lg font-semibold text-primary">
+              {tServices.has(
+                `items.${result.serviceId}.name` as Parameters<
+                  typeof tServices.has
+                >[0],
+              )
+                ? tServices(
+                    `items.${result.serviceId}.name` as Parameters<
+                      typeof tServices
+                    >[0],
+                  )
+                : result.serviceId}
+            </p>
+            <p className="mt-3 text-sm text-muted-foreground">
+              {t("resultsTier")}
+            </p>
+            <p className="text-base font-medium">
+              {t(`tiers.${result.tier}.label`)}
+            </p>
+            <p className="mt-3 text-base leading-relaxed">
+              {t(`tiers.${result.tier}.body`)}
+            </p>
+          </motion.div>
+
+          {result.tier === "notFit" ? (
+            <p className="text-base leading-relaxed text-muted-foreground">
+              {t("resultsNotFit")}
+            </p>
+          ) : (
+            <div className="flex flex-col gap-3">
+              {result.tier === "strong" ? (
+                <Button
+                  type="button"
+                  className="w-full py-6 text-base"
+                  onClick={() =>
+                    window.open(
+                      calUrlWithPrefill(getStrategyCallUrl(), {
+                        email,
+                        notes: calNotes,
+                      }),
+                      "_blank",
+                    )
+                  }
+                >
+                  {t("resultsCtaStrategy")}
+                </Button>
+              ) : null}
+              {result.tier === "good" || result.tier === "strong" ? (
+                <Button
+                  type="button"
+                  variant={result.tier === "good" ? "default" : "outline"}
+                  className="w-full py-6 text-base"
+                  onClick={() =>
+                    window.open(
+                      calUrlWithPrefill(getDiscoveryCallUrl(), {
+                        email,
+                        notes: calNotes,
+                      }),
+                      "_blank",
+                    )
+                  }
+                >
+                  {t("resultsCtaDiscovery")}
+                </Button>
+              ) : null}
+              {result.tier === "nurture" ? (
+                <>
+                  <Button
+                    type="button"
+                    className="w-full py-6 text-base"
+                    onClick={() =>
+                      window.open(getNurtureGuideUrl(), "_blank")
+                    }
+                  >
+                    {t("resultsCtaGuide")}
+                  </Button>
+                  <p className="text-sm text-muted-foreground">
+                    {t("nurtureHint")}
+                  </p>
+                </>
+              ) : null}
+            </div>
+          )}
+        </motion.div>
+      )}
+
+      <motion.footer
+        variants={itemVariants}
+        className="border-t border-border pt-8 text-sm leading-relaxed text-muted-foreground"
+      >
+        <p className="font-semibold text-foreground">{t("privacyTitle")}</p>
+        <p className="mt-2">{t("privacyBody")}</p>
+        <p className="mt-4 text-xs leading-relaxed opacity-90">
+          {t("triagePlaybook")}
+        </p>
+      </motion.footer>
+    </motion.div>
   );
 }

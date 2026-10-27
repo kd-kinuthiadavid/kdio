@@ -1,18 +1,31 @@
 import * as motion from "framer-motion/client";
 import { ArrowUpRight } from "lucide-react";
-import { getTranslations } from "next-intl/server";
+import type { Metadata } from "next";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import Link from "next/link";
 
 import ContentSurface from "@/components/shared/ContentSurface";
 import { brand } from "@/lib/brand";
 import { getDiscoveryCallUrl } from "@/lib/cal";
+import { buildTranslatedPageMetadata } from "@/lib/seo";
 import {
   containerVariants,
   itemVariants,
   navItemVariants,
 } from "../../motionVariants";
 
-export default async function Contact() {
+type Props = {
+  params: Promise<{ locale: string }>;
+};
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
+  return buildTranslatedPageMetadata(locale, "contact", "/contact");
+}
+
+export default async function Contact({ params }: Props) {
+  const { locale } = await params;
+  setRequestLocale(locale);
   const t = await getTranslations("contact");
 
   const contacts = [

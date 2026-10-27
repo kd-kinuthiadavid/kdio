@@ -1,5 +1,27 @@
 {
   "metadata": {
+    "pages": {
+      "about": {
+        "title": "About — AI & product engineer based in Nairobi",
+        "description": "Eight years shipping frontend, backend, integrations, infrastructure and AI. Meet the engineer who owns problems end-to-end for founders and engineering leaders around the world."
+      },
+      "services": {
+        "title": "Services — AI integration, private AI and fractional CTO",
+        "description": "Seven ways to engage: AI integration and architecture, secure private AI deployments, AI-native product builds, agentic workflow automation, AI product readiness reviews, agent-ready codebases and fractional CTO advisory."
+      },
+      "method": {
+        "title": "Method — how I work with clients",
+        "description": "The principles behind every engagement: user-centric design, quality, close collaboration, fast iteration, simplicity and human-centered AI."
+      },
+      "contact": {
+        "title": "Contact — book a discovery call",
+        "description": "Book a discovery call, send an email or connect on LinkedIn to talk about your AI or product engineering project."
+      },
+      "work": {
+        "title": "Track record — product and AI engineering work",
+        "description": "Eight years of work owned inside product teams as engineer, lead and Head of Engineering: case studies, live builds, testimonials and a career timeline."
+      }
+    },
     "title": "David Kinuthia — AI & product engineering consultant",
     "description": "Consulting and contract engineering for teams shipping AI where mistakes are expensive: AI integration, private AI deployments, agentic automation, AI product readiness reviews, agent-ready codebases, and fractional CTO support."
   },
@@ -396,6 +418,7 @@
   "assessment": {
     "metaTitle": "Fit assessment",
     "metaDescription": "A short assessment to see whether we are a fit — and which engagement matches your context.",
+    "loadingLabel": "Loading the fit assessment",
     "title": "Fit assessment",
     "subtitle": "A few sharp questions. Your answers shape a clear read on fit, the right service lane, and what to do next.",
     "introLead": "This takes most people under three minutes. You can pause anytime — we will email you a link to pick up where you left off.",

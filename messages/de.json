@@ -1,5 +1,27 @@
 {
   "metadata": {
+    "pages": {
+      "about": {
+        "title": "Über mich — KI- & Produktingenieur in Nairobi",
+        "description": "Acht Jahre Erfahrung mit Frontend, Backend, Integrationen, Infrastruktur und KI. Lernen Sie den Engineer kennen, der Probleme für Gründer und Engineering-Leads weltweit von Anfang bis Ende verantwortet."
+      },
+      "services": {
+        "title": "Leistungen — KI-Integration, private KI und Fractional CTO",
+        "description": "Sieben Formen der Zusammenarbeit: KI-Integration und Architektur, sichere private KI-Deployments, KI-native Produktentwicklung, agentische Workflow-Automatisierung, Readiness-Reviews für KI-Produkte, agent-fähige Codebasen und Fractional-CTO-Beratung."
+      },
+      "method": {
+        "title": "Methode — wie ich mit Kunden arbeite",
+        "description": "Die Prinzipien hinter jedem Projekt: nutzerzentriertes Design, Qualität, enge Zusammenarbeit, schnelle Iteration, Einfachheit und menschenzentrierte KI."
+      },
+      "contact": {
+        "title": "Kontakt — Erstgespräch buchen",
+        "description": "Buchen Sie ein Erstgespräch, schreiben Sie eine E-Mail oder vernetzen Sie sich auf LinkedIn, um über Ihr KI- oder Produkt-Engineering-Projekt zu sprechen."
+      },
+      "work": {
+        "title": "Referenzen — Produkt- und KI-Engineering",
+        "description": "Acht Jahre Arbeit in Produktteams als Engineer, Lead und Head of Engineering: Fallstudien, Live-Projekte, Kundenstimmen und beruflicher Werdegang."
+      }
+    },
     "title": "David Kinuthia — Berater für KI- & Produkt-Engineering",
     "description": "Beratung und Engineering auf Vertragsbasis für Teams, die KI dort einsetzen, wo Fehler teuer sind: KI-Integration, private KI-Deployments, agentische Automatisierung, Readiness-Reviews für KI-Produkte, agent-fähige Codebasen und Fractional-CTO-Unterstützung."
   },
@@ -396,6 +418,7 @@
   "assessment": {
     "metaTitle": "Fit assessment",
     "metaDescription": "A short assessment to see whether we are a fit — and which engagement matches your context.",
+    "loadingLabel": "Loading the fit assessment",
     "title": "Fit assessment",
     "subtitle": "A few sharp questions. Your answers shape a clear read on fit, the right service lane, and what to do next.",
     "introLead": "This takes most people under three minutes. You can pause anytime — we will email you a link to pick up where you left off.",
