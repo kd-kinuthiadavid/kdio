@@ -1,4 +1,5 @@
-import { and, eq, isNotNull, isNull, sql } from "drizzle-orm";
+import { and, eq, gt, isNotNull, isNull, notExists, or, sql } from "drizzle-orm";
+import { alias } from "drizzle-orm/pg-core";
 import { NextResponse } from "next/server";
 
 import { assessmentSubmissions } from "@/db/schema";
@@ -14,7 +15,9 @@ export async function GET(request: Request) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const rows = await getDb()
+  const db = getDb();
+  const other = alias(assessmentSubmissions, "other");
+  const rows = await db
     .select()
     .from(assessmentSubmissions)
     .where(
@@ -22,7 +25,22 @@ export async function GET(request: Request) {
         eq(assessmentSubmissions.status, "draft"),
         isNotNull(assessmentSubmissions.email),
         isNull(assessmentSubmissions.dropoffEmailSentAt),
-        sql`${assessmentSubmissions.lastActivityAt} < now() - interval '2 hours'`
+        sql`${assessmentSubmissions.lastActivityAt} < now() - interval '2 hours'`,
+        // Skip drafts superseded by a completed or newer submission from the same email
+        notExists(
+          db
+            .select({ id: other.id })
+            .from(other)
+            .where(
+              and(
+                sql`lower(${other.email}) = lower(${assessmentSubmissions.email})`,
+                or(
+                  eq(other.status, "completed"),
+                  gt(other.createdAt, assessmentSubmissions.createdAt)
+                )
+              )
+            )
+        )
       )
     )
     .limit(50);
@@ -37,11 +55,12 @@ export async function GET(request: Request) {
         issuedAt: new Date(row.createdAt as string | Date),
       });
       await sendResumeNudgeEmail({
+        submissionId: row.id,
         to: row.email,
         locale: row.locale,
         resumeParam: jwt,
       });
-      await getDb()
+      await db
         .update(assessmentSubmissions)
         .set({ dropoffEmailSentAt: new Date(), updatedAt: new Date() })
         .where(eq(assessmentSubmissions.id, row.id));

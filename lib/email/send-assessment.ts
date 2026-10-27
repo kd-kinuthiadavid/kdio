@@ -129,12 +129,19 @@ export async function sendCompletionEmails(args: {
     })
   );
 
-  await client.emails.send({
-    from: fromAddress(),
-    to: args.prospectEmail,
-    subject: "Your AI consulting assessment results",
-    html: prospectHtml,
-  });
+  // The assessment is already saved as completed, so a failed send is logged rather than thrown.
+  const { error: prospectError } = await client.emails.send(
+    {
+      from: fromAddress(),
+      to: args.prospectEmail,
+      subject: "Your AI consulting assessment results",
+      html: prospectHtml,
+    },
+    { idempotencyKey: `assessment-results/${args.submissionId}` }
+  );
+  if (prospectError) {
+    console.error("Resend assessment results failed", args.submissionId, prospectError);
+  }
 
   if (notify) {
     const opener = callOpenerLine({
@@ -155,16 +162,24 @@ export async function sendCompletionEmails(args: {
         adminUrl,
       })
     );
-    await client.emails.send({
-      from: fromAddress(),
-      to: notify,
-      subject: `[Assessment] ${args.prospectEmail} · ${args.tier} · ${args.total}/100`,
-      html: ownerHtml,
-    });
+    const { error: ownerError } = await client.emails.send(
+      {
+        from: fromAddress(),
+        to: notify,
+        subject: `[Assessment] ${args.prospectEmail} · ${args.tier} · ${args.total}/100`,
+        html: ownerHtml,
+      },
+      { idempotencyKey: `assessment-owner/${args.submissionId}` }
+    );
+    if (ownerError) {
+      console.error("Resend assessment owner notification failed", args.submissionId, ownerError);
+    }
   }
 }
 
+/** Throws when Resend rejects the send, so the caller can leave the nudge unmarked. */
 export async function sendResumeNudgeEmail(args: {
+  submissionId: string;
   to: string;
   locale: string;
   resumeParam: string;
@@ -188,10 +203,16 @@ export async function sendResumeNudgeEmail(args: {
     })
   );
 
-  await client.emails.send({
-    from: fromAddress(),
-    to: args.to,
-    subject: "Resume your assessment",
-    html,
-  });
+  const { error } = await client.emails.send(
+    {
+      from: fromAddress(),
+      to: args.to,
+      subject: "Resume your assessment",
+      html,
+    },
+    { idempotencyKey: `assessment-nudge/${args.submissionId}` }
+  );
+  if (error) {
+    throw new Error(`Resend resume nudge failed: ${error.message}`);
+  }
 }

@@ -60,6 +60,7 @@ export default function AssessmentClient() {
   const [answers, setAnswers] = useState<Record<string, string | number>>({});
   const [sessionId, setSessionId] = useState<string | null>(null);
   const [resumeToken, setResumeToken] = useState<string | null>(null);
+  const [sessionEmail, setSessionEmail] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [result, setResult] = useState<{
@@ -128,7 +129,10 @@ export default function AssessmentClient() {
         };
         setSessionId(data.id);
         setResumeToken(resume);
-        if (data.email) setEmail(data.email);
+        if (data.email) {
+          setEmail(data.email);
+          setSessionEmail(data.email);
+        }
         const merged = { ...data.answers } as Record<string, string | number>;
         if (
           typeof merged.challenge === "string" &&
@@ -176,6 +180,25 @@ export default function AssessmentClient() {
     }
     setBusy(true);
     try {
+      // Back from the first question lands here; reuse the session so no orphan draft is left behind
+      if (sessionId && resumeToken) {
+        if (email !== sessionEmail) {
+          const res = await fetch(`/api/assessment/${sessionId}`, {
+            method: "PATCH",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ token: resumeToken, answers: {}, email }),
+          });
+          if (!res.ok) {
+            const j = await res.json().catch(() => ({}));
+            throw new Error((j as { error?: string }).error || t("errorGeneric"));
+          }
+          setSessionEmail(email);
+        }
+        setStep("questions");
+        setQIndex(0);
+        return;
+      }
+
       const res = await fetch("/api/assessment/start", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -195,6 +218,7 @@ export default function AssessmentClient() {
       };
       setSessionId(data.id);
       setResumeToken(data.resumeToken);
+      setSessionEmail(email);
       setStep("questions");
       setQIndex(0);
     } catch (e) {

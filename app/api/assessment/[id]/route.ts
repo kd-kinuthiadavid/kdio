@@ -10,6 +10,7 @@ import { clientIp, rateLimitAssessment } from "@/lib/ratelimit";
 const patchSchema = z.object({
   token: z.string().min(10),
   answers: z.record(z.string(), z.union([z.string(), z.number()])),
+  email: z.string().email().optional(),
 });
 
 export async function GET(
@@ -104,6 +105,7 @@ export async function PATCH(
     .update(assessmentSubmissions)
     .set({
       answersJson: merged,
+      ...(parsed.data.email ? { email: parsed.data.email } : {}),
       updatedAt: new Date(),
       lastActivityAt: new Date(),
     })
