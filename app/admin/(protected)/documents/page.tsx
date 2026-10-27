@@ -1,13 +1,16 @@
 import Link from "next/link";
 
 import { DocumentsTable, payableIds, ReceivablesCards } from "@/components/admin/DocumentsTable";
+import { ReminderRunNotice } from "@/components/admin/ReminderStatus";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import type { DocumentStatus } from "@/db/schema";
-import { todayIso } from "@/lib/documents/dates";
+import { isoDateOf, todayIso } from "@/lib/documents/dates";
 import { getPaymentSummaries, getReceivables } from "@/lib/documents/payments";
 import { isDocumentType, listDocumentTypes } from "@/lib/documents/registry";
+import { getReminderStates } from "@/lib/documents/reminders-data";
 import { listDocuments } from "@/lib/documents/service";
+import { INVOICE_REMINDERS_JOB, isStaleDailyRun, lastJobRun } from "@/lib/jobs";
 import { cn } from "@/lib/utils";
 
 const STATUSES: DocumentStatus[] = ["draft", "issued", "void"];
@@ -44,10 +47,14 @@ export default async function DocumentsPage({
   const status = STATUSES.find((s) => s === sp.status);
   const today = todayIso();
   const rows = await listDocuments({ type, status });
-  const [payments, receivables] = await Promise.all([
-    getPaymentSummaries(payableIds(rows)),
+  const ids = payableIds(rows);
+  const [payments, receivables, reminders, lastRun] = await Promise.all([
+    getPaymentSummaries(ids),
     getReceivables(today),
+    getReminderStates(ids, today),
+    lastJobRun(INVOICE_REMINDERS_JOB),
   ]);
+  const ranToday = lastRun ? isoDateOf(lastRun.ranAt) === today : false;
 
   return (
     <div className="space-y-6">
@@ -61,7 +68,10 @@ export default async function DocumentsPage({
         </Button>
       </div>
 
-      <ReceivablesCards receivables={receivables} />
+      <div className="space-y-2">
+        <ReceivablesCards receivables={receivables} />
+        <ReminderRunNotice run={lastRun} stale={isStaleDailyRun(lastRun)} />
+      </div>
 
       <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
         <div className="flex flex-wrap gap-1">
@@ -69,7 +79,11 @@ export default async function DocumentsPage({
             All types
           </FilterLink>
           {listDocumentTypes().map((d) => (
-            <FilterLink key={d.type} href={filterHref({ type: d.type, status })} active={type === d.type}>
+            <FilterLink
+              key={d.type}
+              href={filterHref({ type: d.type, status })}
+              active={type === d.type}
+            >
               {d.label}
             </FilterLink>
           ))}
@@ -79,7 +93,11 @@ export default async function DocumentsPage({
             Any status
           </FilterLink>
           {STATUSES.map((s) => (
-            <FilterLink key={s} href={filterHref({ type, status: s })} active={status === s}>
+            <FilterLink
+              key={s}
+              href={filterHref({ type, status: s })}
+              active={status === s}
+            >
               <span className="capitalize">{s}</span>
             </FilterLink>
           ))}
@@ -91,7 +109,13 @@ export default async function DocumentsPage({
           {rows.length === 0 ? (
             <p className="text-sm text-muted-foreground">No documents yet.</p>
           ) : (
-            <DocumentsTable rows={rows} payments={payments} today={today} />
+            <DocumentsTable
+              rows={rows}
+              payments={payments}
+              today={today}
+              reminders={reminders}
+              remindersRanToday={ranToday}
+            />
           )}
         </CardContent>
       </Card>

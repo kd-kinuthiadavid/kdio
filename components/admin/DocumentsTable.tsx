@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import { DocumentStatusBadge } from "@/components/admin/DocumentStatusBadge";
 import { PaymentStateBadge } from "@/components/admin/PaymentStateBadge";
+import { ReminderStatus } from "@/components/admin/ReminderStatus";
 import { clickableRow, rowInnerLink, rowLink } from "@/components/admin/row-link";
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -19,6 +20,7 @@ import { formatMoney } from "@/lib/documents/money";
 import { daysOverdue, type PaymentSummary } from "@/lib/documents/payment-state";
 import type { Receivable } from "@/lib/documents/payments";
 import { getDocumentType } from "@/lib/documents/registry";
+import type { ReminderState } from "@/lib/documents/reminders-data";
 import { cn } from "@/lib/utils";
 
 /** Ids of the rows whose payment state is worth showing. */
@@ -32,11 +34,15 @@ export function DocumentsTable({
   rows,
   payments,
   today,
+  reminders,
+  remindersRanToday = false,
   showCustomer = true,
 }: {
   rows: { document: DocumentRow; customer: CustomerRow }[];
   payments: Map<string, PaymentSummary>;
   today: string;
+  reminders?: Map<string, Pick<ReminderState, "paused" | "pendingStage">>;
+  remindersRanToday?: boolean;
   showCustomer?: boolean;
 }) {
   return (
@@ -56,7 +62,10 @@ export function DocumentsTable({
         {rows.map(({ document: d, customer: c }) => {
           const data = d.data as { issueDate?: string; dueDate?: string };
           const payment = payments.get(d.id);
-          const overdue = payment ? daysOverdue(data.dueDate, payment.outstandingMinor, today) : null;
+          const overdue = payment
+            ? daysOverdue(data.dueDate, payment.outstandingMinor, today)
+            : null;
+          const reminder = reminders?.get(d.id);
           return (
             <TableRow key={d.id} className={clickableRow}>
               <TableCell>
@@ -67,12 +76,17 @@ export function DocumentsTable({
               <TableCell>{getDocumentType(d.type).label}</TableCell>
               {showCustomer ? (
                 <TableCell className="max-w-[220px] truncate">
-                  <Link href={`/admin/customers/${c.id}`} className={rowInnerLink}>
+                  <Link
+                    href={`/admin/customers/${c.id}`}
+                    className={rowInnerLink}
+                  >
                     {customerDisplayName(c)}
                   </Link>
                 </TableCell>
               ) : null}
-              <TableCell className="whitespace-nowrap">{formatDate(data.issueDate)}</TableCell>
+              <TableCell className="whitespace-nowrap">
+                {formatDate(data.issueDate)}
+              </TableCell>
               <TableCell className="whitespace-nowrap text-right tabular-nums">
                 {formatMoney(d.totalMinor, d.currency)}
               </TableCell>
@@ -83,7 +97,8 @@ export function DocumentsTable({
                 {payment ? (
                   <div className="flex flex-col items-start gap-1">
                     <PaymentStateBadge state={payment.state} />
-                    {payment.outstandingMinor > 0 && payment.state !== "unpaid" ? (
+                    {payment.outstandingMinor > 0 &&
+                    payment.state !== "unpaid" ? (
                       <span className="text-xs tabular-nums text-muted-foreground">
                         {formatMoney(payment.outstandingMinor, d.currency)} due
                       </span>
@@ -92,6 +107,13 @@ export function DocumentsTable({
                       <span className="text-xs font-medium text-danger">
                         Overdue {overdue} day{overdue === 1 ? "" : "s"}
                       </span>
+                    ) : null}
+                    {reminder ? (
+                      <ReminderStatus
+                        paused={reminder.paused}
+                        pendingStage={reminder.pendingStage}
+                        ranToday={remindersRanToday}
+                      />
                     ) : null}
                   </div>
                 ) : (

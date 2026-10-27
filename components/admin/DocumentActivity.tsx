@@ -3,6 +3,7 @@ import { ChevronRight } from "lucide-react";
 import type { DocumentEventRow } from "@/db/schema";
 import { formatDateTime } from "@/lib/documents/dates";
 import { formatMoney } from "@/lib/documents/money";
+import { stageLabel } from "@/lib/documents/reminders";
 
 const LABELS: Record<string, string> = {
   created: "Draft created",
@@ -13,6 +14,9 @@ const LABELS: Record<string, string> = {
   payment_recorded: "Payment recorded",
   payment_removed: "Payment removed",
   sent: "Sent by email",
+  reminder_sent: "Reminder sent",
+  reminders_paused: "Reminders paused",
+  reminders_resumed: "Reminders resumed",
 };
 
 function detail(event: DocumentEventRow): string | null {
@@ -22,9 +26,16 @@ function detail(event: DocumentEventRow): string | null {
   }
   if (event.type === "issued" && typeof p.number === "string") return p.number;
   if (event.type === "voided" && typeof p.reason === "string") return p.reason;
-  if (event.type === "sent" && Array.isArray(p.to)) {
-    const cc = Array.isArray(p.cc) && p.cc.length ? ` (cc ${p.cc.join(", ")})` : "";
-    return `${p.to.join(", ")}${cc}`;
+  if (
+    (event.type === "sent" || event.type === "reminder_sent") &&
+    Array.isArray(p.to)
+  ) {
+    const cc =
+      Array.isArray(p.cc) && p.cc.length ? ` (cc ${p.cc.join(", ")})` : "";
+    const to = `${p.to.join(", ")}${cc}`;
+    if (event.type === "sent") return to;
+    const stage = typeof p.stage === "string" ? stageLabel(p.stage) : "Manual";
+    return `${stage} · ${p.trigger === "auto" ? "automatic" : "manual"} · to ${to}`;
   }
   if (event.type === "pdf_stored" && typeof p.sha256 === "string") {
     return `sha256 ${p.sha256.slice(0, 12)}…`;

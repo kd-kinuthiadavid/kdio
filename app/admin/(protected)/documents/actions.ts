@@ -6,7 +6,12 @@ import { z } from "zod";
 
 import type { FormState } from "@/components/admin/FormField";
 import { assertAdmin } from "@/lib/admin-auth";
+import { todayIso } from "@/lib/documents/dates";
 import { deletePayment, recordPayment, type PaymentInput } from "@/lib/documents/payments";
+import {
+  getReminderStates,
+  setRemindersPaused,
+} from "@/lib/documents/reminders-data";
 import { isDocumentType } from "@/lib/documents/registry";
 import {
   createDraft,
@@ -18,6 +23,7 @@ import {
 } from "@/lib/documents/service";
 import { storeIssuedPdf } from "@/lib/documents/storage";
 import { sendDocumentEmail } from "@/lib/email/send-document";
+import { sendReminderEmail } from "@/lib/email/send-reminder";
 
 const payloadSchema = z.object({
   id: z.string().uuid().optional(),
@@ -175,6 +181,63 @@ export async function sendDocumentAction(
   }
   revalidatePath(`/admin/documents/${id}`);
   return { success: `Sent to ${sentTo.join(", ")}` };
+}
+
+export async function sendReminderAction(
+  _prev: FormState,
+  formData: FormData,
+): Promise<FormState> {
+  await assertAdmin();
+  const id = idFrom(formData);
+  let sentTo: string[];
+  try {
+    const state = (await getReminderStates([id], todayIso())).get(id);
+    ({ to: sentTo } = await sendReminderEmail(id, {
+      to: String(formData.get("to") ?? ""),
+      cc: String(formData.get("cc") ?? ""),
+      message: String(formData.get("message") ?? ""),
+      stage: state?.pendingStage ?? "manual",
+      trigger: "manual",
+    }));
+  } catch (e) {
+    return toFormState(e, "Could not send the reminder");
+  }
+  revalidatePath("/admin/documents");
+  revalidatePath(`/admin/documents/${id}`);
+  return { success: `Reminder sent to ${sentTo.join(", ")}` };
+}
+
+async function setPaused(
+  formData: FormData,
+  paused: boolean,
+): Promise<FormState> {
+  await assertAdmin();
+  const id = idFrom(formData);
+  try {
+    await setRemindersPaused(id, paused);
+  } catch (e) {
+    return toFormState(
+      e,
+      paused ? "Could not pause reminders" : "Could not resume reminders",
+    );
+  }
+  revalidatePath("/admin/documents");
+  revalidatePath(`/admin/documents/${id}`);
+  return {};
+}
+
+export async function pauseRemindersAction(
+  _prev: FormState,
+  formData: FormData,
+): Promise<FormState> {
+  return setPaused(formData, true);
+}
+
+export async function resumeRemindersAction(
+  _prev: FormState,
+  formData: FormData,
+): Promise<FormState> {
+  return setPaused(formData, false);
 }
 
 export async function deleteDraftAction(

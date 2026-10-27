@@ -107,7 +107,7 @@ export const documents = pgTable(
       .notNull()
       .references(() => customers.id),
     relatedDocumentId: uuid("related_document_id").references(
-      (): AnyPgColumn => documents.id
+      (): AnyPgColumn => documents.id,
     ),
     currency: text("currency").notNull(),
     totalMinor: bigint("total_minor", { mode: "number" }).notNull().default(0),
@@ -123,12 +123,14 @@ export const documents = pgTable(
     /** Private Blob pathname of the PDF as issued */
     pdfPathname: text("pdf_pathname"),
     pdfSha256: text("pdf_sha256"),
+    /** Set while automatic payment reminders are paused for this invoice */
+    remindersPausedAt: timestamp("reminders_paused_at", { withTimezone: true }),
   },
   (t) => [
     index("documents_type_status_idx").on(t.type, t.status),
     index("documents_customer_idx").on(t.customerId),
     index("documents_related_idx").on(t.relatedDocumentId),
-  ]
+  ],
 );
 
 export type DocumentRow = typeof documents.$inferSelect;
@@ -188,3 +190,16 @@ export const documentPayments = pgTable(
 );
 
 export type DocumentPaymentRow = typeof documentPayments.$inferSelect;
+
+export const jobRuns = pgTable(
+  "job_runs",
+  {
+    id: uuid("id").defaultRandom().primaryKey(),
+    name: text("name").notNull(),
+    ranAt: timestamp("ran_at", { withTimezone: true }).notNull().defaultNow(),
+    result: jsonb("result").$type<Record<string, unknown> | null>(),
+  },
+  (t) => [index("job_runs_name_ran_at_idx").on(t.name, t.ranAt)],
+);
+
+export type JobRunRow = typeof jobRuns.$inferSelect;

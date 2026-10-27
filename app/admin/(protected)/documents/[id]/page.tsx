@@ -4,21 +4,36 @@ import { notFound } from "next/navigation";
 import { storeDocumentPdfAction } from "@/app/admin/(protected)/documents/actions";
 import { ConfirmActionButton } from "@/components/admin/ConfirmActionButton";
 import { DocumentActivity } from "@/components/admin/DocumentActivity";
-import { DocumentHeader } from "@/components/admin/DocumentHeader";
+import {
+  DocumentHeader,
+  type HeaderReminders,
+} from "@/components/admin/DocumentHeader";
 import { DocumentStatusBadge } from "@/components/admin/DocumentStatusBadge";
 import { LinkedNotesSection, PaymentsSection } from "@/components/admin/InvoiceSections";
 import { LineItemsSection, NotesAndTermsSection } from "@/components/admin/LineItemsSection";
 import { Notice } from "@/components/admin/Notice";
 import { PaymentStateBadge } from "@/components/admin/PaymentStateBadge";
+import { ReminderStatus } from "@/components/admin/ReminderStatus";
 import { Section, Stat, StatStrip } from "@/components/admin/Section";
 import { Button } from "@/components/ui/button";
 import { customerDisplayName } from "@/lib/documents/customers";
-import { formatDate, formatDateTime, todayIso } from "@/lib/documents/dates";
+import {
+  formatDate,
+  formatDateTime,
+  isoDateOf,
+  todayIso,
+} from "@/lib/documents/dates";
 import { formatMoney } from "@/lib/documents/money";
 import { daysOverdue } from "@/lib/documents/payment-state";
 import { getDocumentType } from "@/lib/documents/registry";
 import { reasonLabel } from "@/lib/documents/reasons";
+import { stageLabel } from "@/lib/documents/reminders";
+import {
+  getReminderStates,
+  reminderRecipients,
+} from "@/lib/documents/reminders-data";
 import { getDocument, getInvoiceBalance, listEvents } from "@/lib/documents/service";
+import { INVOICE_REMINDERS_JOB, lastJobRun } from "@/lib/jobs";
 
 const link = "underline-offset-4 hover:underline";
 
@@ -41,17 +56,36 @@ export default async function DocumentDetailPage({
     reason?: string;
   };
   const reason = data.reason ? reasonLabel(d.type, data.reason) : null;
-  const [parent, balance, events] = await Promise.all([
+  const today = todayIso();
+  const isIssuedInvoice = d.type === "invoice" && d.status === "issued";
+  const [parent, balance, events, reminderStates, lastRun] = await Promise.all([
     d.relatedDocumentId
       ? getDocument(d.relatedDocumentId).then((r) => r?.document ?? null)
       : null,
-    d.type === "invoice" && d.status !== "draft" ? getInvoiceBalance(d.id) : null,
+    d.type === "invoice" && d.status !== "draft"
+      ? getInvoiceBalance(d.id)
+      : null,
     listEvents(d.id),
+    isIssuedInvoice ? getReminderStates([d.id], today) : null,
+    isIssuedInvoice ? lastJobRun(INVOICE_REMINDERS_JOB) : null,
   ]);
   const overdue =
     balance && d.status === "issued"
-      ? daysOverdue(data.dueDate, balance.outstandingMinor, todayIso())
+      ? daysOverdue(data.dueDate, balance.outstandingMinor, today)
       : null;
+  const reminder = reminderStates?.get(d.id) ?? null;
+  const reminders: HeaderReminders | null = reminder
+    ? {
+        canRemind: reminder.payment.outstandingMinor > 0,
+        defaultTo: reminderRecipients(d, customer, reminder.lastSentTo).join(
+          ", ",
+        ),
+        stageLabel: reminder.pendingStage
+          ? stageLabel(reminder.pendingStage)
+          : null,
+        paused: reminder.paused,
+      }
+    : null;
   const money = (minor: number) => formatMoney(minor, d.currency);
   const pdfUrl = `/api/admin/documents/${d.id}/pdf`;
   const isDraft = d.status === "draft";
@@ -66,21 +100,37 @@ export default async function DocumentDetailPage({
         isInvoice={d.type === "invoice"}
         defaultTo={customer.email ?? ""}
         defaultCc={process.env.NOTIFY_EMAIL ?? ""}
+        reminders={reminders}
       >
         <p className="text-sm text-muted-foreground">
           {def.label} for{" "}
-          <Link href={`/admin/customers/${customer.id}`} className={`text-foreground ${link}`}>
+          <Link
+            href={`/admin/customers/${customer.id}`}
+            className={`text-foreground ${link}`}
+          >
             {customerDisplayName(customer)}
           </Link>
         </p>
         <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1">
-          <h1 className="text-2xl font-semibold tracking-tight">{d.number ?? "Draft"}</h1>
+          <h1 className="text-2xl font-semibold tracking-tight">
+            {d.number ?? "Draft"}
+          </h1>
           <DocumentStatusBadge status={d.status} />
-          {balance && d.status === "issued" ? <PaymentStateBadge state={balance.state} /> : null}
+          {balance && d.status === "issued" ? (
+            <PaymentStateBadge state={balance.state} />
+          ) : null}
           {overdue !== null ? (
             <span className="text-sm font-medium text-danger">
               Overdue {overdue} day{overdue === 1 ? "" : "s"}
             </span>
+          ) : null}
+          {reminder ? (
+            <ReminderStatus
+              className="text-sm"
+              paused={reminder.paused}
+              pendingStage={reminder.pendingStage}
+              ranToday={lastRun ? isoDateOf(lastRun.ranAt) === today : false}
+            />
           ) : null}
         </div>
         {d.status === "issued" ? (
@@ -95,10 +145,13 @@ export default async function DocumentDetailPage({
 
       <StatStrip>
         <Stat label="Issue date">{formatDate(data.issueDate)}</Stat>
-        {data.dueDate ? <Stat label="Due date">{formatDate(data.dueDate)}</Stat> : null}
+        {data.dueDate ? (
+          <Stat label="Due date">{formatDate(data.dueDate)}</Stat>
+        ) : null}
         {data.servicePeriodFrom && data.servicePeriodTo ? (
           <Stat label="Service period">
-            {formatDate(data.servicePeriodFrom)} – {formatDate(data.servicePeriodTo)}
+            {formatDate(data.servicePeriodFrom)} –{" "}
+            {formatDate(data.servicePeriodTo)}
           </Stat>
         ) : null}
         {parent ? (
@@ -109,7 +162,9 @@ export default async function DocumentDetailPage({
           </Stat>
         ) : null}
         {reason ? <Stat label="Reason">{reason}</Stat> : null}
-        {data.reference ? <Stat label="Reference">{data.reference}</Stat> : null}
+        {data.reference ? (
+          <Stat label="Reference">{data.reference}</Stat>
+        ) : null}
         <Stat label="Total" emphasis={!balance}>
           {money(d.totalMinor)}
         </Stat>
@@ -124,7 +179,11 @@ export default async function DocumentDetailPage({
         {balance ? (
           <Stat
             label="Paid"
-            hint={balance.refundedMinor ? `${money(balance.refundedMinor)} refunded` : undefined}
+            hint={
+              balance.refundedMinor
+                ? `${money(balance.refundedMinor)} refunded`
+                : undefined
+            }
           >
             {money(balance.paidMinor)}
           </Stat>
@@ -144,7 +203,9 @@ export default async function DocumentDetailPage({
             {money(Math.abs(balance.outstandingMinor))}
           </Stat>
         ) : null}
-        {d.voidedAt ? <Stat label="Voided">{formatDateTime(d.voidedAt)}</Stat> : null}
+        {d.voidedAt ? (
+          <Stat label="Voided">{formatDateTime(d.voidedAt)}</Stat>
+        ) : null}
       </StatStrip>
 
       <LineItemsSection document={d} />
@@ -172,16 +233,21 @@ export default async function DocumentDetailPage({
       >
         {isDraft ? (
           <p className="text-sm text-muted-foreground">
-            Live preview. The final PDF is stored when the {def.label.toLowerCase()} is issued.
+            Live preview. The final PDF is stored when the{" "}
+            {def.label.toLowerCase()} is issued.
           </p>
         ) : d.pdfSha256 ? (
           <p className="text-sm text-muted-foreground">
             Stored copy, sha256{" "}
-            <span className="break-all font-mono text-xs text-foreground">{d.pdfSha256}</span>
+            <span className="break-all font-mono text-xs text-foreground">
+              {d.pdfSha256}
+            </span>
           </p>
         ) : (
           <div className="flex flex-wrap items-center gap-3">
-            <Notice tone="warning">The issued PDF hasn&apos;t been stored yet.</Notice>
+            <Notice tone="warning">
+              The issued PDF hasn&apos;t been stored yet.
+            </Notice>
             <ConfirmActionButton
               action={storeDocumentPdfAction}
               id={d.id}

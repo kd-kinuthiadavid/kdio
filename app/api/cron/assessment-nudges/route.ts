@@ -5,6 +5,7 @@ import { assessmentSubmissions } from "@/db/schema";
 import { signResumeJwt } from "@/lib/assessment/resume-jwt";
 import { sendResumeNudgeEmail } from "@/lib/email/send-assessment";
 import { getDb } from "@/lib/db";
+import { recordJobRun } from "@/lib/jobs";
 
 export async function GET(request: Request) {
   const secret = process.env.CRON_SECRET;
@@ -50,5 +51,6 @@ export async function GET(request: Request) {
     }
   }
 
+  await recordJobRun("assessment-nudges", { processed: rows.length, sent });
   return NextResponse.json({ ok: true, processed: rows.length, sent });
 }

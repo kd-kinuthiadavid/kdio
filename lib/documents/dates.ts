@@ -1,7 +1,14 @@
-const TIME_ZONE = "Africa/Nairobi";
+export const TIME_ZONE = "Africa/Nairobi";
+
+/** The calendar date of an instant in the business time zone. */
+export function isoDateOf(value: Date): string {
+  return new Intl.DateTimeFormat("en-CA", { timeZone: TIME_ZONE }).format(
+    value,
+  );
+}
 
 export function todayIso(): string {
-  return new Intl.DateTimeFormat("en-CA", { timeZone: TIME_ZONE }).format(new Date());
+  return isoDateOf(new Date());
 }
 
 export function addDaysIso(iso: string, days: number): string {
